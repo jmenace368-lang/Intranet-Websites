@@ -299,7 +299,13 @@
         </div>
     </header>
     <header class="wn-hero">
-        <img src="https://combineoverwiki.net/images/6/6f/HLA_CP_Onlook.jpg" alt="Cover image">
+        <div class="hero-slides">
+            <img class="hero-slide" src="https://combineoverwiki.net/images/6/6f/HLA_CP_Onlook.jpg" alt="Cover image">
+            <img class="hero-slide active" src="https://combineoverwiki.net/images/8/80/HLA_CP_Street_Sweep.jpg"
+                alt="Cover Image 2">
+            <img class="hero-slide" src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                alt="Cover Image 3">
+        </div>
         <div class="wn-hero-overlay">
             <h1>New Labour.<br>New Life for Humanity.</h1>
             <p>Working together to build a fairer, stronger, and more
@@ -368,3 +374,27 @@
         </div>
     </footer>
 </div>
+<script>
+    function initHeroSlideshow() {
+        var slides = document.querySelectorAll('.hero-slide');
+        if (!slides.length) return;
+
+        var current = 0;
+        var intervalTime = 5000;
+
+        function showSlide(index) {
+            slides.forEach(function (slide, i) {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        showSlide(0);
+
+        setInterval(nextSlide, intervalTime);
+    }
+</script>
