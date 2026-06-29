@@ -82,121 +82,129 @@
 
     body {
         margin: 0;
-        background: #1e1e2d;
+        background: #ffffff;
+        font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #222;
+        line-height: 1.6;
     }
 
     .secon-terminal {
-        background: var(--wn-bg);
-        font-family: 'Exo 2', sans-serif;
-        max-width: 900px;
-        margin: 40px auto;
+        background: #fff;
+        max-width: 1120px;
+        margin: 0 auto;
+        overflow: hidden;
+        box-shadow: 0 0 0 1px #f0f0f0;
     }
 
-    /* Header */
+    /* Header - clean Labour style */
     .header {
         box-sizing: border-box;
-        background: var(--labour);
+        background: #fff;
         align-items: center;
         justify-content: space-between;
-        padding: 25px 20px;
+        padding: 18px 32px;
         display: flex;
-        color: white;
+        color: #111;
         flex-wrap: wrap;
-        gap: 30px;
-        font-family: 'Aldritch', 'Poppins', sans-serif;
-        user-select: none;
+        gap: 20px;
+        border-bottom: 1px solid #eee;
+        font-family: 'Poppins', system-ui, sans-serif;
+    }
+
+    .header .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .header img {
+        height: 52px;
+        width: auto;
     }
 
     .header h2 {
         margin: 0;
-        font-size: 1.8rem;
-        font-weight: 600;
+        font-size: 1.35rem;
+        font-weight: 800;
+        letter-spacing: -0.3px;
+        color: var(--labour);
     }
 
-    .header h3 {
-        color: white;
-        letter-spacing: 2px;
+    .header h2 span {
+        font-weight: 400;
+        color: #444;
+        letter-spacing: normal;
     }
 
-    .header h3 strong {
-        font-weight: 200;
-    }
-
-    .header img {
-        height: 90px;
-        width: auto;
-    }
-
-    /* Navigation */
+    /* Navigation - sleek modern */
     .nav {
-        display: flex;
-        border-top: solid 1px var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-        max-height: 60px;
+        background: #fff;
+        border-bottom: 1px solid #e5e5e5;
     }
 
     .nav ul {
-        gap: 22px;
+        gap: 8px;
         list-style: none;
         display: flex;
+        padding: 0 32px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0;
     }
 
     .nav ul li {
         font-family: 'Poppins', system-ui, sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-        color: var(--text-color);
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
         cursor: pointer;
+        padding: 16px 14px;
+        position: relative;
+        transition: color 0.15s ease;
+    }
+
+    .nav ul li:hover {
+        color: var(--labour);
+    }
+
+    .nav ul li.active {
+        color: var(--labour);
+        font-weight: 700;
+    }
+
+    .nav ul li.active::after {
+        content: '';
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 8px;
+        height: 2px;
+        background: var(--labour);
     }
 
     /* Home icon */
     .nav .home {
-        padding: 0 10px;
+        padding: 14px 10px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
     .nav .home img {
-        position: relative;
-        height: 24px;
+        height: 18px;
         width: auto;
-        top: 0;
-        left: 0;
     }
 
     /* Search icon */
+    .nav .img {
+        margin-left: auto;
+        padding: 14px 8px;
+    }
+
     .nav .img img {
-        position: absolute;
-        height: 22px;
+        height: 18px;
         width: auto;
-        user-select: none;
-    }
-
-    /* Tab-style navigation items */
-    .nav ul li[data-tab] {
-        cursor: pointer;
-        transition: color 0.2s;
-        position: relative;
-        padding-bottom: 4px;
-    }
-
-    .nav ul li[data-tab]:hover {
-        color: var(--labour);
-    }
-
-    .nav ul li[data-tab].active {
-        color: var(--labour);
-    }
-
-    .nav ul li[data-tab].active::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 4px;
-        background: var(--labour);
+        opacity: 0.7;
     }
 
     /* Hero Image */
@@ -251,14 +259,26 @@
 
     /* Content Area */
     .content-container {
-        padding: 30px 40px;
+        padding: 48px 48px 64px;
+        max-width: 980px;
+        margin: 0 auto;
     }
 
     .content-container h1 {
-        font-family: 'Bebas Neue', sans-serif;
-        letter-spacing: 1px;
-        margin-bottom: 18px;
-        color: var(--labour);
+        font-family: 'Bebas Neue', system-ui, sans-serif;
+        font-size: 2.6rem;
+        font-weight: 700;
+        letter-spacing: .4px;
+        margin: 0 0 10px;
+        color: #111;
+    }
+
+    .lead {
+        font-size: 16.5px;
+        max-width: 700px;
+        color: #444;
+        line-height: 1.65;
+        margin: 0 0 28px;
     }
 
     .content-container h2 {
@@ -292,56 +312,69 @@
         color: var(--text-color-main);
     }
 
-    /* Grid */
-    .content-container .grid-container {
+    /* Sleek Labour-style layouts */
+    .impact-row {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 80px;
-        color: var(--text-color-main);
-        margin-bottom: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 16px;
+        margin: 32px 0 40px;
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 22px 0;
     }
 
-    .grid-container h2 {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-decoration: underline 2px var(--labour);
-        text-underline-offset: 4px;
-        text-transform: uppercase;
+    .impact-item .num {
+        display: block;
+        font-size: 2.1rem;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--labour);
+        font-family: 'Bebas Neue', system-ui, sans-serif;
     }
 
-    .grid-container p {
-        text-align: justify;
+    .impact-item .desc {
+        font-size: 13.5px;
+        color: #555;
+        margin-top: 4px;
+        font-weight: 500;
     }
 
-    /* Profile cards */
-    .content-container .profile {
-        border-top: var(--border-color) solid 1px;
-        margin-bottom: 18px;
-        display: inline-block;
-        gap: 30px;
-        align-items: flex-start;
-        padding-top: 18px;
+    .simple-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        margin-top: 8px;
     }
 
-    .profile-img {
-        height: 340px;
-        width: 240px;
-        background: gray;
-        flex-shrink: 0;
+    .simple-card {
+        padding: 0 0 4px;
+        border-bottom: 1px solid #eee;
     }
 
-    .profile-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .simple-card:last-child {
+        border-bottom: none;
     }
 
-    .profile-info {
-        display: flex;
-        flex-direction: column;
-        padding-right: 10px;
-        text-align: center;
-        color: var(--text-color-main);
-        float: left;
+    .simple-card h3 {
+        font-size: 1.18rem;
+        font-weight: 700;
+        margin: 0 0 8px;
+        color: #111;
+        line-height: 1.25;
+    }
+
+    .simple-card p {
+        margin: 0;
+        font-size: 15px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    .simple-card .stat {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--labour);
     }
 
 
@@ -444,38 +477,246 @@
     .footer strong {
         font-weight: bolder;
     }
+
+    /* Sleek Labour-style content */
+    .impact-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 16px;
+        margin: 32px 0 40px;
+        border-top: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+        padding: 22px 0;
+    }
+
+    .impact-item .num {
+        display: block;
+        font-size: 2.1rem;
+        font-weight: 800;
+        line-height: 1;
+        color: var(--labour);
+        font-family: 'Bebas Neue', system-ui, sans-serif;
+    }
+
+    .impact-item .desc {
+        font-size: 13.5px;
+        color: #555;
+        margin-top: 4px;
+        font-weight: 500;
+    }
+
+    .simple-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        margin-top: 8px;
+    }
+
+    .simple-card {
+        padding: 0 0 4px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .simple-card:last-child {
+        border-bottom: none;
+    }
+
+    .simple-card h3 {
+        font-size: 1.18rem;
+        font-weight: 700;
+        margin: 0 0 8px;
+        color: #111;
+        line-height: 1.25;
+    }
+
+    .simple-card p {
+        margin: 0;
+        font-size: 15px;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    .simple-card .stat {
+        margin-top: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--labour);
+    }
+
+    /* Clean pillars, profiles, news - simple & modern */
+    .pillars {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px 40px;
+        margin-top: 20px;
+    }
+
+    .pillar h3 {
+        font-size: 1.22rem;
+        font-weight: 700;
+        margin: 0 0 10px;
+        color: var(--labour);
+    }
+
+    .pillar p {
+        font-size: 15px;
+        color: #444;
+        margin-bottom: 12px;
+    }
+
+    .pillar ul {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 14.5px;
+        color: #444;
+        line-height: 1.65;
+    }
+
+    .profiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 32px 24px;
+        margin-top: 12px;
+    }
+
+    .profile .photo {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-size: cover;
+        background-position: center 20%;
+        border-radius: 4px;
+        margin-bottom: 14px;
+    }
+
+    .profile .name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0 0 2px;
+        color: #111;
+    }
+
+    .profile .role {
+        font-size: 13px;
+        color: var(--labour);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .profile .bio {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #444;
+        margin: 0;
+    }
+
+    .news-list {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        margin-top: 10px;
+    }
+
+    .news-item {
+        border-bottom: 1px solid #f0f0f0;
+        padding-bottom: 22px;
+    }
+
+    .news-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .news-item .date-tag {
+        font-size: 12.5px;
+        color: #666;
+        font-weight: 500;
+        margin-bottom: 4px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .news-item .tag {
+        background: #f4f4f4;
+        color: #444;
+        padding: 1px 7px;
+        font-size: 11px;
+        font-weight: 600;
+        border-radius: 2px;
+    }
+
+    .news-item h3 {
+        margin: 2px 0 6px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        line-height: 1.3;
+        color: #111;
+    }
+
+    .news-item p {
+        margin: 0;
+        font-size: 14.5px;
+        color: #555;
+        line-height: 1.55;
+    }
+
+    /* Buttons */
+    .cta-btn {
+        display: inline-block;
+        background: var(--labour);
+        color: white;
+        padding: 10px 26px;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-top: 12px;
+        transition: background 0.15s;
+    }
+
+    .cta-btn:hover {
+        background: #001f8a;
+    }
+
+    .wn-hero .fake-button {
+        background: #fff;
+        color: var(--labour);
+        padding: 11px 24px;
+        font-size: 14px;
+        font-weight: 700;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .wn-hero .fake-button:hover {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 </style>
 <div class="wn-container secon-terminal" style="background: white;">
     <div class="searchbar"></div>
     <header>
         <div class="header">
-            <img src="https://i.ibb.co/0ydBg5Tq/clc.png">
-            <h2 style="font-size: 35px; max-width: 470px; text-align: center; letter-spacing: 5px;">COMBINE LABOUR <span
-                    style="letter-spacing: 15px; font-size: 38px;">CO-OPERATIVE</span></h2>
-            <div>
-                <h3>new <strong>Labour</strong></h3>
-                <h3>new life for <strong>Humanity</strong></h3>
+            <div class="brand">
+                <img src="https://i.ibb.co/0ydBg5Tq/clc.png" alt="CLC">
+                <h2>Combine Labour <span>Co-operative</span></h2>
             </div>
+            <div style="font-size:13px; color:#555; line-height:1.3; text-align:right; margin-right:12px;">
+                New Labour.<br>
+                New life for humanity.
+            </div>
+            <a href="#" class="cta-btn" style="margin:0; font-size:13px; padding:8px 18px;">Join</a>
         </div>
         <div class="nav">
             <ul>
                 <li class="home" data-tab="default">
-                    <img src="https://i.ibb.co/TBnxSxSf/home-1.png">
+                    <img src="https://i.ibb.co/TBnxSxSf/home-1.png" alt="Home">
                 </li>
-                <li data-tab="delivered" class="active">
-                    What we've delivered
-                </li>
-                <li data-tab="plan">
-                    Plan for Change
-                </li>
-                <li data-tab="people">
-                    Labour People
-                </li>
-                <li data-tab="news">
-                    News & Updates
-                </li>
+                <li data-tab="delivered">What we've delivered</li>
+                <li data-tab="plan">Plan for Change</li>
+                <li data-tab="people">Labour People</li>
+                <li data-tab="news">News &amp; Updates</li>
                 <li class="img">
-                    <img src="https://i.ibb.co/998w7dGW/search-1.png">
+                    <img src="https://i.ibb.co/998w7dGW/search-1.png" alt="Search">
                 </li>
             </ul>
         </div>
@@ -489,209 +730,216 @@
                 alt="Cover Image 3">
         </div>
         <div class="wn-hero-overlay">
-            <h1>New Labour.<br>New Life for Humanity.</h1>
-            <p>Working to build a stronger, better, and more prosperous City 13.</p>
+            <h1>Labour is delivering<br>our Plan for Change.</h1>
+            <p>Working people. Practical change. A better District 7 for everyone.</p>
             <div class="fake-button" target="_blank" rel="noopener"><a
-                    href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/">the
-                    Movement</a></div>
+                    href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/">Get Involved</a></div>
         </div>
     </header>
-    <section class=" content-container">
+    <section class="content-container">
+        <!-- OVERVIEW -->
         <div class="tab-panel active" data-tab="default">
-            <h1>New Labour. New Life.</h1>
-            <p>
-                The Combine Labour Co-operative delivers for the working people. Labour has changed the city for
-                the
-                better, with achievements that have made a lasting difference to people’s lives across our
-                city.
+            <h1>Labour is delivering.</h1>
+            <p class="lead">The Combine Labour Co-operative is building a fairer, stronger District 7. We are delivering practical change for working people — better homes, safer work, and real opportunity.</p>
 
-            </p>
-            <p>
-                From rebuilding homes to securing fairer rations and safer workplaces, Labour was formed to
-                give
-                ordinary people a voice and improve lives. For the past several years, we stood
-                for
-                practical change that improves the lives of our city's residents, and now, we aim for
-                greater goals in
-                District 7.
-            </p>
-            <br>
-            <hr>
-            <div class="grid-container">
-                <div>
-                    <h2>Our Mission</h2>
-                    <p>To unite workers, protect citizens, and shape communities to build a fairer, more
-                        robust District
-                        where individuals contribute and the majority benefit, built on the pragmatic
-                        principles of
-                        Democratic Socialism.
-                        p>
-                        <br>
-                    <h2>Support Our Cause</h2>
-                    <p>Labour's success is defined by thousands of Citizens who contribute daily to Labour's
-                        growing
-                        platform. Without their support, Labour would be unable to stem the tide of
-                        oligarchic populism.</p>
+            <div class="impact-row">
+                <div class="impact-item"><span class="num">142k</span><span class="desc">Citizens supported directly</span></div>
+                <div class="impact-item"><span class="num">12,400</span><span class="desc">Housing units upgraded</span></div>
+                <div class="impact-item"><span class="num">19</span><span class="desc">Major policies delivered</span></div>
+                <div class="impact-item"><span class="num">9,200</span><span class="desc">Active members</span></div>
+            </div>
 
-                    <p>Help Labour continue its defining success by participating today.</p>
+            <div class="simple-grid">
+                <div class="simple-card">
+                    <h3>Our Mission</h3>
+                    <p>To unite workers, protect citizens and shape communities built on fairness and contribution. We stand for practical democratic change that improves everyday lives.</p>
                 </div>
-                <div>
-                    <h2>Join Us</h2>
-                    <p>Join thousands of Citizens who've voted Labour this past election cycle.</p>
-                    <p>Together, last election, we stood up against reactionary entities such as the
-                        Optimates who
-                        continue to threaten
-                        District 7
-                        with their radical and repressive policies. And we'll do it again.</p>
-                    <p>
-                        Whether you toil in the factories, work in one of many city departments, or
-                        carry out your duties as an
-                        average citizen, there's a place for you in Labour.</p>
-                    <p>
-                        By becoming a member of the Combine Labour Co-operative, you can be a vital part of
-                        the team
-                        that will bring District 7 forward toward universal prosperity.
-                    </p>
+                <div class="simple-card">
+                    <h3>Join Us</h3>
+                    <p>Thousands of citizens have already chosen Labour. Factory workers, public servants and ordinary people are building the future together. There's a place for you here.</p>
+                    <a href="#" class="cta-btn">Become a Member</a>
                 </div>
             </div>
-            <!-- <div
-                style="color: white; text-align: center; padding: 40px 95px; margin: 20px 0; border-radius: 6px; background: var(--labour); justify-self: center;">
-                <div>
-                    <span style="display: inline-block; margin: 0 0 20px;
-    font-size: 24px;">Together, we can build
-                        a better
-                        future</span><br>
-                    <div class="fake-button">Become a Member Today</div>
-
-                </div>
-            </div> -->
         </div>
 
+        <!-- DELIVERED -->
         <div class="tab-panel" data-tab="delivered">
             <h1>What we've delivered</h1>
-            <div class="grid-container">
-                <div>
-                    <h2>Housing Reform</h2>
-                    <p>As part of a popular, multi-party legislative initiative, we joined
-                        others in introducing comprehensive legislation to officially segregate Biotic and
-                        Human housing
-                        zones, establishing a Biotic exclusionary zone that better meets their psychological
-                        demands.
-                    </p>
+            <p class="lead">Real, measurable change across District 7. These are some of the key wins for working people.</p>
+
+            <div class="simple-grid">
+                <div class="simple-card">
+                    <h3>Housing Reform</h3>
+                    <p>Segregated Biotic and human zones while upgrading conditions for thousands of families.</p>
+                    <div class="stat">+12,400 units improved</div>
                 </div>
-                <div>
-                    <h2>
-                        Electoral Reform
-                    </h2>
-                    <p>Under our initiative, we proudly sponsored landmark legislation that successfully
-                        waived the
-                        monetary credit fee for voting eligibility by default, allowing broader civic
-                        participation and
-                        incentivizing voter attendance.</p>
+                <div class="simple-card">
+                    <h3>Electoral Reform</h3>
+                    <p>Removed credit fees for voting eligibility, opening participation to more citizens.</p>
+                    <div class="stat">+68% voter turnout</div>
+                </div>
+                <div class="simple-card">
+                    <h3>Workplace Safety Standards</h3>
+                    <p>Introduced mandatory protocols and worker representation on factory floors.</p>
+                    <div class="stat">-41% serious incidents</div>
+                </div>
+                <div class="simple-card">
+                    <h3>Ration Equity Programme</h3>
+                    <p>Guaranteed fair, high-quality allocations for all labourers and families.</p>
+                    <div class="stat">98% on-time delivery</div>
+                </div>
+                <div class="simple-card">
+                    <h3>Transit &amp; Infrastructure</h3>
+                    <p>New reliable lines connecting residential blocks with work districts.</p>
+                    <div class="stat">4 new lines, 19 stations</div>
+                </div>
+                <div class="simple-card">
+                    <h3>Labour Rights Charter</h3>
+                    <p>Secured collective representation and protection from arbitrary discipline.</p>
+                    <div class="stat">100k+ workers protected</div>
                 </div>
             </div>
         </div>
 
+        <!-- PLAN -->
         <div class="tab-panel" data-tab="plan">
             <h1>Plan for Change</h1>
-            <div class="grid-container">
-                <div>
-                    <h2>Social Investment</h2>
-                    <p>Invest in those who deserve it and are seeking to contribute to our District's productivity.
-                        Citizens who contribute to the District, whether as a Collaborator or labourer, will be duly
-                        rewarded for their ethics.</p>
+            <p class="lead">Five clear priorities to make District 7 the model of fairness and opportunity.</p>
+
+            <div class="pillars">
+                <div class="pillar">
+                    <h3>Worker Empowerment</h3>
+                    <p>Real voice and reward for those who contribute.</p>
+                    <ul>
+                        <li>Expand worker councils with real say</li>
+                        <li>Living wage indexed to living costs</li>
+                        <li>Universal skills training &amp; progression</li>
+                    </ul>
                 </div>
-                <div>
-                    <h2>Providing Opportunities</h2>
-                    <p>Provide labour and business opportunities to citizens to successfully integrate into the
-                        workforce.
-                        Through our initiatives, citizens will be able to find productive, streamlined employment
-                        regardless of
-                        status or tier.</p>
+                <div class="pillar">
+                    <h3>Housing for All</h3>
+                    <p>Decent homes as a foundation, not a luxury.</p>
+                    <ul>
+                        <li>Complete regeneration of key blocks</li>
+                        <li>Rent stability for essential workers</li>
+                        <li>6,500 new family homes</li>
+                    </ul>
+                </div>
+                <div class="pillar">
+                    <h3>Health &amp; Wellbeing</h3>
+                    <p>Care that is accessible and preventative.</p>
+                    <ul>
+                        <li>Local community health clinics</li>
+                        <li>Universal mental health support</li>
+                        <li>Better nutrition in rations</li>
+                    </ul>
+                </div>
+                <div class="pillar">
+                    <h3>Sustainable Growth</h3>
+                    <p>Investment that lasts for generations.</p>
+                    <ul>
+                        <li>Green industrial retrofits</li>
+                        <li>Circular economy pilot</li>
+                        <li>Local food and water security</li>
+                    </ul>
+                </div>
+                <div class="pillar">
+                    <h3>Youth &amp; Future</h3>
+                    <p>Opportunity for the next generation.</p>
+                    <ul>
+                        <li>Apprenticeships with job guarantees</li>
+                        <li>New technical academies</li>
+                        <li>Youth voice at the table</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
+        <!-- PEOPLE -->
         <div class="tab-panel" data-tab="people">
             <h1>Labour People</h1>
-            <!-- <div class="profile">
-                <div class="profile-info">
-                    <div class="data">
-                        <span class="role">District Councillor</span>
-                        <span class="title">Keir Starmer</span>
-                    </div>
-                    <div class="profile-img"><img
-                            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg">
-                    </div>
-                    <span>Party Leader</span>
+            <p class="lead">The leaders and organisers delivering change every day.</p>
+
+            <div class="profiles">
+                <div class="profile">
+                    <div class="photo" style="background-image: url('https://picsum.photos/id/1011/600/600')"></div>
+                    <div class="name">Elara Voss</div>
+                    <div class="role">Chair, District Councillor</div>
+                    <div class="bio">Former shift supervisor. Led the Housing Reform and chairs the Co-operative with focus on practical results.</div>
                 </div>
-                <div class="profile-bio">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi
-                        ut
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi
-                        ut
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut
-                        labore
-                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi
-                        ut
-                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                        proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                <div class="profile">
+                    <div class="photo" style="background-image: url('https://picsum.photos/id/1005/600/600')"></div>
+                    <div class="name">Marcus Kael</div>
+                    <div class="role">Lead Organiser</div>
+                    <div class="bio">Heavy engineering worker who drove the Workplace Safety Standards through the factories.</div>
                 </div>
-            </div> -->
+                <div class="profile">
+                    <div class="photo" style="background-image: url('https://picsum.photos/id/1009/600/600')"></div>
+                    <div class="name">Dr Liora Chen</div>
+                    <div class="role">Health &amp; Rations</div>
+                    <div class="bio">Former medical officer behind the Ration Equity Programme and new local clinics.</div>
+                </div>
+                <div class="profile">
+                    <div class="photo" style="background-image: url('https://picsum.photos/id/1012/600/600')"></div>
+                    <div class="name">Theo Brandt</div>
+                    <div class="role">Youth &amp; Education</div>
+                    <div class="bio">Built the successful apprenticeship bridge. Now leads future workforce policy.</div>
+                </div>
+                <div class="profile">
+                    <div class="photo" style="background-image: url('https://picsum.photos/id/29/600/600')"></div>
+                    <div class="name">Selene Harrow</div>
+                    <div class="role">Factory &amp; Logistics</div>
+                    <div class="bio">Represents 38,000 logistics and fabrication workers with tough, fair negotiation.</div>
+                </div>
+            </div>
         </div>
 
+        <!-- NEWS -->
         <div class="tab-panel" data-tab="news">
-            <h1>News & Updates</h1>
+            <h1>News &amp; Updates</h1>
+            <p class="lead">The latest from the Combine Labour Co-operative.</p>
 
-            <!-- <br>
-            <section class="blog">
-                <h1>Blog</h1>
-            </section> -->
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="date-tag"><span>24 June 2026</span> <span class="tag">POLICY</span></div>
+                    <h3>Transit Expansion Bill passes — four new lines this autumn</h3>
+                    <p>Extension will cut commute times for thousands of shift workers in outer blocks.</p>
+                </div>
+                <div class="news-item">
+                    <div class="date-tag"><span>19 June 2026</span> <span class="tag">IMPACT</span></div>
+                    <h3>Workplace incidents down 41% after safety reforms</h3>
+                    <p>New protocols and representation on the floor delivering safer conditions across the district.</p>
+                </div>
+                <div class="news-item">
+                    <div class="date-tag"><span>11 June 2026</span> <span class="tag">EVENT</span></div>
+                    <h3>Annual Labour Assembly — 12 July</h3>
+                    <p>Open forum to set next year’s priorities. All members welcome.</p>
+                </div>
+                <div class="news-item">
+                    <div class="date-tag"><span>2 June 2026</span> <span class="tag">COMMUNITY</span></div>
+                    <h3>5,000th citizen completes Labour apprenticeship</h3>
+                    <p>Over 80% of graduates now in full-time roles with improved conditions.</p>
+                </div>
+                <div class="news-item">
+                    <div class="date-tag"><span>28 May 2026</span> <span class="tag">POLICY</span></div>
+                    <h3>Ration Equity expands to night-shift premiums</h3>
+                    <p>Pilot programme to begin next quarter following member feedback.</p>
+                </div>
+            </div>
         </div>
     </section>
     <footer>
         <div class="footer-rows">
             <div class="footer-row">
                 <div>
-                    <img src="https://i.ibb.co/0ydBg5Tq/clc.png">
-                    <p style="margin: 8px 0;"><strong>Combine Labour Cooperative</strong><br>
+                    <img src="https://i.ibb.co/0ydBg5Tq/clc.png" alt="CLC logo">
+                    <p style="margin: 8px 0 0;"><strong>Combine Labour Co-operative</strong><br>
                         City 13, District 7</p>
                 </div>
                 <div>
                     <h4>People</h4>
                     <ul>
-                        <li>
-                            Our representatives
-                        </li>
+                        <li>Our representatives</li>
                         <li>Get involved</li>
                     </ul>
                 </div>
@@ -703,30 +951,17 @@
                     </ul>
                 </div>
                 <div>
-                    <h4>About Us</h4>
+                    <h4>About</h4>
                     <ul>
-                        <li>
-                            How we work
-                        </li>
-                        <li>
-                            Our values
-                        </li>
-                        <li>
-                            Contact
-                        </li>
+                        <li>How we work</li>
+                        <li>Our values</li>
+                        <li>Contact</li>
                     </ul>
                 </div>
             </div>
-            <div
-                style="margin: 50px auto 0; padding-top: 20px; border-top: 1px solid #ddd; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
-                <div>
-                    CMB
-                    <span style="margin-left: 12px; color: #444; text-decoration: none;">English</span>
-                </div>
-
-                <div style="color: #666;">
-                    © 2006 Combine Labour Co-operative • All Rights Reserved
-                </div>
+            <div style="margin-top: 36px; padding-top: 18px; border-top: 1px solid #e5e5e5; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; font-size: 12.5px; color: #666;">
+                <div>Combine Labour Co-operative • English</div>
+                <div>© 2026 Combine Labour Co-operative. All rights reserved.</div>
             </div>
         </div>
     </footer>
