@@ -157,7 +157,221 @@
 
     .content-container {
         min-height: 500px;
-        padding: 60 40px;
+        padding: 60px 40px;
+        color: #222;
+        font-size: 15px;
+    }
+
+    .content-container h2 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.1rem;
+        color: #0030cc;
+        margin: 0 0 18px;
+        letter-spacing: 0.5px;
+    }
+
+    .content-container h3 {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 1.1rem;
+        margin: 0 0 8px;
+        color: #222;
+    }
+
+    .clc-section {
+        margin-bottom: 58px;
+    }
+
+    .clc-intro {
+        max-width: 680px;
+        font-size: 16px;
+        margin-bottom: 52px;
+        color: #333;
+        line-height: 1.65;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 16px;
+    }
+
+    .stat-card {
+        background: #f7f8fa;
+        border: 1px solid #e6e6e9;
+        border-radius: 8px;
+        padding: 22px 16px;
+        text-align: center;
+    }
+
+    .stat-card .number {
+        font-size: 2.05rem;
+        font-weight: 800;
+        color: #0030cc;
+        line-height: 1;
+        margin-bottom: 6px;
+        font-family: 'Bebas Neue', sans-serif;
+    }
+
+    .stat-card .label {
+        font-size: 13px;
+        color: #555;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+
+    .policy-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .policy-card {
+        display: flex;
+        gap: 14px;
+        background: #fff;
+        border: 1px solid #e6e6e9;
+        border-radius: 8px;
+        padding: 18px 16px;
+    }
+
+    .policy-card .icon {
+        width: 42px;
+        height: 42px;
+        background: #f0f1f7;
+        color: #0030cc;
+        flex-shrink: 0;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+    }
+
+    .policy-card h3 {
+        margin-bottom: 4px;
+    }
+
+    .policy-card p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.5;
+    }
+
+    .people-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+        gap: 16px;
+    }
+
+    .person-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e6e6e9;
+    }
+
+    .person-card img {
+        width: 100%;
+        height: 138px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .person-card .info {
+        padding: 13px 13px 16px;
+    }
+
+    .person-card .name {
+        font-weight: 700;
+        font-size: 14.5px;
+        margin-bottom: 1px;
+    }
+
+    .person-card .role {
+        font-size: 11.5px;
+        color: #0030cc;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .person-card .bio {
+        font-size: 12.5px;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(195px, 1fr));
+        gap: 16px;
+    }
+
+    .news-card {
+        border: 1px solid #e6e6e9;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .news-card .news-img {
+        height: 108px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .news-card .meta {
+        padding: 13px 15px 17px;
+    }
+
+    .news-card .date {
+        font-size: 11.5px;
+        color: #777;
+        margin-bottom: 3px;
+    }
+
+    .news-card .title {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 1.25;
+        margin-bottom: 5px;
+        color: #111;
+    }
+
+    .news-card .excerpt {
+        font-size: 12.5px;
+        color: #555;
+        line-height: 1.4;
+    }
+
+    .clc-cta {
+        background: #0030cc;
+        color: white;
+        padding: 36px 40px;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .clc-cta h2 {
+        color: white;
+        font-size: 1.85rem;
+        margin-bottom: 8px;
+    }
+
+    .clc-cta p {
+        margin: 0 0 20px;
+        opacity: 0.92;
+        max-width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .clc-cta .fake-button {
+        background: white;
+        color: #0030cc;
+        padding: 13px 40px;
+        font-size: 14.5px;
     }
 
     .wn-container .wn-hero {
@@ -166,11 +380,29 @@
         height: 420px;
     }
 
-    .wn-hero img {
+    .hero-slides {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        overflow:
+        opacity: 0;
+        transition: opacity 2.8s ease-in-out;
+        z-index: 1;
+    }
+
+    .hero-slide.active {
+        opacity: 1;
+        z-index: 2;
     }
 
     .wn-hero-overlay {
@@ -178,6 +410,7 @@
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 10;
         background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
         color: white;
         padding: 60px 40px 40px;
@@ -251,6 +484,57 @@
     .wn-hero-overlay p {
         font-size: 14px;
     }
+
+    /* Tab system */
+    .nav ul li {
+        transition: color 0.15s ease;
+    }
+
+    .nav ul li[data-tab] {
+        cursor: pointer;
+    }
+
+    .nav ul li[data-tab]:hover {
+        color: #0030cc;
+    }
+
+    .nav ul li[data-tab].active {
+        color: #0030cc;
+        position: relative;
+    }
+
+    .nav ul li[data-tab].active::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -3px;
+        height: 3px;
+        background: #0030cc;
+    }
+
+    .tab-pane {
+        display: none;
+    }
+
+    .tab-pane.active {
+        display: block;
+    }
+
+    .tab-intro {
+        max-width: 680px;
+        font-size: 15.5px;
+        margin-bottom: 32px;
+        color: #333;
+        line-height: 1.65;
+    }
+
+    .tab-section-title {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.65rem;
+        color: #0030cc;
+        margin: 0 0 14px;
+    }
 </style>
 <div class="wn-container secon-terminal" style="background: white;">
     <div class="searchbar"></div>
@@ -265,16 +549,16 @@
         </div>
         <div class="nav">
             <ul>
-                <li>
+                <li data-tab="delivered">
                     What we've delivered
                 </li>
-                <li>
+                <li data-tab="plan">
                     Plan for Change
                 </li>
-                <li>
+                <li data-tab="people">
                     Labour People
                 </li>
-                <li>
+                <li data-tab="news">
                     News & Updates
                 </li>
                 <li>
@@ -284,7 +568,11 @@
         </div>
     </header>
     <header class="wn-hero">
-        <img src="https://combineoverwiki.net/images/6/6f/HLA_CP_Onlook.jpg" alt="Cover image">
+        <div class="hero-slides">
+            <img class="hero-slide active" src="https://combineoverwiki.net/images/6/6f/HLA_CP_Onlook.jpg" alt="Cover image">
+            <img class="hero-slide" src="https://combineoverwiki.net/images/8/80/HLA_CP_Street_Sweep.jpg" alt="Cover Image 2">
+            <img class="hero-slide" src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg" alt="Cover Image 3">
+        </div>
         <div class="wn-hero-overlay">
             <h1>New Labour.<br>New Life for Humanity.</h1>
             <p>Working together to build a fairer, stronger, and more
@@ -293,6 +581,225 @@
         </div>
     </header>
     <section class="content-container">
+        <!-- TAB: What we've delivered -->
+        <div id="tab-delivered" class="tab-pane active">
+            <h2 class="tab-section-title">What We've Delivered</h2>
+            <div class="tab-intro">
+                Through disciplined collective action we have transformed housing, work, and opportunity in City 13.
+                These are the results of our first term.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">142,800</div>
+                    <div class="label">Affordable homes<br>delivered since 2002</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">319</div>
+                    <div class="label">Worker-owned<br>co-operatives launched</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">71,500</div>
+                    <div class="label">Citizens retrained<br>in emerging industries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">+38%</div>
+                    <div class="label">Rise in average<br>household income</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <h3 class="tab-section-title" style="font-size:1.35rem; margin-bottom:10px;">Key Milestones</h3>
+                <ul style="margin:0; padding-left:20px; color:#444; font-size:14.5px; line-height:1.8;">
+                    <li>Completed the District 7 Housing Renewal — 38,000 new units</li>
+                    <li>Launched the City-wide Co-operative Bank with 47 founding unions</li>
+                    <li>Opened 12 new Community Health Hubs serving 190,000 residents</li>
+                    <li>Passed the Fair Work Act guaranteeing 4 weeks paid leave for all</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 32px; text-align:center;">
+                <div onclick="joinMovement()" class="fake-button" style="font-size:15px; padding:14px 42px;">Become a
+                    Member
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: Plan for Change -->
+        <div id="tab-plan" class="tab-pane">
+            <h2 class="tab-section-title">Plan for Change</h2>
+            <div class="tab-intro">
+                Our second-term agenda focuses on deepening democracy in the workplace and accelerating the just
+                transition.
+                Four interlocking pillars guide everything we do.
+            </div>
+
+            <div class="policy-grid">
+                <div class="policy-card">
+                    <div class="icon">🏠</div>
+                    <div>
+                        <h3>Living Wage Guarantee</h3>
+                        <p>Every full-time worker will earn a true living wage. Automatic annual adjustments tied to
+                            housing
+                            costs and inflation. No exceptions for contractors.</p>
+                    </div>
+                </div>
+                <div class="policy-card">
+                    <div class="icon">🤝</div>
+                    <div>
+                        <h3>Co-operative Expansion</h3>
+                        <p>Fund and scale democratic worker co-ops in every district. Ownership and profit-sharing
+                            belong to
+                            the people who do the work. New matching grants and legal support.</p>
+                    </div>
+                </div>
+                <div class="policy-card">
+                    <div class="icon">🌱</div>
+                    <div>
+                        <h3>Green Renewal Project</h3>
+                        <p>Massive city-wide retrofits for clean energy, zero-carbon transit and climate-resilient
+                            neighbourhoods. 180,000 new green jobs targeted by 2010.</p>
+                    </div>
+                </div>
+                <div class="policy-card">
+                    <div class="icon">❤️</div>
+                    <div>
+                        <h3>Universal Care Network</h3>
+                        <p>Integrated healthcare, childcare and elder support — free at the point of use. Expanding to
+                            full
+                            coverage for mental health and reproductive care.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align:center;">
+                <div onclick="joinMovement()" class="fake-button" style="font-size:15px; padding:14px 42px;">Join the
+                    Campaign</div>
+            </div>
+        </div>
+
+        <!-- TAB: Labour People -->
+        <div id="tab-people" class="tab-pane">
+            <h2 class="tab-section-title">Labour People</h2>
+            <div class="tab-intro">
+                Our elected representatives and organizers are workers first. They live in the districts they serve and
+                remain accountable to their unions and communities.
+            </div>
+
+            <div class="people-grid">
+                <div class="person-card">
+                    <img src="https://picsum.photos/id/1005/400/300" alt="Dr. Amina Korr">
+                    <div class="info">
+                        <div class="name">Dr. Amina Korr</div>
+                        <div class="role">Lead Representative • District 7</div>
+                        <div class="bio">Former lead engineer turned organiser. Architect of the Cooperative Ownership
+                            Act
+                            and the Green Renewal Project.</div>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <img src="https://picsum.photos/id/1012/400/300" alt="Marcus Hale">
+                    <div class="info">
+                        <div class="name">Marcus Hale</div>
+                        <div class="role">Director of Industrial Strategy</div>
+                        <div class="bio">20-year union veteran. Leading the Fair Work and Living Wage campaigns across
+                            heavy
+                            industry and logistics sectors.</div>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <img src="https://picsum.photos/id/201/400/300" alt="Dr. Priya Solari">
+                    <div class="info">
+                        <div class="name">Dr. Priya Solari</div>
+                        <div class="role">Youth &amp; Education Lead</div>
+                        <div class="bio">Champion of the Apprenticeship Revolution. Has helped over 5,000 young citizens
+                            enter high-skill trades and co-op careers.</div>
+                    </div>
+                </div>
+                <div class="person-card">
+                    <img src="https://picsum.photos/id/1009/400/300" alt="Elias Voss">
+                    <div class="info">
+                        <div class="name">Elias Voss</div>
+                        <div class="role">Health &amp; Community Advocate</div>
+                        <div class="bio">Key organiser behind the Universal Care rollout. Works directly with district
+                            clinics and citizen health councils.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align:center;">
+                <div onclick="joinMovement()" class="fake-button" style="font-size:15px; padding:14px 42px;">Get
+                    Involved
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: News & Updates -->
+        <div id="tab-news" class="tab-pane">
+            <h2 class="tab-section-title">News &amp; Updates</h2>
+            <div class="tab-intro">
+                The latest announcements, legislative wins, and reports from the Combine Labour Co-operative.
+            </div>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://picsum.photos/id/160/600/400')"></div>
+                    <div class="meta">
+                        <div class="date">June 18, 2006</div>
+                        <div class="title">82 New Worker Co-ops Approved in Historic Session</div>
+                        <div class="excerpt">The Cooperative Development Council has green-lit the largest single
+                            expansion
+                            of democratic workplaces in City 13 history.</div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://picsum.photos/id/251/600/400')"></div>
+                    <div class="meta">
+                        <div class="date">May 30, 2006</div>
+                        <div class="title">Median Worker Income Up 14% Year-Over-Year</div>
+                        <div class="excerpt">New official figures show living-wage legislation is delivering real gains
+                            for
+                            families across every district of City 13.</div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img" style="background-image: url('https://picsum.photos/id/29/600/400')"></div>
+                    <div class="meta">
+                        <div class="date">May 9, 2006</div>
+                        <div class="title">Youth Apprenticeship Drive Hits 5,000 New Trainees</div>
+                        <div class="excerpt">Record numbers of young people are gaining paid training in green
+                            construction,
+                            advanced manufacturing and care sectors.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:28px;">
+                <div class="news-card" style="margin-bottom:12px;">
+                    <div class="meta">
+                        <div class="date">April 22, 2006</div>
+                        <div class="title">Council passes Climate Infrastructure Bill</div>
+                        <div class="excerpt" style="margin-bottom:0;">The bill commits 14 billion credits to public
+                            transit
+                            expansion and building retrofits over five years.</div>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="meta">
+                        <div class="date">April 3, 2006</div>
+                        <div class="title">New district health hubs open in 4 locations</div>
+                        <div class="excerpt" style="margin-bottom:0;">Over 28,000 residents registered in the first two
+                            weeks. Universal Care continues its rollout ahead of schedule.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 28px; text-align:center;">
+                <div onclick="joinMovement()" class="fake-button" style="font-size:15px; padding:14px 42px;">Subscribe
+                    to
+                    Updates</div>
+            </div>
+        </div>
     </section>
     <footer>
         <div class="footer-rows">
@@ -353,4 +860,95 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Simple tab system for content-container
+        function switchTab(tab) {
+            // Hide all panes
+            document.querySelectorAll('.tab-pane').forEach(function (pane) {
+                pane.classList.remove('active');
+            });
+
+            // Remove active from all nav tabs
+            document.querySelectorAll('.nav ul li[data-tab]').forEach(function (li) {
+                li.classList.remove('active');
+            });
+
+            // Show target pane
+            var target = document.getElementById('tab-' + tab);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Activate matching nav item
+            var navItem = document.querySelector('.nav ul li[data-tab="' + tab + '"]');
+            if (navItem) {
+                navItem.classList.add('active');
+            }
+        }
+
+        // Make nav tabs clickable (in case onclick is not preferred)
+        function initNavTabs() {
+            var navItems = document.querySelectorAll('.nav ul li[data-tab]');
+            navItems.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    var tabName = item.getAttribute('data-tab');
+                    if (tabName) {
+                        switchTab(tabName);
+                    }
+                });
+            });
+        }
+
+        // Fake join action (static)
+        function joinMovement() {
+            alert("Thank you! In a real site this would open a membership form.");
+        }
+
+        // Initialize on load: activate first tab + wire up nav
+        document.addEventListener('DOMContentLoaded', function () {
+            initNavTabs();
+
+            // Set initial active state on the first nav item
+            var firstTab = document.querySelector('.nav ul li[data-tab="delivered"]');
+            if (firstTab) {
+                firstTab.classList.add('active');
+            }
+
+            // Ensure the delivered tab is visible
+            var delivered = document.getElementById('tab-delivered');
+            if (delivered) {
+                delivered.classList.add('active');
+            }
+
+            // Start the hero slideshow
+            initHeroSlideshow();
+        });
+
+        // Slow transitioning hero slideshow
+        function initHeroSlideshow() {
+            var slides = document.querySelectorAll('.hero-slide');
+            if (!slides.length) return;
+
+            var current = 0;
+            var intervalTime = 7000; // slow change — 7 seconds
+
+            function showSlide(index) {
+                slides.forEach(function (slide, i) {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                current = (current + 1) % slides.length;
+                showSlide(current);
+            }
+
+            // Safety: ensure first slide is active
+            showSlide(0);
+
+            // Start the slow automatic transition
+            setInterval(nextSlide, intervalTime);
+        }
+    </script>
 </div>
