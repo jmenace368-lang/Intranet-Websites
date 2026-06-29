@@ -1,0 +1,356 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+    body {
+        margin: 0;
+        background: #1e1e2d;
+    }
+
+    .wn-container {
+        --wn-primary: #FF4E45;
+        --wn-primary-bg: #35232f;
+        --wn-primary-rgb: 255, 78, 69;
+
+        --wn-yellow: #fdc700;
+        --wn-yellow-bg: #392f28;
+        --wn-yellow-rgb: 253, 199, 0;
+
+        --wn-violet: #6039ea;
+        --wn-violet-bg: #2f264f;
+        --wn-violet-rgb: 96, 57, 234;
+
+        --wn-rose: #f14169;
+        --wn-rose-bg: #3a2434;
+        --wn-rose-rgb: 241, 65, 105;
+
+        --wn-green: #41cd89;
+        --wn-green-bg: #1c3238;
+        --wn-green-rgb: 65, 205, 137;
+
+        --wn-bg: #1e1e2d;
+
+        --text-color: #666666;
+        --border-color: rgba(218, 218, 218);
+        --labour: #0030cc;
+
+        --wn-accent: var(--wn-primary);
+        --wn-accent-bg: var(--wn-primary-bg);
+        --wn-accent-rgb: var(--wn-primary-rgb);
+
+        color: #c5c5d6;
+        font-family: 'Exo 2', 'Barlow', sans-serif;
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .wn-container .wn-accent-yellow,
+    .wn-container.wn-accent-yellow {
+        --wn-accent: var(--wn-yellow);
+        --wn-accent-bg: var(--wn-yellow-bg);
+        --wn-accent-rgb: var(--wn-yellow-rgb);
+    }
+
+    .wn-container .wn-accent-violet,
+    .wn-container.wn-accent-violet {
+        --wn-accent: var(--wn-violet);
+        --wn-accent-bg: var(--wn-violet-bg);
+        --wn-accent-rgb: var(--wn-violet-rgb);
+    }
+
+    .wn-container .wn-accent-rose,
+    .wn-container.wn-accent-rose {
+        --wn-accent: var(--wn-rose);
+        --wn-accent-bg: var(--wn-rose-bg);
+        --wn-accent-rgb: var(--wn-rose-rgb);
+    }
+
+    .wn-container .wn-accent-green,
+    .wn-container.wn-accent-green {
+        --wn-accent: var(--wn-green);
+        --wn-accent-bg: var(--wn-green-bg);
+        --wn-accent-rgb: var(--wn-green-rgb);
+    }
+
+    .wn-container .wn-accent-red,
+    .wn-container.wn-accent-red {
+        --wn-accent: var(--wn-primary);
+        --wn-accent-bg: var(--wn-primary-bg);
+        --wn-accent-rgb: var(--wn-primary-rgb);
+    }
+
+    .secon-terminal {
+        background: var(--wn-bg);
+        color: #c5c5d6;
+        font-family: 'Exo 2', sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+
+    .header {
+        box-sizing: border-box;
+        background: var(--labour);
+        align-items: center;
+        justify-content: space-between;
+        padding: 25px 20px;
+        display: flex;
+        color: white;
+        flex-wrap: wrap;
+        gap: 20px;
+        font-family: 'Aldritch', 'Poppins', sans-serif;
+    }
+
+    .header h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .header h3 {
+        color: white;
+        letter-spacing: 2px;
+    }
+
+    .header h3 strong {
+        font-weight: 200;
+    }
+
+    .header img {
+        height: 90px;
+        width: auto;
+    }
+
+    .nav {
+        display: flex;
+        align-items: center;
+        border-top: solid 1px var(--border-color);
+        border-bottom: 3px solid var(--labour);
+    }
+
+    .nav ul {
+        gap: 22px;
+        list-style: none;
+        display: flex;
+        cursor: pointer;
+    }
+
+    .nav ul li {
+        position: relative;
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .nav img {
+        position: absolute;
+        height: 22px;
+        width: auto;
+        user-select: none;
+    }
+
+    .container-lab {
+        background: white;
+        min-height: 1000px;
+
+    }
+
+    .content-container {
+        min-height: 500px;
+        padding: 60 40px;
+    }
+
+    .wn-container .wn-hero {
+        position: relative;
+        overflow: hidden;
+        height: 420px;
+    }
+
+    .wn-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow:
+    }
+
+    .wn-hero-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+        color: white;
+        padding: 60px 40px 40px;
+    }
+
+    .wn-hero-overlay h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 3.2rem;
+        line-height: 1.05;
+        margin: 0 0 12px;
+    }
+
+    footer {
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    footer ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        line-height: 1.8;
+        cursor: pointer;
+    }
+
+    footer h4 {
+        margin-bottom: 12px;
+        margin-block-end: 0;
+        font-weight: bolder;
+    }
+
+    .footer-rows {
+        background: #f8f8f8;
+        padding: 50px 40px 30px;
+        font-size: 14px;
+        color: var(--text-color)
+    }
+
+    .footer-row {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .footer-row img {
+        height: 60px;
+        margin-bottom: 16px;
+    }
+
+    .footer strong {
+        font-weight: bolder;
+    }
+
+    .fake-button {
+        display: inline-block;
+        border-radius: 4px;
+        background: white;
+        padding: 18px 52px;
+        font-size: 20px;
+        color: var(--labour);
+        text-transform: uppercase;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+
+    .fake-button:hover {
+        filter: brightness(0.8);
+        transition: background 0.2s;
+    }
+
+    .wn-hero-overlay p {
+        font-size: 14px;
+    }
+</style>
+<div class="wn-container secon-terminal" style="background: white;">
+    <div class="searchbar"></div>
+    <header>
+        <div class="header">
+            <img src="https://i.ibb.co/0ydBg5Tq/clc.png">
+            <h2>Combine Labour Co-operative</h2>
+            <div>
+                <h3>new <strong>Labour</strong></h3>
+                <h3>new life for <strong>Humanity</strong></h3>
+            </div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li>
+                    What we've delivered
+                </li>
+                <li>
+                    Plan for Change
+                </li>
+                <li>
+                    Labour People
+                </li>
+                <li>
+                    News & Updates
+                </li>
+                <li>
+                    <img src="https://i.ibb.co/998w7dGW/search-1.png">
+                </li>
+            </ul>
+        </div>
+    </header>
+    <header class="wn-hero">
+        <img src="https://combineoverwiki.net/images/6/6f/HLA_CP_Onlook.jpg" alt="Cover image">
+        <div class="wn-hero-overlay">
+            <h1>New Labour.<br>New Life for Humanity.</h1>
+            <p>Working together to build a fairer, stronger, and more
+                united City 13.</p>
+            <div class="fake-button">Join the Movement</div>
+        </div>
+    </header>
+    <section class="content-container">
+    </section>
+    <footer>
+        <div class="footer-rows">
+            <div class="footer-row">
+                <div>
+                    <img src="https://i.ibb.co/0ydBg5Tq/clc.png">
+                    <p style="margin: 8px 0;"><strong>Combine Labour Cooperative</strong><br>
+                        City 13, District 7</p>
+                </div>
+                <div>
+                    <h4>People</h4>
+                    <ul>
+                        <li>
+                            Our representatives
+                        </li>
+                        <li>Get involved</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Campaign</h4>
+                    <ul>
+                        <li>Our mission</li>
+                        <li>Volunteer</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>About Us</h4>
+                    <ul>
+                        <li>
+                            How we work
+                        </li>
+                        <li>
+                            Our values
+                        </li>
+                        <li>
+                            Contact
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="margin: 50px auto 0; padding-top: 20px; border-top: 1px solid #ddd; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
+                <div>
+                    CMB
+                    <a href="#" style="margin-left: 12px; color: #444; text-decoration: none;">English</a>
+                </div>
+
+                <div style="color: #666;">
+                    © 2006 Combine Labour Co-operative • All Rights Reserved
+                </div>
+
+                <!-- <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#" style="color: #666; text-decoration: none;">Privacy</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Terms</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Accessibility</a>
+                    <a href="#" style="color: #666; text-decoration: none;">Cookies</a>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+</div>
