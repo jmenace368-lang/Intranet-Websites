@@ -96,11 +96,6 @@
         margin: 40px auto;
     }
 
-    .container-lab {
-        background: white;
-        min-height: 1000px;
-    }
-
     /* =========================================
        HEADER
     ========================================= */
@@ -267,7 +262,6 @@
        CONTENT AREA
     ========================================= */
     .content-container {
-        min-height: 500px;
         padding: 30px 40px;
     }
 
@@ -309,11 +303,10 @@
         color: var(--text-color-main);
     }
 
-    /* Grid layout (used in "What we've delivered") */
-    .grid-container {
+    /* Grid */
+    .content-container .grid-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        min-height: 400px;
         gap: 80px;
         color: var(--text-color-main);
         margin-bottom: 40px;
@@ -330,16 +323,21 @@
         text-align: justify;
     }
 
-    /* Profile cards (used in "Labour People") */
-    .profile {
+    /* Profile cards */
+    .content-container .profile {
         border-top: var(--border-color) solid 1px;
         margin-bottom: 18px;
+        display: inline-block;
+        gap: 30px;
+        align-items: flex-start;
+        padding-top: 18px;
     }
 
     .profile-img {
         height: 340px;
         width: 240px;
         background: gray;
+        flex-shrink: 0;
     }
 
     .profile-img img {
@@ -351,15 +349,22 @@
     .profile-info {
         display: flex;
         flex-direction: column;
-        float: left;
-        padding: 10px 28px 0 0;
+        padding-right: 10px;
         text-align: center;
         color: var(--text-color-main);
+        float: left;
+    }
+
+
+
+    .profile-bio p {
+        margin: 0 0 16px;
     }
 
     .profile-info .data {
         display: flex;
         flex-direction: column;
+        margin-bottom: 8px;
     }
 
     .profile-info span {
@@ -371,9 +376,14 @@
         font-size: 18px;
     }
 
-    .profile-info.role {
+    .profile-info .role {
         font-weight: normal;
         font-size: 14px;
+    }
+
+    .profile-info>span {
+        font-size: 14px;
+        margin-top: 6px;
     }
 
     /* =========================================
@@ -491,8 +501,29 @@
     </header>
     <section class="content-container">
         <div class="tab-panel active" data-tab="default">
-            <h1>Placeholder</h1>
+            <h1>Welcome, Citizen</h1>
+            <p>
+                Combine Labour Co-operative is the voice of the working people across City 13. We believe in
+                solidarity, progress, and the right of every citizen to a life of dignity under the Combine.
+            </p>
+            <p>
+                From rebuilding homes to securing fairer rations and safer workplaces, our movement stands for
+                practical change that improves the daily lives of families in every district.
+            </p>
+            <div class="grid-container">
+                <div>
+                    <h2>Our Mission</h2>
+                    <p>To unite workers, families, and communities in building a fairer, stronger City 13 where
+                        everyone contributes and everyone benefits.</p>
+                </div>
+                <div>
+                    <h2>Join Us</h2>
+                    <p>Whether you work in the factories, maintain the infrastructure, or raise the next generation,
+                        there is a place for you in the movement.</p>
+                </div>
+            </div>
         </div>
+
         <div class="tab-panel" data-tab="delivered">
             <h1>What we've delivered</h1>
             <div class="grid-container">
@@ -516,6 +547,28 @@
 
         <div class="tab-panel" data-tab="plan">
             <h1>Plan for Change</h1>
+            <div class="grid-container">
+                <div>
+                    <h2>Universal Ration Guarantee</h2>
+                    <p>We will fight for a guaranteed minimum daily ration for every citizen, removing the uncertainty
+                        that comes with fluctuating work credits and production quotas.</p>
+                </div>
+                <div>
+                    <h2>Workplace Safety Act</h2>
+                    <p>Our plan introduces mandatory safety standards in all Combine facilities, including protective
+                        gear, regular inspections, and compensation for work-related injuries.</p>
+                </div>
+                <div>
+                    <h2>Community Reconstruction</h2>
+                    <p>We will expand the successful housing and infrastructure programs to cover Districts 1 through
+                        12, creating jobs while improving living conditions for all.</p>
+                </div>
+                <div>
+                    <h2>Democratic Representation</h2>
+                    <p>Every workplace and residential block will elect local labour representatives with real
+                        influence over ration distribution and work assignments.</p>
+                </div>
+            </div>
         </div>
 
         <div class="tab-panel" data-tab="people">
@@ -523,7 +576,7 @@
             <div class="profile">
                 <div class="profile-info">
                     <div class="data">
-                        <span class="role">Councillor of District 7</span>
+                        <span class="role">District Councillor</span>
                         <span class="title">Keir Starmer</span>
                     </div>
                     <div class="profile-img"><img
@@ -531,55 +584,125 @@
                     </div>
                     <span>Party Leader</span>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                <div class="profile-bio">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                    dolore eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                </p>
+            <div class="profile">
+                <div class="profile-info">
+                    <div class="data">
+                        <span class="role">District Councillor</span>
+                        <span class="title">Alexandria Ocasio-Cortez</span>
+                    </div>
+                    <div class="profile-img" style="background: #555;">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Alexandria_Ocasio-Cortez_Official_Portrait.jpg">
+                    </div>
+                    <span>Workers' Rights Lead</span>
+                </div>
+                <div class="profile-bio">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                        ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
             </div>
         </div>
 
         <div class="tab-panel" data-tab="news">
-            <h1>News & Updates</h1>
+            <section class="news-updates">
+                <h1>News & Updates</h1>
+                <div>
+                    <h2>Ration Distribution Reform Passes Council</h2>
+                    <p>
+                        The Combine Labour proposal to stabilise weekly rations has been approved. Starting next month,
+                        all
+                        registered workers will receive a baseline credit allocation regardless of overtime performance.
+                    </p>
+                </div>
+                <div>
+                    <h2>New Safety Equipment Distributed in Sector 9</h2>
+                    <p>
+                        Over 12,000 sets of reinforced protective gear have been issued to factory workers following the
+                        successful trial of the new Combine Labour Workplace Safety Act. Early reports show a 40% drop
+                        in
+                        minor incidents.
+                    </p>
+                </div>
+                <div>
+                    <h2>District 4 Community Hall Reopens</h2>
+                    <p>
+                        After months of collaborative reconstruction between local volunteers and Combine engineering
+                        units,
+                        the District 4 Community Hall is once again open for public meetings and educational programs.
+                    </p>
+                </div>
+
+                <div>
+                    <h2>Public Forum: The Future of City 13</h2>
+                    <p>
+                        Join representatives from Combine Labour and other approved groups on the 18th for an open
+                        discussion
+                        on upcoming infrastructure projects and citizen welfare initiatives. Location: Central Plaza,
+                        Sector
+                        2.
+                    </p>
+                </div>
+            </section>
+            <br>
+            <section class="blog">
+                <h1>Blog</h1>
+            </section>
         </div>
     </section>
     <footer>
