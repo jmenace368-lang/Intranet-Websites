@@ -31,6 +31,7 @@
         --wn-bg: #1e1e2d;
 
         --text-color: #666666;
+        --text-color-main: #333;
         --border-color: rgba(218, 218, 218);
         --labour: #0030cc;
 
@@ -155,10 +156,6 @@
 
     }
 
-    .content-container {
-        min-height: 500px;
-        padding: 60 40px;
-    }
 
     .wn-container .wn-hero {
         position: relative;
@@ -251,6 +248,24 @@
     .wn-hero-overlay p {
         font-size: 14px;
     }
+
+    /* Content Container */
+    .content-container {
+        min-height: 500px;
+        padding: 60px 40px;
+    }
+
+    .content-container h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+        color: var(--labour);
+    }
+
+    .content-container p {
+        font-size: 15px;
+        color: var(--text-color-main);
+    }
 </style>
 <div class="wn-container secon-terminal" style="background: white;">
     <div class="searchbar"></div>
@@ -293,6 +308,12 @@
         </div>
     </header>
     <section class="content-container">
+        <h1>Labour Party</h1>
+        <p>
+            Combine Labour Co-operative is the democratic voice of workers, families and communities across City 13.
+            United by solidarity and progress, we are building a fairer economy where every citizen has dignity,
+            purpose, and ownership in our shared future.
+        </p>
     </section>
     <footer>
         <div class="footer-rows">
@@ -343,13 +364,6 @@
                 <div style="color: #666;">
                     © 2006 Combine Labour Co-operative • All Rights Reserved
                 </div>
-
-                <!-- <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="#" style="color: #666; text-decoration: none;">Privacy</a>
-                    <a href="#" style="color: #666; text-decoration: none;">Terms</a>
-                    <a href="#" style="color: #666; text-decoration: none;">Accessibility</a>
-                    <a href="#" style="color: #666; text-decoration: none;">Cookies</a>
-                </div> -->
             </div>
         </div>
     </footer>
