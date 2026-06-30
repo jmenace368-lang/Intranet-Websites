@@ -32,6 +32,7 @@
         --border-color: rgba(218, 218, 218);
         --labour: #20398d;
         --labour-head: color-mix(in srgb, var(--labour) 40%, black);
+        --footer-col: #f8f8f8;
 
         --wn-accent: var(--wn-primary);
         --wn-accent-bg: var(--wn-primary-bg);
@@ -265,16 +266,14 @@
         border-top: var(--border-color) solid 1px;
         margin-bottom: 18px;
         display: inline-block;
-        gap: 30px;
         align-items: flex-start;
         padding-top: 18px;
     }
 
     .profile-img {
-        height: 340px;
+        height: 380px;
         width: 240px;
         background: gray;
-        flex-shrink: 0;
     }
 
     .profile-img img {
@@ -286,26 +285,35 @@
     .profile-info {
         display: flex;
         flex-direction: column;
-        padding-right: 10px;
+        padding-right: 22px;
+        padding-bottom: 4px;
         text-align: center;
         color: var(--text-color-main);
         float: left;
+        align-items: center;
+        width: 240px;
     }
 
-
+    .profile-bio {
+        margin-top: 64px;
+    }
 
     .profile-bio p {
         margin: 0 0 16px;
+        font-size: 18px;
     }
 
     .profile-info .data {
         display: flex;
         flex-direction: column;
         margin-bottom: 8px;
+        align-items: center;
+        text-align: center;
     }
 
     .profile-info span {
-        display: inline-block;
+        display: block;
+        text-align: center;
     }
 
     .profile-info .title {
@@ -632,59 +640,67 @@
 
             <div class="tab-panel" data-tab="people">
                 <h1>Labour People</h1>
-                <!-- <div class="profile">
-                            <div class="profile-info">
-                                <div class="data">
-                                    <span class="role">District Councillor</span>
-                                    <span class="title">Keir Starmer</span>
-                                </div>
-                                <div class="profile-img"><img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/9/91/Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg">
-                                </div>
-                                <span>Party Leader</span>
-                            </div>
-                            <div class="profile-bio">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut
-                                    labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi
-                                    ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut
-                                    labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi
-                                    ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut
-                                    labore
-                                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi
-                                    ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit esse
-                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                    proident, sunt in
-                                    culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </div>
-                        </div> -->
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="data">
+                            <span class="role">District Councillor</span>
+                            <span class="title">Tim Keyes</span>
+                        </div>
+                        <div class="profile-img"><img src="https://i.ibb.co/FqgDWsVG/eerie2.png">
+                        </div>
+                        <!-- <span>Party Leader</span> -->
+                    </div>
+                    <div class="profile-bio">
+                        <p>
+                            In 2008, Tim Keyes was elected as a Councillor for District 7 of City 13. Mr. Keyes has
+                            served in several roles encompassing finance, security, economic development, and municipal
+                            policy and initiatives for the betterment of City 13. Most notably, prior to his election,
+                            he was responsible for drafting key policy and legislative proposals to support economic,
+                            political, and public health reform.
+                        </p>
+                        <p>
+                            Mr. Keyes began his career as a public servant as a clerk in a fiscal department, assisting
+                            with budgets and advising appropriate usage of funds. Previously, Tim held a position in the
+                            Union Civil Bureau as a Financial Adjustor and Economic Advisor.
+                        </p>
+                        <p>
+                            He dedicated hours on end
+                            going through forms and files to ensure the budget of the district was being allocated as
+                            decreed, and combatted embezzlement so that no municipal forums would be without the assets
+                            needed to better serve the interest of the public and the city.
+
+                        </p>
+                        <p>
+                            Tim, after his election, has pledged to continue in his fight against embezzlement and
+                            trivialization of law and policy.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="data">
+                            <span class="role">District Councillor</span>
+                            <span class="title">Keir Starmer</span>
+                        </div>
+                        <div class="profile-img"><img
+                                src="https://upload.wikimedia.org/wikipedia/commons/9/91/Prime_Minister_Keir_Starmer_Portrait_%28cropped%29.jpg">
+                        </div>
+                        <!-- <span>Party Leader</span> -->
+                    </div>
+                    <div class="profile-bio">
+                        <p>
+                            In 200X, Tim Keyes was elected as a Councillor for District 7 of City 13. Mr. Keyes has
+                            served in several roles encompassing finance, security, economic development, and municipal
+                            policy and initiatives for the betterment of City 13. Most notably, prior to his election,
+                            he was responsible for drafting key policy and legislative proposals to support economic,
+                            political, and public health reform.
+                        </p>
+                        <p>Mr. Keyes began his career as a public servant as a clerk in a fiscal department, assisting
+                            with budgets and advising appropriate usage of funds.
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="tab-panel" data-tab="news">
