@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conservative Optimate Party • City 13</title>
+    <style>
+        /* Font Imports */
+        @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Playfair+Display:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+        /* Variable CSS — harsher, sleeker palette */
+        .container {
+            --optimate: #0f1f38;
+            --optimate-head: #0a1426;
+            --optimate-gold: #a88f5e;
+            --optimate-gold-dark: #7a6642;
+
+            --page-bg: #e5e2d9;
+            --text-color: #4a4a4a;
+            --text-color-main: #111111;
+            --border-color: #b8b3a6;
+
+            --footer-col: #d4d0c4;
+
+            font-family: 'Exo 2', 'Barlow', system-ui, sans-serif;
+            font-size: 14.5px;
+            line-height: 1.65;
+            border: solid 1px var(--border-color);
+            letter-spacing: 0.2px;
+        }
+
+        /* Master-Container — sleeker, more severe framing */
+        .terminal {
+            font-family: 'Exo 2', sans-serif;
+            max-width: 850px;
+            margin: 36px auto;
+            padding: 16px;
+            background: var(--page-bg);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+            border: 2px solid #a8a39a;
+        }
+
+        /* === CREATIVE HEADER === */
+        .header {
+            box-sizing: border-box;
+            background: var(--optimate);
+            color: #f4f1ea;
+            font-family: 'Aldrich', 'Playfair Display', 'Poppins', sans-serif;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        /* Top official strip — formal edict / document style */
+        .header-strip {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #13253f;
+            padding: 6px 18px;
+            font-size: 10.5px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(184, 151, 94, 0.35);
+            font-weight: 600;
+        }
+
+        .header-strip span {
+            color: #c9b27a;
+        }
+
+        .header-strip .strip-center {
+            letter-spacing: 3.5px;
+            color: var(--optimate-gold);
+        }
+
+        /* Main header body */
+        .header-main {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            padding: 16px 22px 14px;
+        }
+
+        .header-emblem {
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+        }
+
+        .header-title {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .header-pre {
+            font-size: 12px;
+            letter-spacing: 5px;
+            opacity: 0.75;
+            font-weight: 400;
+            margin-bottom: 2px;
+        }
+
+        .header-name {
+            font-size: 38px;
+            line-height: 0.9;
+            font-weight: 700;
+            letter-spacing: 5.5px;
+            font-family: 'Playfair Display', 'Bebas Neue', serif;
+            color: #f4f1ea;
+            margin-bottom: 1px;
+        }
+
+        .header-sub {
+            font-size: 13px;
+            letter-spacing: 2.5px;
+            opacity: 0.85;
+            font-weight: 400;
+            margin-top: 3px;
+        }
+
+        .header-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--optimate-gold), transparent);
+            margin-top: 9px;
+            width: 68%;
+            max-width: 210px;
+        }
+
+        /* Vertical stacked motto — distinct visual */
+        .header-motto {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 3px;
+            padding-left: 22px;
+            border-left: 1px solid rgba(184, 151, 94, 0.45);
+            font-size: 12.5px;
+            letter-spacing: 3.5px;
+            line-height: 1.05;
+            font-weight: 600;
+            text-align: right;
+            min-width: 88px;
+        }
+
+        .header-motto div span {
+            display: inline-block;
+            padding: 1px 0;
+            position: relative;
+        }
+
+        .header-motto div span::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--optimate-gold);
+            opacity: 0.5;
+        }
+
+        /* === DISTINCT NAV === */
+        .nav {
+            background: #e8e4d9;
+            border-bottom: 1px solid #c2b8a5;
+        }
+
+        .nav ul {
+            gap: 0;
+            list-style: none;
+            display: flex;
+            padding: 0;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 0;
+            font-family: 'Poppins', system-ui, sans-serif;
+        }
+
+        .nav ul li {
+            font-size: 12.8px;
+            font-weight: 600;
+            color: #222;
+            cursor: pointer;
+            padding: 14px 19px;
+            position: relative;
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .nav ul li + li:not(.search) {
+            border-left: 1px solid #c2b8a5;
+        }
+
+        .nav ul li:hover {
+            color: var(--optimate);
+            background: rgba(26, 47, 82, 0.06);
+        }
+
+        .nav ul li.active {
+            color: var(--optimate);
+            font-weight: 700;
+            background: rgba(184, 151, 94, 0.18);
+        }
+
+        .nav ul li.active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 5px;
+            width: 22px;
+            height: 2px;
+            background: var(--optimate-gold);
+        }
+
+        /* Home icon */
+        .nav .home {
+            padding: 11px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav .home img {
+            height: 17px;
+            width: auto;
+            filter: grayscale(0.3);
+        }
+
+        /* Search icon */
+        .nav .search {
+            margin-left: auto;
+            padding: 11px 15px;
+            border-left: 1px solid #c2b8a5;
+        }
+
+        .nav .search img {
+            height: 16px;
+            width: auto;
+            opacity: 0.6;
+        }
+
+        /* Hero Image — more dramatic & distinct with left accent */
+        .container .wn-hero {
+            position: relative;
+            overflow: hidden;
+            height: 318px;
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.85s ease-in-out;
+            z-index: 1;
+            filter: contrast(1.06) saturate(0.92) brightness(0.96);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .wn-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 33, 57, 0.88));
+            color: #f4f1ea;
+            padding: 52px 34px 32px;
+            z-index: 10;
+        }
+
+        /* Left gold accent bar on hero */
+        .wn-hero-overlay::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: var(--optimate-gold);
+        }
+
+        .wn-hero-overlay h1 {
+            font-family: 'Playfair Display', 'Bebas Neue', serif;
+            font-size: 46px;
+            line-height: 1.0;
+            margin: 0 0 8px;
+            letter-spacing: 1.8px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.55);
+        }
+
+        .wn-hero-overlay p {
+            font-size: 14px;
+            opacity: 0.92;
+            margin-bottom: 2px;
+            max-width: 78%;
+        }
+
+        /* Content Area */
+        .content-container {
+            padding: 28px 38px 18px;
+        }
+
+        .content-container h1 {
+            font-family: 'Playfair Display', 'Bebas Neue', serif;
+            font-size: 38px;
+            line-height: 1.05;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin: 0 0 6px;
+            color: var(--optimate-head);
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .content-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 64px;
+            height: 2px;
+            background: var(--optimate-gold);
+        }
+
+        .content-container h2 {
+            letter-spacing: 0.8px;
+            margin-bottom: 5px;
+            color: var(--text-color-main);
+            font-family: 'Poppins', system-ui, sans-serif;
+        }
+
+        .content-container p {
+            font-size: 15px;
+            color: var(--text-color-main);
+        }
+
+        .content-container .sub {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 22px;
+        }
+
+        /* Tab content panels */
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .tab-panel ul {
+            padding-left: 20px;
+            margin: 12px 0 0;
+        }
+
+        .tab-panel li {
+            margin-bottom: 6px;
+            color: var(--text-color-main);
+        }
+
+        /* Profile cards */
+        .content-container .profile {
+            border-top: var(--border-color) solid 1px;
+            margin-bottom: 20px;
+            display: inline-block;
+            align-items: flex-start;
+            padding-top: 18px;
+        }
+
+        /* More distinguished profile presentation */
+        .profile-img {
+            margin-top: 6px;
+            height: 360px;
+            width: 230px;
+            background: #e8e4d9;
+            border: 3px solid #c2b8a5;
+            box-shadow: 3px 4px 0 #c2b8a5;
+            position: relative;
+        }
+
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            border: 1px solid rgba(184, 151, 94, 0.5);
+            pointer-events: none;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            padding-right: 18px;
+            text-align: center;
+            color: var(--text-color-main);
+            float: left;
+            align-items: center;
+            width: 230px;
+            position: relative;
+        }
+
+        .profile-bio {
+            margin-top: 34px;
+        }
+
+        .profile-bio p {
+            margin: 0 0 14px;
+            font-size: 14.8px;
+        }
+
+        .profile-info .data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .profile-info span {
+            display: block;
+            text-align: center;
+        }
+
+        .profile-info .title {
+            font-weight: 700;
+            font-size: 16.5px;
+            color: var(--optimate-head);
+            letter-spacing: 0.3px;
+        }
+
+        .profile-info .role {
+            font-weight: 600;
+            font-size: 12.5px;
+            color: var(--optimate-gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-info>span {
+            font-size: 12.5px;
+            margin-top: 4px;
+        }
+
+        /* Official seal-style buttons */
+        .fake-button {
+            display: inline-block;
+            border-radius: 2px;
+            padding: 8px 38px;
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--optimate);
+            background: #f4f1ea;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.18s ease;
+            border: 2px solid var(--optimate);
+            box-shadow: 1px 2px 0 #c2b8a5;
+        }
+
+        .fake-button a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .fake-button:hover {
+            background: var(--optimate);
+            color: #f4f1ea;
+            border-color: var(--optimate-gold);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.15);
+            transform: translateY(-1px);
+        }
+
+        .fake-button a:active,
+        .fake-button a:visited {
+            color: inherit;
+        }
+
+        /* Primary action variant — more prominent */
+        .fake-button.primary {
+            background: var(--optimate);
+            color: #f4f1ea;
+            border-color: var(--optimate-gold);
+            box-shadow: 1px 3px 0 var(--optimate-gold-dark);
+            padding: 9px 42px;
+            font-size: 15px;
+        }
+
+        .fake-button.primary:hover {
+            background: var(--optimate-gold-dark);
+            color: #f4f1ea;
+            border-color: #b8975e;
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        footer ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            line-height: 1.75;
+            cursor: pointer;
+        }
+
+        footer h4 {
+            margin-bottom: 10px;
+            margin-block-end: 0;
+            font-weight: 700;
+            color: var(--optimate-head);
+            font-size: 14.5px;
+        }
+
+        .footer-rows {
+            background: var(--footer-col);
+            padding: 46px 40px 26px;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .footer-row {
+            display: grid;
+            gap: 38px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .footer-row img {
+            height: 54px;
+            margin-bottom: 12px;
+        }
+
+        .footer strong {
+            font-weight: 700;
+            color: var(--optimate-head);
+        }
+
+        .bottom-divider {
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Components */
+        .simple-grid {
+            display: grid;
+            margin-block: 6px;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 26px;
+        }
+
+        .simple-grid .card,
+        .grid-container .card {
+            padding: 12px 16px 14px;
+            border: 1px solid #c2b8a5;
+            border-left: 5px solid var(--optimate-gold);
+            background: #f9f6f0;
+            box-shadow: 1px 2px 0 rgba(0,0,0,0.04);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .simple-grid .card:hover,
+        .grid-container .card:hover {
+            transform: translateY(-1px);
+            box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.07);
+        }
+
+        .simple-grid:last-of-type .card,
+        .grid-container:last-of-type .card {
+            border-bottom: none;
+        }
+
+        .card h3,
+        .card h2 {
+            color: var(--optimate-head);
+            margin-bottom: 6px;
+            font-size: 15.5px;
+            letter-spacing: 0.3px;
+        }
+
+        .card p {
+            font-size: 14.3px;
+            line-height: 1.55;
+        }
+
+        /* Grid */
+        .content-container .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 72px;
+            color: var(--text-color-main);
+            margin-bottom: 36px;
+        }
+
+        .grid-container h2 {
+            font-family: 'Poppins', system-ui, sans-serif;
+            text-decoration: underline 2.5px var(--optimate-gold);
+            text-underline-offset: 4px;
+            text-transform: uppercase;
+            font-size: 15px;
+            letter-spacing: 1px;
+        }
+
+        .grid-container p {
+            text-align: justify;
+        }
+
+        /* News & Updates — dispatch style with left gold rule */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-top: 6px;
+        }
+
+        .news-up-item {
+            padding: 0 0 18px 16px;
+            border-left: 3px solid var(--optimate-gold);
+            position: relative;
+        }
+
+        .news-up-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .news-up-item .meta {
+            font-size: 11.5px;
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 4px;
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        .news-up-item .badge {
+            color: var(--optimate-gold-dark);
+            font-size: 10px;
+            font-weight: 700;
+            background: rgba(184, 151, 94, 0.18);
+            padding: 2px 7px;
+            border-radius: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .news-up-item h3 {
+            margin: 2px 0 4px;
+            font-weight: 700;
+            line-height: 1.28;
+            color: var(--optimate-head);
+            font-size: 15px;
+        }
+
+        .news-up-item p {
+            font-size: 14px;
+            color: var(--text-color);
+            margin: 0;
+        }
+
+        /* VHS / CRT effect - slightly refined for distinction */
+        .terminal::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            background-image:
+                repeating-linear-gradient(to bottom,
+                    transparent 0px,
+                    transparent 1.7px,
+                    rgba(0, 0, 0, 0.09) 1.7px,
+                    rgba(0, 0, 0, 0.09) 2.7px),
+                radial-gradient(ellipse at center,
+                    transparent 48%,
+                    rgba(15, 33, 57, 0.035) 90%);
+            background-size: 100% 100%, 100% 100%;
+            pointer-events: none;
+            z-index: 2;
+            mix-blend-mode: multiply;
+            opacity: 0.12;
+        }
+
+        .terminal::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            background: repeating-linear-gradient(to bottom,
+                    transparent 0px,
+                    rgba(255, 255, 255, 0.3) 0.7px,
+                    rgba(15, 33, 57, 0.55) 2.8px,
+                    transparent 4.3px);
+            background-size: 100% 6px;
+            pointer-events: none;
+            z-index: 3;
+            mix-blend-mode: overlay;
+            animation:
+                crt-scanlines 1.15s linear infinite,
+                crt-glitch 4s steps(1, end) infinite;
+            opacity: 0.18;
+        }
+
+        @keyframes crt-scanlines {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 160px;
+            }
+        }
+
+        @keyframes crt-glitch {
+
+            0%,
+            86%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            87% {
+                transform: translate(-4px, 1px);
+            }
+
+            89% {
+                transform: translate(5px, -2px);
+            }
+
+            91% {
+                transform: translate(-2.5px, 2px);
+            }
+
+            93% {
+                transform: translate(3px, -1px);
+            }
+
+            95% {
+                transform: translate(-1.5px, 1px);
+            }
+        }
+
+        /* scanline */
+        .vhs-scan {
+            position: absolute;
+            top: -10%;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: 2px;
+            background: linear-gradient(to bottom,
+                    transparent,
+                    rgba(15, 33, 57, 0.2),
+                    transparent);
+            pointer-events: none;
+            z-index: 5;
+            mix-blend-mode: multiply;
+            animation: vhs-scan 7.2s linear infinite;
+            opacity: 0.35;
+        }
+
+        @keyframes vhs-scan {
+            0% {
+                top: -8%;
+            }
+
+            100% {
+                top: 108%;
+            }
+        }
+
+        /* Noise texture */
+        .vhs-noise {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: calc(100% + 40px);
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/4k_Dissolve_Noise_Texture.png');
+            background-repeat: repeat;
+            background-size: 115px 115px;
+            opacity: 0.035;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: overlay;
+            animation: noise-crawl 8.8s linear infinite;
+        }
+
+        @keyframes noise-crawl {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 180px 120px;
+            }
+        }
+
+        /* === ADDITIONAL CREATIVE UI FLOURISHES === */
+
+        /* Elegant decorative divider for sections */
+        .gold-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--optimate-gold), transparent);
+            margin: 18px 0 16px;
+            position: relative;
+        }
+
+        .gold-divider::after {
+            content: '✦';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: #f4f1ea;
+            color: var(--optimate-gold);
+            font-size: 12px;
+            padding: 0 9px;
+            letter-spacing: 2px;
+        }
+
+        /* More formal call-to-action framing in content */
+        .content-container .edict {
+            border: 1px solid #c2b8a5;
+            padding: 14px 18px;
+            background: #f9f6f0;
+            font-style: italic;
+            margin: 14px 0;
+            border-left: 4px solid var(--optimate-gold);
+        }
+
+        /* Small classical badge / seal used in various places */
+        .opt-seal {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            padding: 2px 10px;
+            border: 1px solid var(--optimate-gold);
+            color: var(--optimate-gold);
+            background: rgba(184, 151, 94, 0.08);
+            text-transform: uppercase;
+        }
+
+        /* Refined small grid cards look already covered — extra polish for grid-container */
+        .grid-container > div {
+            padding-bottom: 8px;
+            border-bottom: 1px dotted #c2b8a5;
+        }
+
+        .grid-container > div:last-child {
+            border-bottom: none;
+        }
+
+        /* Subtle extra frame inside the terminal for distinction */
+        .content-container {
+            border: 1px solid rgba(194, 184, 165, 0.4);
+            background: #f8f5ef;
+            margin-top: 6px;
+        }
+
+        /* Small touches for distinct conservative aesthetic */
+        .gold-accent {
+            color: var(--optimate-gold);
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="container terminal">
+        <div class="vhs-noise"></div>
+        <div class="vhs-scan"></div>
+        <header>
+            <!-- Creative formal header: classical edict-style with strip + emblem + stacked title + motto columns -->
+            <div class="header">
+                <div class="header-strip">
+                    <span class="strip-left">EST. 2006</span>
+                    <span class="strip-center">✦ DISTRICT 7 ✦ CITY 13</span>
+                    <span class="strip-right">OFFICIAL</span>
+                </div>
+
+                <div class="header-main">
+                    <!-- Inline SVG crest / emblem for distinct classical look -->
+                    <div class="header-emblem">
+                        <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Outer ring -->
+                            <circle cx="46" cy="46" r="42" stroke="#b8975e" stroke-width="2.5"/>
+                            <!-- Inner shield shape -->
+                            <path d="M28 26 L46 18 L64 26 L64 48 Q46 68 28 48 Z" stroke="#b8975e" stroke-width="2" fill="#1a2f52"/>
+                            <!-- Laurel elements -->
+                            <path d="M30 32 Q38 28 46 34" stroke="#b8975e" stroke-width="1.8" fill="none"/>
+                            <path d="M62 32 Q54 28 46 34" stroke="#b8975e" stroke-width="1.8" fill="none"/>
+                            <path d="M31 38 Q39 35 46 40" stroke="#b8975e" stroke-width="1.5" fill="none"/>
+                            <path d="M61 38 Q53 35 46 40" stroke="#b8975e" stroke-width="1.5" fill="none"/>
+                            <!-- Center monogram -->
+                            <text x="46" y="50" text-anchor="middle" fill="#b8975e" font-size="17" font-family="Aldrich, serif" font-weight="700">OPT</text>
+                            <circle cx="46" cy="46" r="11" stroke="#b8975e" stroke-width="1" fill="none"/>
+                        </svg>
+                    </div>
+
+                    <div class="header-title">
+                        <div class="header-pre">THE</div>
+                        <div class="header-name">OPTIMATES</div>
+                        <div class="header-sub">Conservative Party</div>
+                        <div class="header-rule"></div>
+                    </div>
+
+                    <div class="header-motto">
+                        <div><span>ORDER</span></div>
+                        <div><span>HERITAGE</span></div>
+                        <div><span>STRENGTH</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Distinct nav: elegant uppercase with separators -->
+            <div class="nav">
+                <ul>
+                    <li class="home" data-tab="default">
+                        <img src="https://i.ibb.co/TBnxSxSf/home-1.png" alt="Home">
+                    </li>
+                    <li data-tab="record">OUR RECORD</li>
+                    <li data-tab="platform">OUR PLATFORM</li>
+                    <li data-tab="people">LEADERS</li>
+                    <li data-tab="news">DISPATCHES</li>
+                    <li class="search">
+                        <img src="https://i.ibb.co/998w7dGW/search-1.png" alt="Search">
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <header class="wn-hero">
+            <div class="hero-slides">
+                <img class="hero-slide" src="https://picsum.photos/id/1016/1200/660" alt="City architecture">
+                <img class="hero-slide active" src="https://picsum.photos/id/1005/1200/660" alt="Formal city plaza">
+                <img class="hero-slide" src="https://picsum.photos/id/160/1200/660" alt="Historic district">
+            </div>
+            <div class="wn-hero-overlay">
+                <h1>Order.<br>Heritage.<br>Strength.</h1>
+                <p class="sub">Preserving the foundations of a disciplined city. Institutions first.</p>
+                <div class="fake-button primary"><a href="#">Stand With Us</a></div>
+            </div>
+        </header>
+        <section class="content-container">
+            <!-- DEFAULT / HOME -->
+            <div class="tab-panel active" data-tab="default">
+                <h1>The Conservative Optimate Party</h1>
+
+                <div class="edict">
+                    For generations the Optimates have safeguarded the pillars of City 13 — law, culture, commerce and civic duty.
+                    We believe in measured progress rooted in time-tested principles: merit, responsibility, and the preservation of order.
+                </div>
+
+                <div class="gold-divider"></div>
+
+                <div class="simple-grid">
+                    <div class="card">
+                        <h3>Support Our Cause</h3>
+                        <p>The strength of the Optimate movement rests on citizens who value tradition, excellence and stability.
+                            Your contribution — whether time, resources or public voice — helps defend the institutions that protect us all.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Join the Movement</h3>
+                        <p>Thousands of responsible citizens — administrators, artisans, veterans and families — have aligned with the Optimate vision for a disciplined, prosperous District 7.</p>
+                    </div>
+                </div>
+
+                <div class="simple-grid">
+                    <div class="card">
+                        <h3>Our Commitment</h3>
+                        <p>To uphold the rule of law, reward merit and enterprise, maintain public order, and transmit the cultural inheritance of our city to future generations. We stand for principled leadership over short-term populism.</p>
+                        <span class="opt-seal" style="margin-top:8px; display:inline-block;">Principled Governance</span>
+                    </div>
+                </div>
+
+                <div class="content-button" style="justify-content: center; display: flex; margin-top: 12px;">
+                    <div style="text-align: center;">
+                        <div class="fake-button primary">
+                            <a href="#">Become a Supporter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OUR RECORD -->
+            <div class="tab-panel" data-tab="record">
+                <h1>Our Record</h1>
+                <div class="gold-divider"></div>
+                <div class="simple-grid">
+                    <div class="card">
+                        <h2>Public Order Initiative</h2>
+                        <p>Championed and passed the District Security and Civil Order Act, strengthening patrol coordination and restoring confidence in public spaces. Crime incidents in core sectors have declined measurably since enactment.</p>
+                    </div>
+                    <div class="card">
+                        <h2>Economic Prudence Act</h2>
+                        <p>Introduced strict fiscal oversight measures and a new procurement review board. Reduced wasteful spending by over 14% in the last fiscal year while protecting essential services.</p>
+                    </div>
+                    <div class="card">
+                        <h2>Heritage Preservation Ordinance</h2>
+                        <p>Led successful passage of landmark legislation protecting historic architecture and cultural sites in District 7 from hasty redevelopment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OUR PLATFORM -->
+            <div class="tab-panel" data-tab="platform">
+                <h1>Our Platform</h1>
+                <div class="gold-divider"></div>
+                <div class="grid-container">
+                    <div>
+                        <h2>Law &amp; Order</h2>
+                        <p>We believe a functioning society requires visible, fair, and consistent enforcement of the law. We will expand community watch programs and invest in professional training for District security forces.</p>
+                    </div>
+                    <div>
+                        <h2>Merit &amp; Responsibility</h2>
+                        <p>Opportunity must be earned through contribution and character. We support apprenticeship programs, trade education, and incentives for citizens who demonstrate commitment to the common good.</p>
+                    </div>
+                    <div>
+                        <h2>Fiscal Discipline</h2>
+                        <p>Sound money and restrained government are the foundation of lasting prosperity. We will continue to oppose reckless spending and push for transparent budgeting at every level.</p>
+                    </div>
+                    <div>
+                        <h2>Cultural Continuity</h2>
+                        <p>A city is more than infrastructure. We defend the customs, institutions and shared memory that bind generations. We will protect religious and cultural expression while promoting civic pride.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEADERS / PEOPLE -->
+            <div class="tab-panel" data-tab="people">
+                <h1>Optimate Leaders</h1>
+                <div class="gold-divider"></div>
+
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="data">
+                            <span class="role">Senior Councillor</span>
+                            <span class="title">Aurelius Varrus</span>
+                        </div>
+                        <div class="profile-img"><img src="https://picsum.photos/id/1005/236/370" alt="Aurelius Varrus"></div>
+                        <div style="display: inline-block; position: relative; text-align: center;">
+                            <span class="opt-seal" style="position: absolute; left: 50%; transform: translateX(-50%); bottom: -22px; font-size: 9.5px; padding: 1px 9px; letter-spacing: 1.5px;">
+                                PARTY CHAIRMAN
+                            </span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>
+                            Aurelius Varrus descends from one of the founding administrative families of City 13. Educated in classical governance and jurisprudence, he served fifteen years in the Civil Affairs Bureau before entering elected office.
+                        </p>
+                        <p>
+                            A vocal proponent of structured hierarchy and institutional integrity, Councillor Varrus has authored multiple ordinances reinforcing property rights and professional standards in public service. He was elected Party Chairman in 2007.
+                        </p>
+                        <p>
+                            Varrus maintains that "excellence is not a birthright — it is a duty we renew each day."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="data">
+                            <span class="role">District Councillor</span>
+                            <span class="title">Regina Holt</span>
+                        </div>
+                        <div class="profile-img"><img src="https://picsum.photos/id/1012/236/370" alt="Regina Holt"></div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>
+                            Regina Holt rose through the ranks of the Municipal Treasury, eventually becoming Deputy Comptroller. Her reputation for uncompromising audits and zero tolerance for waste made her a natural ally of the Optimate cause.
+                        </p>
+                        <p>
+                            First elected in 2006, she has focused on reforming public contracts and restoring public trust in municipal finance. She is widely regarded as the party’s most effective legislative tactician.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-info">
+                        <div class="data">
+                            <span class="role">District Councillor</span>
+                            <span class="title">Commander Silas Korr</span>
+                        </div>
+                        <div class="profile-img"><img src="https://picsum.photos/id/201/236/370" alt="Commander Silas Korr"></div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>
+                            A decorated veteran of the pre-Accord security forces, Commander Korr brings decades of experience in maintaining civil order under the most difficult conditions. He joined the Optimate movement shortly after the formation of District 7.
+                        </p>
+                        <p>
+                            Councillor Korr champions practical reforms to the District constabulary, emphasizing discipline, accountability, and the dignity of public service. He is a frequent speaker on civic duty and personal responsibility.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEWS -->
+            <div class="tab-panel" data-tab="news">
+                <h1>Dispatches</h1>
+                <p class="sub">Official statements and announcements from the Conservative Optimate Party.</p>
+                <div class="gold-divider"></div>
+                <div class="news-list">
+                    <div class="news-up-item">
+                        <div class="meta">
+                            <span>30 JUNE 2026</span> 
+                            <span class="badge">LEGISLATION</span>
+                        </div>
+                        <h3>Optimate-Sponsored Civil Order Amendment Passes Council</h3>
+                        <p>The amendment expands joint patrol authority between District security and the Civil Affairs Bureau, a key priority in restoring confidence in public spaces.</p>
+                    </div>
+
+                    <div class="news-up-item">
+                        <div class="meta">
+                            <span>24 JUNE 2026</span> 
+                            <span class="badge">STATEMENT</span>
+                        </div>
+                        <h3>Chairman Varrus Addresses Heritage Preservation Summit</h3>
+                        <p>“We do not build for ourselves alone. The stones we lay today must still speak of who we were a hundred years from now.”</p>
+                    </div>
+
+                    <div class="news-up-item">
+                        <div class="meta">
+                            <span>17 JUNE 2026</span> 
+                            <span class="badge">POLICY</span>
+                        </div>
+                        <h3>New Apprenticeship Initiative Launched in Sector 4</h3>
+                        <p>Partnering with established workshops and the Bureau of Works, the program will place 180 citizens into structured trade apprenticeships over the next quarter.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-rows">
+                <div class="footer-row">
+                    <div>
+                        <img src="https://picsum.photos/id/1011/160/54" alt="Optimate Crest">
+                        <p style="margin: 6px 0;"><strong>Conservative Optimate Party</strong><br>
+                            City 13, District 7</p>
+                        <span class="opt-seal" style="font-size:9px; padding:1px 6px;">Est. 2006</span>
+                    </div>
+                    <div>
+                        <h4>Leadership</h4>
+                        <ul>
+                            <li>Our Councillors</li>
+                            <li>Party Chairman</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Platform</h4>
+                        <ul>
+                            <li>Core Principles</li>
+                            <li>Current Initiatives</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>About Us</h4>
+                        <ul>
+                            <li>Our History</li>
+                            <li>Values &amp; Mission</li>
+                            <li>Contact</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="margin: 42px auto 0; padding-top: 18px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
+                    <div>
+                        OPT <span style="margin-left: 10px; color: var(--text-color);">English</span>
+                    </div>
+                    <div style="color: var(--text-color)">
+                        © 2006–2026 Conservative Optimate Party
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</main>
+
+<script>
+    function initHeroSlideshow() {
+        var slides = document.querySelectorAll('.hero-slide');
+        if (!slides.length) return;
+
+        var current = 0;
+        var intervalTime = 5200;
+
+        function showSlide(index) {
+            slides.forEach(function (slide, i) {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        showSlide(0);
+        setInterval(nextSlide, intervalTime);
+    }
+
+    initHeroSlideshow();
+
+    var clickAudio;
+
+    function playClickSound() {
+        if (clickAudio) {
+            clickAudio.currentTime = 0;
+            clickAudio.play().catch(function () {});
+        }
+    }
+
+    (function preloadClickSound() {
+        clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
+        clickAudio.volume = 0.55;
+        clickAudio.preload = 'auto';
+        clickAudio.load();
+    })();
+
+    function initTabSwitching() {
+        var navItems = document.querySelectorAll('.nav ul li[data-tab]');
+        var panels = document.querySelectorAll('.tab-panel');
+
+        if (!navItems.length || !panels.length) return;
+
+        function activateTab(tabName) {
+            navItems.forEach(function (item) {
+                item.classList.toggle('active', item.dataset.tab === tabName);
+            });
+
+            panels.forEach(function (panel) {
+                panel.classList.toggle('active', panel.dataset.tab === tabName);
+            });
+        }
+
+        navItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                playClickSound();
+                activateTab(item.dataset.tab);
+            });
+        });
+
+        activateTab('default');
+    }
+
+    initTabSwitching();
+
+    document.querySelectorAll('.nav ul li').forEach(function (li) {
+        if (!li.hasAttribute('data-tab')) {
+            li.addEventListener('click', playClickSound);
+        }
+    });
+
+    document.querySelectorAll('.fake-button').forEach(function (btn) {
+        btn.addEventListener('click', playClickSound);
+    });
+</script>
+</body>
+</html>
