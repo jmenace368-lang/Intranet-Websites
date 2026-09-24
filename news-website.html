@@ -915,20 +915,25 @@
         font-size: 34px;
     }
 
-    /* Article Ad Card */
+    /* Article Ad Card: sized to its own creative rather than stretching to fill the row */
     .body-wrap .news-article.ad-card {
         border-bottom: none;
         display: flex;
-        flex-direction: column;
-        min-height: 175px;
-        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .body-wrap .layout-cascade .main-news .news-article.ad-card {
+        border-bottom: 1px solid var(--line-color);
+    }
+
+    .body-wrap .layout-cascade .secondary-news .news-article.ad-card,
+    .body-wrap .layout-full .secondary-news .news-article.ad-card {
+        border-bottom: 1px solid var(--line-color);
     }
 
     .body-wrap .news-article.ad-card .photo {
-        height: 100%;
-        flex: 1;
         background: rgba(190, 190, 190, 0.2) !important;
-        border: 2px outset #f2f2f2;
     }
 </style>
 
@@ -1211,41 +1216,42 @@
         randomizeLayout: true,
     };
 
-    // Available ad creatives with their native pixel dimensions, used to match ads to slot shape
-    const AD_IMAGES = [
-        { src: 'images/banner-ad-again.png', width: 540, height: 140, alt: 'Vote advertisement' },
-        { src: 'images/dick.png', width: 215, height: 464, alt: 'Dick has our back advertisement' },
-        { src: 'images/long-ad.png', width: 540, height: 140, alt: 'New Paris, New Humanity, New Earth advertisement' },
-        { src: 'images/new-co-op.png', width: 540, height: 140, alt: 'Labour Co-Op advertisement' },
-        { src: 'images/small-ad.png', width: 244, height: 160, alt: 'Advertisement' },
-        { src: 'images/another-one.png', width: 260, height: 290, alt: 'Advertisement' }
-    ];
+    // Two pre-made ad variants per layout: which slot they go in (primary/secondary),
+    // the creative to show there, and its display size. One is picked at random per render.
+    const AD_VARIANTS = {
+        // grid: [
+        //     { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
+        //     { placement: 'secondary', src: 'images/small-ad.png', alt: 'Advertisement' }
+        // ],
+        full: [
+            { placement: 'primary', src: 'images/long-ad.png', alt: 'New Paris, New Humanity, New Earth advertisement' },
+            { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
+            { placement: 'secondary', src: 'images/another-one.png', alt: 'Advertisement' }
 
-    // Picks the ad creative whose aspect ratio is closest to the target slot
-    function pickAdImage(targetAspect) {
-        return AD_IMAGES.reduce((closest, image) => {
-            const imageAspect = image.width / image.height;
-            const diff = Math.abs(Math.log(imageAspect / targetAspect));
-            const closestDiff = Math.abs(Math.log((closest.width / closest.height) / targetAspect));
-            return diff < closestDiff ? image : closest;
-        });
-    }
-
-    // Design width/height (px) for each of the 5 ad placements in the main-news area,
-    // plus the sidebar widget. Used to compute the aspect ratio an ad creative should match.
-    const AD_SLOTS = {
-        banner: { width: 700, height: 180 }, // standalone "between sections" ad, and the full/cascade primary insert
-        gridPrimary: { width: 420, height: 210 }, // grid layout, inserted beside the lead story
-        gridSecondary: { width: 240, height: 160 }, // grid layout, inserted among secondary stories
-        fullSecondary: { width: 320, height: 250 }, // full layout, inserted in the 2x2 secondary grid
-        cascadeSecondary: { width: 215, height: 464 }, // cascade layout, inserted in the 3-column secondary grid
-        sidebar: { width: 280, height: 300 } // side column advertisement widget
+        ],
+        cascade: [
+            { placement: 'primary', src: 'images/new-co-op.png', alt: 'Labour Co-Op advertisement' },
+            { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
+            { placement: 'secondary', src: 'images/dick.png', alt: 'Dick has our back advertisement' }
+        ]
     };
 
-    function slotAspect(slotName) {
-        const slot = AD_SLOTS[slotName];
-        return slot.width / slot.height;
-    }
+    // Fixed display size (px) for each layout's ad slots. Independent of any one
+    // creative's native size, so future ads can be designed to fit these dimensions.
+    const AD_SLOT_SIZES = {
+        // grid: { primary: { width: 420, height: 210 }, secondary: { width: 244, height: 160 } },
+        full: { primary: { width: 670, height: 176 }, secondary: { width: 330, height: 366 } },
+        cascade: { primary: { width: 670, height: 176 }, secondary: { width: 216, height: 464 } }
+    };
+
+    // Two pre-made variants for the side-column advertisement widget
+    const SIDEBAR_AD_VARIANTS = [
+        { src: 'images/dick-banner.png', alt: 'Dick has our back advertisement' },
+        { src: 'images/another-one.png', alt: 'Advertisement' }
+    ];
+
+    // Fixed display size (px) for the sidebar advertisement widget
+    const SIDEBAR_AD_SIZE = { width: 280, height: 300 };
 
     var clickAudio;
 
@@ -1301,31 +1307,28 @@
         `;
     }
 
-    function adCard(options = {}) {
-        const standaloneStyle = options.standalone ? ' style="height: 180px;"' : '';
-        const image = pickAdImage(slotAspect(options.slot || 'gridPrimary'));
+    function adCard(image, size) {
         return `
-            <article class="news-article ad-card"${standaloneStyle}>
-                <div class="photo" style="border: 2px outset #f2f2f2;">
+            <article class="news-article ad-card">
+                <div class="photo" style="width: ${size.width}px; height: ${size.height}px; max-width: 100%; border: 2px outset #f2f2f2;">
                     <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt)}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </article>
         `;
     }
 
-    // Single source of truth per layout: how many stories sit in primary/secondary,
-    // whether secondary uses a fixed-column grid (so an ad must displace a story to fit),
-    // and which ad slot each position uses.
+    // Single source of truth per layout: how many stories sit in primary/secondary, and
+    // whether secondary uses a fixed-column grid (so an ad must displace a story to fit).
     const LAYOUT_CONFIGS = {
-        grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false, primarySlot: 'gridPrimary', secondarySlot: 'gridSecondary' },
-        full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true, primarySlot: 'banner', secondarySlot: 'fullSecondary' },
-        cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true, primarySlot: 'banner', secondarySlot: 'cascadeSecondary' }
+        grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false },
+        full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true },
+        cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true }
     };
 
     // Inserts an ad at a random position among the secondary stories. When the secondary
     // area is a fixed-column grid, the last story is displaced (returned) to keep the
     // column count intact instead of overflowing the grid.
-    function insertAdInSecondary(stories, config) {
+    function insertAdInSecondary(stories, config, adImage, slotSize) {
         const displaced = config.secondaryFixedGrid ? stories.slice(-1) : [];
         const visibleStories = config.secondaryFixedGrid ? stories.slice(0, -1) : stories;
 
@@ -1333,13 +1336,14 @@
         const before = visibleStories.slice(0, randomPos).map(article => articleCard(article)).join('');
         const after = visibleStories.slice(randomPos).map(article => articleCard(article)).join('');
 
-        return { html: before + adCard({ slot: config.secondarySlot }) + after, displaced };
+        return { html: before + adCard(adImage, slotSize) + after, displaced };
     }
 
-    // Builds the primary/secondary HTML for a layout, placing the ad (if any) according
-    // to adPlacement, and returns the stories that spill over into "More Stories".
-    function buildMainNews(selectedLayout, frontPage, adPlacement) {
+    // Builds the primary/secondary HTML for a layout, placing the given ad variant's
+    // image in its designated slot, and returns the stories that spill over into "More Stories".
+    function buildMainNews(selectedLayout, frontPage, adVariant) {
         const config = LAYOUT_CONFIGS[selectedLayout];
+        const slotSizes = AD_SLOT_SIZES[selectedLayout];
         const primaryStories = frontPage.slice(0, config.primaryCount);
         const secondaryStories = frontPage.slice(config.primaryCount, config.primaryCount + config.secondaryCount);
         let moreStories = frontPage.slice(config.primaryCount + config.secondaryCount);
@@ -1347,13 +1351,13 @@
         let primaryHtml = primaryStories.map((article, index) => articleCard(article, { lead: index === 0 })).join('');
         let secondaryHtml = secondaryStories.map(article => articleCard(article)).join('');
 
-        if (adPlacement === 'primary') {
+        if (adVariant.placement === 'primary') {
             if (config.primaryCount > 1) {
                 // Primary column has no spare slot (grid layout): the ad takes the 2nd
                 // primary spot, and the displaced story cascades down into secondary,
                 // pushing secondary's overflow into "More Stories".
                 const lead = articleCard(primaryStories[0], { lead: true });
-                primaryHtml = lead + adCard({ slot: config.primarySlot });
+                primaryHtml = lead + adCard(adVariant, slotSizes.primary);
 
                 const shiftedSecondary = [...primaryStories.slice(1), ...secondaryStories];
                 const keptSecondary = shiftedSecondary.slice(0, config.secondaryCount);
@@ -1362,10 +1366,10 @@
                 moreStories = [...overflow, ...moreStories];
             } else {
                 // Primary is just the full-width lead (full/cascade layouts): append below it
-                primaryHtml += adCard({ slot: config.primarySlot });
+                primaryHtml += adCard(adVariant, slotSizes.primary);
             }
-        } else if (adPlacement === 'secondary' && secondaryStories.length > 0) {
-            const result = insertAdInSecondary(secondaryStories, config);
+        } else if (secondaryStories.length > 0) {
+            const result = insertAdInSecondary(secondaryStories, config, adVariant, slotSizes.secondary);
             secondaryHtml = result.html;
             moreStories = [...result.displaced, ...moreStories];
         }
@@ -1390,14 +1394,10 @@
         const layoutClass = `layout-${selectedLayout}`;
         const target = document.querySelector('#panel-home .main-column');
 
-        // Randomly decide where the ad goes: alongside the lead, among secondary stories, or between the sections
-        const adPlacements = ['primary', 'secondary', 'between'];
-        const adPlacement = adPlacements[Math.floor(Math.random() * adPlacements.length)];
-        const betweenAdHtml = adPlacement === 'between'
-            ? `<div class="section-wrap">${adCard({ standalone: true, slot: 'banner' })}</div>`
-            : '';
+        // Pick one of this layout's two pre-made ad variants at random
+        const adVariant = AD_VARIANTS[selectedLayout][Math.floor(Math.random() * AD_VARIANTS[selectedLayout].length)];
 
-        const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage, adPlacement);
+        const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage, adVariant);
 
         target.innerHTML = `
             <div class="section-wrap">
@@ -1407,7 +1407,6 @@
                     <div class="secondary-news">${secondaryHtml}</div>
                 </div>
             </div>
-            ${betweenAdHtml}
             <div class="section-wrap">
                 <div class="kicker">More Stories</div>
                 <h2 class="page-title">Recent Headlines</h2>
@@ -1497,8 +1496,8 @@
             }
         ];
 
-        // Advertisement widget to be randomly placed, sized to match the sidebar column's tall aspect
-        const sidebarAdImage = pickAdImage(slotAspect('sidebar'));
+        // Advertisement widget to be randomly placed, using one of two pre-made sidebar variants
+        const sidebarAdImage = SIDEBAR_AD_VARIANTS[Math.floor(Math.random() * SIDEBAR_AD_VARIANTS.length)];
         const advertWidget = {
             id: 'advert',
             html: `
