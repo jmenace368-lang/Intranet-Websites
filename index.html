@@ -5,56 +5,29 @@
 
     /* Variable CSS */
     .container {
-        --wn-primary: #FF4E45;
-        --wn-primary-bg: #35232f;
-        --wn-primary-rgb: 255, 78, 69;
-
-        --wn-yellow: #fdc700;
-        --wn-yellow-bg: #392f28;
-        --wn-yellow-rgb: 253, 199, 0;
-
-        --wn-violet: #6039ea;
-        --wn-violet-bg: #2f264f;
-        --wn-violet-rgb: 96, 57, 234;
-
-        --wn-rose: #f14169;
-        --wn-rose-bg: #3a2434;
-        --wn-rose-rgb: 241, 65, 105;
-
-        --wn-green: #41cd89;
-        --wn-green-bg: #1c3238;
-        --wn-green-rgb: 65, 205, 137;
-
         --wn-bg: #1e1e2d;
-
         --text-color: #666666;
         --text-color-main: #333;
         --border-color: #cccccc;
         /* f0f0f0 */
         --labour: #c52237;
-        --labour-head: color-mix(in srgb, var(--labour) 80%, black);
+        --labour-head: color-mix(in srgb, var(--labour) 90%, black);
         --footer-col: #e4e4e4;
-
         --page-bg: #f5f5f5;
-
-        --wn-accent: var(--wn-primary);
-        --wn-accent-bg: var(--wn-primary-bg);
-        --wn-accent-rgb: var(--wn-primary-rgb);
-
         font-family: 'Exo 2', 'Barlow', sans-serif;
         font-size: 15px;
+        color: var(--text-color-main);
         line-height: 1.75;
-        border: solid 1px var(--border-color)
+        border: solid 3px #161621;
     }
 
 
-    /* Master-Container */
+    /* Container */
 
     .terminal {
         font-family: 'Exo 2', sans-serif;
-        max-width: 850px;
+        max-width: 1042px;
         margin: 40px auto;
-        padding: 20px;
         background: var(--page-bg);
         position: relative;
         overflow: hidden;
@@ -71,8 +44,27 @@
         color: var(--page-bg);
         flex-wrap: wrap;
         gap: 30px;
-        font-family: 'Aldritch', 'Poppins', sans-serif;
+        font-family: 'Aldrich', 'Poppins', sans-serif;
         user-select: none;
+    }
+
+    .header-img {
+        width: 100%;
+        height: 170px;
+        background: radial-gradient(circle, rgba(165, 21, 41, 0.7) 15%, rgba(168, 17, 37, 0.9) 100%);
+        border-left: rgb(250, 250, 250) solid 3px;
+        border-bottom: rgb(250, 250, 250) solid 3px;
+        border-top: var(--border-color) solid 2px;
+        border-right: var(--border-color) solid 2px;
+
+    }
+
+    .header-img img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        user-select: none;
+        pointer-events: none;
     }
 
     .header h2 {
@@ -97,7 +89,8 @@
 
     /* Navigation */
     .nav {
-        border-bottom: 2px solid var(--labour);
+        border-bottom: 2px solid rgb(29, 29, 29);
+        background: linear-gradient(transparent 70%, rgba(107, 107, 107, 0.25));
     }
 
     .nav ul {
@@ -116,7 +109,7 @@
         font-weight: 600;
         color: #333;
         cursor: pointer;
-        padding: 16px 14px;
+        padding: 8px 14px;
         position: relative;
         transition: color 0.15s ease;
     }
@@ -142,10 +135,8 @@
 
     /* Home icon */
     .nav .home {
-        padding: 14px 10px;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 13px 14px;
     }
 
     .nav .home img {
@@ -156,7 +147,7 @@
     /* Search icon */
     .nav .search {
         margin-left: auto;
-        padding: 14px 8px;
+        padding: 8px 8px;
     }
 
     .nav .search img {
@@ -209,15 +200,19 @@
         font-size: 51px;
         line-height: 1.05;
         margin: 0 0 12px;
+        color: var(--page-bg) !important;
     }
 
     .wn-hero-overlay p {
-        font-size: 14px;
+        font-size: 14px !important;
+        color: var(--page-bg) !important;
     }
+
+
 
     /* Content Area */
     .content-container {
-        padding: 30px 40px;
+        padding: 35px 24px;
     }
 
     .content-container h1 {
@@ -225,13 +220,15 @@
         font-size: 42px;
         line-height: 1.2;
         font-weight: 700;
-        letter-spacing: .8px;
+        letter-spacing: 2.8px;
         margin: 0 0 10px;
         color: var(--labour-head);
+        text-transform: capitalize !important;
     }
 
     .content-container h2 {
         letter-spacing: 1px;
+        margin-top: 4px;
         margin-bottom: 8px;
         color: var(--text-color-main);
         font-family: 'Poppins', system-ui, sans-serif;
@@ -243,14 +240,15 @@
     }
 
     .content-container .sub {
-        font-size: 16px;
-        line-height: 1.65;
-        margin: 0 0 28px;
+        font-size: 16px !important;
+        line-height: 1.65 !important;
+        margin: 0 0 28px !important;
     }
 
     /* Tab content panels */
     .tab-panel {
         display: none;
+        min-height: 600px;
     }
 
     .tab-panel.active {
@@ -272,7 +270,6 @@
         border-top: var(--border-color) solid 1px;
         margin-bottom: 18px;
         display: inline-block;
-        align-items: flex-start;
         padding-top: 18px;
     }
 
@@ -293,7 +290,6 @@
         display: flex;
         flex-direction: column;
         padding-right: 22px;
-        padding-right: 22px;
         text-align: center;
         color: var(--text-color-main);
         float: left;
@@ -309,6 +305,7 @@
     .profile-bio p {
         margin: 0 0 16px;
         font-size: 16px;
+        text-align: justify;
     }
 
     .profile-info .data {
@@ -344,15 +341,14 @@
         display: inline-block;
         border-radius: 4px;
         padding: 8px 42px;
-        /* padding: 18px 52px; */
         font-size: 18px;
         font-weight: 900;
         color: var(--labour);
         background: var(--page-bg);
         text-transform: uppercase;
-        font-weight: bolder;
         cursor: pointer;
         transition: filter 0.2s;
+        user-select: none;
     }
 
     .fake-button a {
@@ -365,7 +361,11 @@
 
     .fake-button a:active,
     .fake-button a:visited {
-        color: var(--labour)
+        color: var(--labour);
+    }
+
+    .click {
+        cursor: pointer;
     }
 
     /* Footer */
@@ -383,14 +383,13 @@
     }
 
     footer h4 {
-        margin-bottom: 12px;
-        margin-block-end: 0;
+        margin: 0 0 12px;
         font-weight: bolder;
     }
 
     .footer-rows {
         background: var(--footer-col);
-        padding: 50px 40px 30px;
+        padding: 20px 40px 30px;
         font-size: 14px;
         color: var(--text-color);
     }
@@ -416,53 +415,26 @@
     }
 
     /* Components */
+
     .simple-grid {
         display: grid;
         margin-block: 8px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 28px;
+        gap: 100px;
+        text-align: justify;
     }
 
-    .simple-grid .card,
-    .grid-container .card {
+    .simple-grid .card {
         padding: 0 0 4px;
         border-bottom: 1px solid var(--border-color);
     }
 
-    .simple-grid:last-of-type .card,
-    .grid-container:last-of-type .card {
+    .simple-grid:last-of-type .card {
         padding: 0 0 4px;
         border-bottom: none;
     }
 
-    /* Grid */
-    .content-container .grid-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 80px;
-        color: var(--text-color-main);
-        margin-bottom: 40px;
-    }
-
-    .grid-container h2 {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-decoration: underline 2px var(--labour);
-        text-underline-offset: 4px;
-        text-transform: uppercase;
-    }
-
-    .grid-container p {
-        text-align: justify;
-    }
-
-    /* News & Updates*/
-    .news-list {
-        display: flex;
-        flex-direction: column;
-        gap: 26px;
-        margin-top: 10px;
-    }
-
+    /* News & Updates */
     .news-up-item {
         border-bottom: 1px solid var(--border-color);
         padding-bottom: 22px;
@@ -500,8 +472,6 @@
         font-size: 15px;
         color: var(--text-color);
     }
-
-    /* Blogs */
 
     /* Content Button */
     .content-button .fake-button a:hover,
@@ -554,7 +524,7 @@
         animation:
             crt-scanlines 1.1s linear infinite,
             crt-glitch 3.6s steps(1, end) infinite;
-        opacity: 0.24
+        opacity: 0.24;
     }
 
     @keyframes crt-scanlines {
@@ -611,7 +581,7 @@
         z-index: 5;
         mix-blend-mode: multiply;
         animation: vhs-scan 7.5s linear infinite;
-        opacity: 0.4
+        opacity: 0.4;
     }
 
     @keyframes vhs-scan {
@@ -650,13 +620,230 @@
             background-position: 180px 120px;
         }
     }
+
+    .main-content {
+        background: rgba(190, 190, 190, 0.2);
+        padding: 24px;
+        border-left: rgb(250, 250, 250) solid 2px;
+        border-bottom: rgb(250, 250, 250) solid 2px;
+        border-top: var(--border-color) solid 1px;
+        border-right: var(--border-color) solid 1px;
+        margin-bottom: 24px;
+    }
+
+    .side-content {
+        flex: 0 0 280px;
+        width: 280px;
+        box-sizing: border-box;
+        padding: 10px;
+        background: rgba(136, 22, 22, 0.05);
+    }
+
+    .sidebar-container {
+        padding: 18px;
+        /* background: rgba(190, 190, 190, 0.2); */
+        background: rgb(228, 228, 228);
+        margin-bottom: 24px;
+        border-left: rgb(250, 250, 250) solid 2px;
+        border-bottom: rgb(250, 250, 250) solid 2px;
+        border-top: var(--border-color) solid 1px;
+        border-right: var(--border-color) solid 1px;
+    }
+
+    .sidebar-container:last-child {
+        margin-bottom: 10px;
+    }
+
+    .sidebar-container.news {
+        position: relative;
+        overflow: hidden;
+        max-height: 268px;
+    }
+
+    .sidebar-container.news .side-news {
+        position: relative;
+    }
+
+    .sidebar-container.news .side-news::after {
+        content: '';
+        position: absolute;
+        background: linear-gradient(to top, #e7e7e7 5%, transparent);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 30%;
+        pointer-events: none;
+    }
+
+    .sidebar-container.news .expand {
+        width: 80%;
+        height: 30px;
+        align-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #636262;
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 4px;
+        background: var(--page-bg);
+        border: var(--border-color) solid 1px;
+        transition: filter 0.15s ease;
+    }
+
+    .sidebar-container.news .expand:hover {
+        filter: brightness(0.8);
+    }
+
+
+    .sidebar-container.contact header {
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 12px;
+    }
+
+    .sidebar-container.contact h2 {
+        margin: 0;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+
+    .body-main {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .body-main> :not(.side-content) {
+        flex: 1 1 0;
+        min-width: 0;
+    }
+
+    .body-main .banner-ad {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .side-news article {
+        font-size: 14px;
+        line-height: 1.35;
+        margin-bottom: 6px;
+    }
+
+    .side-news .title {
+        font-style: italic;
+        color: var(--labour) !important;
+        max-height: 38px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-transform: capitalize;
+    }
+
+    .sidebar-container.list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .sidebar-container.list .button-list img {
+        height: 20px;
+        width: 20px;
+        object-fit: cover;
+        object-position: center;
+
+    }
+
+    .sidebar-container.list .button-list {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.8);
+        border: var(--border-color) solid 1px;
+        max-height: 20px;
+    }
+
+    .sidebar-container.list .button-list span {
+        text-transform: uppercase;
+        color: var(--labour);
+        font-weight: 700;
+    }
+
+    .banner-ad {
+        position: relative;
+        box-sizing: border-box;
+        margin: 0 24px 30px;
+        /* padding: 24px; */
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 165px;
+        background: rgba(190, 190, 190, 0.2);
+        border-left: rgb(250, 250, 250) solid 3px;
+        border-bottom: rgb(250, 250, 250) solid 3px;
+        border-top: var(--border-color) solid 2px;
+        border-right: var(--border-color) solid 2px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        color: var(--text-color-main);
+        user-select: none;
+    }
+
+    .banner-ad.page {
+        margin: unset;
+        margin-top: 50px !important;
+        min-height: 60px;
+        max-height: 165px;
+        height: unset;
+        padding: 24px;
+    }
+
+    .banner-ad.page.large {
+        min-height: 324px;
+        max-height: unset;
+    }
+
+    .banner-ad.page.large2 {
+        min-height: 180px;
+    }
+
+    .banner-ad img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .banner-ad span {
+        font-size: 34px;
+    }
+
+    .banner-ad .text {
+        position: absolute;
+        padding: 4px 24px;
+        background: rgba(214, 214, 214, 0.7);
+        color: rgb(42, 42, 95);
+        font-weight: 600;
+        text-transform: capitalize;
+        border: rgba(0, 0, 0, 0.4) solid 2px;
+        font-size: 14px;
+        top: 12px;
+        left: 24px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
 </style>
 <main>
     <div class="container terminal">
-        <div class="vhs-noise"></div>
-        <div class="vhs-scan"></div>
+        <!-- <div class="vhs-noise"></div>
+        <div class="vhs-scan"></div> -->
         <header>
-            <div class="header">
+            <!-- <div class="header">
                 <img src="https://i.ibb.co/0ydBg5Tq/clc.png">
                 <h2 style="font-size: 32px; max-width: 360px; text-align: center; letter-spacing: 5px;">COMBINE LABOUR
                     <span style="letter-spacing: 5px; font-size: 32px;">CO-OPERATIVE</span>
@@ -665,10 +852,13 @@
                     <h3>new <strong>Labour</strong></h3>
                     <h3>new life for <strong>Humanity</strong></h3>
                 </div>
+            </div> -->
+            <div class="header-img">
+                <img src="https://i.ibb.co/LXsL9ntN/final.png">
             </div>
             <div class="nav">
                 <ul>
-                    <li class="home" data-tab="default" class="active">
+                    <li class="home active" data-tab="default">
                         <img src="https://i.ibb.co/TBnxSxSf/home-1.png" alt="Home">
                     </li>
                     <li data-tab="delivered">What we've delivered</li>
@@ -681,252 +871,449 @@
                 </ul>
             </div>
         </header>
-        <header class="wn-hero">
-            <div class="hero-slides">
-                <img class="hero-slide" src="https://i.ibb.co/dsVvwH8N/image-2026-06-29-201134133.png"
-                    alt="Cover image">
-                <img class="hero-slide active" src="https://i.ibb.co/60ZMVg9w/labour-img.png" alt="Cover Image 2">
-                <img class="hero-slide" src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                    alt="Cover Image 3">
-            </div>
-            <div class="wn-hero-overlay">
-                <h1>New Labour.<br>New Life for Humanity.</h1>
-                <p class="sub">Working to build a stronger, better City 13.</p>
-                <div class="fake-button" target="_blank" rel="noopener"><a
-                        href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/">Get
-                        Involved</a></div>
-            </div>
-        </header>
-        <section class="content-container">
+        <section>
             <div class="tab-panel active" data-tab="default">
-                <h1>New Labour. New Life.</h1>
-                <p class="bottom-divider">
-                    The Combine Labour Co-operative is working to build a stronger, fairer City 13, starting with
-                    District 7. We work to deliver practical change for working citizens, starting with you. Safer work,
-                    better rations, and real opportunity.
+                <div class="content-container body-main">
+                    <div>
+                        <header class="wn-hero">
+                            <div class="hero-slides">
+                                <img class="hero-slide" src="https://i.ibb.co/dsVvwH8N/image-2026-06-29-201134133.png"
+                                    alt="Cover image">
+                                <img class="hero-slide active" src="https://i.ibb.co/60ZMVg9w/labour-img.png"
+                                    alt="Cover Image 2">
+                                <img class="hero-slide"
+                                    src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="Cover Image 3">
+                            </div>
+                            <div class="wn-hero-overlay">
+                                <h1>New Labour.<br>New Life for Humanity.</h1>
+                                <p class="sub">Working to build a stronger, better City 13.</p>
+                                <div class="fake-button" target="_blank" rel="noopener"><a
+                                        href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/">Get
+                                        Involved</a></div>
+                            </div>
+                        </header>
+                        <div class="main-content">
+                            <h1>New Labour. New Life.</h1>
+                            <p class="bottom-divider">
+                                The Combine Labour Co-operative is working to build a stronger, fairer City 13, starting
+                                with
+                                District 7. We work to deliver practical change for working citizens, starting with you.
+                                Safer
+                                work,
+                                better rations, and real opportunity.
 
 
-                </p>
-                <div class="simple-grid">
-                    <div class="card">
-                        <h3>Support Our Cause</h3>
-                        <p>Labour's success is defined by thousands of citizens who contribute daily to Labour's effort.
-                            At Labour, we believe anyone can make a difference with their contribution, whether monetary
-                            or grassroots. Help Labour continue its success by contributing today.
+                            </p>
+                            <div class="simple-grid" style="gap:32px;">
+                                <div class="card">
+                                    <h3>Support Our Cause</h3>
+                                    <p>Labour's success is defined by thousands of citizens who contribute daily to
+                                        Labour's
+                                        effort.
+                                        At Labour, we believe anyone can make a difference with their contribution,
+                                        whether
+                                        monetary
+                                        or grassroots. Help Labour continue its success by contributing today.
 
-                        </p>
+                                    </p>
+                                </div>
+                                <div class="card">
+                                    <h3>Join Us</h3>
+                                    <p>Join thousands of citizens who’ve voted Labour these past several months.
+                                        Doctors,
+                                        Factory
+                                        Workers, and ordinary citizens are among thousands of voters who have supported
+                                        Labour
+                                        in
+                                        its mission to pioneer our city.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="simple-grid">
+                                <div class="card">
+                                    <h3>Our Mission</h3>
+                                    <p>To unite workers, protect citizens, and shape business and communities built on
+                                        fairness,
+                                        equity, teamwork, and collaboration. We stand for pragmatic, everyday change
+                                        that
+                                        improves
+                                        everyday life for District citizens— you included.
+
+
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="content-button" style="justify-content: center; display: flex">
+                                <div style="text-align: center; margin: 20px 0; border-radius: 6px;">
+                                    <div>
+                                        <div class="fake-button"
+                                            style="background: var(--labour); color: var(--page-bg);" target="_blank"
+                                            rel="noopener"><a
+                                                href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/"
+                                                style="color: var(--page-bg);">Become
+                                                a Member Today
+                                            </a></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Join Us</h3>
-                        <p>Join thousands of citizens who’ve voted Labour these past several months. Doctors, Factory
-                            Workers, and ordinary citizens are among thousands of voters who have supported Labour in
-                            its mission to pioneer our city.
-
-
-                        </p>
-                    </div>
-                </div>
-                <div class="simple-grid">
-                    <div class="card">
-                        <h3>Our Mission</h3>
-                        <p>To unite workers, protect citizens, and shape business and communities built on fairness,
-                            equity, teamwork, and collaboration. We stand for pragmatic, everyday change that improves
-                            everyday life for District citizens— you included.
-
-
-                        </p>
-                    </div>
-                </div>
-                <div class="content-button" style="justify-content: center; display: flex">
-                    <div style="text-align: center; margin: 20px 0; border-radius: 6px;">
-                        <div>
-                            <div class="fake-button" style="background: var(--labour); color: var(--page-bg);"
-                                target="_blank" rel="noopener"><a
-                                    href="https://willard.network/forums/threads/councillor-chairperson-applications.16138/"
-                                    style="color: var(--page-bg);">Become
-                                    a Member Today
-                                </a></div>
-
+                    <div class="side-content">
+                        <div class="sidebar-container contact news">
+                            <header>
+                                <h2>Latest News</h2>
+                            </header>
+                            <div class="side-news">
+                                <article>
+                                    <span class="title click">Labour To Host Annual Party platform September 1st</span>
+                                    <span>July 13th, 2008</span>
+                                </article>
+                                <article>
+                                    <span class="title click">Breen Delivers Speech To UN Admonishing Nationalism</span>
+                                    <span class="date">June 3rd, 2008</span>
+                                </article>
+                                <article>
+                                    <span class="title click"><strong>OPINION:</strong>The Combine aren't perfect, but
+                                        here's
+                                        why criticizing doesn't help</span>
+                                    <span class="date">March 13th, 2008</span>
+                                </article>
+                            </div>
+                            <div class="expand click">Expand</div>
+                        </div>
+                        <div class="sidebar-container contact">
+                            <header>
+                                <span>Stay Connected</span>
+                                <h2>Contact us here</h2>
+                            </header>
+                            <div>
+                                <span style="font-size: 15px;">Get official updates from us.
+                                    Weekly releases, campaign notices, and event announcements.</span>
+                                <textarea placeholder="Enter your Name & CID"
+                                    style="margin-block: 12px; width: 85%; height: 30px; padding-top: 15px; resize: none; display: block; margin: 18px auto; padding: 6px 12px; background: rgba(248, 248, 248, 1); font-weight: 700; text-transform: uppercase; border: rgba(200, 200, 200); color:#636262; text-align: center; border-radius: 4px;"></textarea>
+                                <div class="fake-button" style="display: flex; justify-self: center;">
+                                    STAY
+                                    INFORMED
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-container list" style="position: relative;">
+                            <div class="button-list click">
+                                <img src="https://i.ibb.co/bRj4dCzc/clc-2-1.png"><span>Donate</span>
+                            </div>
+                            <div class="button-list click">
+                                <img src="https://i.ibb.co/bRj4dCzc/clc-2-1.png"><span>Join The Party</span>
+                            </div>
+                            <div class="button-list click" style="background: rgba(116, 116, 116, 0.15); z-index: 1;">
+                                <span>Volunteer</span>
+                            </div>
+                        </div>
+                        <div class="sidebar-container">
+                            <a href="https://www.youtube.com/watch?v=ZeLFH2KhcNE&list=RDnSd1cL5RMQ8&index=7"><img
+                                    class="click" style="width: 280px; height: auto;"
+                                    src="https://i.ibb.co/RGzD5Z0v/image-2026-07-23-040837474.png"></a>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="banner-ad">
+                    <img src="https://i.ibb.co/MxX5RHNL/Combine-Safety-6.png">
+                </div> -->
             </div>
             <div class="tab-panel" data-tab="delivered">
-                <h1>What we've delivered</h1>
-                <div class="simple-grid">
-                    <div class="card">
-                        <h2>Housing Reform</h2>
-                        <p>As part of a popular, multi-party legislative initiative, we joined
-                            others in introducing comprehensive legislation to officially segregate Biotic and
-                            Human housing
-                            zones, establishing a Biotic exclusionary zone that better meets their psychological
-                            demands.
-                        </p>
+                <div class="content-container">
+                    <div class="main-content">
+                        <h1>What we've delivered</h1>
+                        <div class="simple-grid">
+                            <div class="card">
+                                <h2>Housing Reform</h2>
+                                <p>As part of a popular, multi-party legislative initiative, we joined
+                                    others in introducing comprehensive legislation to officially segregate Biotic
+                                    and
+                                    Human housing
+                                    zones, establishing a Biotic exclusionary zone that better meets their
+                                    psychological
+                                    demands.
+                                </p>
+                            </div>
+                            <div class="card">
+                                <h2>
+                                    Electoral Reform
+                                </h2>
+                                <p>Under our initiative, we proudly sponsored landmark legislation that successfully
+                                    waived the
+                                    monetary credit fee for voting eligibility by default, allowing broader civic
+                                    participation and
+                                    incentivizing voter attendance.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h2>
-                            Electoral Reform
-                        </h2>
-                        <p>Under our initiative, we proudly sponsored landmark legislation that successfully
-                            waived the
-                            monetary credit fee for voting eligibility by default, allowing broader civic
-                            participation and
-                            incentivizing voter attendance.</p>
+                    <div class="banner-ad page large2">
+                        <span>YOUR AD HERE</span>
                     </div>
                 </div>
             </div>
 
             <div class="tab-panel" data-tab="plan">
-                <h1>Plan for Change</h1>
-                <div class="simple-grid">
-                    <div>
-                        <h2>Social Investment</h2>
-                        <p>Invest in those who deserve it and are seeking to contribute to our District's productivity.
-                            Citizens who contribute to the District, whether as a Collaborator or labourer, will be duly
-                            rewarded for their ethics.</p>
+                <div class="content-container">
+                    <div class="main-content">
+                        <h1>Plan for Change</h1>
+                        <div class="simple-grid">
+                            <div>
+                                <h2>Social Investment</h2>
+                                <p>Invest in those who deserve it and are seeking to contribute to our District's
+                                    productivity.
+                                    Citizens who contribute to the District, whether as a Collaborator or labourer,
+                                    will be
+                                    duly
+                                    rewarded for their ethics.</p>
+                            </div>
+                            <div>
+                                <h2>Providing Opportunities</h2>
+                                <p>Provide labour and business opportunities to citizens to successfully integrate
+                                    into the
+                                    workforce.
+                                    Through our initiatives, citizens will be able to find productive, streamlined
+                                    employment
+                                    regardless of
+                                    status or tier.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h2>Providing Opportunities</h2>
-                        <p>Provide labour and business opportunities to citizens to successfully integrate into the
-                            workforce.
-                            Through our initiatives, citizens will be able to find productive, streamlined employment
-                            regardless of
-                            status or tier.</p>
+                    <div class="banner-ad page large2">
+                        <span>YOUR AD HERE</span>
                     </div>
                 </div>
             </div>
 
             <div class="tab-panel" data-tab="people">
-                <h1>Labour People</h1>
-                <div class="profile">
-                    <div class="profile-info">
-                        <div class="data">
-                            <span class="role">District Councillor</span>
-                            <span class="title">Horatio Kingsley BSC</span>
-                        </div>
-                        <div class="profile-img" style="margin-bottom: 8px;"><img
-                                src="https://i.ibb.co/BVs3mPGx/coun.png">
-                        </div>
-                        <div style="display: inline-block; position: relative; text-align: center;">
-                            <span
-                                style="position: absolute; color: var(--labour-head); font-size: 18px; font-weight: 700; left: 50%; transform: translateX(-50%); margin-block: 0; white-space: nowrap; bottom: -26px; letter-spacing: 5px;">
-                                Party Leader
-                            </span>
-                        </div>
-                    </div>
-                    <div class="profile-bio">
-                        <p>
-                            Horatio Kingsley was born to an English father and a Scottish mother. Raised in Luton. He
-                            grew up in a working-class family with his mother as a stay-at-home wife and his father as a
-                            railway worker. At secondary school and sixth form, he was an excellent student studying
-                            humanities and ascended into the London School of Economics, studying Politics, Philosophy
-                            and Economics.
-                        </p>
-                        <p>
-                            Whilst at university, he began to associate with the Young Labour wing of the Labour Party.
-                            Politically engaged, he has remained class-conscious, seeking to drive down wealth
-                            inequality. After the UN-backed peace accords with the Combine. Horatio was a founding
-                            member of the new Labour Co-Operative in City Two.
+                <div class="content-container">
+                    <div class="main-content">
+                        <h1>Labour People</h1>
+                        <div class="profile">
+                            <div class="profile-info">
+                                <div class="data">
+                                    <span class="role">District Councillor</span>
+                                    <span class="title">Horatio Kingsley BSC</span>
+                                </div>
+                                <div class="profile-img" style="margin-bottom: 8px;"><img
+                                        src="https://i.ibb.co/BVs3mPGx/coun.png">
+                                </div>
+                                <div style="display: inline-block; position: relative; text-align: center;">
+                                    <span
+                                        style="position: absolute; color: var(--labour-head); font-size: 18px; font-weight: 700; left: 50%; transform: translateX(-50%); margin-block: 0; white-space: nowrap; bottom: -26px; letter-spacing: 5px;">
+                                        Party Leader
+                                    </span>
+                                </div>
+                            </div>
 
-                        </p>
-                        <p>
-                            After being drawn towards City Thirteen as part of the relocation plans taking place. He
-                            imported the ideology of the Labour Party. Experiencing a degree of success within City
-                            Thirteen and developed some relevance. Horatio remains a newly elected Councillor of
-                            District Seven.
-                        </p>
+                            <div class="profile-bio">
+                                <p>
+                                    Horatio Kingsley was born to an English father and a Scottish mother. Raised in
+                                    Luton.
+                                    He
+                                    grew up in a working-class family with his mother as a stay-at-home wife and his
+                                    father
+                                    as a
+                                    railway worker. At secondary school and sixth form, he was an excellent student
+                                    studying
+                                    humanities and ascended into the London School of Economics, studying Politics,
+                                    Philosophy
+                                    and Economics.
+                                </p>
+                                <p>
+                                    Whilst at university, he began to associate with the Young Labour wing of the
+                                    Labour
+                                    Party.
+                                    Politically engaged, he has remained class-conscious, seeking to drive down
+                                    wealth
+                                    inequality. After the UN-backed peace accords with the Combine. Horatio was a
+                                    founding
+                                    member of the new Labour Co-Operative in City Two.
 
-                    </div>
-                </div>
-                <div class="profile">
-                    <div class="profile-info">
-                        <div class="data">
-                            <span class="role">District Councillor</span>
-                            <span class="title">Tim Keyes</span>
-                        </div>
-                        <div class="profile-img"><img src="https://i.ibb.co/FqgDWsVG/eerie2.png">
-                        </div>
-                    </div>
-                    <div class="profile-bio">
-                        <p>
-                            In 2008, Tim Keyes was elected as a Councillor for District 7 of City 13. Mr. Keyes has
-                            served in several roles encompassing finance, security, economic development, and municipal
-                            policy and initiatives for the betterment of City 13. Most notably, prior to his election,
-                            he was responsible for drafting key policy and legislative proposals to support economic,
-                            political, and public health reform.
-                        </p>
-                        <p>
-                            Mr. Keyes began his career as a public servant as a clerk in a fiscal department, assisting
-                            with budgets and advising appropriate usage of funds. Previously, Tim held a position in the
-                            Union Civil Bureau as a Financial Adjustor and Economic Advisor.
-                        </p>
-                        <p>
-                            He dedicated hours on end
-                            going through forms and files to ensure the budget of the district was being allocated as
-                            decreed, and combated embezzlement so that no municipal forums would be without the assets
-                            needed to better serve the interest of the public and the city.
+                                </p>
+                                <p>
+                                    After being drawn towards City Thirteen as part of the relocation plans taking
+                                    place. He
+                                    imported the ideology of the Labour Party. Experiencing a degree of success
+                                    within City
+                                    Thirteen and developed some relevance. Horatio remains a newly elected
+                                    Councillor of
+                                    District Seven.
+                                </p>
 
-                        </p>
-                        <p>
-                            Tim, after his election, has pledged to continue in his fight against embezzlement and
-                            trivialization of law and policy.
+                            </div>
+                        </div>
+                        <div class="profile">
+                            <div class="profile-info">
+                                <div class="data">
+                                    <span class="role">District Councillor</span>
+                                    <span class="title">Tim Keyes</span>
+                                </div>
+                                <div class="profile-img"><img src="https://i.ibb.co/FqgDWsVG/eerie2.png">
+                                </div>
+                            </div>
+                            <div class="profile-bio">
+                                <p>
+                                    In 2008, Tim Keyes was elected as a Councillor for District 7 of City 13. Mr.
+                                    Keyes has
+                                    served in several roles encompassing finance, security, economic development,
+                                    and
+                                    municipal
+                                    policy and initiatives for the betterment of City 13. Most notably, prior to his
+                                    election,
+                                    he was responsible for drafting key policy and legislative proposals to support
+                                    economic,
+                                    political, and public health reform.
+                                </p>
+                                <p>
+                                    Mr. Keyes began his career as a public servant as a clerk in a fiscal
+                                    department,
+                                    assisting
+                                    with budgets and advising appropriate usage of funds. Previously, Tim held a
+                                    position in
+                                    the
+                                    Union Civil Bureau as a Financial Adjustor and Economic Advisor.
+                                </p>
+                                <p>
+                                    He dedicated hours on end
+                                    going through forms and files to ensure the budget of the district was being
+                                    allocated
+                                    as
+                                    decreed, and combated embezzlement so that no municipal forums would be without
+                                    the
+                                    assets
+                                    needed to better serve the interest of the public and the city.
 
-                        </p>
-                    </div>
-                </div>
-                <div class="profile">
-                    <div class="profile-info">
-                        <div class="data">
-                            <span class="role">District Councillor</span>
-                            <span class="title">Youssef Sayagh</span>
+                                </p>
+                                <p>
+                                    Tim, after his election, has pledged to continue in his fight against
+                                    embezzlement and
+                                    trivialization of law and policy.
+
+                                </p>
+                            </div>
                         </div>
-                        <div class="profile-img"><img src="https://i.ibb.co/zhHYDJrK/Youssef.png">
+                        <div class="profile">
+                            <div class="profile-info">
+                                <div class="data">
+                                    <span class="role">District Councillor</span>
+                                    <span class="title">Youssef Sayagh</span>
+                                </div>
+                                <div class="profile-img"><img src="https://i.ibb.co/zhHYDJrK/Youssef.png">
+                                </div>
+                            </div>
+                            <div class="profile-bio">
+                                <p>
+                                    Youssef Sayagh is a Muslim-born Lebanese Arab elected to serve as Councillor for
+                                    District 7
+                                    of City 13. Born in Nabatiye on July 12th, 1960 to a Shiite household, Youssef
+                                    Sayagh
+                                    began
+                                    his political career in 1992, when he was elected to the Lebanese Chamber of
+                                    Deputies.
+                                    He
+                                    served two terms as deputy before resigning during his second term following the
+                                    U.N-backed
+                                    Peace Accords with the Combine.
+                                </p>
+                                <p>
+                                    Following the Peace Accords, Mr. Sayagh was relocated to City 13 along with
+                                    other
+                                    Lebanese
+                                    refugees. Returning to the political scene in 2006 and joining the progressive
+                                    Islamist
+                                    Green Party, Mr. Sayagh began his administrative career as secretary to former
+                                    Councillor
+                                    Al-Najjar before succeeding Mr. Al-Najjar as Councillor of District 7 following
+                                    Mr.
+                                    Al-Najjar’s death in 2007.
+                                </p>
+                                <p>
+                                    As Councillor, Mr. Sayagh committed himself to preserving religious freedoms and
+                                    representing City 13’s Muslim diaspora. In mid-2007, he joined the Harmony
+                                    Coalition,
+                                    caucusing with the Combine Liberal Co-operative before, in late 2007, joining
+                                    the
+                                    Combine
+                                    Liberal Co-operative following a successful party merger, bringing his Muslim
+                                    constituents
+                                    with him.
+                                </p>
+                                <p>
+                                    In 2008, Mr. Sayagh was re-elected Councillor for District 7 as part of the
+                                    Combine
+                                    Liberal
+                                    Co-operative ticket. As Councillor, Mr. Sayagh has pledged to strengthen social
+                                    policies,
+                                    preserve religious freedoms, and represent his Muslim and non-Muslim
+                                    constituents.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-bio">
-                        <p>
-                            Youssef Sayagh is a Muslim-born Lebanese Arab elected to serve as Councillor for District 7
-                            of City 13. Born in Nabatiye on July 12th, 1960 to a Shiite household, Youssef Sayagh began
-                            his political career in 1992, when he was elected to the Lebanese Chamber of Deputies. He
-                            served two terms as deputy before resigning during his second term following the U.N-backed
-                            Peace Accords with the Combine.
-                        </p>
-                        <p>
-                            Following the Peace Accords, Mr. Sayagh was relocated to City 13 along with other Lebanese
-                            refugees. Returning to the political scene in 2006 and joining the progressive Islamist
-                            Green Party, Mr. Sayagh began his administrative career as secretary to former Councillor
-                            Al-Najjar before succeeding Mr. Al-Najjar as Councillor of District 7 following Mr.
-                            Al-Najjar’s death in 2007.
-                        </p>
-                        <p>
-                            As Councillor, Mr. Sayagh committed himself to preserving religious freedoms and
-                            representing City 13’s Muslim diaspora. In mid-2007, he joined the Harmony Coalition,
-                            caucusing with the Combine Liberal Co-operative before, in late 2007, joining the Combine
-                            Liberal Co-operative following a successful party merger, bringing his Muslim constituents
-                            with him.
-                        </p>
-                        <p>
-                            In 2008, Mr. Sayagh was re-elected Councillor for District 7 as part of the Combine Liberal
-                            Co-operative ticket. As Councillor, Mr. Sayagh has pledged to strengthen social policies,
-                            preserve religious freedoms, and represent his Muslim and non-Muslim constituents.
-                        </p>
                     </div>
                 </div>
             </div>
 
             <div class="tab-panel" data-tab="news">
-                <h1>News & Updates</h1>
-                <p class="sub">The latest announcements from the Combine Labour Co-Operative.</p>
-                <div class="news-up-list">
-                    <div class="news-up-item">
-                        <div class="meta"><span id="date"></span> <span class="badge"></span></div>
-                        <h3></h3>
-                        <p></p>
+                <div class="content-container body-main">
+                    <div>
+                        <div class="main-content">
+                            <h1>News & Updates</h1>
+                            <p class="sub">The latest announcements from the Combine Labour Co-Operative.</p>
+                            <div class="news-up-list">
+                                <div class="news-up-item">
+                                    <div class="meta"><span id="date"></span> <span class="badge"></span></div>
+                                    <h3></h3>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="banner-ad page large">
+                            <span>YOUR AD HERE</span>
+                        </div>
+                    </div>
+                    <div class="side-content">
+                        <div class="sidebar-container contact">
+                            <header>
+                                <span>Stay Connected</span>
+                                <h2>Contact us here</h2>
+                            </header>
+                            <div>
+                                <span style="font-size: 15px;">Get official updates from us.
+                                    Weekly releases, campaign notices, and event announcements.</span>
+                                <textarea placeholder="Enter your Name & CID"
+                                    style="margin-block: 12px; width: 85%; height: 30px; padding-top: 15px; resize: none; display: block; margin: 18px auto; padding: 6px 12px; background: rgba(248, 248, 248, 1); font-weight: 700; text-transform: uppercase; border: rgba(200, 200, 200); color:#636262; text-align: center; border-radius: 4px;"></textarea>
+                                <div class="fake-button" style="display: flex; justify-self: center;">
+                                    STAY
+                                    INFORMED
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sidebar-container list" style="position: relative;">
+                            <div class="button-list click">
+                                <img src="https://i.ibb.co/bRj4dCzc/clc-2-1.png"><span>Donate</span>
+                            </div>
+                            <div class="button-list click">
+                                <img src="https://i.ibb.co/bRj4dCzc/clc-2-1.png"><span>Join The Party</span>
+                            </div>
+                            <div class="button-list click" style="background: rgba(116, 116, 116, 0.15); z-index: 1;">
+                                <span>Voluntr</span>
+                            </div>
+                            <div class="button-list click"
+                                style="position: absolute; bottom: 0; opacity: 0.4; left: 25px; width: 200px; z-index: 0; background: rgba(116, 116, 116, 0.15);">
+                                <a href="https://willard.network/forums/threads/youssef-sayegh.16150/"
+                                    style="text-decoration: none;"><span>Vol</span></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <footer style="padding: -20px;">
+        <footer>
             <div class="footer-rows">
                 <div class="footer-row">
                     <div>
@@ -966,7 +1353,7 @@
                     </div>
                 </div>
                 <div
-                    style="margin: 50px auto 0; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
+                    style="padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
                     <div>
                         CMB
                         <span style="margin-left: 12px; color: var(--text-color); text-decoration: none;">English</span>
@@ -1058,7 +1445,7 @@
         }
     });
 
-    document.querySelectorAll('.fake-button').forEach(function (btn) {
-        btn.addEventListener('click', playClickSound);
+    document.querySelectorAll('.fake-button, .click').forEach(function (el) {
+        el.addEventListener('click', playClickSound);
     });
 </script>

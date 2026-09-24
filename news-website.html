@@ -1,0 +1,1078 @@
+<style>
+    /* Font Imports */
+    @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Page Shell */
+    .body-wrap {
+        --text-color-main: #333;
+        background: #f5f5f5;
+        border: solid 3px black;
+        color: var(--text-color-main);
+        font-family: 'Exo 2', 'Barlow', Arial, sans-serif;
+        margin: 40px auto;
+        max-width: 1042px;
+        min-height: 1080px;
+    }
+
+    /* Page Layout */
+    .body-wrap .layout {
+        --kicker-color: #c70000;
+        --line-color: #c8c8c8;
+        /* --red-text-color: #c52237; */
+        --red-text-color: #00038f;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: minmax(0, 1fr) 280px;
+        min-height: 600px;
+        padding: 22px;
+    }
+
+    .section-wrap {
+        background: rgb(136 22 22 / 1%);
+        padding: 10px;
+    }
+
+    /* Header & Masthead */
+
+    .body-wrap .masthead {
+        /* background: #3d67ad; */
+        background: #11213b;
+        /* border-bottom: 3px solid #fff; */
+        color: #9d2f2f;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .body-wrap .masthead-icon {
+        align-items: center;
+        height: 80%;
+        margin: 0;
+        min-width: 0;
+        overflow: hidden;
+        padding: 8px;
+        width: auto;
+    }
+
+    .body-wrap .masthead-icon img {
+        display: block;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        width: auto;
+    }
+
+    .body-wrap .masthead-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0;
+        height: 100%;
+        justify-content: center;
+        min-width: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .body-wrap .masthead-search {
+        align-self: center;
+        display: flex;
+        margin: 0;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .body-wrap .masthead-search input {
+        background: #fff;
+        border: 2px inset #d7d7d7;
+        color: #222;
+        flex: 1;
+        font: 11px Arial, sans-serif;
+        height: 22px;
+        min-width: 0;
+        padding: 2px 5px;
+    }
+
+    .body-wrap .masthead-search button {
+        background: #d7d7d7;
+        border: 2px outset #f2f2f2;
+        color: #111;
+        cursor: pointer;
+        font: bold 10px Arial, sans-serif;
+        height: 22px;
+        margin-left: 4px;
+        padding: 0 8px;
+        text-transform: uppercase;
+    }
+
+    .body-wrap .masthead-search button:active {
+        border-style: inset;
+        border-bottom: 2px solid red !important;
+    }
+
+    @media (max-width: 650px) {
+        .body-wrap .masthead {
+            grid-template-columns: minmax(0, 1fr) minmax(150px, 220px) minmax(0, 1fr);
+            height: 100px;
+            min-height: 0;
+        }
+
+        .body-wrap .masthead-icon {
+            padding: 12px 4px;
+        }
+    }
+
+    /* Navigation */
+    .body-wrap .navigation {
+        background: linear-gradient(#fafafa, #ddd);
+        border-bottom: 2px solid #222;
+        display: flex;
+        min-height: 44px;
+    }
+
+    .body-wrap .navigation ul {
+        align-items: stretch;
+        display: flex;
+        flex: 1;
+        gap: 2px;
+        list-style: none;
+        margin: 0;
+        min-height: 42px;
+        padding: 0 18px;
+        flex-wrap: wrap;
+    }
+
+    .body-wrap .navigation li {
+        align-items: center;
+        border: 2px outset #f2f2f2;
+        cursor: pointer;
+        display: flex;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 0 13px;
+    }
+
+    .body-wrap .navigation li.active {
+        background: white;
+        border-style: inset;
+        box-shadow: inset 0 -2px 0 var(--red-text-color);
+        color: var(--red-text-color);
+    }
+
+    .body-wrap .navigation li:focus-visible {
+        outline: 2px solid var(--red-text-color);
+        outline-offset: -2px;
+    }
+
+    /* Tab Panels */
+    .body-wrap .tab-panel[hidden] {
+        display: none;
+    }
+
+    .body-wrap .tab-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Main Column */
+    .body-wrap .kicker {
+        color: var(--kicker-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+    }
+
+    .body-wrap .main-news .kicker {
+        margin-top: 8px;
+    }
+
+    .body-wrap h1.page-title {
+        border-bottom: 1px solid var(--line-color);
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 39px;
+        letter-spacing: 2.5px;
+        margin: 0 0 12px;
+        padding-bottom: 6px;
+        text-transform: uppercase;
+    }
+
+    /* Lead Story Layout */
+    .main-news {
+        align-items: stretch;
+        display: grid;
+        gap: 14px;
+        grid-template-columns: 1.7fr 1fr;
+        margin-bottom: 18px;
+    }
+
+    .primary-news,
+    .secondary-news {
+        align-content: stretch;
+        display: grid;
+        gap: 15px;
+    }
+
+    /* Article Cards */
+    .body-wrap .main-column .main-news .news-item {
+        margin-bottom: 20px;
+    }
+
+    .body-wrap .news-article {
+        border-bottom: 1px solid var(--line-color);
+        padding-bottom: 12px;
+    }
+
+    .body-wrap .news-article.headline {
+        margin-bottom: 0;
+    }
+
+    .body-wrap .stories .news-article .photo {
+        height: 125px;
+    }
+
+    .body-wrap .stories .news-article .kicker {
+        margin-top: 2px;
+    }
+
+    .body-wrap .news-article .photo {
+        height: 170px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .body-wrap .news-article.headline .photo {
+        height: 250px;
+    }
+
+    .body-wrap .news-article .photo img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Image Label */
+    .body-wrap .image-wrap {
+        position: relative;
+    }
+
+    .body-wrap .image-wrap .class-label {
+        position: absolute;
+        background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
+        top: 0;
+        left: 0;
+        padding: 4px 6px;
+        color: white;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    /* Article Content */
+    .body-wrap .news-article .kicker {
+        font-weight: bold;
+    }
+
+    .body-wrap .news-article h3 {
+        color: var(--text-color-main);
+        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.15;
+        margin: 8px 0 5px;
+        text-transform: uppercase;
+    }
+
+    .body-wrap .news-article.headline h3 {
+        font-size: 32px;
+    }
+
+    .summary {
+        color: var(--text-color-main);
+        font-size: 13px;
+        line-height: 1.45;
+        margin-bottom: 10px;
+    }
+
+    .date {
+        color: #666;
+        font-size: 10px;
+        margin-top: 7px;
+    }
+
+    /* More Stories */
+    .body-wrap .stories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    /* Side-Column */
+    .body-wrap .side-column {
+        background: rgb(136 22 22 / 1%);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        height: fit-content;
+        padding: 10px;
+        padding-bottom: 24px;
+    }
+
+    /* Sidebar Widgets */
+    .body-wrap .side-widget {
+        /* background: rgb(228, 228, 228); */
+        /* border: 2px outset #f2f2f2; */
+        border-bottom: rgb(250, 250, 250) solid 2px;
+        border-left: rgb(250, 250, 250) solid 2px;
+        border-right: var(--line-color) solid 1px;
+        border-top: solid 3px #333;
+        padding: 18px;
+    }
+
+    .body-wrap .side-widget h2 {
+        font-family: 'Poppins', system-ui, sans-serif;
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .body-wrap .side-widget .side-widget-title {
+        border-bottom: 1px solid var(--line-color);
+        margin-bottom: 12px;
+    }
+
+    .body-wrap .side-widget article {
+        border-bottom: 1px solid var(--line-color);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.35;
+        font-size: 14px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+
+    }
+
+    .body-wrap .side-widget article:last-child {
+        border-bottom: none;
+    }
+
+    .body-wrap .side-widget ul {
+        list-style: none;
+    }
+
+    .body-wrap .side-widget span.title {
+        font-style: italic;
+        color: var(--red-text-color) !important;
+        overflow: hidden;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    /* Sidebar Advertisements */
+    .body-wrap .side-advert {
+        border-top: solid 3px #333;
+        height: 300px;
+        border-bottom: rgb(250, 250, 250) solid 2px;
+        border-left: rgb(250, 250, 250) solid 2px;
+        border-right: var(--line-color) solid 1px;
+    }
+
+    .body-wrap .side-advert img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Contact Widget */
+    .body-wrap .side-widget.contact {
+        line-height: 1;
+        margin: 0;
+        margin-bottom: 12px;
+    }
+
+    .body-wrap .side-widget.contact .contact-title {
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+        font-family: 'Poppins', system-ui, sans-serif;
+        letter-spacing: 1px;
+        line-height: 1.75;
+        margin-bottom: 12px;
+    }
+
+    .body-wrap .side-widget.contact .contact-title h2 {
+        border-bottom: unset;
+        font-size: 22px !important;
+        font-size: unset;
+        line-height: 1;
+        margin-bottom: 12px;
+        padding-bottom: unset;
+    }
+
+    /* .body-wrap .side-widget.contact .contact-content {
+        font-family: 'Exo 2', sans-serif;
+    } */
+
+    .body-wrap .side-widget.contact .contact-title span,
+    .body-wrap .side-widget.contact .contact-content {
+        font-family: 'Exo 2', sans-serif;
+    }
+
+    .body-wrap .side-widget.contact .contact-content span {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    /* Side Column Logo */
+    .body-wrap .side-column-logo {
+        text-align: center;
+    }
+
+    .body-wrap .side-column-logo img {
+        max-width: 60%;
+        height: auto;
+    }
+
+    /* Advertisements */
+    /* Wide Image Advertisement */
+    .body-wrap .advertisement-wide {
+        height: 100px;
+        margin: 20px 0;
+        margin-top: 50px;
+        overflow: hidden;
+        text-align: center;
+        width: 100%;
+    }
+
+    .body-wrap .advertisement-wide img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Grid Advertisement */
+    .body-wrap .advertisement-wide-grid {
+        background: #e4e4e4;
+        border: 1px solid var(--line-color);
+        color: var(--text-color-main);
+        display: grid;
+        grid-template-columns: 100px minmax(0, 1fr);
+        margin: 20px 0;
+        min-height: 100px;
+    }
+
+    .body-wrap .advertisement-wide-grid-icon {
+        border-right: 1px solid var(--line-color);
+        display: grid;
+        overflow: hidden;
+        place-items: center;
+    }
+
+    .body-wrap .advertisement-wide-grid-icon img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .body-wrap .advertisement-wide-grid-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        justify-content: center;
+        padding: 14px 18px;
+        text-align: center;
+    }
+
+    .body-wrap .advertisement-wide-grid-content h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 18px;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    .body-wrap .advertisement-wide-grid-content p {
+        margin: 0;
+    }
+
+    .body-wrap .advertisement-wide-grid-content p:last-child {
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+    .body-wrap .advertisement-wide-grid-label {
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /* Footer Copied */
+    .body-wrap footer {
+        border-bottom: 1px solid var(--line-color);
+        border-top: 1px solid var(--line-color);
+    }
+
+    .body-wrap .footer-rows {
+        background: #e4e4e4;
+        color: #666;
+        font-size: 14px;
+        padding: 20px 40px 30px;
+    }
+
+    .body-wrap .footer-row {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .body-wrap footer h4 {
+        color: var(--text-color-main);
+        font-weight: bolder;
+        margin: 0 0 12px;
+    }
+
+    .body-wrap footer ul {
+        cursor: pointer;
+        line-height: 1.8;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-wrap .footer-sections ul {
+        column-gap: 40px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(4, auto);
+    }
+
+    .body-wrap .footer-row img {
+        height: 60px;
+        margin-bottom: 16px;
+    }
+
+    .body-wrap .footer strong {
+        font-weight: bolder;
+    }
+
+    .body-wrap .bottom-divider {
+        border-bottom: 1px solid var(--line-color);
+        padding-bottom: 24px;
+    }
+
+    /* Hover Effects */
+    /* .body-wrap .news-article:hover {
+        transform: scale(1.005);
+        transition: transform 0.3s ease;
+    } */
+
+    .body-wrap .news-article:hover h3 {
+        color: var(--red-text-color);
+    }
+
+    .body-wrap .navigation ul li:hover {
+        border-style: inset;
+        color: var(--red-text-color);
+        background: #fff;
+    }
+
+    /* Fake Button */
+    .body-wrap .fake-button {
+        display: flex;
+        border-radius: 4px;
+        padding: 12px 42px;
+        font-size: 18px;
+        font-weight: 900;
+        margin-top: 12px;
+        color: #fff;
+        background: rgb(201, 201, 201);
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: filter 0.2s;
+        user-select: none;
+    }
+
+    .body-wrap .fake-button a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .body-wrap .fake-button:hover {
+        filter: brightness(0.8);
+    }
+
+    .body-wrap .fake-button a:active,
+    .body-wrap .fake-button a:visited {
+        color: unset;
+    }
+</style>
+
+<div class="body-wrap">
+    <header>
+        <div class="masthead">
+            <div class="masthead-icon">
+                <img src="https://i.ibb.co/0jdZLLJR/news-logo-large.png" alt="Le Nouvelle Citoyen Logo"
+                    title="Le Nouvelle Citoyen">
+            </div>
+            <div class="masthead-content">
+                <form class="masthead-search" role="search">
+                    <input type="search" aria-label="Search the Le Nouvelle Citoyen archive"
+                        placeholder="Search the archive">
+                    <button type="button">Search</button>
+                </form>
+            </div>
+            <div class="masthead-icon">
+                <img src="https://i.ibb.co/Gv1X3SQQ/c13-logo.png" alt="City Logo" title="City 13">
+            </div>
+        </div>
+        <nav class="navigation" aria-label="News sections">
+            <ul role="tablist">
+                <li id="tab-home" class="active" data-tab="home" role="tab" tabindex="0" aria-controls="panel-home"
+                    aria-selected="true">Home</li>
+                <li id="tab-city" data-tab="city" role="tab" tabindex="-1" aria-controls="panel-city"
+                    aria-selected="false">City 13</li>
+                <li id="tab-politics" data-tab="politics" role="tab" tabindex="-1" aria-controls="panel-politics"
+                    aria-selected="false">Politics</li>
+                <li id="tab-announcements" data-tab="announcements" role="tab" tabindex="-1"
+                    aria-controls="panel-announcements" aria-selected="false">Announcements</li>
+                <li id="tab-economy" data-tab="economy" role="tab" tabindex="-1" aria-controls="panel-economy"
+                    aria-selected="false">Economy</li>
+                <li id="tab-society" data-tab="society" role="tab" tabindex="-1" aria-controls="panel-society"
+                    aria-selected="false">Society</li>
+                <li id="tab-opinion" data-tab="opinion" role="tab" tabindex="-1" aria-controls="panel-opinion"
+                    aria-selected="false">Opinion</li>
+                <li id="tab-about" data-tab="about" role="tab" tabindex="-1" aria-controls="panel-about"
+                    aria-selected="false">About</li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="panel-home" class="tab-panel active" data-tab="home" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-home">
+            <div class="layout">
+                <div class="main-column">
+                    <div class="section-wrap">
+                        <div class="home-intro">
+                            <div class="kicker">Front Page</div>
+                            <h1 class="page-title">
+                                Current News
+                            </h1>
+                        </div>
+                        <div class="main-news">
+                            <div class="primary-news">
+                                <article class="news-article headline">
+                                    <div class="image-wrap">
+                                        <div class="photo">
+                                            <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                alt="City 13 lockdown news coverage"
+                                                title="City 13 to impose lockdown following Red Thursday">
+                                            <div class="class-label">Breaking News</div>
+                                        </div>
+                                    </div>
+                                    <div class="kicker">News</div>
+                                    <h3>CITY 13 TO IMPOSE LOCKDOWN FOLLOWING RED THURSDAY</h3>
+                                    <div class="summary">City 13 imposes city-wide lockdown.</div>
+                                    <div class="date">April 27, 2007</div>
+                                </article>
+                            </div>
+                            <div class="secondary-news">
+                                <article class="news-article">
+                                    <div class="photo">
+                                        <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                            alt="District 4 news coverage"
+                                            title="Richard Pelletier addresses District 4's infestation">
+                                    </div>
+                                    <div class="kicker">Breaking News</div>
+                                    <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                    <div class="summary">Richard Pelletier speaks to District 4.
+                                    </div>
+                                    <div class="date">April 27, 2007</div>
+                                </article>
+                                <!-- <article class="news-article">
+                                <div class="photo">
+                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg">
+                                </div>
+                                <div class="kicker">Breaking News</div>
+                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                <div class="summary">Richard Pelletier speaks to District 4.
+                                </div>
+                                <div class="date">April 27, 2007</div>
+                            </article> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section-wrap">
+                        <div class="stories">
+                            <article class="news-article">
+                                <div class="photo">
+                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                        alt="District 4 news coverage"
+                                        title="Richard Pelletier addresses District 4's infestation">
+                                </div>
+                                <div class="kicker">Breaking News</div>
+                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                <div class="summary">Richard Pelletier speaks to District 4.
+                                </div>
+                                <div class="date">April 27, 2007</div>
+                            </article>
+                            <article class="news-article">
+                                <div class="photo">
+                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                        alt="District 4 news coverage"
+                                        title="Richard Pelletier addresses District 4's infestation">
+                                </div>
+                                <div class="kicker">Breaking News</div>
+                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                <div class="summary">Richard Pelletier speaks to District 4.
+                                </div>
+                                <div class="date">April 27, 2007</div>
+                            </article>
+                            <article class="news-article">
+                                <div class="photo">
+                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                        alt="District 4 news coverage"
+                                        title="Richard Pelletier addresses District 4's infestation">
+                                </div>
+                                <div class="kicker">Breaking News</div>
+                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                <div class="summary">Richard Pelletier speaks to District 4.
+                                </div>
+                                <div class="date">April 27, 2007</div>
+                            </article>
+                            <article class="news-article">
+                                <div class="photo">
+                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                        alt="District 4 news coverage"
+                                        title="Richard Pelletier addresses District 4's infestation">
+                                </div>
+                                <div class="kicker">Breaking News</div>
+                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                                <div class="summary">Richard Pelletier speaks to District 4.
+                                </div>
+                                <div class="date">April 27, 2007</div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="advertisement-wide-grid">
+                        <div class="advertisement-wide-grid-icon">
+                            <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                alt="Advertisement graphic" title="Advertisement">
+                        </div>
+                        <div class="advertisement-wide-grid-content">
+                            <h2>Advertisement</h2>
+                            <p>Your advertisement content goes here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="side-column">
+                    <div class="side-widget">
+                        <div class="side-widget-title">
+                            <h2>Latest News</h2>
+                        </div>
+                        <article>
+                            <span class="title">Labour To Host Annual Party platform September 1st</span>
+                            <span">April 27, 2007</span>
+                        </article>
+                        <article>
+                            <span class="title">Latest News Item</span>
+                            <span>April 27, 2007</span>
+                        </article>
+                        <article>
+                            <span class="title">Latest News Item</span>
+                            <span>April 27, 2007</span>
+                        </article>
+                    </div>
+                    <div class="side-widget">
+                        <div class="side-widget-title">
+                            <h2>Editor's Pick</h2>
+                        </div>
+                        <article>
+                            <span class="title">Labour To Host Annual Party platform September 1st</span>
+                            <span>April 27, 2007</span>
+                        </article>
+                        <article>
+                            <span class="title">Labour To Host Annual Party platform September 1st</span>
+                            <span>April 27, 2007</span>
+                        </article>
+                        <article>
+                            <span class="title">Labour To Host Annual Party platform September 1st</span>
+                            <span>April 27, 2007</span>
+                        </article>
+                    </div>
+
+                    <div class="side-advert">
+                        <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                            alt="Advertisement graphic" title="Advertisement">
+                    </div>
+                    <div class="side-widget contact">
+                        <div class="contact-title">
+                            <span>Got a story to share?</span>
+                            <h2>Contact us here</h2>
+                        </div>
+                        <div class="contact-content">
+                            <span>Covering all stories from across District 7 and City 13.
+                                Weekly news, politics, events, and city announcements</span>
+                            <!-- <textarea placeholder="Enter your Name & CID"
+                                style="margin-block: 12px; width: 85%; height: 30px; padding-top: 15px; resize: none; display: block; margin: 18px auto; padding: 6px 12px; background: rgba(248, 248, 248, 1); font-weight: 700; text-transform: uppercase; border: rgba(200, 200, 200); color:#636262; text-align: center; border-radius: 4px;"></textarea> -->
+                            <div class="fake-button" style="display: flex; justify-self: center;">
+                                <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                    target="_blank" rel="noopener">CLICK HERE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="side-column-logo">
+                        <img src="https://i.ibb.co/0ydBg5Tq/clc.png" alt="Le Lien Civil logo" title="Le Lien Civil">
+                    </div> -->
+                </aside>
+            </div>
+        </section>
+        <section id="panel-city" class="tab-panel" data-tab="city" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-city" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">City 13</h1>
+                </div>
+            </div>
+        </section>
+        <section id="panel-politics" class="tab-panel" data-tab="politics" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-politics" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">Politics</h1>
+                    <div class="stories">
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="District 4 news coverage"
+                                    title="Richard Pelletier addresses District 4's infestation">
+                            </div>
+                            <div class="kicker">Breaking News</div>
+                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">Richard Pelletier speaks to District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="District 4 news coverage"
+                                    title="Richard Pelletier addresses District 4's infestation">
+                            </div>
+                            <div class="kicker">Breaking News</div>
+                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">Richard Pelletier speaks to District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="District 4 news coverage"
+                                    title="Richard Pelletier addresses District 4's infestation">
+                            </div>
+                            <div class="kicker">Breaking News</div>
+                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">Richard Pelletier speaks to District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="panel-announcements" class="tab-panel" data-tab="announcements" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-announcements" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">Announcements</h1>
+                    <div class="stories">
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="Announcements coverage" title="Public notice on District 4's infestation">
+                            </div>
+                            <div class="kicker">Announcement</div>
+                            <h3>PUBLIC NOTICE ON DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">A public notice regarding the situation in District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="panel-economy" class="tab-panel" data-tab="economy" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-economy" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">Economy</h1>
+                    <div class="stories">
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="District 4 news coverage"
+                                    title="Richard Pelletier addresses District 4's infestation">
+                            </div>
+                            <div class="kicker">Breaking News</div>
+                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">Richard Pelletier speaks to District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="panel-society" class="tab-panel" data-tab="society" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-society" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">Society</h1>
+                    <p>Add culture, education, health, neighborhood life, and community features here.</p>
+                </div>
+            </div>
+        </section>
+        <section id="panel-opinion" class="tab-panel" data-tab="opinion" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-opinion" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Section Starter</div>
+                    <h1 class="page-title">Opinion</h1>
+                    <div class="stories">
+                        <article class="news-article">
+                            <div class="photo">
+                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                    alt="Opinion coverage" title="Editorial on District 4's infestation">
+                            </div>
+                            <div class="kicker">Opinion</div>
+                            <h3>EDITORIAL ON DISTRICT 4'S INFESTATION</h3>
+                            <div class="summary">An editorial discussing the situation in District 4.
+                            </div>
+                            <div class="date">April 27, 2007</div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="panel-about" class="tab-panel" data-tab="about" role="tabpanel" tabindex="-1"
+            aria-labelledby="tab-about" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap">
+                    <div class="kicker">Publication</div>
+                    <h1 class="page-title">About</h1>
+                    <p>Add the publication's mission, editorial standards, contact information, and staff details
+                        here.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-rows">
+            <div class="footer-row">
+                <div>
+                    <img src="https://i.ibb.co/0jdZLLJR/news-logo-large.png" alt="Le Nouvelle Citoyen logo"
+                        title="Le Nouvelle Citoyen">
+                    <p style="margin: 8px 0;"><strong>Le Nouvelle Citoyen</strong><br>
+                        City 13, District 7</p>
+                </div>
+                <div class="footer-sections">
+                    <h4>Sections</h4>
+                    <ul>
+                        <li>Home</li>
+                        <li>City 13</li>
+                        <li>Politics</li>
+                        <li>Announcements</li>
+                        <li>Economy</li>
+                        <li>Society</li>
+                        <li>Opinion</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>About Us</h4>
+                    <ul>
+                        <li>
+                            How we work
+                        </li>
+                        <li>
+                            Our values
+                        </li>
+                        <li>
+                            Contact
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="padding-top: 20px; border-top: 1px solid #666; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
+                <div>
+                    CMB
+                    <span
+                        style="margin-left: 12px; color: var(--text-color-main); text-decoration: none;">English</span>
+                </div>
+
+                <div style="color: var(--text-color-main)">
+                    © 2006 Le Nouvelle Citoyen
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+    const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
+    const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
+
+    function activateTab(tabName) {
+        tabTriggers.forEach(trigger => {
+            const isActive = trigger.dataset.tab === tabName;
+            trigger.classList.toggle('active', isActive);
+            trigger.setAttribute('aria-selected', String(isActive));
+            trigger.tabIndex = isActive ? 0 : -1;
+        });
+
+        tabPanels.forEach(panel => {
+            const isActive = panel.dataset.tab === tabName;
+            panel.hidden = !isActive;
+            panel.classList.toggle('active', isActive);
+        });
+    }
+
+    tabTriggers.forEach((trigger, index) => {
+        trigger.addEventListener('click', () => activateTab(trigger.dataset.tab));
+        trigger.addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key)) return;
+            event.preventDefault();
+
+            if (event.key === 'Enter' || event.key === ' ') {
+                activateTab(trigger.dataset.tab);
+                return;
+            }
+
+            const nextIndex = event.key === 'Home' ? 0
+                : event.key === 'End' ? tabTriggers.length - 1
+                    : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabTriggers.length) % tabTriggers.length;
+            tabTriggers[nextIndex].focus();
+        });
+    });
+</script>
