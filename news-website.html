@@ -12,7 +12,8 @@
     /* Page Shell */
     .body-wrap {
         --text-color-main: #333;
-        background: #f5f5f5;
+        --white: #f5f5f5;
+        background: var(--white);
         border: solid 3px black;
         color: var(--text-color-main);
         font-family: 'Exo 2', 'Barlow', Arial, sans-serif;
@@ -23,7 +24,7 @@
 
     /* Page Layout */
     .body-wrap .layout {
-        --kicker-color: #c70000;
+        --kicker-color: #9d2534;
         --line-color: #c8c8c8;
         /* --red-text-color: #c52237; */
         --red-text-color: #00038f;
@@ -36,7 +37,7 @@
 
     .section-wrap {
         background: rgb(136 22 22 / 1%);
-        padding: 10px;
+        padding: 0 10px;
     }
 
     /* Header & Masthead */
@@ -44,7 +45,7 @@
     .body-wrap .masthead {
         /* background: #3d67ad; */
         background: #11213b;
-        /* border-bottom: 3px solid #fff; */
+        /* border-bottom: 3px solid var(--white); */
         color: #9d2f2f;
         height: 120px;
         display: flex;
@@ -92,7 +93,7 @@
     }
 
     .body-wrap .masthead-search input {
-        background: #fff;
+        background: var(--white);
         border: 2px inset #d7d7d7;
         color: #222;
         flex: 1;
@@ -117,6 +118,52 @@
     .body-wrap .masthead-search button:active {
         border-style: inset;
         border-bottom: 2px solid red !important;
+    }
+
+    .body-wrap .masthead-search {
+        position: relative;
+    }
+
+    .search-results-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border: 1px solid #d7d7d7;
+        border-top: none;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-results-dropdown.active {
+        display: block;
+    }
+
+    .search-result-item {
+        padding: 8px 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .search-result-item:hover {
+        background: #f5f5f5;
+    }
+
+    .search-result-item .result-title {
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 2px;
+    }
+
+    .search-result-item .result-section {
+        color: #666;
+        font-size: 11px;
     }
 
     @media (max-width: 650px) {
@@ -164,7 +211,7 @@
     }
 
     .body-wrap .navigation li.active {
-        background: white;
+        background: var(--white);
         border-style: inset;
         box-shadow: inset 0 -2px 0 var(--red-text-color);
         color: var(--red-text-color);
@@ -186,11 +233,11 @@
 
     /* Main Column */
     .body-wrap .kicker {
+        font-family: Arial, Helvetica, sans-serif;
         color: var(--kicker-color);
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: uppercase;
-        font-size: 10px;
-        font-weight: 800;
+        font-size: 11px;
+        font-weight: 800 !important;
         letter-spacing: 1.5px;
     }
 
@@ -210,18 +257,98 @@
 
     /* Lead Story Layout */
     .main-news {
+        margin-bottom: 18px;
+    }
+
+    .main-news.layout-grid {
         align-items: stretch;
         display: grid;
         gap: 14px;
         grid-template-columns: 1.7fr 1fr;
-        margin-bottom: 18px;
     }
 
-    .primary-news,
-    .secondary-news {
-        align-content: stretch;
+    .main-news.layout-grid .primary-news,
+    .main-news.layout-grid .secondary-news {
         display: grid;
         gap: 15px;
+    }
+
+    .main-news.layout-grid .primary-news {
+        align-content: start;
+        grid-template-rows: auto 1fr;
+    }
+
+    .main-news.layout-grid .secondary-news {
+        align-content: stretch;
+    }
+
+    .main-news.layout-grid .primary-news .news-article:last-child {
+        align-self: stretch;
+    }
+
+    .main-news.layout-full {
+        display: grid;
+        gap: 14px;
+    }
+
+    .main-news.layout-full .primary-news {
+        display: grid;
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-full .primary-news .news-article:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-full .secondary-news {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        grid-column: 1 / -1;
+        grid-auto-rows: 1fr;
+    }
+
+    .main-news.layout-full .secondary-news .news-article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-news.layout-full .secondary-news .news-article>button {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .main-news.layout-cascade {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+
+    .main-news.layout-cascade .primary-news {
+        display: grid;
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .primary-news .news-article:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .secondary-news {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .secondary-news .news-article:nth-child(odd) {
+        transform: translateY(20px);
+    }
+
+    .main-news.layout-cascade .secondary-news .news-article:nth-child(even) {
+        transform: translateY(-5px);
     }
 
     /* Article Cards */
@@ -234,8 +361,42 @@
         padding-bottom: 12px;
     }
 
-    .body-wrap .news-article.headline {
+    .body-wrap .news-article>button,
+    .body-wrap .side-widget article>button {
+        appearance: none;
+        background: none;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: block;
+        font: inherit;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .body-wrap .side-widget article>button {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body-wrap .news-article.lead {
         margin-bottom: 0;
+    }
+
+    .body-wrap .news-article.opinion-card {
+        background: #e8e8e8;
+        border-left: 4px solid var(--red-text-color);
+    }
+
+    .body-wrap .news-article.opinion-card>button {
+        padding-left: 12px;
+    }
+
+    .body-wrap .news-article.opinion-card .image-wrap {
+        margin-left: -12px;
+        width: calc(100% + 12px);
     }
 
     .body-wrap .stories .news-article .photo {
@@ -252,7 +413,7 @@
         width: 100%;
     }
 
-    .body-wrap .news-article.headline .photo {
+    .body-wrap .news-article.lead .photo {
         height: 250px;
     }
 
@@ -269,46 +430,107 @@
     }
 
     .body-wrap .image-wrap .class-label {
-        position: absolute;
-        background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
-        top: 0;
-        left: 0;
-        padding: 4px 6px;
-        color: white;
+        color: #e7e7e7;
         font-weight: bold;
         font-size: 12px;
+        left: 0;
+        padding: 4px 6px;
+        position: absolute;
+        top: 0;
+        border-bottom-right-radius: 4px;
+    }
+
+    .body-wrap .image-wrap .class-label.default {
+        background: rgb(115 115 115);
+    }
+
+    .body-wrap .image-wrap .class-label.breaking {
+        background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
     }
 
     /* Article Content */
-    .body-wrap .news-article .kicker {
-        font-weight: bold;
-    }
-
     .body-wrap .news-article h3 {
-        color: var(--text-color-main);
-        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-size: 24px;
         font-weight: bold;
         line-height: 1.15;
         margin: 8px 0 5px;
-        text-transform: uppercase;
+        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--text-color-main);
+
+
     }
 
-    .body-wrap .news-article.headline h3 {
+    .body-wrap .main-news .news-article h3 {
+        font-size: 24px;
+    }
+
+    .body-wrap .main-news .news-article.lead h3 {
         font-size: 32px;
     }
 
-    .summary {
+    .body-wrap .summary {
         color: var(--text-color-main);
         font-size: 13px;
         line-height: 1.45;
         margin-bottom: 10px;
     }
 
-    .date {
+    .body-wrap .date {
         color: #666;
         font-size: 10px;
+    }
+
+    .body-wrap .primary-news .date {
         margin-top: 7px;
+    }
+
+    /* Article Detail */
+    .body-wrap .article-detail {
+        background: var(--white);
+        border: 1px solid var(--line-color);
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 28px 32px;
+    }
+
+    .body-wrap .article-detail .back-button {
+        background: #d7d7d7;
+        border: 2px outset #f2f2f2;
+        color: #111;
+        cursor: pointer;
+        font: bold 10px Arial, sans-serif;
+        margin-bottom: 18px;
+        padding: 6px 10px;
+        text-transform: uppercase;
+    }
+
+    .body-wrap .article-detail h1 {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 38px;
+        line-height: 1.1;
+        margin: 8px 0 12px;
+    }
+
+    .body-wrap .article-detail .article-deck {
+        border-bottom: 1px solid var(--line-color);
+        color: #555;
+        font: 18px/1.45 Georgia, 'Times New Roman', serif;
+        padding-bottom: 16px;
+    }
+
+    .body-wrap .article-detail .article-hero {
+        display: block;
+        height: 310px;
+        margin: 18px 0;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .body-wrap .article-detail .article-body {
+        font: 17px/1.7 Georgia, 'Times New Roman', serif;
+    }
+
+    .body-wrap .article-detail .article-body p {
+        margin: 0 0 18px;
     }
 
     /* More Stories */
@@ -328,14 +550,15 @@
         height: fit-content;
         padding: 10px;
         padding-bottom: 24px;
+        margin-top: 59px;
     }
 
     /* Sidebar Widgets */
     .body-wrap .side-widget {
-        /* background: rgb(228, 228, 228); */
+        background: rgba(228, 228, 228, 0.45);
         /* border: 2px outset #f2f2f2; */
-        border-bottom: rgb(250, 250, 250) solid 2px;
-        border-left: rgb(250, 250, 250) solid 2px;
+        border-bottom: var(--white) solid 2px;
+        border-left: var(--white) solid 2px;
         border-right: var(--line-color) solid 1px;
         border-top: solid 3px #333;
         padding: 18px;
@@ -378,14 +601,38 @@
         text-transform: capitalize;
         font-size: 14px;
         line-height: 1.35;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .body-wrap .side-widget .meta {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 4px;
+        gap: 14px;
+    }
+
+    .body-wrap .side-widget span.author {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+    }
+
+    .body-wrap .side-widget span.date {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+        flex-shrink: 0;
     }
 
     /* Sidebar Advertisements */
     .body-wrap .side-advert {
         border-top: solid 3px #333;
         height: 300px;
-        border-bottom: rgb(250, 250, 250) solid 2px;
-        border-left: rgb(250, 250, 250) solid 2px;
+        border-bottom: var(--white) solid 2px;
+        border-left: var(--white) solid 2px;
         border-right: var(--line-color) solid 1px;
     }
 
@@ -619,6 +866,70 @@
     .body-wrap .fake-button a:visited {
         color: unset;
     }
+
+    /* Banner Advertisement */
+    .body-wrap .banner-ad {
+        position: relative;
+        box-sizing: border-box;
+        margin: 24px 0 30px;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 165px;
+        background: rgba(190, 190, 190, 0.2);
+        border-left: var(--white) solid 3px;
+        border-bottom: var(--white) solid 3px;
+        border-top: var(--line-color) solid 2px;
+        border-right: var(--line-color) solid 2px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 1px;
+        border-radius: 4px;
+        color: var(--text-color-main);
+        user-select: none;
+    }
+
+    .body-wrap .banner-ad {
+        /* margin: 50px 0 30px; */
+        min-height: 60px;
+        max-height: 165px;
+        height: unset;
+        padding: 24px;
+    }
+
+    .body-wrap .banner-ad.large2 {
+        min-height: 180px;
+    }
+
+    .body-wrap .banner-ad img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .body-wrap .banner-ad span {
+        font-size: 34px;
+    }
+
+    /* Article Ad Card */
+    .body-wrap .news-article.ad-card {
+        border-bottom: none;
+        display: flex;
+        flex-direction: column;
+        min-height: 175px;
+        height: 100%;
+    }
+
+    .body-wrap .news-article.ad-card .photo {
+        height: 100%;
+        flex: 1;
+        background: rgba(190, 190, 190, 0.2) !important;
+        border: 2px outset #f2f2f2;
+    }
 </style>
 
 <div class="body-wrap">
@@ -629,14 +940,15 @@
                     title="Le Nouvelle Citoyen">
             </div>
             <div class="masthead-content">
-                <form class="masthead-search" role="search">
-                    <input type="search" aria-label="Search the Le Nouvelle Citoyen archive"
-                        placeholder="Search the archive">
-                    <button type="button">Search</button>
-                </form>
+                <div class="masthead-search" role="search">
+                    <input type="text" id="searchInput" aria-label="Search the Le Nouvelle Citoyen archive"
+                        placeholder="Search the articles">
+                    <button type="button" id="searchButton">Search</button>
+                    <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+                </div>
             </div>
             <div class="masthead-icon">
-                <img src="https://i.ibb.co/Gv1X3SQQ/c13-logo.png" alt="City Logo" title="City 13">
+                <img src="https://i.ibb.co/wk0P1jr/metainfo-1.png" alt="City Logo" title="City 13">
             </div>
         </div>
         <nav class="navigation" aria-label="News sections">
@@ -655,8 +967,8 @@
                     aria-selected="false">Society</li>
                 <li id="tab-opinion" data-tab="opinion" role="tab" tabindex="-1" aria-controls="panel-opinion"
                     aria-selected="false">Opinion</li>
-                <li id="tab-about" data-tab="about" role="tab" tabindex="-1" aria-controls="panel-about"
-                    aria-selected="false">About</li>
+                <!-- <li id="tab-about" data-tab="about" role="tab" tabindex="-1" aria-controls="panel-about"
+                    aria-selected="false">About</li> -->
 
             </ul>
         </nav>
@@ -669,311 +981,51 @@
                     <div class="section-wrap">
                         <div class="home-intro">
                             <div class="kicker">Front Page</div>
-                            <h1 class="page-title">
-                                Current News
-                            </h1>
+                            <h1 class="page-title">Current News</h1>
                         </div>
-                        <div class="main-news">
-                            <div class="primary-news">
-                                <article class="news-article headline">
-                                    <div class="image-wrap">
-                                        <div class="photo">
-                                            <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                                alt="City 13 lockdown news coverage"
-                                                title="City 13 to impose lockdown following Red Thursday">
-                                            <div class="class-label">Breaking News</div>
-                                        </div>
-                                    </div>
-                                    <div class="kicker">News</div>
-                                    <h3>CITY 13 TO IMPOSE LOCKDOWN FOLLOWING RED THURSDAY</h3>
-                                    <div class="summary">City 13 imposes city-wide lockdown.</div>
-                                    <div class="date">April 27, 2007</div>
-                                </article>
-                            </div>
-                            <div class="secondary-news">
-                                <article class="news-article">
-                                    <div class="photo">
-                                        <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                            alt="District 4 news coverage"
-                                            title="Richard Pelletier addresses District 4's infestation">
-                                    </div>
-                                    <div class="kicker">Breaking News</div>
-                                    <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                    <div class="summary">Richard Pelletier speaks to District 4.
-                                    </div>
-                                    <div class="date">April 27, 2007</div>
-                                </article>
-                                <!-- <article class="news-article">
-                                <div class="photo">
-                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg">
-                                </div>
-                                <div class="kicker">Breaking News</div>
-                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                <div class="summary">Richard Pelletier speaks to District 4.
-                                </div>
-                                <div class="date">April 27, 2007</div>
-                            </article> -->
-                            </div>
-                        </div>
+                        <div class="main-news"></div>
                     </div>
-                    <div class="section-wrap">
-                        <div class="stories">
-                            <article class="news-article">
-                                <div class="photo">
-                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                        alt="District 4 news coverage"
-                                        title="Richard Pelletier addresses District 4's infestation">
-                                </div>
-                                <div class="kicker">Breaking News</div>
-                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                <div class="summary">Richard Pelletier speaks to District 4.
-                                </div>
-                                <div class="date">April 27, 2007</div>
-                            </article>
-                            <article class="news-article">
-                                <div class="photo">
-                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                        alt="District 4 news coverage"
-                                        title="Richard Pelletier addresses District 4's infestation">
-                                </div>
-                                <div class="kicker">Breaking News</div>
-                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                <div class="summary">Richard Pelletier speaks to District 4.
-                                </div>
-                                <div class="date">April 27, 2007</div>
-                            </article>
-                            <article class="news-article">
-                                <div class="photo">
-                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                        alt="District 4 news coverage"
-                                        title="Richard Pelletier addresses District 4's infestation">
-                                </div>
-                                <div class="kicker">Breaking News</div>
-                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                <div class="summary">Richard Pelletier speaks to District 4.
-                                </div>
-                                <div class="date">April 27, 2007</div>
-                            </article>
-                            <article class="news-article">
-                                <div class="photo">
-                                    <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                        alt="District 4 news coverage"
-                                        title="Richard Pelletier addresses District 4's infestation">
-                                </div>
-                                <div class="kicker">Breaking News</div>
-                                <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                                <div class="summary">Richard Pelletier speaks to District 4.
-                                </div>
-                                <div class="date">April 27, 2007</div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="advertisement-wide-grid">
-                        <div class="advertisement-wide-grid-icon">
-                            <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                alt="Advertisement graphic" title="Advertisement">
-                        </div>
-                        <div class="advertisement-wide-grid-content">
-                            <h2>Advertisement</h2>
-                            <p>Your advertisement content goes here.</p>
-                        </div>
-                    </div>
+                    <div class="section-wrap"></div>
                 </div>
 
                 <aside class="side-column">
-                    <div class="side-widget">
-                        <div class="side-widget-title">
-                            <h2>Latest News</h2>
-                        </div>
-                        <article>
-                            <span class="title">Labour To Host Annual Party platform September 1st</span>
-                            <span">April 27, 2007</span>
-                        </article>
-                        <article>
-                            <span class="title">Latest News Item</span>
-                            <span>April 27, 2007</span>
-                        </article>
-                        <article>
-                            <span class="title">Latest News Item</span>
-                            <span>April 27, 2007</span>
-                        </article>
-                    </div>
-                    <div class="side-widget">
-                        <div class="side-widget-title">
-                            <h2>Editor's Pick</h2>
-                        </div>
-                        <article>
-                            <span class="title">Labour To Host Annual Party platform September 1st</span>
-                            <span>April 27, 2007</span>
-                        </article>
-                        <article>
-                            <span class="title">Labour To Host Annual Party platform September 1st</span>
-                            <span>April 27, 2007</span>
-                        </article>
-                        <article>
-                            <span class="title">Labour To Host Annual Party platform September 1st</span>
-                            <span>April 27, 2007</span>
-                        </article>
-                    </div>
-
-                    <div class="side-advert">
-                        <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                            alt="Advertisement graphic" title="Advertisement">
-                    </div>
-                    <div class="side-widget contact">
-                        <div class="contact-title">
-                            <span>Got a story to share?</span>
-                            <h2>Contact us here</h2>
-                        </div>
-                        <div class="contact-content">
-                            <span>Covering all stories from across District 7 and City 13.
-                                Weekly news, politics, events, and city announcements</span>
-                            <!-- <textarea placeholder="Enter your Name & CID"
-                                style="margin-block: 12px; width: 85%; height: 30px; padding-top: 15px; resize: none; display: block; margin: 18px auto; padding: 6px 12px; background: rgba(248, 248, 248, 1); font-weight: 700; text-transform: uppercase; border: rgba(200, 200, 200); color:#636262; text-align: center; border-radius: 4px;"></textarea> -->
-                            <div class="fake-button" style="display: flex; justify-self: center;">
-                                <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
-                                    target="_blank" rel="noopener">CLICK HERE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="side-column-logo">
-                        <img src="https://i.ibb.co/0ydBg5Tq/clc.png" alt="Le Lien Civil logo" title="Le Lien Civil">
-                    </div> -->
                 </aside>
             </div>
         </section>
         <section id="panel-city" class="tab-panel" data-tab="city" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-city" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">City 13</h1>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-politics" class="tab-panel" data-tab="politics" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-politics" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">Politics</h1>
-                    <div class="stories">
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="District 4 news coverage"
-                                    title="Richard Pelletier addresses District 4's infestation">
-                            </div>
-                            <div class="kicker">Breaking News</div>
-                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">Richard Pelletier speaks to District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="District 4 news coverage"
-                                    title="Richard Pelletier addresses District 4's infestation">
-                            </div>
-                            <div class="kicker">Breaking News</div>
-                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">Richard Pelletier speaks to District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="District 4 news coverage"
-                                    title="Richard Pelletier addresses District 4's infestation">
-                            </div>
-                            <div class="kicker">Breaking News</div>
-                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">Richard Pelletier speaks to District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                    </div>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-announcements" class="tab-panel" data-tab="announcements" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-announcements" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">Announcements</h1>
-                    <div class="stories">
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="Announcements coverage" title="Public notice on District 4's infestation">
-                            </div>
-                            <div class="kicker">Announcement</div>
-                            <h3>PUBLIC NOTICE ON DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">A public notice regarding the situation in District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                    </div>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-economy" class="tab-panel" data-tab="economy" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-economy" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">Economy</h1>
-                    <div class="stories">
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="District 4 news coverage"
-                                    title="Richard Pelletier addresses District 4's infestation">
-                            </div>
-                            <div class="kicker">Breaking News</div>
-                            <h3>RICHARD PELLETIER ADDRESSES DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">Richard Pelletier speaks to District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                    </div>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-society" class="tab-panel" data-tab="society" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-society" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">Society</h1>
-                    <p>Add culture, education, health, neighborhood life, and community features here.</p>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-opinion" class="tab-panel" data-tab="opinion" role="tabpanel" tabindex="-1"
             aria-labelledby="tab-opinion" hidden>
             <div class="layout tab-layout">
-                <div class="section-wrap">
-                    <div class="kicker">Section Starter</div>
-                    <h1 class="page-title">Opinion</h1>
-                    <div class="stories">
-                        <article class="news-article">
-                            <div class="photo">
-                                <img src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
-                                    alt="Opinion coverage" title="Editorial on District 4's infestation">
-                            </div>
-                            <div class="kicker">Opinion</div>
-                            <h3>EDITORIAL ON DISTRICT 4'S INFESTATION</h3>
-                            <div class="summary">An editorial discussing the situation in District 4.
-                            </div>
-                            <div class="date">April 27, 2007</div>
-                        </article>
-                    </div>
-                </div>
+                <div class="section-wrap"></div>
             </div>
         </section>
         <section id="panel-about" class="tab-panel" data-tab="about" role="tabpanel" tabindex="-1"
@@ -982,9 +1034,12 @@
                 <div class="section-wrap">
                     <div class="kicker">Publication</div>
                     <h1 class="page-title">About</h1>
-                    <p>Add the publication's mission, editorial standards, contact information, and staff details
-                        here.</p>
                 </div>
+            </div>
+        </section>
+        <section id="panel-article" class="tab-panel" data-tab="article" role="tabpanel" tabindex="-1" hidden>
+            <div class="layout tab-layout">
+                <div class="section-wrap" id="articleTarget"></div>
             </div>
         </section>
     </main>
@@ -1039,9 +1094,432 @@
         </div>
     </footer>
 </div>
+<script type="application/json" id="article-data">
+{
+    "articles": [
+        {
+            "title": "City 13 to impose lockdown following Red Thursday",
+            "section": "City 13",
+            "type": "Breaking News",
+            "published": "April 27, 2007",
+            "author": "Author",
+            "pinned": false,
+            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            "alt": "City 13 lockdown news coverage",
+            "imageLabel": "Local",
+            "imageLabelStyle": "default",
+            "summary": "City 13 imposes city-wide lockdown.",
+            "body": [
+                "City authorities have announced a temporary city-wide lockdown following unrest in several districts. Residents are advised to follow local notices and avoid unnecessary travel.",
+                "Officials said the measures will be reviewed as district reports are received. The Civic Desk will publish further details when municipal offices issue their next bulletin."
+            ]
+        },
+        {
+            "title": "Richard Pelletier addresses District 4's infestation",
+            "section": "Politics",
+            "type": "Breaking News",
+            "published": "April 27, 2009",
+            "author": "Author",
+            "recommended": true,
+            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            "alt": "District 4 news coverage",
+            "summary": "Richard Pelletier speaks to District 4.",
+            "body": [
+                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
+                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
+            ]
+        },
+        {
+            "title": "Labour to host annual party platform September 1st Golly Gol, H'well, damn!",
+            "section": "Announcements",
+            "type": "Announcement",
+            "published": "April 26, 2007",
+            "author": "Author",
+            "pinned": false,
+            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            "alt": "Public meeting announcement coverage",
+            "summary": "Organisers invite residents to the annual platform meeting and public discussion.",
+            "body": [
+                "The annual party platform will be held on September 1st, with organisers inviting residents to attend and submit questions in advance.",
+                "The programme will include local speakers, committee reports and a public discussion of district priorities."
+            ]
+        },
+        {
+            "title": "Repair workshops report steady demand across City 13",
+            "section": "Economy",
+            "published": "April 25, 2007",
+            "author": "Author",
+            "recommended": true,
+            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            "alt": "Workshop economy coverage",
+            "summary": "Local repair shops are extending hours as demand for maintenance work grows.",
+            "body": [
+                "Repair workshops across the city report steady demand for mechanical, electrical and household maintenance work.",
+                "Traders say access to replacement parts and reliable transport remains the central question for the sector."
+            ]
+        },
+        {
+            "title": "Community offices expand access to municipal services",
+            "section": "Society",
+            "published": "April 24, 2007",
+            "author": "Author",
+            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            "alt": "Community service office coverage",
+            "summary": "Neighbourhood desks are intended to make routine municipal services easier to reach.",
+            "body": [
+                "New neighbourhood service desks are opening in several parts of City 13, offering closer access to forms, referrals and routine information.",
+                "Community groups have welcomed the expansion while asking for consistent hours and clear service notices."
+            ]
+        },
+        {
+            "title": "Editorial: A case for practical cooperation",
+            "section": "Opinion",
+            "type": "Editorial",
+            "published": "April 23, 2007",
+            "author": "Author",
+            "pinned": false,
+            "image": "https://i.ibb.co/dsVvwH8N/image-2026-06-29-201134133.png",
+            "alt": "City 13 street scene",
+            "imageLabel": "Editorial",
+            "summary": "Incremental civic work is not glamorous, but it remains the clearest route to useful change.",
+            "body": [
+                "Political arguments eventually meet practical questions: can a street be repaired, can a family reach a public office, and can a district organise essential services?",
+                "A politics of practical cooperation begins with those questions. It asks institutions to deliver measurable improvements while keeping room for public scrutiny and reform."
+            ]
+        }
+    ]
+}
+</script>
 <script>
+    const ARTICLE_DATA = JSON.parse(document.getElementById('article-data').textContent);
+    const ARTICLES = ARTICLE_DATA.articles;
+    const ARTICLE_MAP = new Map(ARTICLES.map(article => [article.title, article]));
     const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
+    const categoryTabs = {
+        city: 'City 13',
+        politics: 'Politics',
+        announcements: 'Announcements',
+        economy: 'Economy',
+        society: 'Society',
+        opinion: 'Opinion'
+    };
+
+    // CONFIG: Change mainNewsLayout to swap between layouts
+    const CONFIG = {
+        mainNewsLayout: 'cascade',
+        randomizeLayout: true,
+    };
+
+    // Available ad creatives with their native pixel dimensions, used to match ads to slot shape
+    const AD_IMAGES = [
+        { src: 'images/banner-ad-again.png', width: 540, height: 140, alt: 'Vote advertisement' },
+        { src: 'images/dick.png', width: 215, height: 464, alt: 'Dick has our back advertisement' },
+        { src: 'images/long-ad.png', width: 540, height: 140, alt: 'New Paris, New Humanity, New Earth advertisement' },
+        { src: 'images/new-co-op.png', width: 540, height: 140, alt: 'Labour Co-Op advertisement' },
+        { src: 'images/small-ad.png', width: 244, height: 160, alt: 'Advertisement' },
+        { src: 'images/another-one.png', width: 260, height: 290, alt: 'Advertisement' }
+    ];
+
+    // Picks the ad creative whose aspect ratio is closest to the target slot
+    function pickAdImage(targetAspect) {
+        return AD_IMAGES.reduce((closest, image) => {
+            const imageAspect = image.width / image.height;
+            const diff = Math.abs(Math.log(imageAspect / targetAspect));
+            const closestDiff = Math.abs(Math.log((closest.width / closest.height) / targetAspect));
+            return diff < closestDiff ? image : closest;
+        });
+    }
+
+    // Design width/height (px) for each of the 5 ad placements in the main-news area,
+    // plus the sidebar widget. Used to compute the aspect ratio an ad creative should match.
+    const AD_SLOTS = {
+        banner: { width: 700, height: 180 }, // standalone "between sections" ad, and the full/cascade primary insert
+        gridPrimary: { width: 420, height: 210 }, // grid layout, inserted beside the lead story
+        gridSecondary: { width: 240, height: 160 }, // grid layout, inserted among secondary stories
+        fullSecondary: { width: 320, height: 250 }, // full layout, inserted in the 2x2 secondary grid
+        cascadeSecondary: { width: 215, height: 464 }, // cascade layout, inserted in the 3-column secondary grid
+        sidebar: { width: 280, height: 300 } // side column advertisement widget
+    };
+
+    function slotAspect(slotName) {
+        const slot = AD_SLOTS[slotName];
+        return slot.width / slot.height;
+    }
+
+    var clickAudio;
+
+    function playClickSound() {
+        if (clickAudio) {
+            clickAudio.currentTime = 0;
+            clickAudio.play().catch(function () {
+            });
+        }
+    }
+
+    (function preloadClickSound() {
+        clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
+        clickAudio.volume = 0.6;
+        clickAudio.preload = 'auto';
+        clickAudio.load();
+    })();
+
+    function escapeHTML(value) {
+        return String(value ?? '').replace(/[&<>"']/g, character => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+        }[character]));
+    }
+
+    function formatMeta(article) {
+        return `${article.published} · ${article.author}`;
+    }
+
+    function articleCard(article, options = {}) {
+        const isOpinion = article.section === 'Opinion';
+        const leadClass = options.lead ? ' lead ' : '';
+        const opinionClass = isOpinion ? ' opinion-card' : '';
+        const imageLabel = article.imageLabel
+            ? `<div class="class-label ${escapeHTML(article.imageLabelStyle || 'default')}">${escapeHTML(article.imageLabel)}</div>`
+            : '';
+        const image = article.image
+            ? `<div class="image-wrap"><div class="photo"><img src="${escapeHTML(article.image)}" alt="${escapeHTML(article.alt)}" title="${escapeHTML(article.title)}"></div>${imageLabel}</div>`
+            : '';
+        const typeKicker = article.type
+            ? `<div class="kicker">${escapeHTML(article.type)}</div>`
+            : '';
+
+        return `
+            <article class="news-article${leadClass}${opinionClass}">
+                <button type="button" data-article="${escapeHTML(article.title)}">
+                    ${image}
+                    ${typeKicker}
+                    <h3>${escapeHTML(article.title)}</h3>
+                    <div class="summary">${escapeHTML(article.summary)}</div>
+                    <div class="date">${escapeHTML(formatMeta(article))}</div>
+                </button>
+            </article>
+        `;
+    }
+
+    function adCard(options = {}) {
+        const standaloneStyle = options.standalone ? ' style="height: 180px;"' : '';
+        const image = pickAdImage(slotAspect(options.slot || 'gridPrimary'));
+        return `
+            <article class="news-article ad-card"${standaloneStyle}>
+                <div class="photo" style="border: 2px outset #f2f2f2;">
+                    <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt)}" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </article>
+        `;
+    }
+
+    // Single source of truth per layout: how many stories sit in primary/secondary,
+    // whether secondary uses a fixed-column grid (so an ad must displace a story to fit),
+    // and which ad slot each position uses.
+    const LAYOUT_CONFIGS = {
+        grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false, primarySlot: 'gridPrimary', secondarySlot: 'gridSecondary' },
+        full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true, primarySlot: 'banner', secondarySlot: 'fullSecondary' },
+        cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true, primarySlot: 'banner', secondarySlot: 'cascadeSecondary' }
+    };
+
+    // Inserts an ad at a random position among the secondary stories. When the secondary
+    // area is a fixed-column grid, the last story is displaced (returned) to keep the
+    // column count intact instead of overflowing the grid.
+    function insertAdInSecondary(stories, config) {
+        const displaced = config.secondaryFixedGrid ? stories.slice(-1) : [];
+        const visibleStories = config.secondaryFixedGrid ? stories.slice(0, -1) : stories;
+
+        const randomPos = Math.floor(Math.random() * (visibleStories.length + 1));
+        const before = visibleStories.slice(0, randomPos).map(article => articleCard(article)).join('');
+        const after = visibleStories.slice(randomPos).map(article => articleCard(article)).join('');
+
+        return { html: before + adCard({ slot: config.secondarySlot }) + after, displaced };
+    }
+
+    // Builds the primary/secondary HTML for a layout, placing the ad (if any) according
+    // to adPlacement, and returns the stories that spill over into "More Stories".
+    function buildMainNews(selectedLayout, frontPage, adPlacement) {
+        const config = LAYOUT_CONFIGS[selectedLayout];
+        const primaryStories = frontPage.slice(0, config.primaryCount);
+        const secondaryStories = frontPage.slice(config.primaryCount, config.primaryCount + config.secondaryCount);
+        let moreStories = frontPage.slice(config.primaryCount + config.secondaryCount);
+
+        let primaryHtml = primaryStories.map((article, index) => articleCard(article, { lead: index === 0 })).join('');
+        let secondaryHtml = secondaryStories.map(article => articleCard(article)).join('');
+
+        if (adPlacement === 'primary') {
+            if (config.primaryCount > 1) {
+                // Primary column has no spare slot (grid layout): the ad takes the 2nd
+                // primary spot, and the displaced story cascades down into secondary,
+                // pushing secondary's overflow into "More Stories".
+                const lead = articleCard(primaryStories[0], { lead: true });
+                primaryHtml = lead + adCard({ slot: config.primarySlot });
+
+                const shiftedSecondary = [...primaryStories.slice(1), ...secondaryStories];
+                const keptSecondary = shiftedSecondary.slice(0, config.secondaryCount);
+                const overflow = shiftedSecondary.slice(config.secondaryCount);
+                secondaryHtml = keptSecondary.map(article => articleCard(article)).join('');
+                moreStories = [...overflow, ...moreStories];
+            } else {
+                // Primary is just the full-width lead (full/cascade layouts): append below it
+                primaryHtml += adCard({ slot: config.primarySlot });
+            }
+        } else if (adPlacement === 'secondary' && secondaryStories.length > 0) {
+            const result = insertAdInSecondary(secondaryStories, config);
+            secondaryHtml = result.html;
+            moreStories = [...result.displaced, ...moreStories];
+        }
+
+        return { primaryHtml, secondaryHtml, moreStories };
+    }
+
+    function renderHome() {
+        const newestFirst = [...ARTICLES].sort(byNewest);
+        const pinnedArticles = newestFirst.filter(article => article.pinned);
+        const unpinnedArticles = newestFirst.filter(article => !article.pinned);
+        const frontPage = [...pinnedArticles, ...unpinnedArticles];
+
+        // Determine layout: random if enabled (weighted toward the main layout), otherwise use CONFIG value
+        const weightedLayoutOptions = [
+            CONFIG.mainNewsLayout, CONFIG.mainNewsLayout, CONFIG.mainNewsLayout,
+            ...['grid', 'full', 'cascade'].filter(layout => layout !== CONFIG.mainNewsLayout)
+        ];
+        const selectedLayout = CONFIG.randomizeLayout
+            ? weightedLayoutOptions[Math.floor(Math.random() * weightedLayoutOptions.length)]
+            : CONFIG.mainNewsLayout;
+        const layoutClass = `layout-${selectedLayout}`;
+        const target = document.querySelector('#panel-home .main-column');
+
+        // Randomly decide where the ad goes: alongside the lead, among secondary stories, or between the sections
+        const adPlacements = ['primary', 'secondary', 'between'];
+        const adPlacement = adPlacements[Math.floor(Math.random() * adPlacements.length)];
+        const betweenAdHtml = adPlacement === 'between'
+            ? `<div class="section-wrap">${adCard({ standalone: true, slot: 'banner' })}</div>`
+            : '';
+
+        const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage, adPlacement);
+
+        target.innerHTML = `
+            <div class="section-wrap">
+                <div class="home-intro"><div class="kicker">Front Page</div><h1 class="page-title">Current News</h1></div>
+                <div class="main-news ${layoutClass}">
+                    <div class="primary-news">${primaryHtml}</div>
+                    <div class="secondary-news">${secondaryHtml}</div>
+                </div>
+            </div>
+            ${betweenAdHtml}
+            <div class="section-wrap">
+                <div class="kicker">More Stories</div>
+                <h2 class="page-title">Recent Headlines</h2>
+            </div>
+            <div class="section-wrap"><div class="stories">${moreStories.map(article => articleCard(article)).join('')}</div></div>
+        `;
+    }
+
+    function renderCategories() {
+        Object.entries(categoryTabs).forEach(([tabName, sectionName]) => {
+            const target = document.querySelector(`#panel-${tabName} .section-wrap`);
+            const stories = ARTICLES.filter(article => article.section === sectionName);
+            if (!target) return;
+
+            target.innerHTML = `
+                <div class="kicker">Coverage</div>
+                <h1 class="page-title">${escapeHTML(sectionName)}</h1>
+                <div class="stories">${stories.map(article => articleCard(article)).join('') || '<p>No articles available.</p>'}</div>
+            `;
+        });
+    }
+
+    function byNewest(first, second) {
+        return new Date(second.published) - new Date(first.published);
+    }
+
+    function sidebarStory(article) {
+        return `
+            <article>
+                <button type="button" data-article="${escapeHTML(article.title)}">
+                    <span class="title">${escapeHTML(article.title)}</span>
+                    <div class="meta">
+                        <span class="author">${escapeHTML(article.author)}</span>
+                        <span class="date">${escapeHTML(article.published)}</span>
+                    </div>
+                </button>
+            </article>
+        `;
+    }
+
+    function renderSidebar() {
+        const latest = [...ARTICLES].sort(byNewest).slice(0, 3);
+        const editorPicks = ARTICLES.filter(article => article.recommended).sort(byNewest);
+
+        // Build fixed sidebar widget components (in order)
+        const fixedWidgets = [
+            {
+                id: 'latest',
+                html: `
+                    <div class="side-widget">
+                        <div class="side-widget-title">
+                            <h2>Latest News</h2>
+                        </div>
+                        <div id="latestNews">${latest.map(sidebarStory).join('')}</div>
+                    </div>
+                `
+            },
+            {
+                id: 'picks',
+                html: `
+                    <div class="side-widget">
+                        <div class="side-widget-title">
+                            <h2>Editor's Pick</h2>
+                        </div>
+                        <div id="editorPicks">${editorPicks.length ? editorPicks.map(sidebarStory).join('') : '<p>No editor picks are available.</p>'}</div>
+                    </div>
+                `
+            },
+            {
+                id: 'contact',
+                html: `
+                    <div class="side-widget contact">
+                        <div class="contact-title">
+                            <span>Got a story to share?</span>
+                            <h2>Contact us here</h2>
+                        </div>
+                        <div class="contact-content">
+                            <span>Covering all stories from across District 7 and City 13.
+                                Weekly news, politics, events, and city announcements</span>
+                            <div class="fake-button" style="display: flex; justify-self: center;">
+                                <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                    target="_blank" rel="noopener">CLICK HERE</a>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Advertisement widget to be randomly placed, sized to match the sidebar column's tall aspect
+        const sidebarAdImage = pickAdImage(slotAspect('sidebar'));
+        const advertWidget = {
+            id: 'advert',
+            html: `
+                <div class="side-advert">
+                    <img src="${escapeHTML(sidebarAdImage.src)}"
+                        alt="${escapeHTML(sidebarAdImage.alt)}" title="Advertisement">
+                </div>
+            `
+        };
+
+        // Randomly choose a position (0-3) to insert the ad among fixed widgets
+        const randomPosition = Math.floor(Math.random() * (fixedWidgets.length + 1));
+        const widgets = [...fixedWidgets];
+        widgets.splice(randomPosition, 0, advertWidget);
+
+        // Render widgets to sidebar
+        const sideColumn = document.querySelector('.side-column');
+        if (sideColumn) {
+            sideColumn.innerHTML = widgets.map(w => w.html).join('');
+        }
+    }
 
     function activateTab(tabName) {
         tabTriggers.forEach(trigger => {
@@ -1058,16 +1536,35 @@
         });
     }
 
+    function openArticle(articleId) {
+        const article = ARTICLE_MAP.get(articleId);
+        if (!article) return;
+
+        const typeDisplay = article.type ? `${escapeHTML(article.type)} · ` : '';
+        document.getElementById('articleTarget').innerHTML = `
+            <article class="article-detail">
+                <button class="back-button" type="button" data-tab="home">Back to front page</button>
+                <div class="kicker">${typeDisplay}${escapeHTML(article.section)}</div>
+                <h1>${escapeHTML(article.title)}</h1>
+                <div class="article-deck">${escapeHTML(article.summary)}</div>
+                <div class="date">${escapeHTML(formatMeta(article))}</div>
+                ${article.image ? `<img class="article-hero" src="${escapeHTML(article.image)}" alt="${escapeHTML(article.alt)}">` : ''}
+                <div class="article-body">${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('')}</div>
+            </article>
+        `;
+        activateTab('article');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
     tabTriggers.forEach((trigger, index) => {
-        trigger.addEventListener('click', () => activateTab(trigger.dataset.tab));
+        trigger.addEventListener('click', () => {
+            playClickSound();
+            activateTab(trigger.dataset.tab);
+        });
         trigger.addEventListener('keydown', event => {
             if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key)) return;
             event.preventDefault();
-
-            if (event.key === 'Enter' || event.key === ' ') {
-                activateTab(trigger.dataset.tab);
-                return;
-            }
+            if (event.key === 'Enter' || event.key === ' ') return activateTab(trigger.dataset.tab);
 
             const nextIndex = event.key === 'Home' ? 0
                 : event.key === 'End' ? tabTriggers.length - 1
@@ -1075,4 +1572,81 @@
             tabTriggers[nextIndex].focus();
         });
     });
+
+    document.addEventListener('click', event => {
+        const articleTrigger = event.target.closest('[data-article]');
+        if (articleTrigger) {
+            playClickSound();
+            openArticle(articleTrigger.dataset.article);
+        }
+
+        const tabTrigger = event.target.closest('.back-button[data-tab]');
+        if (tabTrigger) {
+            playClickSound();
+            activateTab(tabTrigger.dataset.tab);
+        }
+
+        const fakeButton = event.target.closest('.fake-button');
+        if (fakeButton) playClickSound();
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchResultsDropdown = document.getElementById('searchResultsDropdown');
+
+    function performSearch(query) {
+        query = query.trim().toLowerCase();
+
+        if (!query) {
+            searchResultsDropdown.classList.remove('active');
+            return;
+        }
+
+        const results = ARTICLES.filter(article =>
+            article.title.toLowerCase().includes(query)
+        ).slice(0, 10);
+
+        if (results.length === 0) {
+            searchResultsDropdown.innerHTML = '<div style="padding: 8px 10px; color: #999; font-size: 12px;">No results found</div>';
+            searchResultsDropdown.classList.add('active');
+        } else {
+            searchResultsDropdown.innerHTML = results.map(article => {
+                const typeDisplay = article.type ? ` · ${escapeHTML(article.type)}` : '';
+                return `<div class="search-result-item" data-article="${escapeHTML(article.title)}">
+                    <div class="result-title">${escapeHTML(article.title)}</div>
+                    <div class="result-section">${escapeHTML(article.section)}${typeDisplay}</div>
+                </div>`;
+            }).join('');
+            searchResultsDropdown.classList.add('active');
+        }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        performSearch(e.target.value);
+    });
+
+    searchInput.addEventListener('blur', () => {
+        setTimeout(() => {
+            searchResultsDropdown.classList.remove('active');
+        }, 200);
+    });
+
+    document.getElementById('searchButton').addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        playClickSound();
+    });
+
+    searchResultsDropdown.addEventListener('click', (e) => {
+        const resultItem = e.target.closest('.search-result-item');
+        if (resultItem && resultItem.dataset.article) {
+            searchInput.value = '';
+            searchResultsDropdown.classList.remove('active');
+            openArticle(resultItem.dataset.article);
+        }
+    });
+
+    renderHome();
+    renderCategories();
+    renderSidebar();
 </script>
