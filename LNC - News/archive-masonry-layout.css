@@ -1,0 +1,50 @@
+/*
+ * Archived (unlinked) stylesheet — masonry-style "More Stories" / secondary-news layout.
+ * Not referenced by any HTML file; kept for posterity in case this layout is revisited.
+ * Superseded the equal-height grid layout in news-website.html on 2026-09-25.
+ */
+
+.main-news.layout-full .secondary-news {
+    column-count: 2;
+    column-gap: 14px;
+    grid-column: 1 / -1;
+}
+
+.main-news.layout-full .secondary-news .news-article {
+    break-inside: avoid;
+    margin-bottom: 14px;
+}
+
+/* More Stories */
+.body-wrap .stories {
+    column-count: 2;
+    column-gap: 16px;
+    margin-top: 16px;
+}
+
+.body-wrap .stories .news-article {
+    break-inside: avoid;
+    margin-bottom: 16px;
+}
+
+/* End of masonry-style layout */
+
+/* Old Opinion Card */
+/* .body-wrap .news-article.opinion-card {
+        background: #e8e8e8;
+        border-left: 4px solid var(--red-text-color);
+    } */
+
+/* .body-wrap .news-article.opinion-card h3 {
+        border-left: 4px solid black;
+        padding-left: 12px;
+    } */
+
+/* .body-wrap .news-article.opinion-card>button {
+        padding-left: 12px;
+    }
+
+    .body-wrap .news-article.opinion-card .image-wrap {
+        margin-left: -12px;
+        width: calc(100% + 12px);
+    } */
