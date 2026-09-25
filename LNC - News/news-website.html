@@ -2,6 +2,7 @@
     /* Font Imports */
     @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
 
     * {
         margin: 0;
@@ -43,11 +44,8 @@
     /* Header & Masthead */
 
     .body-wrap .masthead {
-        /* background: #3d67ad; */
-        background: #11213b;
-        /* border-bottom: 3px solid var(--white); */
-        color: #9d2f2f;
-        height: 120px;
+        background: #13161a;
+        height: 140px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -448,6 +446,10 @@
         background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
     }
 
+    .body-wrap .image-wrap .class-label.city-news {
+        background: rgb(42, 76, 168);
+    }
+
     /* Article Content */
     .body-wrap .news-article h3 {
         font-weight: bold;
@@ -483,6 +485,10 @@
         margin-top: 7px;
     }
 
+    .body-wrap .article-detail .date {
+        margin-top: 7px;
+    }
+
     /* Article Detail */
     .body-wrap .article-detail {
         background: var(--white);
@@ -490,6 +496,11 @@
         margin: 0 auto;
         max-width: 800px;
         padding: 28px 32px;
+    }
+
+    .body-wrap .article-detail.opinion-card {
+        background: #e8e8e8;
+        border-left: 4px solid var(--red-text-color);
     }
 
     .body-wrap .article-detail .back-button {
@@ -504,7 +515,7 @@
     }
 
     .body-wrap .article-detail h1 {
-        font-family: Georgia, 'Times New Roman', serif;
+        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 38px;
         line-height: 1.1;
         margin: 8px 0 12px;
@@ -526,12 +537,99 @@
     }
 
     .body-wrap .article-detail .article-body {
-        font: 17px/1.7 Georgia, 'Times New Roman', serif;
+        font-family: "Times New Roman", Times, Georgia, serif;
+        font-size: 20px;
+        line-height: 1.7;
     }
 
     .body-wrap .article-detail .article-body p {
         margin: 0 0 18px;
     }
+
+    /* Article Detail Image, Aside, Comments */
+    .body-wrap .article-detail .article-body {
+        overflow: hidden;
+    }
+
+    .body-wrap .article-detail .article-body .align-center {
+        text-align: center;
+    }
+
+    .body-wrap .article-detail .article-body .align-right {
+        text-align: right;
+    }
+
+    /* Images */
+    .body-wrap .article-detail .article-image {
+        margin: 0 0 1.25em;
+        max-width: 100%;
+    }
+
+    .body-wrap .article-detail .article-image.float-left {
+        float: left;
+        margin: 0.25em 1.4em 1em 0;
+        max-width: 48%;
+    }
+
+    .body-wrap .article-detail .article-image.float-right {
+        float: right;
+        margin: 0.25em 0 1em 1.4em;
+        max-width: 48%;
+    }
+
+    .body-wrap .article-detail .article-image.align-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .body-wrap .article-detail .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .body-wrap .article-detail .article-image figcaption {
+        font-size: 13px;
+        color: #555;
+        margin-top: 6px;
+        line-height: 1.35;
+    }
+
+    /* Blockquote */
+    .body-wrap .article-detail blockquote {
+        margin: 1.4em 0;
+        padding: 0.8em 1.2em;
+        border-left: 4px solid var(--red-text-color);
+        background: #f4f4f4;
+        font-style: italic;
+    }
+
+    .body-wrap .article-detail blockquote cite {
+        display: block;
+        margin-top: 0.6em;
+        font-size: 0.9em;
+        font-style: normal;
+        color: #666;
+    }
+
+    /* Aside / callout */
+    .body-wrap .article-detail .article-aside {
+        margin: 1.4em 0;
+        padding: 0.9em 1.2em;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+
+    /* Horizontal rule */
+    .body-wrap .article-detail .article-hr {
+        border: none;
+        border-top: 1px solid var(--line-color);
+        margin: 1.8em 0;
+    }
+
 
     /* More Stories */
     .body-wrap .stories {
@@ -917,7 +1015,7 @@
 
     /* Article Ad Card: sized to its own creative rather than stretching to fill the row */
     .body-wrap .news-article.ad-card {
-        border-bottom: none;
+        /* border-bottom: none; */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -934,6 +1032,11 @@
 
     .body-wrap .news-article.ad-card .photo {
         background: rgba(190, 190, 190, 0.2) !important;
+    }
+
+    /* Article detail view: no offset needed (no front-page title block above) */
+    #panel-article .side-column {
+        margin-top: 0;
     }
 </style>
 
@@ -1043,8 +1146,11 @@
             </div>
         </section>
         <section id="panel-article" class="tab-panel" data-tab="article" role="tabpanel" tabindex="-1" hidden>
-            <div class="layout tab-layout">
-                <div class="section-wrap" id="articleTarget"></div>
+            <div class="layout">
+                <div class="main-column">
+                    <div class="section-wrap" id="articleTarget"></div>
+                </div>
+                <aside class="side-column"></aside>
             </div>
         </section>
     </main>
@@ -1099,9 +1205,8 @@
         </div>
     </footer>
 </div>
-<script type="application/json" id="article-data">
-{
-    "articles": [
+<script>
+    const ARTICLES = [
         {
             "title": "City 13 to impose lockdown following Red Thursday",
             "section": "City 13",
@@ -1110,13 +1215,39 @@
             "author": "Author",
             "pinned": false,
             "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "alt": "City 13 lockdown news coverage",
-            "imageLabel": "Local",
-            "imageLabelStyle": "default",
+            "imageLabel": "Local News",
+            "imageLabelStyle": "city-news",
             "summary": "City 13 imposes city-wide lockdown.",
             "body": [
-                "City authorities have announced a temporary city-wide lockdown following unrest in several districts. Residents are advised to follow local notices and avoid unnecessary travel.",
-                "Officials said the measures will be reviewed as district reports are received. The Civic Desk will publish further details when municipal offices issue their next bulletin."
+                {
+                    type: 'image',
+                    src: 'https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg',
+                    float: 'left',
+                    width: '42%',
+                    caption: 'Citizens restricted to their districts'
+                },
+                {
+                    type: 'paragraph',
+                    text: 'City authorities have announced a temporary **city-wide lockdown** following unrest in several districts. Residents are advised to follow local notices and avoid unnecessary travel.'
+                },
+                {
+                    type: 'aside',
+                    text: 'Officials emphasised that the measures are temporary and will be reviewed daily.'
+                },
+                {
+                    type: 'paragraph',
+                    text: 'Officials said the measures will be reviewed as district reports are received. The Civic Desk will publish further details when municipal offices issue their next bulletin.'
+                },
+                {
+                    type: 'blockquote',
+                    text: 'We are acting to protect every resident of City 13.',
+                    cite: 'City Administrator'
+                },
+                {
+                    type: 'paragraph',
+                    align: 'center',
+                    text: '*Stay indoors. Stay informed.*'
+                }
             ]
         },
         {
@@ -1127,7 +1258,6 @@
             "author": "Author",
             "recommended": true,
             "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "alt": "District 4 news coverage",
             "summary": "Richard Pelletier speaks to District 4.",
             "body": [
                 "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
@@ -1136,68 +1266,21 @@
         },
         {
             "title": "Labour to host annual party platform September 1st Golly Gol, H'well, damn!",
-            "section": "Announcements",
-            "type": "Announcement",
+            "section": "Opinion",
+            "type": "Opinion",
+            "opinion": true,
             "published": "April 26, 2007",
             "author": "Author",
             "pinned": false,
             "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "alt": "Public meeting announcement coverage",
-            "summary": "Organisers invite residents to the annual platform meeting and public discussion.",
+            "summary": "Citizens partake in party conference",
             "body": [
                 "The annual party platform will be held on September 1st, with organisers inviting residents to attend and submit questions in advance.",
                 "The programme will include local speakers, committee reports and a public discussion of district priorities."
             ]
-        },
-        {
-            "title": "Repair workshops report steady demand across City 13",
-            "section": "Economy",
-            "published": "April 25, 2007",
-            "author": "Author",
-            "recommended": true,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "alt": "Workshop economy coverage",
-            "summary": "Local repair shops are extending hours as demand for maintenance work grows.",
-            "body": [
-                "Repair workshops across the city report steady demand for mechanical, electrical and household maintenance work.",
-                "Traders say access to replacement parts and reliable transport remains the central question for the sector."
-            ]
-        },
-        {
-            "title": "Community offices expand access to municipal services",
-            "section": "Society",
-            "published": "April 24, 2007",
-            "author": "Author",
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "alt": "Community service office coverage",
-            "summary": "Neighbourhood desks are intended to make routine municipal services easier to reach.",
-            "body": [
-                "New neighbourhood service desks are opening in several parts of City 13, offering closer access to forms, referrals and routine information.",
-                "Community groups have welcomed the expansion while asking for consistent hours and clear service notices."
-            ]
-        },
-        {
-            "title": "Editorial: A case for practical cooperation",
-            "section": "Opinion",
-            "type": "Editorial",
-            "published": "April 23, 2007",
-            "author": "Author",
-            "pinned": false,
-            "image": "https://i.ibb.co/dsVvwH8N/image-2026-06-29-201134133.png",
-            "alt": "City 13 street scene",
-            "imageLabel": "Editorial",
-            "summary": "Incremental civic work is not glamorous, but it remains the clearest route to useful change.",
-            "body": [
-                "Political arguments eventually meet practical questions: can a street be repaired, can a family reach a public office, and can a district organise essential services?",
-                "A politics of practical cooperation begins with those questions. It asks institutions to deliver measurable improvements while keeping room for public scrutiny and reform."
-            ]
         }
-    ]
-}
-</script>
-<script>
-    const ARTICLE_DATA = JSON.parse(document.getElementById('article-data').textContent);
-    const ARTICLES = ARTICLE_DATA.articles;
+    ];
+
     const ARTICLE_MAP = new Map(ARTICLES.map(article => [article.title, article]));
     const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
@@ -1210,47 +1293,38 @@
         opinion: 'Opinion'
     };
 
-    // CONFIG: Change mainNewsLayout to swap between layouts
     const CONFIG = {
-        mainNewsLayout: 'cascade',
-        randomizeLayout: true,
+        mainNewsLayout: 'grid',
+        randomizeLayout: false,
     };
 
-    // Two pre-made ad variants per layout: which slot they go in (primary/secondary),
-    // the creative to show there, and its display size. One is picked at random per render.
     const AD_VARIANTS = {
         // grid: [
-        //     { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
-        //     { placement: 'secondary', src: 'images/small-ad.png', alt: 'Advertisement' }
+        //     { placement: 'primary', src: 'images/banner-ad-again.png' },
+        //     { placement: 'secondary', src: 'images/Banner-257-295.png' }
         // ],
-        full: [
-            { placement: 'primary', src: 'images/long-ad.png', alt: 'New Paris, New Humanity, New Earth advertisement' },
-            { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
-            { placement: 'secondary', src: 'images/another-one.png', alt: 'Advertisement' }
-
-        ],
-        cascade: [
-            { placement: 'primary', src: 'images/new-co-op.png', alt: 'Labour Co-Op advertisement' },
-            { placement: 'primary', src: 'images/banner-ad-again.png', alt: 'Vote advertisement' },
-            { placement: 'secondary', src: 'images/dick.png', alt: 'Dick has our back advertisement' }
-        ]
+        // full: [
+        //     { placement: 'primary', src: 'images/long-ad.png' },
+        //     { placement: 'secondary', src: 'images/radio.png' }
+        // ],
+        // cascade: [
+        //     { placement: 'primary', src: 'images/long-ad.png' },
+        //     { placement: 'secondary', src: 'images/tall-banner-ad.png' },
+        // ]
     };
 
-    // Fixed display size (px) for each layout's ad slots. Independent of any one
-    // creative's native size, so future ads can be designed to fit these dimensions.
     const AD_SLOT_SIZES = {
-        // grid: { primary: { width: 420, height: 210 }, secondary: { width: 244, height: 160 } },
+        grid: { primary: { width: 420, height: 210 }, secondary: { width: 244, height: 160 } },
         full: { primary: { width: 670, height: 176 }, secondary: { width: 330, height: 366 } },
         cascade: { primary: { width: 670, height: 176 }, secondary: { width: 216, height: 464 } }
     };
 
-    // Two pre-made variants for the side-column advertisement widget
     const SIDEBAR_AD_VARIANTS = [
-        { src: 'images/dick-banner.png', alt: 'Dick has our back advertisement' },
-        { src: 'images/another-one.png', alt: 'Advertisement' }
+        // { src: 'images/LABOUR-co-op-ad.png' },
+        // { src: 'images/Banner-257-295.png' },
+        // { src: 'images/radio.png' }
     ];
 
-    // Fixed display size (px) for the sidebar advertisement widget
     const SIDEBAR_AD_SIZE = { width: 280, height: 300 };
 
     var clickAudio;
@@ -1258,8 +1332,7 @@
     function playClickSound() {
         if (clickAudio) {
             clickAudio.currentTime = 0;
-            clickAudio.play().catch(function () {
-            });
+            clickAudio.play().catch(function () { });
         }
     }
 
@@ -1276,19 +1349,28 @@
         }[character]));
     }
 
+    function formatText(text) {
+        if (!text) return '';
+        let html = escapeHTML(text);
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+        html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+        return html;
+    }
+
     function formatMeta(article) {
         return `${article.published} · ${article.author}`;
     }
 
     function articleCard(article, options = {}) {
-        const isOpinion = article.section === 'Opinion';
+        const isOpinion = article.opinion === true;
         const leadClass = options.lead ? ' lead ' : '';
         const opinionClass = isOpinion ? ' opinion-card' : '';
         const imageLabel = article.imageLabel
             ? `<div class="class-label ${escapeHTML(article.imageLabelStyle || 'default')}">${escapeHTML(article.imageLabel)}</div>`
             : '';
         const image = article.image
-            ? `<div class="image-wrap"><div class="photo"><img src="${escapeHTML(article.image)}" alt="${escapeHTML(article.alt)}" title="${escapeHTML(article.title)}"></div>${imageLabel}</div>`
+            ? `<div class="image-wrap"><div class="photo"><img src="${escapeHTML(article.image)}" title="${escapeHTML(article.title)}"></div>${imageLabel}</div>`
             : '';
         const typeKicker = article.type
             ? `<div class="kicker">${escapeHTML(article.type)}</div>`
@@ -1308,26 +1390,23 @@
     }
 
     function adCard(image, size) {
+        const w = (size && size.width) || 300;
+        const h = (size && size.height) || 150;
         return `
             <article class="news-article ad-card">
-                <div class="photo" style="width: ${size.width}px; height: ${size.height}px; max-width: 100%; border: 2px outset #f2f2f2;">
-                    <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt)}" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="photo" style="width: 100%; max-width: ${w}px; height: auto; aspect-ratio: ${w} / ${h}; border: 2px outset #f2f2f2; overflow: hidden;">
+                    <img src="${escapeHTML(image.src)}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </article>
         `;
     }
 
-    // Single source of truth per layout: how many stories sit in primary/secondary, and
-    // whether secondary uses a fixed-column grid (so an ad must displace a story to fit).
     const LAYOUT_CONFIGS = {
         grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false },
         full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true },
         cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true }
     };
 
-    // Inserts an ad at a random position among the secondary stories. When the secondary
-    // area is a fixed-column grid, the last story is displaced (returned) to keep the
-    // column count intact instead of overflowing the grid.
     function insertAdInSecondary(stories, config, adImage, slotSize) {
         const displaced = config.secondaryFixedGrid ? stories.slice(-1) : [];
         const visibleStories = config.secondaryFixedGrid ? stories.slice(0, -1) : stories;
@@ -1339,11 +1418,9 @@
         return { html: before + adCard(adImage, slotSize) + after, displaced };
     }
 
-    // Builds the primary/secondary HTML for a layout, placing the given ad variant's
-    // image in its designated slot, and returns the stories that spill over into "More Stories".
     function buildMainNews(selectedLayout, frontPage, adVariant) {
         const config = LAYOUT_CONFIGS[selectedLayout];
-        const slotSizes = AD_SLOT_SIZES[selectedLayout];
+        const slotSizes = AD_SLOT_SIZES[selectedLayout] || {};
         const primaryStories = frontPage.slice(0, config.primaryCount);
         const secondaryStories = frontPage.slice(config.primaryCount, config.primaryCount + config.secondaryCount);
         let moreStories = frontPage.slice(config.primaryCount + config.secondaryCount);
@@ -1351,27 +1428,25 @@
         let primaryHtml = primaryStories.map((article, index) => articleCard(article, { lead: index === 0 })).join('');
         let secondaryHtml = secondaryStories.map(article => articleCard(article)).join('');
 
-        if (adVariant.placement === 'primary') {
-            if (config.primaryCount > 1) {
-                // Primary column has no spare slot (grid layout): the ad takes the 2nd
-                // primary spot, and the displaced story cascades down into secondary,
-                // pushing secondary's overflow into "More Stories".
-                const lead = articleCard(primaryStories[0], { lead: true });
-                primaryHtml = lead + adCard(adVariant, slotSizes.primary);
+        if (adVariant) {
+            if (adVariant.placement === 'primary') {
+                if (config.primaryCount > 1) {
+                    const lead = articleCard(primaryStories[0], { lead: true });
+                    primaryHtml = lead + adCard(adVariant, slotSizes.primary);
 
-                const shiftedSecondary = [...primaryStories.slice(1), ...secondaryStories];
-                const keptSecondary = shiftedSecondary.slice(0, config.secondaryCount);
-                const overflow = shiftedSecondary.slice(config.secondaryCount);
-                secondaryHtml = keptSecondary.map(article => articleCard(article)).join('');
-                moreStories = [...overflow, ...moreStories];
-            } else {
-                // Primary is just the full-width lead (full/cascade layouts): append below it
-                primaryHtml += adCard(adVariant, slotSizes.primary);
+                    const shiftedSecondary = [...primaryStories.slice(1), ...secondaryStories];
+                    const keptSecondary = shiftedSecondary.slice(0, config.secondaryCount);
+                    const overflow = shiftedSecondary.slice(config.secondaryCount);
+                    secondaryHtml = keptSecondary.map(article => articleCard(article)).join('');
+                    moreStories = [...overflow, ...moreStories];
+                } else {
+                    primaryHtml += adCard(adVariant, slotSizes.primary);
+                }
+            } else if (secondaryStories.length > 0) {
+                const result = insertAdInSecondary(secondaryStories, config, adVariant, slotSizes.secondary);
+                secondaryHtml = result.html;
+                moreStories = [...result.displaced, ...moreStories];
             }
-        } else if (secondaryStories.length > 0) {
-            const result = insertAdInSecondary(secondaryStories, config, adVariant, slotSizes.secondary);
-            secondaryHtml = result.html;
-            moreStories = [...result.displaced, ...moreStories];
         }
 
         return { primaryHtml, secondaryHtml, moreStories };
@@ -1383,7 +1458,6 @@
         const unpinnedArticles = newestFirst.filter(article => !article.pinned);
         const frontPage = [...pinnedArticles, ...unpinnedArticles];
 
-        // Determine layout: random if enabled (weighted toward the main layout), otherwise use CONFIG value
         const weightedLayoutOptions = [
             CONFIG.mainNewsLayout, CONFIG.mainNewsLayout, CONFIG.mainNewsLayout,
             ...['grid', 'full', 'cascade'].filter(layout => layout !== CONFIG.mainNewsLayout)
@@ -1394,10 +1468,22 @@
         const layoutClass = `layout-${selectedLayout}`;
         const target = document.querySelector('#panel-home .main-column');
 
-        // Pick one of this layout's two pre-made ad variants at random
-        const adVariant = AD_VARIANTS[selectedLayout][Math.floor(Math.random() * AD_VARIANTS[selectedLayout].length)];
+        const layoutAdVariants = AD_VARIANTS[selectedLayout] || [];
+        const adVariant = layoutAdVariants.length
+            ? layoutAdVariants[Math.floor(Math.random() * layoutAdVariants.length)]
+            : null;
 
         const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage, adVariant);
+
+        const moreStoriesHtml = moreStories.length
+            ? `
+            <div class="section-wrap">
+                <div class="kicker">More Stories</div>
+                <h2 class="page-title">Recent Headlines</h2>
+            </div>
+            <div class="section-wrap"><div class="stories">${moreStories.map(article => articleCard(article)).join('')}</div></div>
+            `
+            : '';
 
         target.innerHTML = `
             <div class="section-wrap">
@@ -1407,18 +1493,16 @@
                     <div class="secondary-news">${secondaryHtml}</div>
                 </div>
             </div>
-            <div class="section-wrap">
-                <div class="kicker">More Stories</div>
-                <h2 class="page-title">Recent Headlines</h2>
-            </div>
-            <div class="section-wrap"><div class="stories">${moreStories.map(article => articleCard(article)).join('')}</div></div>
+            ${moreStoriesHtml}
         `;
     }
 
     function renderCategories() {
         Object.entries(categoryTabs).forEach(([tabName, sectionName]) => {
             const target = document.querySelector(`#panel-${tabName} .section-wrap`);
-            const stories = ARTICLES.filter(article => article.section === sectionName);
+            const stories = tabName === 'opinion'
+                ? ARTICLES.filter(article => article.opinion === true)
+                : ARTICLES.filter(article => article.section === sectionName);
             if (!target) return;
 
             target.innerHTML = `
@@ -1451,7 +1535,6 @@
         const latest = [...ARTICLES].sort(byNewest).slice(0, 3);
         const editorPicks = ARTICLES.filter(article => article.recommended).sort(byNewest);
 
-        // Build fixed sidebar widget components (in order)
         const fixedWidgets = [
             {
                 id: 'latest',
@@ -1496,28 +1579,30 @@
             }
         ];
 
-        // Advertisement widget to be randomly placed, using one of two pre-made sidebar variants
-        const sidebarAdImage = SIDEBAR_AD_VARIANTS[Math.floor(Math.random() * SIDEBAR_AD_VARIANTS.length)];
-        const advertWidget = {
-            id: 'advert',
-            html: `
-                <div class="side-advert">
-                    <img src="${escapeHTML(sidebarAdImage.src)}"
-                        alt="${escapeHTML(sidebarAdImage.alt)}" title="Advertisement">
-                </div>
-            `
-        };
-
-        // Randomly choose a position (0-3) to insert the ad among fixed widgets
-        const randomPosition = Math.floor(Math.random() * (fixedWidgets.length + 1));
-        const widgets = [...fixedWidgets];
-        widgets.splice(randomPosition, 0, advertWidget);
-
-        // Render widgets to sidebar
-        const sideColumn = document.querySelector('.side-column');
-        if (sideColumn) {
-            sideColumn.innerHTML = widgets.map(w => w.html).join('');
+        const sidebarAdVariants = SIDEBAR_AD_VARIANTS || [];
+        let advertWidget = null;
+        if (sidebarAdVariants.length) {
+            const sidebarAdImage = sidebarAdVariants[Math.floor(Math.random() * sidebarAdVariants.length)];
+            advertWidget = {
+                id: 'advert',
+                html: `
+                    <div class="side-advert">
+                        <img src="${escapeHTML(sidebarAdImage.src)}" title="Advertisement">
+                    </div>
+                `
+            };
         }
+
+        const widgets = [...fixedWidgets];
+        if (advertWidget) {
+            const randomPosition = Math.floor(Math.random() * (fixedWidgets.length + 1));
+            widgets.splice(randomPosition, 0, advertWidget);
+        }
+
+        const html = widgets.map(w => w.html).join('');
+        document.querySelectorAll('.side-column').forEach(sideColumn => {
+            sideColumn.innerHTML = html;
+        });
     }
 
     function activateTab(tabName) {
@@ -1535,20 +1620,86 @@
         });
     }
 
+    // Body renderer – supports paragraphs, images, blockquotes, asides, hr
+
+    function renderBodyBlock(block) {
+        if (typeof block === 'string') {
+            return `<p>${formatText(block)}</p>`;
+        }
+
+        const alignClass = block.align === 'center' ? 'align-center'
+            : block.align === 'right' ? 'align-right'
+                : '';
+
+        switch (block.type) {
+            case 'paragraph':
+                return `<p class="${alignClass}">${formatText(block.text)}</p>`;
+
+            case 'image': {
+                const floatClass = block.float === 'left' ? 'float-left'
+                    : block.float === 'right' ? 'float-right'
+                        : '';
+                const styleParts = [];
+                if (block.width) styleParts.push(`width:${escapeHTML(block.width)}`);
+                if (block.height) styleParts.push(`height:${escapeHTML(block.height)}`);
+                const styleAttr = styleParts.length ? `style="${styleParts.join(';')}"` : '';
+
+                const caption = block.caption
+                    ? `<figcaption>${formatText(block.caption)}</figcaption>`
+                    : '';
+
+                return `
+                    <figure class="article-image ${floatClass} ${alignClass}" ${styleAttr}>
+                        <img src="${escapeHTML(block.src)}"
+                             ${block.height ? `height="${escapeHTML(block.height)}"` : ''}
+                             title="${escapeHTML(block.caption || '')}">
+                        ${caption}
+                    </figure>
+                `;
+            }
+
+            case 'blockquote': {
+                const cite = block.cite
+                    ? `<cite>— ${formatText(block.cite)}</cite>`
+                    : '';
+                return `
+                    <blockquote class="${alignClass}">
+                        <p>${formatText(block.text)}</p>
+                        ${cite}
+                    </blockquote>
+                `;
+            }
+
+            case 'aside':
+                return `
+                    <aside class="article-aside ${alignClass}">
+                        ${formatText(block.text)}
+                    </aside>
+                `;
+
+            case 'hr':
+                return `<hr class="article-hr">`;
+
+            default:
+                return '';
+        }
+    }
+
     function openArticle(articleId) {
         const article = ARTICLE_MAP.get(articleId);
         if (!article) return;
 
         const typeDisplay = article.type ? `${escapeHTML(article.type)} · ` : '';
+        const opinionClass = article.opinion === true ? ' opinion-card' : '';
         document.getElementById('articleTarget').innerHTML = `
-            <article class="article-detail">
+            <article class="article-detail${opinionClass}">
                 <button class="back-button" type="button" data-tab="home">Back to front page</button>
                 <div class="kicker">${typeDisplay}${escapeHTML(article.section)}</div>
                 <h1>${escapeHTML(article.title)}</h1>
                 <div class="article-deck">${escapeHTML(article.summary)}</div>
                 <div class="date">${escapeHTML(formatMeta(article))}</div>
-                ${article.image ? `<img class="article-hero" src="${escapeHTML(article.image)}" alt="${escapeHTML(article.alt)}">` : ''}
-                <div class="article-body">${article.body.map(paragraph => `<p>${escapeHTML(paragraph)}</p>`).join('')}</div>
+                ${article.image ? `<img class="article-hero" src="${escapeHTML(article.image)}">` : ''}
+                <div class="article-body">${article.body.map(renderBodyBlock).join('')}</div>
             </article>
         `;
         activateTab('article');
@@ -1589,7 +1740,6 @@
         if (fakeButton) playClickSound();
     });
 
-    // Search functionality
     const searchInput = document.getElementById('searchInput');
     const searchResultsDropdown = document.getElementById('searchResultsDropdown');
 

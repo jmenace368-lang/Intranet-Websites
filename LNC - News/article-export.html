@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Builder – Le Nouvelle Citoyen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&family=Rajdhani:wght@400;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Exo 2', 'Barlow', Arial, sans-serif;
+            background: #e8e8e8;
+            color: #222;
+            line-height: 1.45;
+        }
+
+        .app {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            min-height: 100vh;
+        }
+
+        /* Left Panel */
+        .editor-panel {
+            background: #f5f5f5;
+            border-right: 1px solid #ccc;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .editor-panel h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+            color: #11213b;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin: 22px 0 8px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 4px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 10px 0 3px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 7px 9px;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            font: 13px 'Exo 2', sans-serif;
+            background: #fff;
+        }
+
+        textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            gap: 18px;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .checkbox-row label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Block list */
+        .blocks {
+            margin-top: 8px;
+        }
+
+        .block {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        .block-controls {
+            display: flex;
+            gap: 4px;
+        }
+
+        .block-controls button {
+            background: #eee;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            padding: 2px 7px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .block-controls button:hover {
+            background: #ddd;
+        }
+
+        .block textarea {
+            min-height: 60px;
+            font-size: 13px;
+        }
+
+        .block .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .block .field-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        /* Add block buttons */
+        .add-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 12px 0 20px;
+        }
+
+        .add-buttons button {
+            background: #11213b;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .add-buttons button:hover {
+            background: #1a3258;
+        }
+
+        /* Export */
+        .export-area {
+            margin-top: 20px;
+        }
+
+        .export-area button {
+            background: #9d2534;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .export-area button:hover {
+            background: #7a1c28;
+        }
+
+        .export-area textarea {
+            min-height: 180px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+        }
+
+        /* Right Panel (Preview) */
+        .preview-panel {
+            background: #f0f0f0;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Exact match to the real article container */
+        .preview-wrap {
+            width: 100%;
+            max-width: 800px;
+            background: #f5f5f5;
+            border: 1px solid #c8c8c8;
+            padding: 28px 32px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .preview-wrap .kicker {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #9d2534;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        .preview-wrap h1 {
+            font-size: 38px;
+            line-height: 1.1;
+            margin: 8px 0 12px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .preview-wrap .article-deck {
+            border-bottom: 1px solid #c8c8c8;
+            color: #555;
+            font: 18px/1.45 Georgia, 'Times New Roman', serif;
+            padding-bottom: 16px;
+            margin-bottom: 8px;
+        }
+
+        .preview-wrap .date {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 18px;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .preview-wrap .article-hero {
+            display: block;
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+            margin: 18px 0;
+        }
+
+        /* Body styles (same as news site) */
+        .preview-wrap .article-body {
+            font: 17px/1.7 Georgia, 'Times New Roman', serif;
+            overflow: hidden;
+        }
+
+        .preview-wrap .article-body p {
+            margin: 0 0 18px;
+        }
+
+        .preview-wrap .article-body .align-center {
+            text-align: center;
+        }
+
+        .preview-wrap .article-body .align-right {
+            text-align: right;
+        }
+
+        .preview-wrap .article-image {
+            margin: 0 0 1.25em;
+            max-width: 100%;
+        }
+
+        .preview-wrap .article-image.float-left {
+            float: left;
+            margin: 0.25em 1.4em 1em 0;
+            max-width: 48%;
+        }
+
+        .preview-wrap .article-image.float-right {
+            float: right;
+            margin: 0.25em 0 1em 1.4em;
+            max-width: 48%;
+        }
+
+        .preview-wrap .article-image.align-center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .preview-wrap .article-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .preview-wrap .article-image figcaption {
+            font-size: 13px;
+            color: #555;
+            margin-top: 6px;
+            line-height: 1.35;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .preview-wrap blockquote {
+            margin: 1.4em 0;
+            padding: 0.8em 1.2em;
+            border-left: 4px solid #00038f;
+            background: #f4f4f4;
+            font-style: italic;
+        }
+
+        .preview-wrap blockquote cite {
+            display: block;
+            margin-top: 0.6em;
+            font-size: 0.9em;
+            font-style: normal;
+            color: #666;
+        }
+
+        .preview-wrap .article-aside {
+            margin: 1.4em 0;
+            padding: 0.9em 1.2em;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            font-size: 0.95em;
+            line-height: 1.5;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .preview-wrap .article-hr {
+            border: none;
+            border-top: 1px solid #c8c8c8;
+            margin: 1.8em 0;
+        }
+
+        .preview-wrap.opinion-card {
+            background: #e8e8e8;
+            border-left: 4px solid #9d2534;
+        }
+
+        .empty-preview {
+            color: #999;
+            font-style: italic;
+            text-align: center;
+            padding: 60px 20px;
+            font-family: 'Exo 2', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div class="editor-panel">
+            <h1>Article Builder</h1>
+
+            <div class="section-label">Metadata</div>
+
+            <label>Title</label>
+            <input type="text" id="meta-title" placeholder="Article title">
+
+            <div class="row">
+                <div>
+                    <label>Section</label>
+                    <select id="meta-section">
+                        <option>City 13</option>
+                        <option>Politics</option>
+                        <option>Announcements</option>
+                        <option>Economy</option>
+                        <option>Society</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Type</label>
+                    <input type="text" id="meta-type" placeholder="Breaking News, Editorial…">
+                </div>
+            </div>
+
+            <div class="row">
+                <div>
+                    <label>Published</label>
+                    <input type="text" id="meta-published" placeholder="April 27, 2007">
+                </div>
+                <div>
+                    <label>Author</label>
+                    <input type="text" id="meta-author" value="Author">
+                </div>
+            </div>
+
+            <div class="checkbox-row">
+                <label><input type="checkbox" id="meta-pinned"> Pinned</label>
+                <label><input type="checkbox" id="meta-recommended"> Editor’s Pick</label>
+                <label><input type="checkbox" id="meta-opinion"> Opinion</label>
+            </div>
+
+            <label>Summary / Deck</label>
+            <textarea id="meta-summary" placeholder="Short summary shown under the title"></textarea>
+
+            <label>Hero Image URL (top of article)</label>
+            <input type="text" id="meta-image" placeholder="https://…">
+
+            <div class="row">
+                <div>
+                    <label>Image Label</label>
+                    <input type="text" id="meta-imageLabel" placeholder="Local News">
+                </div>
+                <div>
+                    <label>Label Style</label>
+                    <input type="text" id="meta-imageLabelStyle" placeholder="default / city-news / breaking">
+                </div>
+            </div>
+
+            <div class="section-label">Body Blocks</div>
+
+            <div class="add-buttons">
+                <button onclick="addBlock('paragraph')">+ Paragraph</button>
+                <button onclick="addBlock('image')">+ Image</button>
+                <button onclick="addBlock('blockquote')">+ Blockquote</button>
+                <button onclick="addBlock('aside')">+ Aside</button>
+                <button onclick="addBlock('hr')">+ Divider</button>
+            </div>
+
+            <div class="blocks" id="blocks"></div>
+
+            <div class="export-area">
+                <button onclick="exportJSON()">Export JSON</button>
+                <textarea id="output" readonly placeholder="JSON will appear here…"></textarea>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <div class="preview-wrap" id="preview">
+                <div class="empty-preview">Start filling the form → live preview appears here</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let blocks = [];
+
+        // Helpers
+        function escapeHTML(str) {
+            return String(str ?? '').replace(/[&<>"']/g, c =>
+                ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+        }
+
+        function formatText(text) {
+            if (!text) return '';
+            let html = escapeHTML(text);
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+            html = html.replace(/_(.+?)_/g, '<em>$1</em>');
+            return html;
+        }
+
+        // Block management
+        function addBlock(type) {
+            const id = Date.now() + Math.random();
+            const block = { id, type };
+
+            if (type === 'paragraph') {
+                block.text = '';
+                block.align = 'left';
+            } else if (type === 'image') {
+                block.src = '';
+                block.width = '100%';
+                block.height = '';
+                block.float = 'none';
+                block.align = 'left';
+                block.caption = '';
+            } else if (type === 'blockquote') {
+                block.text = '';
+                block.cite = '';
+                block.align = 'left';
+            } else if (type === 'aside') {
+                block.text = '';
+                block.align = 'left';
+            }
+
+            blocks.push(block);
+            renderBlocks();
+            updatePreview();
+        }
+
+        function removeBlock(id) {
+            blocks = blocks.filter(b => b.id !== id);
+            renderBlocks();
+            updatePreview();
+        }
+
+        function moveBlock(id, dir) {
+            const idx = blocks.findIndex(b => b.id === id);
+            if (idx < 0) return;
+            const newIdx = idx + dir;
+            if (newIdx < 0 || newIdx >= blocks.length) return;
+            [blocks[idx], blocks[newIdx]] = [blocks[newIdx], blocks[idx]];
+            renderBlocks();
+            updatePreview();
+        }
+
+        function updateBlock(id, key, value) {
+            const block = blocks.find(b => b.id === id);
+            if (block) block[key] = value;
+            updatePreview();
+        }
+
+        // Render editor blocks
+        function renderBlocks() {
+            const container = document.getElementById('blocks');
+            container.innerHTML = '';
+
+            blocks.forEach((block, i) => {
+                const el = document.createElement('div');
+                el.className = 'block';
+
+                let fields = '';
+
+                if (block.type === 'paragraph') {
+                    fields = `
+                    <textarea oninput="updateBlock(${block.id}, 'text', this.value)">${escapeHTML(block.text)}</textarea>
+                    <div class="field-row">
+                        <div>
+                            <label>Align</label>
+                            <select onchange="updateBlock(${block.id}, 'align', this.value)">
+                                <option value="left" ${block.align === 'left' ? 'selected' : ''}>Left</option>
+                                <option value="center" ${block.align === 'center' ? 'selected' : ''}>Center</option>
+                                <option value="right" ${block.align === 'right' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                    </div>
+                    <small style="color:#888;font-size:11px">Use **bold** and *italic*</small>
+                `;
+                } else if (block.type === 'image') {
+                    fields = `
+                    <div class="field-row full">
+                        <label>Image URL</label>
+                        <input type="text" value="${escapeHTML(block.src)}" oninput="updateBlock(${block.id}, 'src', this.value)">
+                    </div>
+                    <div class="field-row">
+                        <div>
+                            <label>Width</label>
+                            <input type="text" value="${escapeHTML(block.width)}" placeholder="42% or 300px" oninput="updateBlock(${block.id}, 'width', this.value)">
+                        </div>
+                        <div>
+                            <label>Height</label>
+                            <input type="text" value="${escapeHTML(block.height)}" placeholder="auto or 200px" oninput="updateBlock(${block.id}, 'height', this.value)">
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div>
+                            <label>Float</label>
+                            <select onchange="updateBlock(${block.id}, 'float', this.value)">
+                                <option value="none" ${block.float === 'none' ? 'selected' : ''}>None</option>
+                                <option value="left" ${block.float === 'left' ? 'selected' : ''}>Left</option>
+                                <option value="right" ${block.float === 'right' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Align</label>
+                            <select onchange="updateBlock(${block.id}, 'align', this.value)">
+                                <option value="left" ${block.align === 'left' ? 'selected' : ''}>Left</option>
+                                <option value="center" ${block.align === 'center' ? 'selected' : ''}>Center</option>
+                                <option value="right" ${block.align === 'right' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-row full">
+                        <label>Caption</label>
+                        <input type="text" value="${escapeHTML(block.caption)}" oninput="updateBlock(${block.id}, 'caption', this.value)">
+                    </div>
+                `;
+                } else if (block.type === 'blockquote') {
+                    fields = `
+                    <textarea oninput="updateBlock(${block.id}, 'text', this.value)">${escapeHTML(block.text)}</textarea>
+                    <div class="field-row">
+                        <div>
+                            <label>Cite / Attribution</label>
+                            <input type="text" value="${escapeHTML(block.cite)}" oninput="updateBlock(${block.id}, 'cite', this.value)">
+                        </div>
+                        <div>
+                            <label>Align</label>
+                            <select onchange="updateBlock(${block.id}, 'align', this.value)">
+                                <option value="left" ${block.align === 'left' ? 'selected' : ''}>Left</option>
+                                <option value="center" ${block.align === 'center' ? 'selected' : ''}>Center</option>
+                                <option value="right" ${block.align === 'right' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+                } else if (block.type === 'aside') {
+                    fields = `
+                    <textarea oninput="updateBlock(${block.id}, 'text', this.value)">${escapeHTML(block.text)}</textarea>
+                    <div class="field-row">
+                        <div>
+                            <label>Align</label>
+                            <select onchange="updateBlock(${block.id}, 'align', this.value)">
+                                <option value="left" ${block.align === 'left' ? 'selected' : ''}>Left</option>
+                                <option value="center" ${block.align === 'center' ? 'selected' : ''}>Center</option>
+                                <option value="right" ${block.align === 'right' ? 'selected' : ''}>Right</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+                } else if (block.type === 'hr') {
+                    fields = `<div style="text-align:center;color:#999;padding:8px 0">— horizontal rule —</div>`;
+                }
+
+                el.innerHTML = `
+                <div class="block-header">
+                    <span>${block.type}</span>
+                    <div class="block-controls">
+                        <button onclick="moveBlock(${block.id}, -1)" title="Move up">↑</button>
+                        <button onclick="moveBlock(${block.id}, 1)" title="Move down">↓</button>
+                        <button onclick="removeBlock(${block.id})" title="Delete">✕</button>
+                    </div>
+                </div>
+                ${fields}
+            `;
+                container.appendChild(el);
+            });
+        }
+
+        // Live preview
+        function renderBodyBlock(block) {
+            if (typeof block === 'string') {
+                return `<p>${formatText(block)}</p>`;
+            }
+
+            const alignClass = block.align === 'center' ? 'align-center'
+                : block.align === 'right' ? 'align-right' : '';
+
+            switch (block.type) {
+                case 'paragraph':
+                    return `<p class="${alignClass}">${formatText(block.text)}</p>`;
+
+                case 'image': {
+                    const floatClass = block.float === 'left' ? 'float-left'
+                        : block.float === 'right' ? 'float-right' : '';
+                    const styleParts = [];
+                    if (block.width) styleParts.push(`width:${escapeHTML(block.width)}`);
+                    if (block.height) styleParts.push(`height:${escapeHTML(block.height)}`);
+                    const styleAttr = styleParts.length ? `style="${styleParts.join(';')}"` : '';
+                    const caption = block.caption ? `<figcaption>${formatText(block.caption)}</figcaption>` : '';
+
+                    return `
+                    <figure class="article-image ${floatClass} ${alignClass}" ${styleAttr}>
+                        <img src="${escapeHTML(block.src)}" title="${escapeHTML(block.caption || '')}">
+                        ${caption}
+                    </figure>`;
+                }
+
+                case 'blockquote': {
+                    const cite = block.cite ? `<cite>— ${formatText(block.cite)}</cite>` : '';
+                    return `<blockquote class="${alignClass}"><p>${formatText(block.text)}</p>${cite}</blockquote>`;
+                }
+
+                case 'aside':
+                    return `<aside class="article-aside ${alignClass}">${formatText(block.text)}</aside>`;
+
+                case 'hr':
+                    return `<hr class="article-hr">`;
+
+                default:
+                    return '';
+            }
+        }
+
+        function updatePreview() {
+            const title = document.getElementById('meta-title').value;
+            const section = document.getElementById('meta-section').value;
+            const type = document.getElementById('meta-type').value;
+            const published = document.getElementById('meta-published').value;
+            const author = document.getElementById('meta-author').value;
+            const summary = document.getElementById('meta-summary').value;
+            const image = document.getElementById('meta-image').value;
+            const opinion = document.getElementById('meta-opinion').checked;
+
+            const preview = document.getElementById('preview');
+            preview.classList.toggle('opinion-card', opinion);
+
+            if (!title && !summary && blocks.length === 0) {
+                preview.innerHTML = `<div class="empty-preview">Start filling the form → live preview appears here</div>`;
+                return;
+            }
+
+            const typeDisplay = type ? `${escapeHTML(type)} · ` : '';
+
+            preview.innerHTML = `
+            <div class="kicker">${typeDisplay}${escapeHTML(section)}</div>
+            <h1>${escapeHTML(title) || 'Untitled'}</h1>
+            <div class="article-deck">${escapeHTML(summary)}</div>
+            <div class="date">${escapeHTML(published)} · ${escapeHTML(author)}</div>
+            ${image ? `<img class="article-hero" src="${escapeHTML(image)}">` : ''}
+            <div class="article-body">
+                ${blocks.map(renderBodyBlock).join('')}
+            </div>
+        `;
+        }
+
+        // Export
+        function exportJSON() {
+            const article = {
+                title: document.getElementById('meta-title').value,
+                section: document.getElementById('meta-section').value,
+                type: document.getElementById('meta-type').value || undefined,
+                published: document.getElementById('meta-published').value,
+                author: document.getElementById('meta-author').value,
+                pinned: document.getElementById('meta-pinned').checked,
+                recommended: document.getElementById('meta-recommended').checked || undefined,
+                opinion: document.getElementById('meta-opinion').checked || undefined,
+                image: document.getElementById('meta-image').value || undefined,
+                imageLabel: document.getElementById('meta-imageLabel').value || undefined,
+                imageLabelStyle: document.getElementById('meta-imageLabelStyle').value || undefined,
+                summary: document.getElementById('meta-summary').value,
+                body: blocks.map(b => {
+                    const clean = { type: b.type };
+                    if (b.text !== undefined) clean.text = b.text;
+                    if (b.src) clean.src = b.src;
+                    if (b.width) clean.width = b.width;
+                    if (b.height) clean.height = b.height;
+                    if (b.float && b.float !== 'none') clean.float = b.float;
+                    if (b.align && b.align !== 'left') clean.align = b.align;
+                    if (b.caption) clean.caption = b.caption;
+                    if (b.cite) clean.cite = b.cite;
+                    return clean;
+                })
+            };
+
+            // Remove undefined keys
+            Object.keys(article).forEach(k => article[k] === undefined && delete article[k]);
+
+            document.getElementById('output').value = JSON.stringify(article, null, 4);
+        }
+
+        // Live update metadata → preview
+        ['meta-title', 'meta-section', 'meta-type', 'meta-published', 'meta-author',
+            'meta-summary', 'meta-image', 'meta-imageLabel', 'meta-imageLabelStyle']
+            .forEach(id => {
+                document.getElementById(id).addEventListener('input', updatePreview);
+            });
+
+        document.getElementById('meta-opinion').addEventListener('change', updatePreview);
+
+        // Start with one empty paragraph
+        addBlock('paragraph');
+    </script>
+</body>
+
+</html>
