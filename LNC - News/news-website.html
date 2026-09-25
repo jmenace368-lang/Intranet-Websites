@@ -718,7 +718,7 @@
         font-family: Arial, sans-serif;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 22px;
+        font-size: 18px;
         line-height: 1;
         margin-bottom: 12px;
         color: var(--white);
@@ -814,12 +814,11 @@
     .body-wrap .side-widget.contact .contact-title {
         font-family: 'Poppins', system-ui, sans-serif;
         letter-spacing: 1px;
-        margin-bottom: 12px;
     }
 
     .body-wrap .side-widget.contact .contact-title h2 {
         border-bottom: unset;
-        font-size: 22px !important;
+        font-size: 18px !important;
         margin-bottom: 12px;
         padding-bottom: unset;
     }
@@ -827,12 +826,13 @@
     .body-wrap .side-widget.contact .contact-title span {
         display: block;
         padding-bottom: 5px;
+        font-size: 12px;
     }
 
     .body-wrap .side-widget.contact .contact-content {
         padding-inline: 8px;
         padding-bottom: 8px;
-        text-align: center;
+        text-align: justify;
     }
 
     .body-wrap .side-widget.contact .contact-title span,
@@ -1002,8 +1002,10 @@
 
     /* Fake Button */
     .body-wrap .fake-button {
+        display: block;
+        width: 100%;
+        padding-block: 12px;
         border-radius: 4px;
-        padding: 12px 52px;
         font-size: 18px;
         font-weight: 900;
         margin-block: 12px;
@@ -1013,6 +1015,7 @@
         cursor: pointer;
         transition: filter 0.2s;
         user-select: none;
+        justify-content: center;
     }
 
     .body-wrap .fake-button a {
