@@ -1,0 +1,2625 @@
+<style>
+    /* Font Imports */
+    @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500&family=Bebas+Neue&family=Exo+2:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+    @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Page Shell */
+    .body-wrap {
+        --text-color-main: #333;
+        --white: #f5f5f5;
+        background: var(--white);
+        border: solid 3px black;
+        color: var(--text-color-main);
+        font-family: 'Exo 2', 'Barlow', Arial, sans-serif;
+        margin: 40px auto;
+        max-width: 1042px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Page Layout */
+    .body-wrap .layout {
+        --kicker-color: #9d2534;
+        --line-color: #c8c8c8;
+        /* --red-text-color: #c52237; */
+        --red-text-color: #00038f;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 190px minmax(0, 1fr) 190px;
+        min-height: 600px;
+        padding: 14px;
+    }
+
+    .section-wrap {
+        background: rgb(136 22 22 / 1%);
+        padding: 0 10px;
+    }
+
+    /* Header & Masthead */
+
+    .body-wrap .masthead {
+        background: linear-gradient(to bottom, #13161a, #233a61);
+        /* background: #13161a; */
+        height: 140px;
+        border: 1px groove var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .body-wrap .masthead-icon {
+        align-items: center;
+        height: 80%;
+        margin: 0;
+        min-width: 0;
+        overflow: hidden;
+        padding: 8px;
+        width: auto;
+    }
+
+    .body-wrap .masthead-icon img {
+        display: block;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        width: auto;
+    }
+
+    .body-wrap .masthead-content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0;
+        height: 100%;
+        justify-content: center;
+        min-width: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .body-wrap .masthead-search {
+        align-self: center;
+        display: flex;
+        margin: 0;
+        max-width: 400px;
+        position: relative;
+        width: 100%;
+        pointer-events: all;
+    }
+
+    .body-wrap .masthead-search input {
+        background: var(--white);
+        border: 2px inset #d7d7d7;
+        color: #222;
+        flex: 1;
+        font: 11px Arial, sans-serif;
+        height: 22px;
+        min-width: 0;
+        padding: 2px 5px;
+    }
+
+    .body-wrap .masthead-search button {
+        background: #d7d7d7;
+        border: 2px outset #f2f2f2;
+        color: #111;
+        cursor: pointer;
+        font: bold 10px Arial, sans-serif;
+        height: 22px;
+        margin-left: 4px;
+        padding: 0 8px;
+        text-transform: uppercase;
+    }
+
+    .body-wrap .masthead-search button:active {
+        border-style: inset;
+        border-bottom: 2px solid red !important;
+    }
+
+    /* Search Dropdown */
+    .search-results-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border: 1px solid #d7d7d7;
+        border-top: none;
+        max-height: 300px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-results-dropdown.active {
+        display: block;
+    }
+
+    .search-result-item {
+        padding: 8px 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .search-result-item:hover {
+        background: #f5f5f5;
+    }
+
+    .search-result-item .result-title {
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 2px;
+    }
+
+    .search-result-item .result-section {
+        color: #666;
+        font-size: 11px;
+    }
+
+    @media (max-width: 650px) {
+        .body-wrap .masthead {
+            grid-template-columns: minmax(0, 1fr) minmax(150px, 220px) minmax(0, 1fr);
+            height: 100px;
+            min-height: 0;
+        }
+
+        .body-wrap .masthead-icon {
+            padding: 12px 4px;
+        }
+    }
+
+    /* Navigation */
+    .body-wrap .navigation {
+        background: linear-gradient(#fafafa, #ddd);
+        border-bottom: 2px solid #222;
+        display: flex;
+        min-height: 44px;
+        user-select: none;
+    }
+
+    .body-wrap .navigation ul {
+        align-items: stretch;
+        display: flex;
+        flex: 1;
+        gap: 2px;
+        list-style: none;
+        margin: 0;
+        min-height: 42px;
+        padding: 0 18px;
+        flex-wrap: wrap;
+    }
+
+    .body-wrap .navigation li {
+        align-items: center;
+        border: 2px outset #f2f2f2;
+        cursor: pointer;
+        display: flex;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 0 13px;
+    }
+
+    .body-wrap .navigation li.active {
+        background: var(--white);
+        border-style: inset;
+        box-shadow: inset 0 -2px 0 var(--red-text-color);
+        color: var(--red-text-color);
+    }
+
+    .body-wrap .navigation li:focus-visible {
+        outline: 2px solid var(--red-text-color);
+        outline-offset: -2px;
+    }
+
+    /* Tab Panels */
+    .body-wrap .tab-panel[hidden] {
+        display: none;
+    }
+
+    .body-wrap .tab-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    /* Main Column */
+    .body-wrap .kicker {
+        font-family: Arial, Helvetica, sans-serif;
+        color: var(--kicker-color);
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 800 !important;
+        letter-spacing: 1.5px;
+    }
+
+    .body-wrap .main-news .kicker {
+        margin-top: 8px;
+    }
+
+    .body-wrap h1.page-title {
+        border-bottom: 1px solid var(--line-color);
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 39px;
+        letter-spacing: 2.5px;
+        margin: 0 0 12px;
+        padding-bottom: 6px;
+        text-transform: uppercase;
+    }
+
+    /* Lead Story Layout */
+    .main-news {
+        margin-bottom: 18px;
+    }
+
+    .main-news.layout-grid {
+        align-items: stretch;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1.7fr 1fr;
+    }
+
+    .main-news.layout-grid .primary-news,
+    .main-news.layout-grid .secondary-news {
+        display: grid;
+        gap: 15px;
+    }
+
+    .main-news.layout-grid .primary-news {
+        align-content: start;
+        grid-template-rows: auto 1fr;
+    }
+
+    .main-news.layout-grid .secondary-news {
+        align-content: stretch;
+        background-color: rgba(136, 22, 22, 0.05);
+        /* padding-inline: 6px; */
+        padding: 0px 6px;
+    }
+
+    .main-news.layout-grid .primary-news .news-article:last-child {
+        align-self: stretch;
+    }
+
+    .main-news.layout-full {
+        display: grid;
+        gap: 14px;
+    }
+
+    .main-news.layout-full .primary-news {
+        display: grid;
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-full .primary-news .news-article:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-full .secondary-news {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        grid-column: 1 / -1;
+        grid-auto-rows: 1fr;
+    }
+
+    .main-news.layout-full .secondary-news .news-article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-news.layout-full .secondary-news .news-article>button {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .main-news.layout-cascade {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 30px;
+    }
+
+    .main-news.layout-cascade .primary-news {
+        display: grid;
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .primary-news .news-article:first-child {
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .secondary-news {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        grid-column: 1 / -1;
+    }
+
+    .main-news.layout-cascade .secondary-news .news-article:nth-child(odd) {
+        transform: translateY(20px);
+    }
+
+    .main-news.layout-cascade .secondary-news .news-article:nth-child(even) {
+        transform: translateY(-5px);
+    }
+
+    /* Article Cards */
+    .body-wrap .main-column .main-news .news-item {
+        margin-bottom: 20px;
+    }
+
+    .body-wrap .news-article {
+        border-bottom: 1px solid var(--line-color);
+        padding-bottom: 12px;
+    }
+
+    .body-wrap .news-article>button,
+    .body-wrap .side-widget article>button {
+        appearance: none;
+        background: none;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: block;
+        font: inherit;
+        padding: 0;
+        text-align: left;
+        width: 100%;
+    }
+
+    .body-wrap .side-widget article>button {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .body-wrap .news-article.lead {
+        margin-bottom: 0;
+    }
+
+    .body-wrap .news-article.opinion-card h3 {
+        border-left: 4px solid black;
+        padding-left: 12px;
+    }
+
+    .body-wrap .stories .news-article .photo {
+        height: 125px;
+    }
+
+    .body-wrap .stories .news-article .kicker {
+        margin-top: 2px;
+    }
+
+    .body-wrap #panel-home .stories .news-article .class-label {
+        display: none;
+    }
+
+    .body-wrap .news-article .photo {
+        height: 100px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .body-wrap .news-article.lead .photo {
+        height: 250px;
+    }
+
+    .body-wrap .news-article .photo img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Image Label */
+    .body-wrap .image-wrap {
+        position: relative;
+    }
+
+    .body-wrap .image-wrap .class-label {
+        color: #e7e7e7;
+        font-weight: bold;
+        font-size: 12px;
+        left: 0;
+        padding: 4px 6px;
+        position: absolute;
+        top: 0;
+        border-bottom-right-radius: 4px;
+    }
+
+    .body-wrap .image-wrap .class-label.default {
+        background: rgb(115 115 115);
+    }
+
+    .body-wrap .image-wrap .class-label.breaking {
+        background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
+    }
+
+    .body-wrap .image-wrap .class-label.local-news {
+        background: rgb(42, 76, 168);
+    }
+
+    .body-wrap .image-wrap .class-label.city-news {
+        background: rgb(61, 57, 119);
+    }
+
+    /* Article Content */
+    .body-wrap .news-article h3 {
+        font-weight: bold;
+        line-height: 1.15;
+        margin: 8px 0 5px;
+        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--text-color-main);
+
+
+    }
+
+    .body-wrap .main-news .news-article h3 {
+        font-size: 18px;
+    }
+
+    .body-wrap #panel-home .main-news .news-article.lead h3 {
+        font-size: 22px;
+    }
+
+    .body-wrap .summary {
+        color: var(--text-color-main);
+        font-size: 13px;
+        line-height: 1.45;
+        margin-bottom: 10px;
+    }
+
+    .body-wrap .stories .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* .body-wrap #panel-home .stories .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    } */
+
+    .body-wrap .primary-news .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .secondary-news .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .primary-news .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .secondary-news .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .stories .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .date {
+        color: #666;
+        font-size: 10px;
+    }
+
+    .body-wrap .primary-news .date {
+        margin-top: 7px;
+    }
+
+    .body-wrap .article-detail .date {
+        margin-top: 7px;
+    }
+
+    /* Article Detail */
+    .body-wrap .article-detail {
+        position: relative;
+        border: 1px solid var(--line-color);
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 28px 32px;
+        max-height: 900px;
+        z-index: 1;
+        overscroll-behavior: contain;
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .body-wrap .article-detail::-webkit-scrollbar {
+        display: none;
+    }
+
+    .body-wrap .article-detail.opinion-card {
+        background: #e8e8e8;
+        border-left: 4px solid var(--red-text-color);
+    }
+
+    .body-wrap .article-detail .back-button {
+        background: #d7d7d7;
+        border: 2px outset #f2f2f2;
+        color: #111;
+        cursor: pointer;
+        font: bold 10px Arial, sans-serif;
+        margin-bottom: 18px;
+        padding: 6px 10px;
+        text-transform: uppercase;
+    }
+
+    .body-wrap .article-detail h1 {
+        font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 38px;
+        line-height: 1.1;
+        margin: 8px 0 12px;
+    }
+
+    .body-wrap .article-detail .article-deck {
+        border-bottom: 1px solid var(--line-color);
+        color: #555;
+        font: 18px/1.45 Georgia, 'Times New Roman', serif;
+        padding-bottom: 16px;
+    }
+
+    .body-wrap .article-detail .article-hero {
+        display: block;
+        height: 310px;
+        margin: 18px 0;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    .body-wrap .article-detail .article-body {
+        font-family: "Times New Roman", Times, Georgia, serif;
+        font-size: 20px;
+        line-height: 1.5;
+    }
+
+    .body-wrap .article-detail .article-body p {
+        margin: 0 0 18px;
+    }
+
+    /* Article Detail Image, Aside, Comments */
+    .body-wrap .article-detail .article-body {
+        overflow: hidden;
+    }
+
+    .body-wrap .article-detail .article-body .align-center {
+        text-align: center;
+    }
+
+    .body-wrap .article-detail .article-body .align-right {
+        text-align: right;
+    }
+
+    /* Images */
+    .body-wrap .article-detail .article-image {
+        margin: 0 0 1.25em;
+        max-width: 100%;
+    }
+
+    .body-wrap .article-detail .article-image.float-left {
+        float: left;
+        margin: 0.25em 1.4em 1em 0;
+        max-width: 48%;
+    }
+
+    .body-wrap .article-detail .article-image.float-right {
+        float: right;
+        margin: 0.25em 0 1em 1.4em;
+        max-width: 48%;
+    }
+
+    .body-wrap .article-detail .article-image.align-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .body-wrap .article-detail .article-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .body-wrap .article-detail .article-image figcaption {
+        font-size: 13px;
+        color: #555;
+        margin-top: 6px;
+        line-height: 1.35;
+    }
+
+    /* Blockquote */
+    .body-wrap .article-detail blockquote {
+        margin: 1.4em 0;
+        padding: 0.8em 1.2em;
+        border-left: 4px solid var(--red-text-color);
+        background: #f4f4f4;
+        font-style: italic;
+    }
+
+    .body-wrap .article-detail blockquote cite {
+        display: block;
+        margin-top: 0.6em;
+        font-size: 0.9em;
+        font-style: normal;
+        color: #666;
+    }
+
+    /* Aside / callout */
+    .body-wrap .article-detail .article-aside {
+        margin: 1.4em 0;
+        padding: 0.9em 1.2em;
+        background: #f0f0f0;
+        border: 1px solid #ddd;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+
+    /* Horizontal rule */
+    .body-wrap .article-detail .article-hr {
+        border: none;
+        border-top: 1px solid var(--line-color);
+        margin: 1.8em 0;
+    }
+
+
+    /* More Stories */
+    .body-wrap .stories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: column;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    /* Side-Column */
+    .body-wrap .side-column {
+        background: rgba(136, 22, 22, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        height: fit-content;
+        padding: 6px;
+    }
+
+    .body-wrap #panel-home .side-column {
+        margin-top: 85px;
+    }
+
+    /* .body-wrap [id]:not(#panel-home) .side-column {
+        height: fit-content;
+    } */
+
+    /* Sidebar Widgets */
+    .body-wrap .side-widget {
+        --widget-bg: rgba(233, 229, 229, 1);
+        background: var(--widget-bg);
+        /* border: 2px outset #f2f2f2; */
+        border-bottom: var(--white) solid 2px;
+        border-left: var(--white) solid 2px;
+        border-right: var(--line-color) solid 1px;
+        /* border-top: solid 3px #333; */
+    }
+
+    .body-wrap .side-widget:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Collapsible Widget Content */
+    .body-wrap .side-widget .collapsible-extra {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.1s ease-in-out;
+    }
+
+    .body-wrap .side-widget .collapsible-extra.expanded {
+        max-height: 400px;
+    }
+
+    .body-wrap .side-widget .widget-content {
+        position: relative;
+    }
+
+    .body-wrap .side-widget .widget-content:has(> .collapsible-extra)::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 140px;
+        background: linear-gradient(to bottom, transparent, var(--widget-bg));
+        opacity: 1;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+
+    .body-wrap .side-widget .widget-content:has(> .collapsible-extra.expanded)::after {
+        opacity: 0;
+    }
+
+    .body-wrap .side-widget .collapsible-toggle {
+        appearance: none;
+        background: none;
+        border: none;
+        border-top: 1px solid var(--line-color);
+        color: var(--red-text-color);
+        cursor: pointer;
+        display: block;
+        font: bold 11px Arial, sans-serif;
+        padding: 8px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+    .body-wrap .side-widget .collapsible-toggle:hover {
+        text-decoration: underline;
+    }
+
+    .body-wrap .side-widget h2 {
+        /* font-family: 'Poppins', system-ui, sans-serif; */
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 18px;
+        line-height: 1;
+        margin-bottom: 12px;
+        color: var(--white);
+    }
+
+    .body-wrap .side-widget .side-widget-title {
+        border: 1px groove var(--white);
+        margin-bottom: 12px;
+        padding: 10px 8px 0;
+        /* background: rgb(138, 138, 138); */
+        background: linear-gradient(#808080, #202020);
+
+    }
+
+    .body-wrap .side-widget article {
+        border-bottom: 1px solid var(--line-color);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.35;
+        font-size: 14px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        padding-inline: 8px;
+    }
+
+    .body-wrap .side-widget .widget-content p {
+        margin: 0 0 8px 0;
+        /* font-size: 12px;
+        font-family: 'Times New Roman', Georgia, serif; */
+    }
+
+    .body-wrap .side-widget article:last-child {
+        border-bottom: none;
+    }
+
+    .body-wrap .side-widget ul {
+        list-style: none;
+    }
+
+    .body-wrap .side-widget span.title {
+        font-style: italic;
+        color: var(--red-text-color) !important;
+        overflow: hidden;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .body-wrap .side-widget .meta {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 4px;
+        gap: 14px;
+    }
+
+    .body-wrap .side-widget span.author {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+    }
+
+    .body-wrap .side-widget span.date {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+        flex-shrink: 0;
+    }
+
+    /* Contact Widget */
+    .body-wrap .side-widget.contact {
+        line-height: 1;
+        margin: 0;
+    }
+
+    .body-wrap .side-widget.contact .contact-title {
+        font-family: 'Poppins', system-ui, sans-serif;
+        letter-spacing: 1px;
+    }
+
+    .body-wrap .side-widget.contact .contact-title h2 {
+        border-bottom: unset;
+        font-size: 18px !important;
+        margin-bottom: 12px;
+        padding-bottom: unset;
+    }
+
+    .body-wrap .side-widget.contact .contact-title span {
+        display: block;
+        padding-bottom: 5px;
+        font-size: 12px;
+    }
+
+    .body-wrap .side-widget.contact .contact-content {
+        padding-inline: 8px;
+        padding-bottom: 8px;
+        text-align: left;
+    }
+
+    .body-wrap .side-widget.contact .contact-title span,
+    .body-wrap .side-widget.contact .contact-content {
+        font-family: 'Exo 2', sans-serif;
+    }
+
+    .body-wrap .side-widget.contact .contact-content span {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
+    /* Side Column Logo */
+    .body-wrap .side-column-logo {
+        text-align: center;
+    }
+
+    .body-wrap .side-column-logo img {
+        max-width: 60%;
+        height: auto;
+    }
+
+    /* Footer Copied */
+    .body-wrap footer {
+        border-bottom: 1px solid var(--line-color);
+        border-top: 1px solid var(--line-color);
+    }
+
+    .body-wrap .footer-rows {
+        background: #e4e4e4;
+        color: #666;
+        font-size: 14px;
+        padding: 20px 14px 14px;
+    }
+
+    .body-wrap .footer-row {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .body-wrap .footer-bottom {
+        padding-top: 10px;
+        border-top: 1px solid #666;
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+    }
+
+
+    .body-wrap footer h4 {
+        color: var(--text-color-main);
+        font-weight: bolder;
+        margin: 0 0 12px;
+    }
+
+    .body-wrap footer ul {
+        cursor: pointer;
+        line-height: 1.8;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .body-wrap .footer-sections ul {
+        column-gap: 40px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: repeat(4, auto);
+    }
+
+    .body-wrap .footer-row img {
+        height: 60px;
+        margin-bottom: 16px;
+    }
+
+    .body-wrap .footer strong {
+        font-weight: bolder;
+    }
+
+    .body-wrap .bottom-divider {
+        border-bottom: 1px solid var(--line-color);
+        padding-bottom: 24px;
+    }
+
+    /* Hover Effects */
+    .body-wrap .news-article:hover h3 {
+        color: var(--red-text-color);
+    }
+
+    .body-wrap .navigation ul li:hover {
+        border-style: inset;
+        color: var(--red-text-color);
+        background: #fff;
+    }
+
+    .body-wrap .side-widget article button .title:hover {
+        color: #e29300 !important;
+    }
+
+    /* Fake Button */
+    .body-wrap .fake-button {
+        display: block;
+        width: 100%;
+        padding-block: 12px;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: 900;
+        margin-block: 12px;
+        color: #fff;
+        background: rgb(201, 201, 201);
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: filter 0.2s;
+        user-select: none;
+        justify-content: center;
+    }
+
+    .body-wrap .fake-button a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .body-wrap .fake-button:hover {
+        filter: brightness(0.8);
+    }
+
+    .body-wrap .fake-button a:active,
+    .body-wrap .fake-button a:visited {
+        color: unset;
+    }
+
+    .body-wrap .news-article.ad-card {
+        /* border-bottom: none; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Article detail view: no offset needed (no front-page title block above) */
+    #panel-article .side-column {
+        margin-top: 0;
+    }
+
+    /* Other Websites */
+    .body-wrap .side-widget.website ul {
+        display: flex;
+        flex-direction: column;
+        overflow-wrap: break-word;
+        gap: 8px;
+    }
+
+    .body-wrap .side-widget.website ul li {
+        text-decoration: underline;
+        color: #0000ee;
+        cursor: pointer;
+        font-family: 'Times New Roman', Georgia, serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
+
+    /* Hide Stories Images */
+    .body-wrap #panel-home .stories .news-article .photo {
+        display: none;
+    }
+
+    /* VHS / CRT effect */
+    .terminal::after {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        background-image:
+            repeating-linear-gradient(to bottom,
+                transparent 0px,
+                transparent 1.8px,
+                rgba(0, 0, 0, 0.12) 1.8px,
+                rgba(0, 0, 0, 0.12) 2.9px),
+            radial-gradient(ellipse at center,
+                transparent 48%,
+                rgba(0, 0, 0, 0.04) 88%);
+        background-size: 100% 100%, 100% 100%;
+        pointer-events: none;
+        z-index: 2;
+        mix-blend-mode: multiply;
+        opacity: 0.15;
+    }
+
+    /* Glitchy scanlines + interference */
+    .terminal::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        background: repeating-linear-gradient(to bottom,
+                transparent 0px,
+                rgba(255, 255, 255, 0.35) 0.8px,
+                rgba(0, 0, 0, 0.62) 3px,
+                transparent 4.5px);
+        background-size: 100% 6px;
+        pointer-events: none;
+        z-index: 3;
+        mix-blend-mode: overlay;
+        animation:
+            crt-scanlines 1.1s linear infinite,
+            crt-glitch 3.6s steps(1, end) infinite;
+        opacity: 0.24;
+    }
+
+    @keyframes crt-scanlines {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 0 160px;
+        }
+    }
+
+    @keyframes crt-glitch {
+
+        0%,
+        86%,
+        100% {
+            transform: translate(0, 0);
+        }
+
+        87% {
+            transform: translate(-5px, 1px);
+        }
+
+        89% {
+            transform: translate(6px, -2px);
+        }
+
+        91% {
+            transform: translate(-3px, 2px);
+        }
+
+        93% {
+            transform: translate(4px, -1px);
+        }
+
+        95% {
+            transform: translate(-2px, 1px);
+        }
+    }
+
+    /* scanline (overtop) */
+    .vhs-scan {
+        position: absolute;
+        top: -10%;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: 2px;
+        background: linear-gradient(to bottom,
+                transparent,
+                rgba(0, 0, 0, 0.22),
+                transparent);
+        pointer-events: none;
+        z-index: 5;
+        mix-blend-mode: multiply;
+        animation: vhs-scan 7.5s linear infinite;
+        opacity: 0.4;
+    }
+
+    @keyframes vhs-scan {
+        0% {
+            top: -8%;
+        }
+
+        100% {
+            top: 108%;
+        }
+    }
+
+    /* Noise texture */
+    .vhs-noise {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/78/4k_Dissolve_Noise_Texture.png');
+        background-repeat: repeat;
+        background-size: 115px 115px;
+        opacity: 0.045;
+        pointer-events: none;
+        z-index: 1;
+        mix-blend-mode: overlay;
+        animation: noise-crawl 8.5s linear infinite;
+    }
+
+    @keyframes noise-crawl {
+        0% {
+            background-position: 0 0;
+        }
+
+        100% {
+            background-position: 180px 120px;
+        }
+    }
+
+    /* Side Bar Adverts */
+    .body-wrap .side-advert {
+        border-top: solid 3px #333;
+        height: 300px;
+        border-bottom: var(--white) solid 2px;
+        border-left: var(--white) solid 2px;
+        border-right: var(--line-color) solid 1px;
+    }
+
+    .body-wrap .side-advert.small {
+        height: 150px;
+    }
+
+    .body-wrap .side-advert img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+</style>
+</head>
+
+<body>
+    <main>
+        <div class="body-wrap terminal">
+            <div class="vhs-noise"></div>
+            <div class="vhs-scan"></div>
+            <header>
+                <div class="masthead">
+                    <div class="masthead-icon">
+                        <img src="https://i.ibb.co/4g0vnP2x/lnc-2.png" alt="Le Nouvelle Citoyen Logo"
+                            title="Le Nouvelle Citoyen">
+                    </div>
+                    <div class="masthead-content">
+                        <div class="masthead-search" role="search">
+                            <input type="text" id="searchInput" aria-label="Search the Le Nouvelle Citoyen News"
+                                placeholder="Search the News">
+                            <button type="button" id="searchButton">Search</button>
+                            <div class="search-results-dropdown" id="searchResultsDropdown"></div>
+                        </div>
+                    </div>
+                    <div class="masthead-icon" style="padding-right: 24px;
+">
+                        <img src="https://i.ibb.co/C39X1jW6/smaller.png" alt="City Logo" title="City 13">
+                    </div>
+                </div>
+                <nav class="navigation" aria-label="News sections">
+                    <ul role="tablist">
+                        <li id="tab-home" class="active" data-tab="home" role="tab" tabindex="0"
+                            aria-controls="panel-home" aria-selected="true">Home</li>
+                        <li id="tab-city" data-tab="city" role="tab" tabindex="-1" aria-controls="panel-city"
+                            aria-selected="false">City 13</li>
+                        <li id="tab-politics" data-tab="politics" role="tab" tabindex="-1"
+                            aria-controls="panel-politics" aria-selected="false">Politics</li>
+                        <li id="tab-announcements" data-tab="announcements" role="tab" tabindex="-1"
+                            aria-controls="panel-announcements" aria-selected="false">Announcements</li>
+                        <li id="tab-economy" data-tab="economy" role="tab" tabindex="-1" aria-controls="panel-economy"
+                            aria-selected="false">Economy</li>
+                        <li id="tab-society" data-tab="society" role="tab" tabindex="-1" aria-controls="panel-society"
+                            aria-selected="false">Society</li>
+                        <li id="tab-opinion" data-tab="opinion" role="tab" tabindex="-1" aria-controls="panel-opinion"
+                            aria-selected="false">Opinion</li>
+                        <!-- <li id="tab-about" data-tab="about" role="tab" tabindex="-1" aria-controls="panel-about"
+                        aria-selected="false">About</li> -->
+
+                    </ul>
+                </nav>
+            </header>
+            <main>
+                <section id="panel-home" class="tab-panel active" data-tab="home" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-home">
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div id="front-page-display" class="section-wrap">
+                                <div class="home-intro">
+                                    <div class="kicker">Front Page</div>
+                                    <h1 class="page-title">Current News</h1>
+                                </div>
+                                <div class="main-news layout-grid">
+                                    <div class="primary-news">
+                                        <article class="news-article lead " data-article="city-13-lockdown-red-thursday"
+                                            data-title="City 13 to impose lockdown following Red Thursday"
+                                            data-section="City 13" data-type="Breaking News">
+                                            <button type="button" data-article="city-13-lockdown-red-thursday">
+                                                <div class="image-wrap">
+                                                    <div class="photo"><img
+                                                            src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                            title="City 13 to impose lockdown following Red Thursday">
+                                                    </div>
+                                                    <div class="class-label city-news">Local News</div>
+                                                </div>
+                                                <div class="kicker">Breaking News</div>
+                                                <h3>City 13 to impose lockdown following Red Thursday</h3>
+                                                <div class="summary">Richard Pelletier speaks to District 4. Richard
+                                                    Pelletier speaks to District 4. Richard Pelletier speaks to District
+                                                    4. Richard Pelletier speaks to District 4. Richard Pelletier speaks
+                                                    to District 4. Richard Pelletier speaks to District 4.Richard
+                                                    Pelletier speaks to District 4. Richard Pelletier speaks to District
+                                                    4. Richard Pelletier speaks to District 4. Richard Pelletier speaks
+                                                    to District 4. Richard Pelletier speaks to District 4. Richard
+                                                    Pelletier speaks to District 4.</div>
+                                                <div class="date">April 27, 2007 · Author</div>
+                                            </button>
+                                        </article>
+                                        <article class="news-article">
+                                            <button type="button"
+                                                data-article="City 13 to impose lockdown following Red Thursday">
+                                                <div class="image-wrap">
+                                                    <div class="photo"><img
+                                                            src="https://combineoverwiki.net/images/0/04/HLA_Gary05.jpg"
+                                                            title="City 13 to impose lockdown following Red Thursday">
+                                                    </div>
+                                                    <div class="class-label city-news">Local News</div>
+                                                </div>
+                                                <div class="kicker">Society</div>
+                                                <h3>Biotic gives unique insight into species' culinary habits.</h3>
+                                                <div class="summary">A local biotic has provided new insights into the
+                                                    culinary habits of Biotics, showcasing a variety of recipes passed
+                                                    down
+                                                    from their homeworld.</div>
+                                                <div class="date">April 22, 2007 · Billy Bob</div>
+                                            </button>
+                                        </article>
+                                    </div>
+                                    <div class="secondary-news">
+                                        <article class="news-article " data-article="city-13-lockdown-red-thursday"
+                                            data-title="City 13 to impose lockdown following Red Thursday"
+                                            data-section="City 13" data-type="Breaking News">
+                                            <button type="button" data-article="city-13-lockdown-red-thursday">
+                                                <div class="image-wrap">
+                                                    <div class="photo"><img
+                                                            src="https://combineoverwiki.net/images/2/2d/Eli_Vance_HLA.png"
+                                                            title="City 13 to impose lockdown following Red Thursday">
+                                                    </div>
+                                                    <!-- <div class="class-label city-news">Local News</div> -->
+                                                </div>
+                                                <div class="kicker">Society</div>
+                                                <h3>Homeless Nutcrack Rambles About Combine Conspiracy to "Make Humanity
+                                                    Extinct"</h3>
+                                                <div class="summary">A deranged crackhead is ranting about a supposed
+                                                    conspiracy by the Combine to "make humanity extinct" through the
+                                                    Suppression Field.</div>
+                                                <div class="date">April 16, 2007 · Billy Bob</div>
+                                            </button>
+                                        </article>
+                                        <article class="news-article">
+                                            <button type="button"
+                                                data-article="Advisor Addresses Damning Allegations about Earth's Water Crisis">
+                                                <div class="image-wrap">
+                                                    <div class="photo"><img
+                                                            src="https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg"
+                                                            title="Advisor Addresses Damning Allegations about Earth's Water Crisis">
+                                                    </div>
+                                                    <div class="class-label city-news">Local News</div>
+                                                </div>
+                                                <div class="kicker">Breaking News</div>
+                                                <h3>Advisor Addresses Damning Allegations about Earth's Water Crisis
+                                                </h3>
+                                                <div class="summary">An Advisor is addressing serious rumours about the
+                                                    Combine purported draining of Earth's oceans, dismissing any rumour
+                                                    as
+                                                    unfounded and that Earth's water "belongs to Earth".</div>
+                                                <div class="date">April 22, 2007 · Chuck Brier</div>
+                                            </button>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="front-page-stories" class="section-wrap">
+                                <div class="kicker-wrap">
+                                    <div class="kicker">More Stories</div>
+                                    <h2 class="page-title">Recent Headlines</h2>
+                                </div>
+                                <div class="stories">
+                                    <article class="news-article">
+                                        <button type="button"
+                                            data-article="City 13 to impose lockdown following Red Thursday">
+                                            <div class="image-wrap">
+                                                <div class="photo"><img
+                                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                        title="City 13 to impose lockdown following Red Thursday"></div>
+                                                <div class="class-label city-news">Local News</div>
+                                            </div>
+                                            <div class="kicker">Breaking News</div>
+                                            <h3>City 13 to impose lockdown following Red Thursday</h3>
+                                            <div class="summary">Following the disastrous pandemonium of Red Thursday,
+                                                City 13 authorities have declared a city-wide lockdown effective
+                                                immediately.</div>
+                                            <div class="date">April 17, 2007 · Richard Pelletier</div>
+                                        </button>
+                                    </article>
+                                    <article class="news-article">
+                                        <button type="button"
+                                            data-article="City 13 to impose lockdown following Red Thursday">
+                                            <div class="image-wrap">
+                                                <div class="photo"><img
+                                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                        title="City 13 to impose lockdown following Red Thursday"></div>
+                                                <div class="class-label city-news">Local News</div>
+                                            </div>
+                                            <div class="kicker">Breaking News</div>
+                                            <h3>City 13 to impose lockdown following Red Thursday</h3>
+                                            <div class="summary">Following the disastrous pandemonium of Red Thursday,
+                                                City 13 authorities have declared a city-wide lockdown effective
+                                                immediately.</div>
+                                            <div class="date">April 17, 2007 · Richard Pelletier</div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-city" class="tab-panel" data-tab="city" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-city" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">City 13</h1>
+                                <div class="stories">
+                                    <article class="news-article" data-article="city-13-lockdown-red-thursday"
+                                        data-title="City 13 to impose lockdown following Red Thursday"
+                                        data-section="City 13" data-type="Breaking News">
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <div class="image-wrap">
+                                                <div class="photo"><img
+                                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                        title="City 13 to impose lockdown following Red Thursday"></div>
+                                                <div class="class-label city-news">Local News</div>
+                                            </div>
+                                            <div class="kicker">Breaking News</div>
+                                            <h3>City 13 to impose lockdown following Red Thursday</h3>
+                                            <div class="summary">Richard Pelletier speaks to District 4. Richard
+                                                Pelletier speaks to District 4. Richard Pelletier speaks to District 4.
+                                                Richard Pelletier speaks to District 4. Richard Pelletier speaks to
+                                                District 4. Richard Pelletier speaks to District 4.Richard Pelletier
+                                                speaks to District 4. Richard Pelletier speaks to District 4. Richard
+                                                Pelletier speaks to District 4. Richard Pelletier speaks to District 4.
+                                                Richard Pelletier speaks to District 4. Richard Pelletier speaks to
+                                                District 4.</div>
+                                            <div class="date">April 27, 2007 · Author</div>
+                                        </button>
+                                    </article>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-politics" class="tab-panel" data-tab="politics" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-politics" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">Politics</h1>
+                                <div class="stories">
+                                    <article class="news-article"
+                                        data-article="richard-pelletier-district-4-infestation"
+                                        data-title="Richard Pelletier addresses District 4&#x27;s infestation"
+                                        data-section="Politics" data-type="Breaking News">
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <div class="image-wrap">
+                                                <div class="photo"><img
+                                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg"
+                                                        title="Richard Pelletier addresses District 4&#x27;s infestation">
+                                                </div>
+                                            </div>
+                                            <div class="kicker">Breaking News</div>
+                                            <h3>Richard Pelletier addresses District 4&#x27;s infestation</h3>
+                                            <div class="summary">Richard Pelletier speaks to District 4. Richard
+                                                Pelletier speaks to District 4. Richard Pelletier speaks to District 4.
+                                                Richard Pelletier speaks to District 4. Richard Pelletier speaks to
+                                                District 4. Richard Pelletier speaks to District 4.Richard Pelletier
+                                                speaks to District 4. Richard Pelletier speaks to District 4. Richard
+                                                Pelletier speaks to District 4. Richard Pelletier speaks to District 4.
+                                                Richard Pelletier speaks to District 4. Richard Pelletier speaks to
+                                                District 4.</div>
+                                            <div class="date">April 27, 2009 · Author</div>
+                                        </button>
+                                    </article>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-announcements" class="tab-panel" data-tab="announcements" role="tabpanel"
+                    tabindex="-1" aria-labelledby="tab-announcements" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">Announcements</h1>
+                                <div class="stories">
+                                    <p>No articles available.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-economy" class="tab-panel" data-tab="economy" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-economy" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">Economy</h1>
+                                <div class="stories">
+                                    <p>No articles available.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-society" class="tab-panel" data-tab="society" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-society" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">Society</h1>
+                                <div class="stories">
+                                    <p>No articles available.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-opinion" class="tab-panel" data-tab="opinion" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-opinion" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap">
+
+                                <div class="kicker">Coverage</div>
+                                <h1 class="page-title">Opinion</h1>
+                                <div class="stories">
+                                    <p>No articles available.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+                <section id="panel-about" class="tab-panel" data-tab="about" role="tabpanel" tabindex="-1"
+                    aria-labelledby="tab-about" hidden>
+                    <div class="layout tab-layout">
+                        <div class="section-wrap">
+                            <div class="kicker">Publication</div>
+                            <h1 class="page-title">About</h1>
+                        </div>
+                    </div>
+                </section>
+                <section id="panel-article" class="tab-panel" data-tab="article" role="tabpanel" tabindex="-1" hidden>
+                    <div class="layout">
+                        <aside class="side-column">
+                            <div class="side-widget website">
+                                <div class="side-widget-title">
+                                    <h2>Other Websites</h2>
+                                </div>
+                                <article class="widget-content">
+                                    <p>Enjoyed the site? Check out these other websites:</p>
+                                    <ul>
+                                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                                    </ul>
+                                </article>
+                            </div>
+                            <div class="side-advert small">
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Editor's Pick</h2>
+                                </div>
+                                <article class="widget-content" id="editorPicks">
+                                    <p>No editor picks are available.</p>
+                                </article>
+                            </div>
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>About</h2>
+                                </div>
+                                <div class="widget-content">
+                                    <article>
+                                        <p>The Le Nouvelle Citoyen is an
+                                            independent news outlet operating out of District 7.</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
+                        <div class="main-column">
+                            <div class="section-wrap" id="articleTarget">
+                                <article id="article-city-13-lockdown-red-thursday" class="article-detail" hidden>
+                                    <button class="back-button" type="button" data-tab="home">Back to front
+                                        page</button>
+                                    <div class="kicker">Breaking News · City 13</div>
+                                    <h1>City 13 to impose lockdown following Red Thursday</h1>
+                                    <div class="article-deck">Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4.Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4.</div>
+                                    <div class="date">April 27, 2007 · Author</div>
+                                    <img class="article-hero"
+                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg">
+                                    <div class="article-body">
+                                        Election Day is fast approaching, but the Supreme Court is still weighing in on
+                                        the rules — most recently on Friday when it allowed states to use a Trump
+                                        administration-backed tool to ferret out noncitizen voting there’s little
+                                        evidence occurs in a widespread way.<br>
+
+                                        <br>
+                                        Nobody wants noncitizens voting illegally, but the move by justices less than
+                                        two months from Election Day raises the real concern that legal citizen voters
+                                        could find themselves unable to cast ballots.<br>
+
+                                        <br>
+                                        Supreme Court justices have already been faced with multiple questions about the
+                                        coming election.<br>
+
+                                        <br>
+                                        They gutted the Voting Rights Act, supercharging a race to redraw congressional
+                                        maps this year and into the future.<br>
+
+                                        <br>
+                                        One state, Missouri, was still wondering Friday which congressional districts
+                                        its voters would cast ballots in come November because lower courts weighed in
+                                        after the high court. Never mind that ballots had already been printed and
+                                        mailed.<br>
+
+                                        <br>
+
+                                        An unsigned Friday evening decision from the Supreme Court — which sided with
+                                        opponents of the proposed districts for the third time in as many weeks — seemed
+                                        likely to put to rest a whirlwind legal saga that bounced through state and
+                                        federal courts for much of September. Republican Gov. Mike Kehoe said Friday
+                                        that Missouri would follow the court’s order.<br>
+
+                                        <br>
+
+                                        Protesters against Missouri's congressional redistricting plan gather outside
+                                        the Missouri Capitol in Jefferson City, on May 12.<br>
+                                        <br>
+
+                                        While the justices in other cases blessed the redrawing of maps for partisan
+                                        gain, they hit pause, at least for now, on the Trump administration’s plan to
+                                        upend mail-in voting writ large, tabling that issue for the next election.<br>
+
+                                        <br>
+
+                                        Noncitizen voting has been a bugbear for Trump for years. He has alleged there
+                                        is widespread fraud even in elections he won, although neither of his
+                                        administrations has been able to find much evidence.<br>
+
+                                        <br>
+
+                                        I asked CNN’s Fredreka Schouten, a national political writer, about the database
+                                        this decision unleashes and what it could mean for people trying to cast
+                                        ballots.<br>
+
+                                        <br>
+                                        What is the SAVE system?
+                                        SCHOUTEN: It’s a federal tool known as the Systematic Alien Verification for
+                                        Entitlements. It’s been around for decades and has long been used to verify the
+                                        citizenship and immigration status of people seeking government benefits. And
+                                        some election officials have had agreements in the past to use the tool, for a
+                                        fee, to check the citizenship status of voters.
+                                        <br>
+                                        But the Trump administration dramatically revamped it, starting last year. It’s
+                                        now linked to lots of government data as part of the administration’s push to
+                                        hunt for potential noncitizens on the voting rolls.
+                                        <br>
+                                        Does it have anything to do with the SAVE America Act that Trump tried,
+                                        unsuccessfully, to pass?
+                                        SCHOUTEN: The SAVE America Act is different but sort of related in that they are
+                                        both focused on the question of whether only US citizens are casting ballots.
+
+                                        <br>
+                                        The SAVE America Act would have dramatically revamped voting rules across the
+                                        country, requiring voter ID to cast a ballot and mandating that people provide
+                                        documents, such as a birth certificate of US passport, proving their citizenship
+                                        when they register to vote. It would also put pressure on states to use the SAVE
+                                        data system and other data tools like it for purging rolls.
+                                        <br>
+                                        Critics say many legitimate voters don’t have easy access to those documents and
+                                        argue the proposal would have disenfranchised many Americans.
+                                        <br>
+                                        I should say here that experts note that voting by noncitizens in federal
+                                        elections, which is already illegal, is exceedingly rare. But this has become an
+                                        animating issue for the president.
+
+                                        How was it assembled?
+                                        SCHOUTEN: The Trump administration linked the information already in SAVE to
+                                        other federal data, most notably Social Security Administration records, which
+                                        cover most Americans.
+
+                                        The administration then encouraged election officials to carry out bulk uploads
+                                        of their states’ registration rolls and waived any fee to do so. Tens of
+                                        millions of records were run through the system before a federal judge blocked
+                                        its use earlier this year.
+
+                                        With Friday’s ruling, the US Supreme Court has allowed SAVE to be used again for
+                                        reviewing voter rolls.
+
+                                        What does this mean for the midterms, now just weeks away?
+                                        SCHOUTEN: That’s not entirely clear.
+
+                                        The high court’s opinion emphasized that SAVE can be used for “individualized”
+                                        checks of a voter’s citizenship in the upcoming election but also noted that
+                                        federal law prohibits mass purges close to Election Day.
+
+                                        But the administration has argued that the federal ban on mass removals within
+                                        90 days of an election doesn’t apply to purges involving noncitizens who were
+                                        improperly registered in the first place. The Supreme Court will decide that
+                                        question in a case this coming term — but not before the midterms.
+
+                                        States — including red states — have refused to give the federal government
+                                        their voter rolls. How did the administration get around that?
+                                        Demonstrators hold signs during a voting rights rally outside the US Capitol in
+                                        Washington DC, on September 15.
+                                        Demonstrators hold signs during a voting rights rally outside the US Capitol in
+                                        Washington DC, on September 15. Pete Kiehart/Bloomberg/Getty Images
+                                        SCHOUTEN: Let’s back up a bit.
+
+                                        In addition to encouraging states to use SAVE to conduct their own reviews of
+                                        their voting rolls, the Justice Department has been on a campaign to obtain each
+                                        state’s full, unredacted lists of voters, including personal information about
+                                        voters, such as full dates or birth and partial Social Security numbers, to do
+                                        its own check on whether states are complying with federal law.
+
+                                        When those states refused, the DOJ sued. So far, the agency has lost all 25
+                                        cases in which a judge has ruled.
+
+                                        But federal agencies have moved forward with efforts to try to find potential
+                                        noncitizens on voting rolls — including using publicly available voter lists. A
+                                        recent whistleblower complaint released by several Democrats on Capitol Hill
+                                        alleged that agents in the Department of Homeland Security, who were tasked with
+                                        rooting out voter fraud, are being kept in the dark about the sources of some of
+                                        the data being used in their reviews.
+
+                                        And the dispute the Supreme Court was ruling on Friday was the administration’s
+                                        ability to offer the SAVE systems to states that want to voluntarily want to use
+                                        it for their own voter list maintenance.
+
+                                        What are the concerns about using SAVE?
+                                        SCHOUTEN: One overarching worry from critics of the SAVE tool is that it’s not
+                                        reliable.
+
+                                        Take Texas, for example. State officials there ran all 18 million names of its
+                                        voters through the SAVE tool last year and announced that their audit had found
+                                        2,724 potential noncitizens and directed counties to give voters 30 days to
+                                        verify their citizenship or be removed from the rolls.
+
+                                        Those numbers began dropping once local election officials began digging — in
+                                        part, because the system doesn’t appear to properly track naturalized citizens.
+
+                                        Earlier this year, I interviewed a Texas resident who became ensnared by the
+                                        audit. She was born in Argentina and was a naturalized US citizen, yet state
+                                        officials tagged her as a suspected noncitizen. She was able to quickly send in
+                                        a scan of her US passport and remain a voter.
+
+                                        Earlier this month, Texas officials announced that hundreds of potential
+                                        noncitizens flagged last year were indeed Americans and eligible to vote and
+                                        called on local officials to reinstate their registrations if they had been
+                                        removed.
+
+                                        Say I’m a citizen who loses their registration because of a mistake. How will I
+                                        know before Election Day? What can I do?
+                                        SCHOUTEN: If you are worried about this or any other voting issue, you can
+                                        always verify your registration status with your local election office. There’s
+                                        enough time before the general election to fix any problems.
+                                    </div>
+                                </article>
+                                <article id="article-richard-pelletier-district-4-infestation" class="article-detail"
+                                    hidden>
+                                    <button class="back-button" type="button" data-tab="home">Back to front
+                                        page</button>
+                                    <div class="kicker">Breaking News · Politics</div>
+                                    <h1>Richard Pelletier addresses District 4&#x27;s infestation</h1>
+                                    <div class="article-deck">Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4.Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier
+                                        speaks to District 4.</div>
+                                    <div class="date">April 27, 2009 · Author</div>
+                                    <img class="article-hero"
+                                        src="https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg">
+                                    <div class="article-body">
+                                        <p>Richard Pelletier addressed District 4 residents today, describing the
+                                            current infestation response as a priority for local administrators.</p>
+                                        <p>The statement called for residents to report affected buildings through the
+                                            appropriate municipal channels while inspection teams continue their work.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                        <aside class="side-column">
+                            <div class="side-widget">
+                                <div class="side-widget-title">
+                                    <h2>Latest News</h2>
+                                </div>
+                                <div class="widget-content" id="latestNews">
+                                    <article>
+                                        <button type="button" data-article="richard-pelletier-district-4-infestation">
+                                            <span class="title">Richard Pelletier addresses District 4&#x27;s
+                                                infestation</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2009</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                    <article>
+                                        <button type="button" data-article="city-13-lockdown-red-thursday">
+                                            <span class="title">City 13 to impose lockdown following Red Thursday</span>
+                                            <div class="meta"><span class="author">Author</span><span class="date">April
+                                                    27, 2007</span></div>
+                                        </button>
+                                    </article>
+                                </div>
+                            </div>
+                            <div class="side-widget contact">
+                                <div class="side-widget-title contact-title">
+                                    <!-- <span>Got a story to share?</span> -->
+                                    <h2>Contact us</h2>
+                                </div>
+                                <div class="contact-content widget-content">
+                                    <span>Weekly news, politics, events, and city announcements</span>
+                                    <div class="fake-button" style="display: flex; justify-self: center;">
+                                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                                            target="_blank" rel="noopener">CLICK HERE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-advert"></div>
+                        </aside>
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <div class="footer-rows">
+                    <div class="footer-row">
+                        <div>
+                            <img src="https://i.ibb.co/0jdZLLJR/news-logo-large.png" alt="Le Nouvelle Citoyen logo"
+                                title="Le Nouvelle Citoyen">
+                            <p style="margin: 8px 0;"><strong>Le Nouvelle Citoyen</strong><br>
+                                City 13, District 7</p>
+                        </div>
+                        <div class="footer-sections">
+                            <h4>Sections</h4>
+                            <ul>
+                                <li>Home</li>
+                                <li>City 13</li>
+                                <li>Politics</li>
+                                <li>Announcements</li>
+                                <li>Economy</li>
+                                <li>Society</li>
+                                <li>Opinion</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>About Us</h4>
+                            <ul>
+                                <li>
+                                    How we work
+                                </li>
+                                <li>
+                                    Our values
+                                </li>
+                                <li>
+                                    Contact
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div>
+                            CMB
+                            <span
+                                style="margin-left: 12px; color: var(--text-color-main); text-decoration: none;">English</span>
+                        </div>
+
+                        <div style="color: var(--text-color-main)">
+                            © 2006 Le Nouvelle Citoyen
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+    <script>
+        const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
+        const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
+
+        var clickAudio;
+        (function preloadClickSound() {
+            clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
+            clickAudio.volume = 0.6;
+            clickAudio.preload = 'auto';
+            clickAudio.load();
+        })();
+
+        function playClickSound() {
+            if (clickAudio) {
+                clickAudio.currentTime = 0;
+                clickAudio.play().catch(function () { });
+            }
+        }
+
+        function activateTab(tabName) {
+            tabTriggers.forEach(trigger => {
+                const isActive = trigger.dataset.tab === tabName;
+                trigger.classList.toggle('active', isActive);
+                trigger.setAttribute('aria-selected', String(isActive));
+                trigger.tabIndex = isActive ? 0 : -1;
+            });
+
+            tabPanels.forEach(panel => {
+                const isActive = panel.dataset.tab === tabName;
+                panel.hidden = !isActive;
+                panel.classList.toggle('active', isActive);
+            });
+        }
+
+        function openArticle(articleId) {
+            const article = document.getElementById('article-' + articleId);
+            if (!article) return;
+
+            document.querySelectorAll('#articleTarget .article-detail').forEach(item => {
+                item.hidden = item !== article;
+            });
+
+            activateTab('article');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        tabTriggers.forEach((trigger, index) => {
+            trigger.addEventListener('click', () => {
+                playClickSound();
+                activateTab(trigger.dataset.tab);
+            });
+            trigger.addEventListener('keydown', event => {
+                if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key)) return;
+                event.preventDefault();
+                if (event.key === 'Enter' || event.key === ' ') return activateTab(trigger.dataset.tab);
+
+                const nextIndex = event.key === 'Home' ? 0
+                    : event.key === 'End' ? tabTriggers.length - 1
+                        : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabTriggers.length) % tabTriggers.length;
+                tabTriggers[nextIndex].focus();
+            });
+        });
+
+        document.addEventListener('click', event => {
+            const articleTrigger = event.target.closest('[data-article]');
+            if (articleTrigger) {
+                playClickSound();
+                openArticle(articleTrigger.dataset.article);
+            }
+
+            const tabTrigger = event.target.closest('.back-button[data-tab]');
+            if (tabTrigger) {
+                playClickSound();
+                activateTab(tabTrigger.dataset.tab);
+            }
+
+            const fakeButton = event.target.closest('.fake-button');
+            if (fakeButton) playClickSound();
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsDropdown = document.getElementById('searchResultsDropdown');
+
+        function performSearch(query) {
+            query = query.trim().toLowerCase();
+
+            if (!query) {
+                searchResultsDropdown.classList.remove('active');
+                searchResultsDropdown.innerHTML = '';
+                return;
+            }
+
+            const cards = [...document.querySelectorAll('.news-article[data-article]')];
+            const results = cards.filter(card =>
+                (card.dataset.title || '').toLowerCase().includes(query)
+            ).slice(0, 10);
+
+            if (results.length === 0) {
+                searchResultsDropdown.innerHTML = '<div style="padding: 8px 10px; color: #999; font-size: 12px;">No results found</div>';
+            } else {
+                searchResultsDropdown.innerHTML = results.map(card => {
+                    const typeDisplay = card.dataset.type ? ` · ${card.dataset.type}` : '';
+                    return `<div class="search-result-item" data-article="${card.dataset.article}">
+                    <div class="result-title">${card.dataset.title}</div>
+                    <div class="result-section">${card.dataset.section}${typeDisplay}</div>
+                </div>`;
+                }).join('');
+            }
+            searchResultsDropdown.classList.add('active');
+        }
+
+        searchInput.addEventListener('input', e => performSearch(e.target.value));
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => searchResultsDropdown.classList.remove('active'), 200);
+        });
+        document.getElementById('searchButton').addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            playClickSound();
+            performSearch(searchInput.value);
+        });
+
+        searchResultsDropdown.addEventListener('click', e => {
+            const resultItem = e.target.closest('.search-result-item');
+            if (!resultItem) return;
+            searchInput.value = '';
+            searchResultsDropdown.classList.remove('active');
+            openArticle(resultItem.dataset.article);
+        });
+    </script>

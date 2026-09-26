@@ -24,17 +24,16 @@
         overflow: hidden;
     }
 
-    /* Page Layout */
+    /* Page Layout – 3 columns */
     .body-wrap .layout {
         --kicker-color: #9d2534;
         --line-color: #c8c8c8;
-        /* --red-text-color: #c52237; */
         --red-text-color: #00038f;
         display: grid;
         gap: 20px;
-        grid-template-columns: minmax(0, 1fr) 220px;
+        grid-template-columns: 190px minmax(0, 1fr) 190px;
         min-height: 600px;
-        padding: 22px;
+        padding: 14px;
     }
 
     .section-wrap {
@@ -43,14 +42,16 @@
     }
 
     /* Header & Masthead */
-
     .body-wrap .masthead {
-        background: #13161a;
+        background: linear-gradient(to bottom, #13161a, #233a61);
         height: 140px;
+        border: 1px groove var(--white);
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 20px;
+        user-select: none;
+        pointer-events: none;
     }
 
     .body-wrap .masthead-icon {
@@ -90,6 +91,7 @@
         max-width: 400px;
         position: relative;
         width: 100%;
+        pointer-events: all;
     }
 
     .body-wrap .masthead-search input {
@@ -181,6 +183,11 @@
         border-bottom: 2px solid #222;
         display: flex;
         min-height: 44px;
+        user-select: none;
+    }
+
+    .body-wrap ul {
+        padding-inline-start: 0;
     }
 
     .body-wrap .navigation ul {
@@ -260,7 +267,7 @@
     .main-news.layout-grid {
         align-items: stretch;
         display: grid;
-        gap: 14px;
+        gap: 10px;
         grid-template-columns: 1.7fr 1fr;
     }
 
@@ -278,7 +285,7 @@
     .main-news.layout-grid .secondary-news {
         align-content: stretch;
         background-color: rgba(136, 22, 22, 0.05);
-        padding-inline: 10px;
+        padding: 0px 6px;
     }
 
     .main-news.layout-grid .primary-news .news-article:last-child {
@@ -397,8 +404,12 @@
         margin-top: 2px;
     }
 
+    .body-wrap #panel-home .stories .news-article .class-label {
+        display: none;
+    }
+
     .body-wrap .news-article .photo {
-        height: 170px;
+        height: 100px;
         overflow: hidden;
         width: 100%;
     }
@@ -438,8 +449,12 @@
         background: linear-gradient(90deg, #ff3f3f 0%, #a4001e 100%);
     }
 
-    .body-wrap .image-wrap .class-label.city-news {
+    .body-wrap .image-wrap .class-label.local-news {
         background: rgb(42, 76, 168);
+    }
+
+    .body-wrap .image-wrap .class-label.city-news {
+        background: rgb(61, 57, 119);
     }
 
     /* Article Content */
@@ -449,16 +464,14 @@
         margin: 8px 0 5px;
         font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: var(--text-color-main);
-
-
     }
 
     .body-wrap .main-news .news-article h3 {
-        font-size: 24px;
+        font-size: 18px;
     }
 
-    .body-wrap .main-news .news-article.lead h3 {
-        font-size: 32px;
+    .body-wrap #panel-home .main-news .news-article.lead h3 {
+        font-size: 22px;
     }
 
     .body-wrap .summary {
@@ -471,7 +484,47 @@
     .body-wrap .stories .news-article .summary {
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .primary-news .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .secondary-news .news-article .summary {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .primary-news .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .secondary-news .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .body-wrap .stories .news-article h3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -490,17 +543,61 @@
     }
 
     /* Article Detail */
+    /* Outer shell: relative flex container, max-height, holds the bottom fade */
     .body-wrap .article-detail {
-        background: var(--white);
+        position: relative;
+        display: flex;
+        flex-direction: column;
         border: 1px solid var(--line-color);
         margin: 0 auto;
         max-width: 800px;
+        max-height: 900px;
+        z-index: 1;
+        background: var(--white);
+        overflow: hidden;
+    }
+
+    /* Inner scroll area – fills outer height and scrolls */
+    .body-wrap .article-detail-scroll {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         padding: 28px 32px;
+    }
+
+    .body-wrap .article-detail-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Fade overlay */
+    .body-wrap .article-detail-fade {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 120px;
+        background: linear-gradient(to bottom, transparent, var(--white));
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.2s ease;
+        z-index: 2;
+    }
+
+    .body-wrap .article-detail.at-bottom .article-detail-fade {
+        opacity: 0;
     }
 
     .body-wrap .article-detail.opinion-card {
         background: #e8e8e8;
         border-left: 4px solid var(--red-text-color);
+    }
+
+    .body-wrap .article-detail.opinion-card .article-detail-fade {
+        background: linear-gradient(to bottom, transparent, #e8e8e8);
     }
 
     .body-wrap .article-detail .back-button {
@@ -539,14 +636,13 @@
     .body-wrap .article-detail .article-body {
         font-family: "Times New Roman", Times, Georgia, serif;
         font-size: 20px;
-        line-height: 1.7;
+        line-height: 1.5;
     }
 
     .body-wrap .article-detail .article-body p {
         margin: 0 0 18px;
     }
 
-    /* Article Detail Image, Aside, Comments */
     .body-wrap .article-detail .article-body {
         overflow: hidden;
     }
@@ -630,11 +726,11 @@
         margin: 1.8em 0;
     }
 
-
     /* More Stories */
     .body-wrap .stories {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        /* grid-auto-flow: column; */
         gap: 16px;
         margin-top: 16px;
     }
@@ -644,23 +740,166 @@
         background: rgba(136, 22, 22, 0.05);
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 34px;
         height: fit-content;
-        padding: 10px;
-        padding-bottom: 24px;
-        margin-top: 59px;
+        padding: 6px;
+    }
+
+    .body-wrap #panel-home .side-column {
+        margin-top: 85px;
+    }
+
+    /* Sidebar Adverts */
+    .body-wrap .side-advert {
+        border-top: solid 3px #333;
+        height: 300px;
+        border-bottom: var(--white) solid 2px;
+        border-left: var(--white) solid 2px;
+        border-right: var(--line-color) solid 1px;
+        background: rgba(190, 190, 190, 0.25);
+        overflow: hidden;
+    }
+
+    .body-wrap .side-advert.small {
+        height: 150px;
+    }
+
+    .body-wrap .side-advert img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
     }
 
     /* Sidebar Widgets */
     .body-wrap .side-widget {
         --widget-bg: rgba(233, 229, 229, 1);
         background: var(--widget-bg);
-        /* border: 2px outset #f2f2f2; */
         border-bottom: var(--white) solid 2px;
         border-left: var(--white) solid 2px;
         border-right: var(--line-color) solid 1px;
-        /* border-top: solid 3px #333; */
     }
+
+    .body-wrap .side-widget:last-child {
+        margin-bottom: 0;
+    }
+
+    .body-wrap .side-widget h2 {
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 18px;
+        line-height: 1;
+        margin-bottom: 12px;
+        color: var(--white);
+    }
+
+    .body-wrap .side-widget .side-widget-title {
+        border: 1px groove var(--white);
+        margin-bottom: 12px;
+        padding: 10px 8px 0;
+        background: linear-gradient(#808080, #202020);
+    }
+
+    .body-wrap .side-widget article {
+        border-bottom: 1px solid var(--line-color);
+        display: flex;
+        flex-direction: column;
+        line-height: 1.35;
+        font-size: 14px;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+        padding-inline: 8px;
+    }
+
+    .body-wrap .side-widget .widget-content p {
+        margin: 0 0 8px 0;
+    }
+
+    .body-wrap .side-widget article:last-child {
+        border-bottom: none;
+    }
+
+    .body-wrap .side-widget ul {
+        list-style: none;
+    }
+
+    .body-wrap .side-widget span.title {
+        font-style: italic;
+        color: var(--red-text-color) !important;
+        overflow: hidden;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .body-wrap .side-widget .meta {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 4px;
+        gap: 14px;
+    }
+
+    .body-wrap .side-widget span.author {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .body-wrap .side-widget span.date {
+        color: #666;
+        font-size: 12px;
+        font-style: normal;
+        flex-shrink: 0;
+    }
+
+    /* Contact Widget */
+    .body-wrap .side-widget.contact {
+        line-height: 1;
+        margin: 0;
+    }
+
+    .body-wrap .side-widget.contact .contact-title {
+        font-family: 'Poppins', system-ui, sans-serif;
+        letter-spacing: 1px;
+    }
+
+    .body-wrap .side-widget.contact .contact-title h2 {
+        border-bottom: unset;
+        font-size: 18px !important;
+        margin-bottom: 12px;
+        padding-bottom: unset;
+    }
+
+    .body-wrap .side-widget.contact .contact-title span {
+        display: block;
+        padding-bottom: 5px;
+        font-size: 12px;
+    }
+
+    .body-wrap .side-widget.contact .contact-content {
+        padding-inline: 8px;
+        padding-bottom: 8px;
+        text-align: left;
+    }
+
+    .body-wrap .side-widget.contact .contact-title span,
+    .body-wrap .side-widget.contact .contact-content {
+        font-family: 'Exo 2', sans-serif;
+    }
+
+    .body-wrap .side-widget.contact .contact-content span {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+
 
     /* Collapsible Widget Content */
     .body-wrap .side-widget .collapsible-extra {
@@ -713,138 +952,6 @@
         text-decoration: underline;
     }
 
-    .body-wrap .side-widget h2 {
-        /* font-family: 'Poppins', system-ui, sans-serif; */
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        text-transform: uppercase;
-        font-size: 18px;
-        line-height: 1;
-        margin-bottom: 12px;
-        color: var(--white);
-    }
-
-    .body-wrap .side-widget .side-widget-title {
-        border: 1px groove var(--white);
-        margin-bottom: 12px;
-        padding: 10px 8px 0;
-        background: rgb(138, 138, 138);
-    }
-
-    .body-wrap .side-widget article {
-        border-bottom: 1px solid var(--line-color);
-        display: flex;
-        flex-direction: column;
-        line-height: 1.35;
-        font-size: 14px;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-        padding-inline: 8px;
-    }
-
-    .body-wrap .side-widget .widget-content p {
-        margin: 0 0 8px 0;
-        /* font-size: 12px;
-        font-family: 'Times New Roman', Georgia, serif; */
-    }
-
-    .body-wrap .side-widget article:last-child {
-        border-bottom: none;
-    }
-
-    .body-wrap .side-widget ul {
-        list-style: none;
-    }
-
-    .body-wrap .side-widget span.title {
-        font-style: italic;
-        color: var(--red-text-color) !important;
-        overflow: hidden;
-        text-transform: capitalize;
-        font-size: 14px;
-        line-height: 1.35;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-    }
-
-    .body-wrap .side-widget .meta {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        margin-top: 4px;
-        gap: 14px;
-    }
-
-    .body-wrap .side-widget span.author {
-        color: #666;
-        font-size: 12px;
-        font-style: normal;
-    }
-
-    .body-wrap .side-widget span.date {
-        color: #666;
-        font-size: 12px;
-        font-style: normal;
-        flex-shrink: 0;
-    }
-
-    /* Sidebar Advertisements */
-    .body-wrap .side-advert {
-        border-top: solid 3px #333;
-        height: 300px;
-        border-bottom: var(--white) solid 2px;
-        border-left: var(--white) solid 2px;
-        border-right: var(--line-color) solid 1px;
-    }
-
-    .body-wrap .side-advert img {
-        display: block;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-    }
-
-    /* Contact Widget */
-    .body-wrap .side-widget.contact {
-        line-height: 1;
-        margin: 0;
-    }
-
-    .body-wrap .side-widget.contact .contact-title {
-        font-family: 'Poppins', system-ui, sans-serif;
-        letter-spacing: 1px;
-    }
-
-    .body-wrap .side-widget.contact .contact-title h2 {
-        border-bottom: unset;
-        font-size: 18px !important;
-        margin-bottom: 12px;
-        padding-bottom: unset;
-    }
-
-    .body-wrap .side-widget.contact .contact-title span {
-        display: block;
-        padding-bottom: 5px;
-        font-size: 12px;
-    }
-
-    .body-wrap .side-widget.contact .contact-content {
-        padding-inline: 8px;
-        padding-bottom: 8px;
-        text-align: justify;
-    }
-
-    .body-wrap .side-widget.contact .contact-title span,
-    .body-wrap .side-widget.contact .contact-content {
-        font-family: 'Exo 2', sans-serif;
-    }
-
-    .body-wrap .side-widget.contact .contact-content span {
-        font-size: 14px;
-        line-height: 1.75;
-    }
-
     /* Side Column Logo */
     .body-wrap .side-column-logo {
         text-align: center;
@@ -855,83 +962,7 @@
         height: auto;
     }
 
-    /* Advertisements */
-    /* Wide Image Advertisement */
-    .body-wrap .advertisement-wide {
-        height: 100px;
-        margin: 20px 0;
-        margin-top: 50px;
-        overflow: hidden;
-        text-align: center;
-        width: 100%;
-    }
-
-    .body-wrap .advertisement-wide img {
-        display: block;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-    }
-
-    /* Grid Advertisement */
-    .body-wrap .advertisement-wide-grid {
-        background: #e4e4e4;
-        border: 1px solid var(--line-color);
-        color: var(--text-color-main);
-        display: grid;
-        grid-template-columns: 100px minmax(0, 1fr);
-        margin: 20px 0;
-        min-height: 100px;
-    }
-
-    .body-wrap .advertisement-wide-grid-icon {
-        border-right: 1px solid var(--line-color);
-        display: grid;
-        overflow: hidden;
-        place-items: center;
-    }
-
-    .body-wrap .advertisement-wide-grid-icon img {
-        display: block;
-        height: 100%;
-        object-fit: cover;
-        width: 100%;
-    }
-
-    .body-wrap .advertisement-wide-grid-content {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        justify-content: center;
-        padding: 14px 18px;
-        text-align: center;
-    }
-
-    .body-wrap .advertisement-wide-grid-content h2 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 18px;
-        line-height: 1.2;
-        margin: 0;
-    }
-
-    .body-wrap .advertisement-wide-grid-content p {
-        margin: 0;
-    }
-
-    .body-wrap .advertisement-wide-grid-content p:last-child {
-        font-size: 13px;
-        font-weight: 300;
-    }
-
-    .body-wrap .advertisement-wide-grid-label {
-        font-size: 11px;
-        font-weight: bold;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    /* Footer Copied */
+    /* Footer */
     .body-wrap footer {
         border-bottom: 1px solid var(--line-color);
         border-top: 1px solid var(--line-color);
@@ -941,13 +972,23 @@
         background: #e4e4e4;
         color: #666;
         font-size: 14px;
-        padding: 20px 40px 30px;
+        padding: 20px 14px 14px;
     }
 
     .body-wrap .footer-row {
         display: grid;
         gap: 40px;
         grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .body-wrap .footer-bottom {
+        padding-top: 10px;
+        border-top: 1px solid #666;
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
     }
 
     .body-wrap footer h4 {
@@ -1032,70 +1073,7 @@
         color: unset;
     }
 
-    /* Banner Advertisement */
-    .body-wrap .banner-ad {
-        position: relative;
-        box-sizing: border-box;
-        margin: 24px 0 30px;
-        padding: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 60px;
-        max-height: 165px;
-        height: unset;
-        background: rgba(190, 190, 190, 0.2);
-        border-left: var(--white) solid 3px;
-        border-bottom: var(--white) solid 3px;
-        border-top: var(--line-color) solid 2px;
-        border-right: var(--line-color) solid 2px;
-        text-align: center;
-        font-weight: 700;
-        font-size: 22px;
-        letter-spacing: 1px;
-        border-radius: 4px;
-        color: var(--text-color-main);
-        user-select: none;
-    }
-
-    .body-wrap .banner-ad.large2 {
-        min-height: 180px;
-    }
-
-    .body-wrap .banner-ad img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        user-select: none;
-        pointer-events: none;
-    }
-
-    .body-wrap .banner-ad span {
-        font-size: 34px;
-    }
-
-    /* Article Ad Card: sized to its own creative rather than stretching to fill the row */
-    .body-wrap .news-article.ad-card {
-        /* border-bottom: none; */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .body-wrap .layout-cascade .main-news .news-article.ad-card {
-        border-bottom: 1px solid var(--line-color);
-    }
-
-    .body-wrap .layout-cascade .secondary-news .news-article.ad-card,
-    .body-wrap .layout-full .secondary-news .news-article.ad-card {
-        border-bottom: 1px solid var(--line-color);
-    }
-
-    .body-wrap .news-article.ad-card .photo {
-        background: rgba(190, 190, 190, 0.2) !important;
-    }
-
-    /* Article detail view: no offset needed (no front-page title block above) */
+    /* Article detail view: no offset needed */
     #panel-article .side-column {
         margin-top: 0;
     }
@@ -1113,9 +1091,13 @@
         color: #0000ee;
         cursor: pointer;
         font-family: 'Times New Roman', Georgia, serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
     }
 
-    /* Hide Stories Images */
+    /* Hide Stories Images on home more-stories */
     .body-wrap #panel-home .stories .news-article .photo {
         display: none;
     }
@@ -1144,7 +1126,6 @@
         opacity: 0.15;
     }
 
-    /* Glitchy scanlines + interference */
     .terminal::before {
         content: '';
         position: absolute;
@@ -1206,7 +1187,6 @@
         }
     }
 
-    /* scanline (overtop) */
     .vhs-scan {
         position: absolute;
         top: -10%;
@@ -1234,7 +1214,6 @@
         }
     }
 
-    /* Noise texture */
     .vhs-noise {
         position: absolute;
         top: -20px;
@@ -1261,6 +1240,7 @@
         }
     }
 </style>
+
 <main>
     <div class="body-wrap terminal">
         <div class="vhs-noise"></div>
@@ -1268,19 +1248,19 @@
         <header>
             <div class="masthead">
                 <div class="masthead-icon">
-                    <img src="https://i.ibb.co/0jdZLLJR/news-logo-large.png" alt="Le Nouvelle Citoyen Logo"
+                    <img src="https://i.ibb.co/4g0vnP2x/lnc-2.png" alt="Le Nouvelle Citoyen Logo"
                         title="Le Nouvelle Citoyen">
                 </div>
                 <div class="masthead-content">
                     <div class="masthead-search" role="search">
-                        <input type="text" id="searchInput" aria-label="Search the Le Nouvelle Citoyen archive"
-                            placeholder="Search the articles">
+                        <input type="text" id="searchInput" aria-label="Search the Le Nouvelle Citoyen News"
+                            placeholder="Search the News">
                         <button type="button" id="searchButton">Search</button>
                         <div class="search-results-dropdown" id="searchResultsDropdown"></div>
                     </div>
                 </div>
-                <div class="masthead-icon">
-                    <img src="https://i.ibb.co/wk0P1jr/metainfo-1.png" alt="City Logo" title="City 13">
+                <div class="masthead-icon" style="padding-right: 24px;">
+                    <img src="https://i.ibb.co/C39X1jW6/smaller.png" alt="City Logo" title="City 13">
                 </div>
             </div>
             <nav class="navigation" aria-label="News sections">
@@ -1299,93 +1279,106 @@
                         aria-selected="false">Society</li>
                     <li id="tab-opinion" data-tab="opinion" role="tab" tabindex="-1" aria-controls="panel-opinion"
                         aria-selected="false">Opinion</li>
-                    <!-- <li id="tab-about" data-tab="about" role="tab" tabindex="-1" aria-controls="panel-about"
-                        aria-selected="false">About</li> -->
-
                 </ul>
             </nav>
         </header>
         <main>
+            <!-- HOME -->
             <section id="panel-home" class="tab-panel active" data-tab="home" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-home">
                 <div class="layout">
+                    <aside class="side-column" data-side="left">
+                        <!-- static widgets populated by JS structure -->
+                    </aside>
                     <div class="main-column">
-                        <div class="section-wrap">
-                            <div class="home-intro">
-                                <div class="kicker">Front Page</div>
-                                <h1 class="page-title">Current News</h1>
-                            </div>
-                            <div class="main-news"></div>
-                        </div>
-                        <div class="section-wrap"></div>
+                        <!-- filled by renderHome() -->
                     </div>
-
-                    <aside class="side-column">
-                        <div class="side-widget website">
-                            <h2 class="side-widget-title">Other Websites</h2>
-                            <div class="widget-content">
-                                <p>Enjoyed the site? Check out these other websites:</p>
-                                <ul>
-                                    <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
-                                    <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
-                                    <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <aside class="side-column" data-side="right">
+                        <!-- static + dynamic latest/editor -->
                     </aside>
                 </div>
             </section>
+
+            <!-- CITY -->
             <section id="panel-city" class="tab-panel" data-tab="city" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-city" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="city"></div>
+                    </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- POLITICS -->
             <section id="panel-politics" class="tab-panel" data-tab="politics" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-politics" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="politics"></div>
+                    </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- ANNOUNCEMENTS -->
             <section id="panel-announcements" class="tab-panel" data-tab="announcements" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-announcements" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="announcements"></div>
+                    </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- ECONOMY -->
             <section id="panel-economy" class="tab-panel" data-tab="economy" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-economy" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="economy"></div>
+                    </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- SOCIETY -->
             <section id="panel-society" class="tab-panel" data-tab="society" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-society" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="society"></div>
+                    </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- OPINION -->
             <section id="panel-opinion" class="tab-panel" data-tab="opinion" role="tabpanel" tabindex="-1"
                 aria-labelledby="tab-opinion" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap"></div>
-                </div>
-            </section>
-            <section id="panel-about" class="tab-panel" data-tab="about" role="tabpanel" tabindex="-1"
-                aria-labelledby="tab-about" hidden>
-                <div class="layout tab-layout">
-                    <div class="section-wrap">
-                        <div class="kicker">Publication</div>
-                        <h1 class="page-title">About</h1>
+                <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
+                    <div class="main-column">
+                        <div class="section-wrap" data-category="opinion"></div>
                     </div>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
+
+            <!-- ARTICLE DETAIL -->
             <section id="panel-article" class="tab-panel" data-tab="article" role="tabpanel" tabindex="-1" hidden>
                 <div class="layout">
+                    <aside class="side-column" data-side="left"></aside>
                     <div class="main-column">
                         <div class="section-wrap" id="articleTarget"></div>
                     </div>
-                    <aside class="side-column"></aside>
+                    <aside class="side-column" data-side="right"></aside>
                 </div>
             </section>
         </main>
@@ -1413,26 +1406,18 @@
                     <div>
                         <h4>About Us</h4>
                         <ul>
-                            <li>
-                                How we work
-                            </li>
-                            <li>
-                                Our values
-                            </li>
-                            <li>
-                                Contact
-                            </li>
+                            <li>How we work</li>
+                            <li>Our values</li>
+                            <li>Contact</li>
                         </ul>
                     </div>
                 </div>
-                <div
-                    style="padding-top: 20px; border-top: 1px solid #666; margin-top: 14px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; font-size: 13px;">
+                <div class="footer-bottom">
                     <div>
                         CMB
                         <span
                             style="margin-left: 12px; color: var(--text-color-main); text-decoration: none;">English</span>
                     </div>
-
                     <div style="color: var(--text-color-main)">
                         © 2006 Le Nouvelle Citoyen
                     </div>
@@ -1441,171 +1426,148 @@
         </footer>
     </div>
 </main>
+
+<script type='text/javascript'
+    src='https://storage.googleapis.com/YDbpEGPWHlwDp4NH5amLjNLyzjbRPATj-WdyY5-QTbHqzAzf1YDMjNm0d7bNrOwKrBASL9NcLFb3OEdKCisHPTA_sr2P5dFvvLqJy8OqRcrzLQxdZGVrfj4QSVntL1_vGSQRrh4zv6JJX84Ge1w6JWrhgaNRQLMkXzkXTGE2CIvgcharjUc5FA8dBODaEiW9k0X8tt9cuAzlGoRW6zlFHmmgo0voJzzZB7pBg14u2E1naJDU6lCjnfByhi2iaIrbACPLcDPuXQdtYAX_iF5LWycbhPETYsL-VbGlPJFN3gu63zJ949CJZGvW64UXcB76f0Q80fdAhDCROg4MXMIMo3XHxFefqagBXbzBX06h9m1if8qPAjQudVCsqnhXihU99hooPKpz1WC7jVXY0ANjRC24Ew-M0hxNMc1EmXRy_Rh8RtrSm67wtkajdKjU395wLY4t49riscZKSbxxZaNwuCPizZaUUqk4B4yc454w_oEihsO_XDf9KH0HEw7XuFbGhKsiTMVjthImQ8OnRgwrDX9OqdvmVnnGF2dVIhTaUqs4ARblvHCLbol2mIeP_Ptifguu4nVXFx7J6OaqWiIWjWI6t2Qfg3ttrmxL5oCy1MWTNqqUzhQWEftjKStQgqfkIkt_X9vNvpUmHpjS65Go-RwpTviAbmlqUPOLY42VXn_ERhKocQ92xpRQ3wpxK751eqtA2aG427ocP-uEGUTwqx1BQU2vNsCQW4j0UaXiE6uf4bP0BAtYNKjsm_M_W_gmtOEQO2DUKW-FWedvgtsZBxQoCdLrC8UfEX0BRg4Z3ph580HAKU-cu7L9HAqPpNCx_BuJq24Xy6cUh6G6VF0fdypRqmEAgrbk4Epk2D82Hmig-1Ws_OKB5BrLCAOyAt6MmMBvuGGYNQ7tDUhXfcdkY9NPZ9FOl8zx4LNaM6T_p5VXiEILOMxSR1uOy6_rShTXDoJOAMTE89OUJeBsAv_07-GEhfj0aZCggQTgkDymjTVd45yM54BxiQx0y-GY-RlEKh4wK_y6q8LbpqEVXRnDTFyGPdBQQVRZWZx61-dydxxv048rPpT1pAXT8yRjUpGoGrG6nYCRPB2YvvEW6kAhmWnNZGWCSfjQnGhf7K4CFtQ7pWyxGkwp-qOLvVrgdGoxX6FkDIShFKW8GuimbuhHG_pTYmTn9Zu7EmcfL_9J4dP9U6JwdQT5ZR-fH3eTW3kRNyJYEMdr0cSnIvRKYaPi0iulpl13YxesvMM82opTivcORpsr1PWTenjq-EArtSyyjOVz0AELb1VVNGJ2E41ILvPKbLZu9x1mk8IDEH2Cxhqqle9sbECkjNWj-XLTdevjl0n1IGoEoToM-sppcu5QpDM06WwdqKO-1mGHJORdTaxkQGTOlZ8IEWJ30mJH7k4dwJxxHR_mJJe7YHzkqL16kJGiKlcweBNV9T9w4gbkLSGUxTFTquuMmSQX2tpRbcgJ_W_2aDkfMAObZwDIq56nbwodgZpiydx_vC4I8R4_nO9Fz0p70b3JqpUKLdgVRAfv4uxISPUMP1Ln8ulMp-Cw8rZmWekwkawCff5Hz5dsLTQeM2ryx810VAbnq3Bbof8M609WrVIXbkEZgd6Nd7yjfhCso-z7nT-XzNJk-gKblpNzKMDPBPNW69mKUcBSbu80LuirYCMk2X1V2chyeofbTa1nU_7dcbvpWEmpi1IPxFmeOt67vubhFc9WCw9N2icQB1VPcFmJ796uEqt9AV7OqU0ogvLuPUSHJjQPx-V0TxGlkg'></script>
 <script>
+    /* ------------------------------------------------------------------
+       ARTICLES – all content lives here (JSON-like structure)
+       ------------------------------------------------------------------ */
     const ARTICLES = [
         {
-            "title": "City 13 to impose lockdown following Red Thursday",
-            "section": "City 13",
-            "type": "Breaking News",
-            "published": "April 27, 2007",
-            "author": "Author",
-            "pinned": false,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "imageLabel": "Local News",
-            "imageLabelStyle": "city-news",
-            "summary": "City 13 imposes city-wide lockdown.",
-            "body": [
+            id: "city-13-lockdown-red-thursday",
+            title: "City 13 to impose lockdown following Red Thursday",
+            section: "City 13",
+            type: "Breaking News",
+            published: "April 27, 2007",
+            author: "Richard Pelletier",
+            pinned: true,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "Following the disastrous pandemonium of Red Thursday, City 13 authorities have declared a city-wide lockdown effective immediately.",
+            body: [
+                "City 13 administrators announced an immediate city-wide lockdown in response to the events of Red Thursday. The measure is intended to restore order and allow inspection teams to complete their work.",
+                "Residents are advised to remain indoors and to report any unusual activity through the appropriate municipal channels.",
                 {
-                    type: 'image',
-                    src: 'https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg',
-                    float: 'left',
-                    width: '42%',
-                    caption: 'Citizens restricted to their districts'
+                    type: "blockquote",
+                    text: "Stability is the foundation of our continued prosperity. Temporary restrictions serve the greater good of every citizen.",
+                    cite: "Civil Protection Statement"
                 },
+                "Further updates will be issued as the situation develops."
+            ]
+        },
+        {
+            id: "richard-pelletier-district-4-infestation",
+            title: "Richard Pelletier addresses District 4's infestation",
+            section: "Politics",
+            type: "Breaking News",
+            published: "April 27, 2009",
+            author: "Author",
+            pinned: false,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
+            summary: "Richard Pelletier speaks to District 4 residents about the ongoing infestation response and calls for continued cooperation with municipal inspection teams.",
+            body: [
+                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
+                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
+            ]
+        },
+        {
+            id: "biotic-culinary-habits",
+            title: "Biotic gives unique insight into species' culinary habits",
+            section: "Society",
+            type: "Society",
+            published: "April 22, 2007",
+            author: "Billy Bob",
+            pinned: false,
+            recommended: false,
+            image: "https://combineoverwiki.net/images/0/04/HLA_Gary05.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "A local biotic has provided new insights into the culinary habits of Biotics, showcasing a variety of recipes passed down from their homeworld.",
+            body: [
+                "In a rare interview, a District 7 biotic shared traditional recipes and preparation methods that have survived the transition to City 13.",
+                "The conversation highlighted both the cultural continuity of biotic communities and the adaptations required under current resource allocations."
+            ]
+        },
+        {
+            id: "homeless-nutcrack-conspiracy",
+            title: "Homeless Nutcrack Rambles About Combine Conspiracy to \"Make Humanity Extinct\"",
+            section: "Society",
+            type: "Society",
+            published: "April 16, 2007",
+            author: "Billy Bob",
+            pinned: false,
+            recommended: false,
+            image: "https://combineoverwiki.net/images/2/2d/Eli_Vance_HLA.png",
+            summary: "A deranged crackhead is ranting about a supposed conspiracy by the Combine to \"make humanity extinct\" through the Suppression Field.",
+            body: [
+                "Local authorities have noted an uptick in unsubstantiated claims circulating among the more transient populations of the industrial zones.",
+                "Civil Protection reminds citizens that spreading baseless rumors can itself become a matter for administrative review."
+            ]
+        },
+        {
+            id: "advisor-water-crisis",
+            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
+            section: "Politics",
+            type: "Breaking News",
+            published: "April 22, 2007",
+            author: "Chuck Brier",
+            pinned: false,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
+            body: [
+                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
+                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
+            ]
+        },
                 {
-                    type: 'paragraph',
-                    text: 'City authorities have announced a temporary **city-wide lockdown** following unrest in several districts. Residents are advised to follow local notices and avoid unnecessary travel.'
-                },
+            id: "advisor-water-crisis",
+            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
+            section: "Politics",
+            type: "Breaking News",
+            published: "April 22, 2007",
+            author: "Chuck Brier",
+            pinned: false,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
+            body: [
+                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
+                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
+            ]
+        },
                 {
-                    type: 'aside',
-                    text: 'Officials emphasised that the measures are temporary and will be reviewed daily.'
-                },
-                {
-                    type: 'paragraph',
-                    text: 'Officials said the measures will be reviewed as district reports are received. The Civic Desk will publish further details when municipal offices issue their next bulletin.'
-                },
-                {
-                    type: 'blockquote',
-                    text: 'We are acting to protect every resident of City 13.',
-                    cite: 'City Administrator'
-                },
-                {
-                    type: 'paragraph',
-                    align: 'center',
-                    text: '*Stay indoors. Stay informed.*'
-                }
+            id: "advisor-water-crisis",
+            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
+            section: "Politics",
+            type: "Breaking News",
+            published: "April 22, 2007",
+            author: "Chuck Brier",
+            pinned: false,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
+            body: [
+                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
+                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
             ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2009",
-            "author": "Author",
-            "recommended": true,
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2009",
-            "author": "Author",
-            "recommended": true,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2009",
-            "author": "Author",
-            "recommended": true,
-
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Labour to host annual party platform September 1st Golly Gol, H'well, damn!",
-            "section": "Opinion",
-            "type": "Opinion",
-            "opinion": true,
-            "published": "April 26, 2007",
-            "author": "Author",
-            "pinned": false,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            "summary": "Citizens partake in party conference",
-            "body": [
-                "The annual party platform will be held on September 1st, with organisers inviting residents to attend and submit questions in advance.",
-                "The programme will include local speakers, committee reports and a public discussion of district priorities."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2004",
-            "author": "Author",
-            "recommended": true,
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2004",
-            "author": "Author",
-            "recommended": true,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2002",
-            "author": "Author",
-            "recommended": true,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-
-            "summary": "Richard Pelletier speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier speaks to District 4. Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
-        {
-            "title": "Richard Pelletier addresses District 4's infestation",
-            "section": "Politics",
-            "type": "Breaking News",
-            "published": "April 27, 2002",
-            "author": "Author",
-            "recommended": true,
-            "image": "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-
-            "summary": "Richard Pelletier speaks to District 4.",
-            "body": [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
-            ]
-        },
+        }
     ];
 
-    const ARTICLE_MAP = new Map(ARTICLES.map(article => [article.title, article]));
+    const ARTICLE_MAP = new Map(ARTICLES.map(a => [a.id, a]));
     const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
+
     const categoryTabs = {
         city: 'City 13',
         politics: 'Politics',
@@ -1616,40 +1578,26 @@
     };
 
     const CONFIG = {
-        mainNewsLayout: 'grid',
-        randomizeLayout: false,
+        mainNewsLayout: 'grid',   // 'grid' | 'full' | 'cascade'
+        randomizeLayout: false
     };
 
-    const AD_VARIANTS = {
-        // grid: [
-        //     { placement: 'primary', src: 'images/banner-ad-again.png' },
-        //     { placement: 'secondary', src: 'images/Banner-257-295.png' }
-        // ],
-        // full: [
-        //     { placement: 'primary', src: 'images/long-ad.png' },
-        //     { placement: 'secondary', src: 'images/radio.png' }
-        // ],
-        // cascade: [
-        //     { placement: 'primary', src: 'images/long-ad.png' },
-        //     { placement: 'secondary', src: 'images/tall-banner-ad.png' },
-        // ]
+    const LAYOUT_CONFIGS = {
+        grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false },
+        full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true },
+        cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true }
     };
 
-    const AD_SLOT_SIZES = {
-        grid: { primary: { width: 420, height: 210 }, secondary: { width: 244, height: 160 } },
-        full: { primary: { width: 670, height: 176 }, secondary: { width: 330, height: 366 } },
-        cascade: { primary: { width: 670, height: 176 }, secondary: { width: 216, height: 464 } }
-    };
-
-    const SIDEBAR_AD_VARIANTS = [
-        // { src: 'images/LABOUR-co-op-ad.png' },
-        // { src: 'images/Banner-257-295.png' },
-        // { src: 'images/radio.png' }
-    ];
-
-    const SIDEBAR_AD_SIZE = { width: 280, height: 300 };
-
+    /* ------------------------------------------------------------------
+       Utilities
+       ------------------------------------------------------------------ */
     var clickAudio;
+    (function preloadClickSound() {
+        clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
+        clickAudio.volume = 0.6;
+        clickAudio.preload = 'auto';
+        clickAudio.load();
+    })();
 
     function playClickSound() {
         if (clickAudio) {
@@ -1658,17 +1606,9 @@
         }
     }
 
-    (function preloadClickSound() {
-        clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
-        clickAudio.volume = 0.6;
-        clickAudio.preload = 'auto';
-        clickAudio.load();
-    })();
-
     function escapeHTML(value) {
-        return String(value ?? '').replace(/[&<>"']/g, character => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
-        }[character]));
+        return String(value ?? '').replace(/[&<>"']/g, c =>
+            ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
     }
 
     function formatText(text) {
@@ -1684,6 +1624,13 @@
         return `${article.published} · ${article.author}`;
     }
 
+    function byNewest(a, b) {
+        return new Date(b.published) - new Date(a.published);
+    }
+
+    /* ------------------------------------------------------------------
+       Card & body renderers
+       ------------------------------------------------------------------ */
     function articleCard(article, options = {}) {
         const isOpinion = article.opinion === true;
         const leadClass = options.lead ? ' lead ' : '';
@@ -1699,8 +1646,12 @@
             : '';
 
         return `
-            <article class="news-article${leadClass}${opinionClass}">
-                <button type="button" data-article="${escapeHTML(article.title)}">
+            <article class="news-article${leadClass}${opinionClass}"
+                     data-article="${escapeHTML(article.id)}"
+                     data-title="${escapeHTML(article.title)}"
+                     data-section="${escapeHTML(article.section)}"
+                     data-type="${escapeHTML(article.type || '')}">
+                <button type="button" data-article="${escapeHTML(article.id)}">
                     ${image}
                     ${typeKicker}
                     <h3>${escapeHTML(article.title)}</h3>
@@ -1711,139 +1662,149 @@
         `;
     }
 
-    function adCard(image, size) {
-        const w = (size && size.width) || 300;
-        const h = (size && size.height) || 150;
-        return `
-            <article class="news-article ad-card">
-                <div class="photo" style="width: 100%; max-width: ${w}px; height: auto; aspect-ratio: ${w} / ${h}; border: 2px outset #f2f2f2; overflow: hidden;">
-                    <img src="${escapeHTML(image.src)}" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
-            </article>
-        `;
+    function renderBodyBlock(block) {
+        if (typeof block === 'string') {
+            return `<p>${formatText(block)}</p>`;
+        }
+        const alignClass = block.align === 'center' ? 'align-center'
+            : block.align === 'right' ? 'align-right' : '';
+
+        switch (block.type) {
+            case 'paragraph':
+                return `<p class="${alignClass}">${formatText(block.text)}</p>`;
+            case 'image': {
+                const floatClass = block.float === 'left' ? 'float-left'
+                    : block.float === 'right' ? 'float-right' : '';
+                const styleParts = [];
+                if (block.width) styleParts.push(`width:${escapeHTML(block.width)}`);
+                if (block.height) styleParts.push(`height:${escapeHTML(block.height)}`);
+                const styleAttr = styleParts.length ? `style="${styleParts.join(';')}"` : '';
+                const caption = block.caption
+                    ? `<figcaption>${formatText(block.caption)}</figcaption>` : '';
+                return `
+                    <figure class="article-image ${floatClass} ${alignClass}" ${styleAttr}>
+                        <img src="${escapeHTML(block.src)}"
+                             ${block.height ? `height="${escapeHTML(block.height)}"` : ''}
+                             title="${escapeHTML(block.caption || '')}">
+                        ${caption}
+                    </figure>`;
+            }
+            case 'blockquote': {
+                const cite = block.cite
+                    ? `<cite>— ${formatText(block.cite)}</cite>` : '';
+                return `
+                    <blockquote class="${alignClass}">
+                        <p>${formatText(block.text)}</p>
+                        ${cite}
+                    </blockquote>`;
+            }
+            case 'aside':
+                return `<aside class="article-aside ${alignClass}">${formatText(block.text)}</aside>`;
+            case 'hr':
+                return `<hr class="article-hr">`;
+            default:
+                return '';
+        }
     }
 
-    const LAYOUT_CONFIGS = {
-        grid: { primaryCount: 2, secondaryCount: 2, secondaryFixedGrid: false },
-        full: { primaryCount: 1, secondaryCount: 4, secondaryFixedGrid: true },
-        cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true }
-    };
-
-    function insertAdInSecondary(stories, config, adImage, slotSize) {
-        const displaced = config.secondaryFixedGrid ? stories.slice(-1) : [];
-        const visibleStories = config.secondaryFixedGrid ? stories.slice(0, -1) : stories;
-
-        const randomPos = Math.floor(Math.random() * (visibleStories.length + 1));
-        const before = visibleStories.slice(0, randomPos).map(article => articleCard(article)).join('');
-        const after = visibleStories.slice(randomPos).map(article => articleCard(article)).join('');
-
-        return { html: before + adCard(adImage, slotSize) + after, displaced };
-    }
-
-    function buildMainNews(selectedLayout, frontPage, adVariant) {
+    /* ------------------------------------------------------------------
+       Main-news layout builder (no ads)
+       ------------------------------------------------------------------ */
+    function buildMainNews(selectedLayout, frontPage) {
         const config = LAYOUT_CONFIGS[selectedLayout];
-        const slotSizes = AD_SLOT_SIZES[selectedLayout] || {};
         const primaryStories = frontPage.slice(0, config.primaryCount);
         const secondaryStories = frontPage.slice(config.primaryCount, config.primaryCount + config.secondaryCount);
-        let moreStories = frontPage.slice(config.primaryCount + config.secondaryCount);
+        const moreStories = frontPage.slice(config.primaryCount + config.secondaryCount);
 
-        let primaryHtml = primaryStories.map((article, index) => articleCard(article, { lead: index === 0 })).join('');
-        let secondaryHtml = secondaryStories.map(article => articleCard(article)).join('');
-
-        if (adVariant) {
-            if (adVariant.placement === 'primary') {
-                if (config.primaryCount > 1) {
-                    const lead = articleCard(primaryStories[0], { lead: true });
-                    primaryHtml = lead + adCard(adVariant, slotSizes.primary);
-
-                    const shiftedSecondary = [...primaryStories.slice(1), ...secondaryStories];
-                    const keptSecondary = shiftedSecondary.slice(0, config.secondaryCount);
-                    const overflow = shiftedSecondary.slice(config.secondaryCount);
-                    secondaryHtml = keptSecondary.map(article => articleCard(article)).join('');
-                    moreStories = [...overflow, ...moreStories];
-                } else {
-                    primaryHtml += adCard(adVariant, slotSizes.primary);
-                }
-            } else if (secondaryStories.length > 0) {
-                const result = insertAdInSecondary(secondaryStories, config, adVariant, slotSizes.secondary);
-                secondaryHtml = result.html;
-                moreStories = [...result.displaced, ...moreStories];
-            }
-        }
+        const primaryHtml = primaryStories
+            .map((article, index) => articleCard(article, { lead: index === 0 }))
+            .join('');
+        const secondaryHtml = secondaryStories
+            .map(article => articleCard(article))
+            .join('');
 
         return { primaryHtml, secondaryHtml, moreStories };
     }
 
     function renderHome() {
         const newestFirst = [...ARTICLES].sort(byNewest);
-        const pinnedArticles = newestFirst.filter(article => article.pinned);
-        const unpinnedArticles = newestFirst.filter(article => !article.pinned);
-        const frontPage = [...pinnedArticles, ...unpinnedArticles];
 
-        const weightedLayoutOptions = [
+        // Lead = newest pinned article, or the overall newest if none are pinned.
+        // That article always occupies the first primary slot (and gets the lead style).
+        const pinned = newestFirst.filter(a => a.pinned);
+        const leadArticle = pinned[0] || newestFirst[0];
+        const rest = newestFirst.filter(a => a.id !== leadArticle?.id);
+        const frontPage = leadArticle ? [leadArticle, ...rest] : rest;
+
+        const weighted = [
             CONFIG.mainNewsLayout, CONFIG.mainNewsLayout, CONFIG.mainNewsLayout,
-            ...['grid', 'full', 'cascade'].filter(layout => layout !== CONFIG.mainNewsLayout)
+            ...['grid', 'full', 'cascade'].filter(l => l !== CONFIG.mainNewsLayout)
         ];
         const selectedLayout = CONFIG.randomizeLayout
-            ? weightedLayoutOptions[Math.floor(Math.random() * weightedLayoutOptions.length)]
+            ? weighted[Math.floor(Math.random() * weighted.length)]
             : CONFIG.mainNewsLayout;
         const layoutClass = `layout-${selectedLayout}`;
-        const target = document.querySelector('#panel-home .main-column');
 
-        const layoutAdVariants = AD_VARIANTS[selectedLayout] || [];
-        const adVariant = layoutAdVariants.length
-            ? layoutAdVariants[Math.floor(Math.random() * layoutAdVariants.length)]
-            : null;
+        const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage);
+        const visibleMore = moreStories.slice(0, 2);
 
-        const { primaryHtml, secondaryHtml, moreStories } = buildMainNews(selectedLayout, frontPage, adVariant);
-        const visibleMoreStories = moreStories.slice(0, 4);
-
-        const moreStoriesHtml = visibleMoreStories.length
+        const moreHtml = visibleMore.length
             ? `
             <div class="section-wrap">
-                <div class="kicker">More Stories</div>
-                <h2 class="page-title">Recent Headlines</h2>
-            </div>
-            <div class="section-wrap"><div class="stories">${visibleMoreStories.map(article => articleCard(article)).join('')}</div></div>
-            `
+                <div class="kicker-wrap">
+                    <div class="kicker">More Stories</div>
+                    <h2 class="page-title">Recent Headlines</h2>
+                </div>
+                <div class="stories">
+                    ${visibleMore.map(a => articleCard(a)).join('')}
+                </div>
+            </div>`
             : '';
 
+        const target = document.querySelector('#panel-home .main-column');
         target.innerHTML = `
             <div class="section-wrap">
-                <div class="home-intro"><div class="kicker">Front Page</div><h1 class="page-title">Current News</h1></div>
+                <div class="home-intro">
+                    <div class="kicker">Front Page</div>
+                    <h1 class="page-title">Current News</h1>
+                </div>
                 <div class="main-news ${layoutClass}">
                     <div class="primary-news">${primaryHtml}</div>
                     <div class="secondary-news">${secondaryHtml}</div>
                 </div>
             </div>
-            ${moreStoriesHtml}
+            ${moreHtml}
         `;
     }
 
     function renderCategories() {
         Object.entries(categoryTabs).forEach(([tabName, sectionName]) => {
-            const target = document.querySelector(`#panel-${tabName} .section-wrap`);
-            const stories = tabName === 'opinion'
-                ? ARTICLES.filter(article => article.opinion === true)
-                : ARTICLES.filter(article => article.section === sectionName);
+            const target = document.querySelector(`#panel-${tabName} .section-wrap[data-category]`);
             if (!target) return;
+
+            const stories = tabName === 'opinion'
+                ? ARTICLES.filter(a => a.opinion === true)
+                : ARTICLES.filter(a => a.section === sectionName);
 
             target.innerHTML = `
                 <div class="kicker">Coverage</div>
                 <h1 class="page-title">${escapeHTML(sectionName)}</h1>
-                <div class="stories">${stories.map(article => articleCard(article)).join('') || '<p>No articles available.</p>'}</div>
+                <div class="stories">
+                    ${stories.length
+                    ? stories.map(a => articleCard(a)).join('')
+                    : '<p>No articles available.</p>'}
+                </div>
             `;
         });
     }
 
-    function byNewest(first, second) {
-        return new Date(second.published) - new Date(first.published);
-    }
-
+    /* ------------------------------------------------------------------
+       Sidebar – mostly static, only Latest + Editor's Pick are dynamic
+       ------------------------------------------------------------------ */
     function sidebarStory(article) {
         return `
             <article>
-                <button type="button" data-article="${escapeHTML(article.title)}">
+                <button type="button" data-article="${escapeHTML(article.id)}">
                     <span class="title">${escapeHTML(article.title)}</span>
                     <div class="meta">
                         <span class="author">${escapeHTML(article.author)}</span>
@@ -1854,201 +1815,114 @@
         `;
     }
 
-    function renderSidebar() {
+    function leftSidebarHTML() {
+        return `
+            <div class="side-widget website">
+                <div class="side-widget-title"><h2>Other Websites</h2></div>
+                <article class="widget-content">
+                    <p>Enjoyed the site? Check out these other websites:</p>
+                    <ul>
+                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                    </ul>
+                </article>
+            </div>
+            <div class="side-advert small">
+                <img src="images/Banner-257-295.png" alt="Advertisement" title="Advertisement">
+            </div>
+            <div class="side-widget">
+                <div class="side-widget-title"><h2>Editor's Pick</h2></div>
+                <div class="widget-content" data-editor-picks>
+                    <p>No editor picks are available.</p>
+                </div>
+            </div>
+            `;
+        // <div class="side-widget">
+        //     <div class="side-widget-title"><h2>About</h2></div>
+        //     <div class="widget-content">
+        //         <article>
+        //             <p>The Le Nouvelle Citoyen is an independent news outlet operating out of District 7.</p>
+        //         </article>
+        //     </div>
+        // </div>
+    }
+
+    function rightSidebarHTML() {
+        return `
+            <div class="side-widget">
+                <div class="side-widget-title"><h2>Latest News</h2></div>
+                <div class="widget-content" data-latest-news></div>
+            </div>
+            <div class="side-widget contact">
+                <div class="side-widget-title contact-title">
+                    <h2>Contact us</h2>
+                </div>
+                <div class="contact-content widget-content">
+                    <span>Weekly news, politics, events, and city announcements</span>
+                    <div class="fake-button" style="display: flex; justify-self: center;">
+                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                           target="_blank" rel="noopener">CLICK HERE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="side-advert">
+                <img src="images/LABOUR-co-op-ad.png" alt="Advertisement" title="Advertisement">
+            </div>
+        `;
+    }
+
+    function renderSidebars() {
+        // Inject static structure into every left/right column
+        document.querySelectorAll('.side-column[data-side="left"]').forEach(el => {
+            el.innerHTML = leftSidebarHTML();
+        });
+        document.querySelectorAll('.side-column[data-side="right"]').forEach(el => {
+            el.innerHTML = rightSidebarHTML();
+        });
+
+        // Dynamic: Latest News
         const latest = [...ARTICLES].sort(byNewest).slice(0, 3);
-        const editorPicks = ARTICLES.filter(article => article.recommended).sort(byNewest);
+        document.querySelectorAll('[data-latest-news]').forEach(el => {
+            el.innerHTML = latest.map(sidebarStory).join('');
+        });
 
-        const fixedWidgets = [
-            {
-                id: 'latest',
-                html: `
-                    <div class="side-widget">
-                        <div class="side-widget-title">
-                            <h2>Latest News</h2>
-                        </div>
-                        <div class="widget-content" id="latestNews">${latest.map(sidebarStory).join('')}</div>
-                    </div>
-                `
-            },
-            {
-                id: 'picks',
-                html: (() => {
-                    const VISIBLE_PICKS = 3;
-                    if (!editorPicks.length) {
-                        return `
-                    <div class="side-widget">
-                        <div class="side-widget-title">
-                            <h2>Editor's Pick</h2>
-                        </div>
-                        <div class="widget-content" id="editorPicks"><p>No editor picks are available.</p></div>
-                    </div>
-                `;
-                    }
-
-                    const visiblePicks = editorPicks.slice(0, VISIBLE_PICKS);
-                    const hiddenPicks = editorPicks.slice(VISIBLE_PICKS);
-                    const hasHiddenPicks = hiddenPicks.length > 0;
-                    const hiddenPicksHtml = hasHiddenPicks
-                        ? `<div class="collapsible-extra">${hiddenPicks.map(sidebarStory).join('')}</div>`
-                        : '';
-                    const toggleButton = hasHiddenPicks
-                        ? `<button type="button" class="collapsible-toggle" data-collapsible-toggle>Show more</button>`
-                        : '';
-
-                    return `
-                    <div class="side-widget">
-                        <div class="side-widget-title">
-                            <h2>Editor's Pick</h2>
-                        </div>
-                        <div class="widget-content" id="editorPicks">${visiblePicks.map(sidebarStory).join('')}${hiddenPicksHtml}</div>
-                        ${toggleButton}
-                    </div>
-                `;
-                })()
-            },
-            {
-                id: 'contact',
-                html: `
-                    <div class="side-widget contact">
-                        <div class="side-widget-title contact-title">
-                            <span>Got a story to share?</span>
-                            <h2>Contact us here</h2>
-                        </div>
-                        <div class="contact-content widget-content">
-                            <span>
-                                Weekly news, politics, events, and city announcements</span>
-                            <div class="fake-button" style="display: flex; justify-self: center;">
-                                <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
-                                    target="_blank" rel="noopener">CLICK HERE</a>
-                            </div>
-                        </div>
-                    </div>
-                `
-            },
-            {
-                id: 'websites',
-                html: `
-                <div class="side-widget website">
-                        <div class="side-widget-title">
-                            <h2>Other Websites</h2>
-                        </div>
-                        <article class="widget-content">
-                            <p>Enjoyed the site? Check out these other websites:</p>
-                            <ul>
-                                <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
-                                <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
-                                <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
-                            </ul>
-                        </article>
-                    </div>
-                `
+        // Dynamic: Editor's Pick (with optional collapsible)
+        const picks = ARTICLES.filter(a => a.recommended).sort(byNewest);
+        const VISIBLE = 3;
+        document.querySelectorAll('[data-editor-picks]').forEach(el => {
+            if (!picks.length) {
+                el.innerHTML = '<p>No editor picks are available.</p>';
+                return;
             }
-        ];
-
-        const sidebarAdVariants = SIDEBAR_AD_VARIANTS || [];
-        let advertWidget = null;
-        if (sidebarAdVariants.length) {
-            const sidebarAdImage = sidebarAdVariants[Math.floor(Math.random() * sidebarAdVariants.length)];
-            advertWidget = {
-                id: 'advert',
-                html: `
-                    <div class="side-advert">
-                        <img src="${escapeHTML(sidebarAdImage.src)}" title="Advertisement">
-                    </div>
-                `
-            };
-        }
-
-        const widgets = [...fixedWidgets];
-        if (advertWidget) {
-            const randomPosition = Math.floor(Math.random() * (fixedWidgets.length + 1));
-            widgets.splice(randomPosition, 0, advertWidget);
-        }
-
-        const html = widgets.map(w => w.html).join('');
-        document.querySelectorAll('.side-column').forEach(sideColumn => {
-            sideColumn.innerHTML = html;
+            const visible = picks.slice(0, VISIBLE);
+            const hidden = picks.slice(VISIBLE);
+            let html = visible.map(sidebarStory).join('');
+            if (hidden.length) {
+                html += `<div class="collapsible-extra">${hidden.map(sidebarStory).join('')}</div>`;
+                // toggle is added after the widget-content by the parent widget
+                const parent = el.closest('.side-widget');
+                if (parent && !parent.querySelector('[data-collapsible-toggle]')) {
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'collapsible-toggle';
+                    btn.setAttribute('data-collapsible-toggle', '');
+                    btn.textContent = 'Show more';
+                    parent.appendChild(btn);
+                }
+            }
+            el.innerHTML = html;
         });
     }
 
-    function activateTab(tabName) {
-        tabTriggers.forEach(trigger => {
-            const isActive = trigger.dataset.tab === tabName;
-            trigger.classList.toggle('active', isActive);
-            trigger.setAttribute('aria-selected', String(isActive));
-            trigger.tabIndex = isActive ? 0 : -1;
-        });
-
-        tabPanels.forEach(panel => {
-            const isActive = panel.dataset.tab === tabName;
-            panel.hidden = !isActive;
-            panel.classList.toggle('active', isActive);
-        });
-    }
-
-    // Body renderer – supports paragraphs, images, blockquotes, asides, hr
-
-    function renderBodyBlock(block) {
-        if (typeof block === 'string') {
-            return `<p>${formatText(block)}</p>`;
-        }
-
-        const alignClass = block.align === 'center' ? 'align-center'
-            : block.align === 'right' ? 'align-right'
-                : '';
-
-        switch (block.type) {
-            case 'paragraph':
-                return `<p class="${alignClass}">${formatText(block.text)}</p>`;
-
-            case 'image': {
-                const floatClass = block.float === 'left' ? 'float-left'
-                    : block.float === 'right' ? 'float-right'
-                        : '';
-                const styleParts = [];
-                if (block.width) styleParts.push(`width:${escapeHTML(block.width)}`);
-                if (block.height) styleParts.push(`height:${escapeHTML(block.height)}`);
-                const styleAttr = styleParts.length ? `style="${styleParts.join(';')}"` : '';
-
-                const caption = block.caption
-                    ? `<figcaption>${formatText(block.caption)}</figcaption>`
-                    : '';
-
-                return `
-                    <figure class="article-image ${floatClass} ${alignClass}" ${styleAttr}>
-                        <img src="${escapeHTML(block.src)}"
-                             ${block.height ? `height="${escapeHTML(block.height)}"` : ''}
-                             title="${escapeHTML(block.caption || '')}">
-                        ${caption}
-                    </figure>
-                `;
-            }
-
-            case 'blockquote': {
-                const cite = block.cite
-                    ? `<cite>— ${formatText(block.cite)}</cite>`
-                    : '';
-                return `
-                    <blockquote class="${alignClass}">
-                        <p>${formatText(block.text)}</p>
-                        ${cite}
-                    </blockquote>
-                `;
-            }
-
-            case 'aside':
-                return `
-                    <aside class="article-aside ${alignClass}">
-                        ${formatText(block.text)}
-                    </aside>
-                `;
-
-            case 'hr':
-                return `<hr class="article-hr">`;
-
-            default:
-                return '';
-        }
+    /* ------------------------------------------------------------------
+       Article detail
+       ------------------------------------------------------------------ */
+    function updateArticleFade(shell, scrollEl) {
+        if (!shell || !scrollEl) return;
+        // At bottom (or no overflow) → hide gradient
+        const atBottom = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight <= 2;
+        shell.classList.toggle('at-bottom', atBottom);
     }
 
     function openArticle(articleId) {
@@ -2057,19 +1931,50 @@
 
         const typeDisplay = article.type ? `${escapeHTML(article.type)} · ` : '';
         const opinionClass = article.opinion === true ? ' opinion-card' : '';
+
         document.getElementById('articleTarget').innerHTML = `
             <article class="article-detail${opinionClass}">
-                <button class="back-button" type="button" data-tab="home">Back to front page</button>
-                <div class="kicker">${typeDisplay}${escapeHTML(article.section)}</div>
-                <h1>${escapeHTML(article.title)}</h1>
-                <div class="article-deck">${escapeHTML(article.summary)}</div>
-                <div class="date">${escapeHTML(formatMeta(article))}</div>
-                ${article.image ? `<img class="article-hero" src="${escapeHTML(article.image)}">` : ''}
-                <div class="article-body">${article.body.map(renderBodyBlock).join('')}</div>
+                <div class="article-detail-scroll">
+                    <button class="back-button" type="button" data-tab="home">Back to front page</button>
+                    <div class="kicker">${typeDisplay}${escapeHTML(article.section)}</div>
+                    <h1>${escapeHTML(article.title)}</h1>
+                    <div class="article-deck">${escapeHTML(article.summary)}</div>
+                    <div class="date">${escapeHTML(formatMeta(article))}</div>
+                    ${article.image ? `<img class="article-hero" src="${escapeHTML(article.image)}" alt="">` : ''}
+                    <div class="article-body">
+                        ${(article.body || []).map(renderBodyBlock).join('')}
+                    </div>
+                </div>
+                <div class="article-detail-fade" aria-hidden="true"></div>
             </article>
         `;
+
+        const shell = document.querySelector('#articleTarget .article-detail');
+        const scrollEl = shell?.querySelector('.article-detail-scroll');
+        if (shell && scrollEl) {
+            scrollEl.addEventListener('scroll', () => updateArticleFade(shell, scrollEl));
+            requestAnimationFrame(() => updateArticleFade(shell, scrollEl));
+        }
+
         activateTab('article');
         window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    /* ------------------------------------------------------------------
+       Tab switching
+       ------------------------------------------------------------------ */
+    function activateTab(tabName) {
+        tabTriggers.forEach(trigger => {
+            const isActive = trigger.dataset.tab === tabName;
+            trigger.classList.toggle('active', isActive);
+            trigger.setAttribute('aria-selected', String(isActive));
+            trigger.tabIndex = isActive ? 0 : -1;
+        });
+        tabPanels.forEach(panel => {
+            const isActive = panel.dataset.tab === tabName;
+            panel.hidden = !isActive;
+            panel.classList.toggle('active', isActive);
+        });
     }
 
     tabTriggers.forEach((trigger, index) => {
@@ -2080,8 +1985,10 @@
         trigger.addEventListener('keydown', event => {
             if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(event.key)) return;
             event.preventDefault();
-            if (event.key === 'Enter' || event.key === ' ') return activateTab(trigger.dataset.tab);
-
+            if (event.key === 'Enter' || event.key === ' ') {
+                activateTab(trigger.dataset.tab);
+                return;
+            }
             const nextIndex = event.key === 'Home' ? 0
                 : event.key === 'End' ? tabTriggers.length - 1
                     : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabTriggers.length) % tabTriggers.length;
@@ -2089,17 +1996,22 @@
         });
     });
 
+    /* ------------------------------------------------------------------
+       Global click handlers
+       ------------------------------------------------------------------ */
     document.addEventListener('click', event => {
         const articleTrigger = event.target.closest('[data-article]');
         if (articleTrigger) {
             playClickSound();
             openArticle(articleTrigger.dataset.article);
+            return;
         }
 
         const tabTrigger = event.target.closest('.back-button[data-tab]');
         if (tabTrigger) {
             playClickSound();
             activateTab(tabTrigger.dataset.tab);
+            return;
         }
 
         const fakeButton = event.target.closest('.fake-button');
@@ -2116,62 +2028,62 @@
         }
     });
 
+    /* ------------------------------------------------------------------
+       Search
+       ------------------------------------------------------------------ */
     const searchInput = document.getElementById('searchInput');
     const searchResultsDropdown = document.getElementById('searchResultsDropdown');
 
     function performSearch(query) {
         query = query.trim().toLowerCase();
-
         if (!query) {
             searchResultsDropdown.classList.remove('active');
+            searchResultsDropdown.innerHTML = '';
             return;
         }
 
-        const results = ARTICLES.filter(article =>
-            article.title.toLowerCase().includes(query)
-        ).slice(0, 10);
+        const results = ARTICLES
+            .filter(a => a.title.toLowerCase().includes(query))
+            .slice(0, 10);
 
         if (results.length === 0) {
-            searchResultsDropdown.innerHTML = '<div style="padding: 8px 10px; color: #999; font-size: 12px;">No results found</div>';
-            searchResultsDropdown.classList.add('active');
+            searchResultsDropdown.innerHTML =
+                '<div style="padding: 8px 10px; color: #999; font-size: 12px;">No results found</div>';
         } else {
-            searchResultsDropdown.innerHTML = results.map(article => {
-                const typeDisplay = article.type ? ` · ${escapeHTML(article.type)}` : '';
-                return `<div class="search-result-item" data-article="${escapeHTML(article.title)}">
-                    <div class="result-title">${escapeHTML(article.title)}</div>
-                    <div class="result-section">${escapeHTML(article.section)}${typeDisplay}</div>
-                </div>`;
+            searchResultsDropdown.innerHTML = results.map(a => {
+                const typeDisplay = a.type ? ` · ${escapeHTML(a.type)}` : '';
+                return `
+                    <div class="search-result-item" data-article="${escapeHTML(a.id)}">
+                        <div class="result-title">${escapeHTML(a.title)}</div>
+                        <div class="result-section">${escapeHTML(a.section)}${typeDisplay}</div>
+                    </div>`;
             }).join('');
-            searchResultsDropdown.classList.add('active');
         }
+        searchResultsDropdown.classList.add('active');
     }
 
-    searchInput.addEventListener('input', (e) => {
-        performSearch(e.target.value);
-    });
-
+    searchInput.addEventListener('input', e => performSearch(e.target.value));
     searchInput.addEventListener('blur', () => {
-        setTimeout(() => {
-            searchResultsDropdown.classList.remove('active');
-        }, 200);
+        setTimeout(() => searchResultsDropdown.classList.remove('active'), 200);
     });
-
-    document.getElementById('searchButton').addEventListener('click', (e) => {
+    document.getElementById('searchButton').addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
         playClickSound();
+        performSearch(searchInput.value);
+    });
+    searchResultsDropdown.addEventListener('click', e => {
+        const item = e.target.closest('.search-result-item');
+        if (!item) return;
+        searchInput.value = '';
+        searchResultsDropdown.classList.remove('active');
+        openArticle(item.dataset.article);
     });
 
-    searchResultsDropdown.addEventListener('click', (e) => {
-        const resultItem = e.target.closest('.search-result-item');
-        if (resultItem && resultItem.dataset.article) {
-            searchInput.value = '';
-            searchResultsDropdown.classList.remove('active');
-            openArticle(resultItem.dataset.article);
-        }
-    });
-
+    /* ------------------------------------------------------------------
+       Init
+       ------------------------------------------------------------------ */
     renderHome();
     renderCategories();
-    renderSidebar();
+    renderSidebars();
 </script>
