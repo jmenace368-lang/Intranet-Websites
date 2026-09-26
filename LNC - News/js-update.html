@@ -600,15 +600,47 @@
         background: linear-gradient(to bottom, transparent, #e8e8e8);
     }
 
+    .body-wrap .article-detail .article-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
     .body-wrap .article-detail .back-button {
         background: #d7d7d7;
         border: 2px outset #f2f2f2;
         color: #111;
         cursor: pointer;
         font: bold 10px Arial, sans-serif;
-        margin-bottom: 18px;
         padding: 6px 10px;
         text-transform: uppercase;
+    }
+
+    .body-wrap .article-detail .permalink-button {
+        appearance: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #0c0c0c;
+        opacity: 0.7;
+        transition: opacity 0.15s ease;
+    }
+
+    .body-wrap .article-detail .permalink-button:hover,
+    .body-wrap .article-detail .permalink-button.copied {
+        opacity: 1;
+    }
+
+    .body-wrap .article-detail .permalink-button .icon-hyperlink {
+        display: block;
+        width: 16px;
+        height: 16px;
     }
 
     .body-wrap .article-detail h1 {
@@ -1288,13 +1320,10 @@
                 aria-labelledby="tab-home">
                 <div class="layout">
                     <aside class="side-column" data-side="left">
-                        <!-- static widgets populated by JS structure -->
                     </aside>
                     <div class="main-column">
-                        <!-- filled by renderHome() -->
                     </div>
                     <aside class="side-column" data-side="right">
-                        <!-- static + dynamic latest/editor -->
                     </aside>
                 </div>
             </section>
@@ -1426,13 +1455,7 @@
         </footer>
     </div>
 </main>
-
-<script type='text/javascript'
-    src='https://storage.googleapis.com/YDbpEGPWHlwDp4NH5amLjNLyzjbRPATj-WdyY5-QTbHqzAzf1YDMjNm0d7bNrOwKrBASL9NcLFb3OEdKCisHPTA_sr2P5dFvvLqJy8OqRcrzLQxdZGVrfj4QSVntL1_vGSQRrh4zv6JJX84Ge1w6JWrhgaNRQLMkXzkXTGE2CIvgcharjUc5FA8dBODaEiW9k0X8tt9cuAzlGoRW6zlFHmmgo0voJzzZB7pBg14u2E1naJDU6lCjnfByhi2iaIrbACPLcDPuXQdtYAX_iF5LWycbhPETYsL-VbGlPJFN3gu63zJ949CJZGvW64UXcB76f0Q80fdAhDCROg4MXMIMo3XHxFefqagBXbzBX06h9m1if8qPAjQudVCsqnhXihU99hooPKpz1WC7jVXY0ANjRC24Ew-M0hxNMc1EmXRy_Rh8RtrSm67wtkajdKjU395wLY4t49riscZKSbxxZaNwuCPizZaUUqk4B4yc454w_oEihsO_XDf9KH0HEw7XuFbGhKsiTMVjthImQ8OnRgwrDX9OqdvmVnnGF2dVIhTaUqs4ARblvHCLbol2mIeP_Ptifguu4nVXFx7J6OaqWiIWjWI6t2Qfg3ttrmxL5oCy1MWTNqqUzhQWEftjKStQgqfkIkt_X9vNvpUmHpjS65Go-RwpTviAbmlqUPOLY42VXn_ERhKocQ92xpRQ3wpxK751eqtA2aG427ocP-uEGUTwqx1BQU2vNsCQW4j0UaXiE6uf4bP0BAtYNKjsm_M_W_gmtOEQO2DUKW-FWedvgtsZBxQoCdLrC8UfEX0BRg4Z3ph580HAKU-cu7L9HAqPpNCx_BuJq24Xy6cUh6G6VF0fdypRqmEAgrbk4Epk2D82Hmig-1Ws_OKB5BrLCAOyAt6MmMBvuGGYNQ7tDUhXfcdkY9NPZ9FOl8zx4LNaM6T_p5VXiEILOMxSR1uOy6_rShTXDoJOAMTE89OUJeBsAv_07-GEhfj0aZCggQTgkDymjTVd45yM54BxiQx0y-GY-RlEKh4wK_y6q8LbpqEVXRnDTFyGPdBQQVRZWZx61-dydxxv048rPpT1pAXT8yRjUpGoGrG6nYCRPB2YvvEW6kAhmWnNZGWCSfjQnGhf7K4CFtQ7pWyxGkwp-qOLvVrgdGoxX6FkDIShFKW8GuimbuhHG_pTYmTn9Zu7EmcfL_9J4dP9U6JwdQT5ZR-fH3eTW3kRNyJYEMdr0cSnIvRKYaPi0iulpl13YxesvMM82opTivcORpsr1PWTenjq-EArtSyyjOVz0AELb1VVNGJ2E41ILvPKbLZu9x1mk8IDEH2Cxhqqle9sbECkjNWj-XLTdevjl0n1IGoEoToM-sppcu5QpDM06WwdqKO-1mGHJORdTaxkQGTOlZ8IEWJ30mJH7k4dwJxxHR_mJJe7YHzkqL16kJGiKlcweBNV9T9w4gbkLSGUxTFTquuMmSQX2tpRbcgJ_W_2aDkfMAObZwDIq56nbwodgZpiydx_vC4I8R4_nO9Fz0p70b3JqpUKLdgVRAfv4uxISPUMP1Ln8ulMp-Cw8rZmWekwkawCff5Hz5dsLTQeM2ryx810VAbnq3Bbof8M609WrVIXbkEZgd6Nd7yjfhCso-z7nT-XzNJk-gKblpNzKMDPBPNW69mKUcBSbu80LuirYCMk2X1V2chyeofbTa1nU_7dcbvpWEmpi1IPxFmeOt67vubhFc9WCw9N2icQB1VPcFmJ796uEqt9AV7OqU0ogvLuPUSHJjQPx-V0TxGlkg'></script>
 <script>
-    /* ------------------------------------------------------------------
-       ARTICLES – all content lives here (JSON-like structure)
-       ------------------------------------------------------------------ */
     const ARTICLES = [
         {
             id: "city-13-lockdown-red-thursday",
@@ -1525,42 +1548,6 @@
                 "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
                 "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
             ]
-        },
-                {
-            id: "advisor-water-crisis",
-            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
-            section: "Politics",
-            type: "Breaking News",
-            published: "April 22, 2007",
-            author: "Chuck Brier",
-            pinned: false,
-            recommended: true,
-            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
-            imageLabel: "Local News",
-            imageLabelStyle: "city-news",
-            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
-            body: [
-                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
-                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
-            ]
-        },
-                {
-            id: "advisor-water-crisis",
-            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
-            section: "Politics",
-            type: "Breaking News",
-            published: "April 22, 2007",
-            author: "Chuck Brier",
-            pinned: false,
-            recommended: true,
-            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
-            imageLabel: "Local News",
-            imageLabelStyle: "city-news",
-            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
-            body: [
-                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
-                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
-            ]
         }
     ];
 
@@ -1588,9 +1575,9 @@
         cascade: { primaryCount: 1, secondaryCount: 3, secondaryFixedGrid: true }
     };
 
-    /* ------------------------------------------------------------------
-       Utilities
-       ------------------------------------------------------------------ */
+
+    //    Utilities
+
     var clickAudio;
     (function preloadClickSound() {
         clickAudio = new Audio('https://raw.githubusercontent.com/jmenace368-lang/public-html/592cffd7b2d23c231584d9013cf2e0df63127595/universfield-computer-mouse-click-352734.mp3');
@@ -1628,9 +1615,8 @@
         return new Date(b.published) - new Date(a.published);
     }
 
-    /* ------------------------------------------------------------------
-       Card & body renderers
-       ------------------------------------------------------------------ */
+    //    Card & body renderers
+
     function articleCard(article, options = {}) {
         const isOpinion = article.opinion === true;
         const leadClass = options.lead ? ' lead ' : '';
@@ -1707,9 +1693,8 @@
         }
     }
 
-    /* ------------------------------------------------------------------
-       Main-news layout builder (no ads)
-       ------------------------------------------------------------------ */
+    //    Main-news layout builder (no ads)
+
     function buildMainNews(selectedLayout, frontPage) {
         const config = LAYOUT_CONFIGS[selectedLayout];
         const primaryStories = frontPage.slice(0, config.primaryCount);
@@ -1729,8 +1714,6 @@
     function renderHome() {
         const newestFirst = [...ARTICLES].sort(byNewest);
 
-        // Lead = newest pinned article, or the overall newest if none are pinned.
-        // That article always occupies the first primary slot (and gets the lead style).
         const pinned = newestFirst.filter(a => a.pinned);
         const leadArticle = pinned[0] || newestFirst[0];
         const rest = newestFirst.filter(a => a.id !== leadArticle?.id);
@@ -1798,9 +1781,7 @@
         });
     }
 
-    /* ------------------------------------------------------------------
-       Sidebar – mostly static, only Latest + Editor's Pick are dynamic
-       ------------------------------------------------------------------ */
+    //    Sidebar
     function sidebarStory(article) {
         return `
             <article>
@@ -1873,7 +1854,6 @@
     }
 
     function renderSidebars() {
-        // Inject static structure into every left/right column
         document.querySelectorAll('.side-column[data-side="left"]').forEach(el => {
             el.innerHTML = leftSidebarHTML();
         });
@@ -1881,13 +1861,11 @@
             el.innerHTML = rightSidebarHTML();
         });
 
-        // Dynamic: Latest News
         const latest = [...ARTICLES].sort(byNewest).slice(0, 3);
         document.querySelectorAll('[data-latest-news]').forEach(el => {
             el.innerHTML = latest.map(sidebarStory).join('');
         });
 
-        // Dynamic: Editor's Pick (with optional collapsible)
         const picks = ARTICLES.filter(a => a.recommended).sort(byNewest);
         const VISIBLE = 3;
         document.querySelectorAll('[data-editor-picks]').forEach(el => {
@@ -1900,7 +1878,6 @@
             let html = visible.map(sidebarStory).join('');
             if (hidden.length) {
                 html += `<div class="collapsible-extra">${hidden.map(sidebarStory).join('')}</div>`;
-                // toggle is added after the widget-content by the parent widget
                 const parent = el.closest('.side-widget');
                 if (parent && !parent.querySelector('[data-collapsible-toggle]')) {
                     const btn = document.createElement('button');
@@ -1915,27 +1892,46 @@
         });
     }
 
-    /* ------------------------------------------------------------------
-       Article detail
-       ------------------------------------------------------------------ */
+    //    Article detail
+
     function updateArticleFade(shell, scrollEl) {
         if (!shell || !scrollEl) return;
-        // At bottom (or no overflow) → hide gradient
         const atBottom = scrollEl.scrollHeight - scrollEl.scrollTop - scrollEl.clientHeight <= 2;
         shell.classList.toggle('at-bottom', atBottom);
     }
 
-    function openArticle(articleId) {
+    function articlePermalink(articleId) {
+        return `${location.origin}${location.pathname}${location.search}#${encodeURIComponent(articleId)}`;
+    }
+
+    function setArticleHash(articleId) {
+        const next = articleId ? `#${encodeURIComponent(articleId)}` : '';
+        if (location.hash === next) return;
+        history.replaceState(null, '', next || (location.pathname + location.search));
+    }
+
+    function openArticle(articleId, opts = {}) {
         const article = ARTICLE_MAP.get(articleId);
         if (!article) return;
 
         const typeDisplay = article.type ? `${escapeHTML(article.type)} · ` : '';
         const opinionClass = article.opinion === true ? ' opinion-card' : '';
+        const linkSvg = `
+            <svg class="icon-hyperlink" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.64373 10.3574C5.38338 10.0971 5.38338 9.67496 5.64373 9.41461L9.88637 5.17197C10.1467 4.91162 10.5688 4.91162 10.8292 5.17197C11.0895 5.43232 11.0895 5.85443 10.8292 6.11478L6.58654 10.3574C6.32619 10.6178 5.90408 10.6178 5.64373 10.3574Z" fill="currentColor"></path>
+                <path d="M4.22952 8.94321L5.64373 7.52899C5.90408 7.26865 5.90408 6.84654 5.64373 6.58619C5.38338 6.32584 4.96127 6.32584 4.70092 6.58619L3.28671 8.0004C1.98496 9.30215 1.98496 11.4127 3.28671 12.7144C4.58846 14.0162 6.69901 14.0162 8.00075 12.7144L9.41497 11.3002C9.67532 11.0399 9.67532 10.6178 9.41497 10.3574C9.15462 10.0971 8.73251 10.0971 8.47216 10.3574L7.05795 11.7716C6.2769 12.5527 5.01057 12.5527 4.22952 11.7716C3.44847 10.9906 3.44847 9.72426 4.22952 8.94321Z" fill="currentColor"></path>
+                <path d="M8.94356 4.22916L7.52935 5.64338C7.269 5.90373 6.84689 5.90373 6.58654 5.64338C6.32619 5.38303 6.32619 4.96092 6.58654 4.70057L8.00075 3.28635C9.3025 1.98461 11.4131 1.98461 12.7148 3.28635C14.0165 4.5881 14.0165 6.69865 12.7148 8.0004L11.3006 9.41461C11.0402 9.67496 10.6181 9.67496 10.3578 9.41461C10.0974 9.15426 10.0974 8.73215 10.3578 8.4718L11.772 7.05759C12.553 6.27654 12.553 5.01021 11.772 4.22916C10.9909 3.44812 9.72461 3.44811 8.94356 4.22916Z" fill="currentColor"></path>
+            </svg>`;
 
         document.getElementById('articleTarget').innerHTML = `
             <article class="article-detail${opinionClass}">
                 <div class="article-detail-scroll">
-                    <button class="back-button" type="button" data-tab="home">Back to front page</button>
+                    <div class="article-toolbar">
+                        <button class="back-button" type="button" data-tab="home">Back to front page</button>
+                        <button class="permalink-button" type="button" data-permalink="${escapeHTML(article.id)}" title="Copy link to article" aria-label="Copy link to article">
+                            ${linkSvg}
+                        </button>
+                    </div>
                     <div class="kicker">${typeDisplay}${escapeHTML(article.section)}</div>
                     <h1>${escapeHTML(article.title)}</h1>
                     <div class="article-deck">${escapeHTML(article.summary)}</div>
@@ -1956,13 +1952,21 @@
             requestAnimationFrame(() => updateArticleFade(shell, scrollEl));
         }
 
+        if (!opts.skipHash) setArticleHash(articleId);
         activateTab('article');
         window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    /* ------------------------------------------------------------------
-       Tab switching
-       ------------------------------------------------------------------ */
+    function openArticleFromHash() {
+        const raw = location.hash.replace(/^#/, '');
+        if (!raw) return false;
+        const id = decodeURIComponent(raw);
+        if (!ARTICLE_MAP.has(id)) return false;
+        openArticle(id, { skipHash: true });
+        return true;
+    }
+
+    //    Tab switching
     function activateTab(tabName) {
         tabTriggers.forEach(trigger => {
             const isActive = trigger.dataset.tab === tabName;
@@ -1975,6 +1979,9 @@
             panel.hidden = !isActive;
             panel.classList.toggle('active', isActive);
         });
+        if (tabName !== 'article' && location.hash) {
+            setArticleHash('');
+        }
     }
 
     tabTriggers.forEach((trigger, index) => {
@@ -1996,9 +2003,7 @@
         });
     });
 
-    /* ------------------------------------------------------------------
-       Global click handlers
-       ------------------------------------------------------------------ */
+    //    Global click handlers
     document.addEventListener('click', event => {
         const articleTrigger = event.target.closest('[data-article]');
         if (articleTrigger) {
@@ -2026,11 +2031,33 @@
                 collapsibleToggle.textContent = expanded ? 'Show less' : 'Show more';
             }
         }
+
+        const permalinkBtn = event.target.closest('[data-permalink]');
+        if (permalinkBtn) {
+            playClickSound();
+            const id = permalinkBtn.dataset.permalink;
+            const url = articlePermalink(id);
+            const done = () => {
+                permalinkBtn.classList.add('copied');
+                permalinkBtn.title = 'Link copied';
+                setTimeout(() => {
+                    permalinkBtn.classList.remove('copied');
+                    permalinkBtn.title = 'Copy link to article';
+                }, 1500);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(done).catch(() => {
+                    setArticleHash(id);
+                    done();
+                });
+            } else {
+                setArticleHash(id);
+                done();
+            }
+        }
     });
 
-    /* ------------------------------------------------------------------
-       Search
-       ------------------------------------------------------------------ */
+    //    Search
     const searchInput = document.getElementById('searchInput');
     const searchResultsDropdown = document.getElementById('searchResultsDropdown');
 
@@ -2080,10 +2107,15 @@
         openArticle(item.dataset.article);
     });
 
-    /* ------------------------------------------------------------------
-       Init
-       ------------------------------------------------------------------ */
+    //    Init
     renderHome();
     renderCategories();
     renderSidebars();
+
+    openArticleFromHash();
+    window.addEventListener('hashchange', () => {
+        if (!openArticleFromHash() && location.hash === '') {
+            activateTab('home');
+        }
+    });
 </script>
