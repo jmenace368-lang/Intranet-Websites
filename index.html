@@ -1280,7 +1280,7 @@
         color: #551a8b !important;
     }
 
-    /* Ticker */
+    /* Ticker? */
     .body-wrap .ticker {
         display: flex;
         gap: clamp(1rem, 2.5vw, 3rem);
@@ -1344,11 +1344,6 @@
                 </ul>
             </nav>
         </header>
-        <div class="ticker">
-            <span><strong>BREAKING:</strong> READ THIS TODAY!</span>
-            <span><strong>BREAKING:</strong> READ THIS TODAY!</span>
-
-        </div>
         <main>
             <!-- HOME -->
             <section id="panel-home" class="tab-panel active" data-tab="home" role="tabpanel" tabindex="-1"
@@ -1490,7 +1485,8 @@
         </footer>
     </div>
 </main>
-<script>
+
+<script type="text/javascript">
     const ARTICLES = [
         {
             id: "city-13-lockdown-red-thursday",
@@ -1506,14 +1502,7 @@
             imageLabelStyle: "city-news",
             summary: "Following the disastrous pandemonium of Red Thursday, City 13 authorities have declared a city-wide lockdown effective immediately.",
             body: [
-                "City 13 administrators announced an immediate city-wide lockdown in response to the events of Red Thursday. The measure is intended to restore order and allow inspection teams to complete their work.",
-                "Residents are advised to remain indoors and to report any unusual activity through the appropriate municipal channels.",
-                {
-                    type: "blockquote",
-                    text: "Stability is the foundation of our continued prosperity. Temporary restrictions serve the greater good of every citizen.",
-                    cite: "Civil Protection Statement"
-                },
-                "Further updates will be issued as the situation develops."
+
             ]
         },
         {
@@ -1528,8 +1517,7 @@
             image: "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
             summary: "Richard Pelletier to resume bombing campaign against innocent Xen fauna of District 4.",
             body: [
-                "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
-                "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
+
             ]
         },
         {
@@ -1546,8 +1534,7 @@
             imageLabelStyle: "city-news",
             summary: "A local biotic has provided new insights into the culinary habits of Biotics, showcasing a variety of recipes passed down from their homeworld.",
             body: [
-                "In a rare interview, a District 7 biotic shared traditional recipes and preparation methods that have survived the transition to City 13.",
-                "The conversation highlighted both the cultural continuity of biotic communities and the adaptations required under current resource allocations."
+
             ]
         },
         {
@@ -1562,8 +1549,7 @@
             image: "https://combineoverwiki.net/images/2/2d/Eli_Vance_HLA.png",
             summary: "A deranged crackhead is ranting about a supposed conspiracy by the Combine to \"make humanity extinct\" through the Suppression Field.",
             body: [
-                "Local authorities have noted an uptick in unsubstantiated claims circulating among the more transient populations of the industrial zones.",
-                "Civil Protection reminds citizens that spreading baseless rumors can itself become a matter for administrative review."
+
             ]
         },
         {
@@ -1580,8 +1566,7 @@
             imageLabelStyle: "city-news",
             summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
             body: [
-                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
-                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
+
             ]
         },
         {
@@ -1598,11 +1583,12 @@
             imageLabelStyle: "city-news",
             summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
             body: [
-                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
-                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
+
             ]
         }
     ];
+</script>
+<script>
 
 
     const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
@@ -1890,7 +1876,7 @@
                 <img src="images/Banner-257-295.png" alt="Advertisement" title="Advertisement">
             </div>
             <div class="side-widget">
-                <div class="side-widget-title"><h2>Editor's Pick</h2></div>
+                <div class="side-widget-title"><h2>Editors' Pick</h2></div>
                 <div class="widget-content" data-editor-picks>
                     <p>No editor picks are available.</p>
                 </div>
