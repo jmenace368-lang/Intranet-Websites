@@ -14,6 +14,9 @@
     .body-wrap {
         --text-color-main: #333;
         --white: #f5f5f5;
+        --kicker-color: #9d2534;
+        --line-color: #c8c8c8;
+        --red-text-color: #00038f;
         background: var(--white);
         border: solid 3px black;
         color: var(--text-color-main);
@@ -26,9 +29,6 @@
 
     /* Page Layout – 3 columns */
     .body-wrap .layout {
-        --kicker-color: #9d2534;
-        --line-color: #c8c8c8;
-        --red-text-color: #00038f;
         display: grid;
         gap: 20px;
         grid-template-columns: 190px minmax(0, 1fr) 190px;
@@ -48,16 +48,13 @@
         border: 1px groove var(--white);
         display: flex;
         align-items: center;
-        justify-content: space-between;
         padding: 0 20px;
         user-select: none;
         pointer-events: none;
     }
 
     .body-wrap .masthead-icon {
-        align-items: center;
         height: 80%;
-        margin: 0;
         min-width: 0;
         overflow: hidden;
         padding: 8px;
@@ -72,16 +69,18 @@
         width: auto;
     }
 
+    .body-wrap .masthead-icon.masthead-home {
+        pointer-events: all;
+        cursor: pointer;
+    }
+
     .body-wrap .masthead-content {
-        align-items: center;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         flex: 1 0;
         height: 100%;
-        justify-content: center;
         min-width: 0;
         padding: 0;
-        text-align: center;
     }
 
     .body-wrap .masthead-search {
@@ -92,6 +91,7 @@
         position: relative;
         width: 100%;
         pointer-events: all;
+        transform: translateY(35px);
     }
 
     .body-wrap .masthead-search input {
@@ -392,7 +392,7 @@
     }
 
     .body-wrap .news-article.opinion-card h3 {
-        border-left: 4px solid black;
+        border-left: 4px solid var(--red-text-color);
         padding-left: 12px;
     }
 
@@ -450,11 +450,15 @@
     }
 
     .body-wrap .image-wrap .class-label.local-news {
-        background: rgb(42, 76, 168);
+        /* background: rgb(42, 76, 168); */
+        background: linear-gradient(90deg, #4561ff 0%, #2a4ca8 100%);
+
     }
 
     .body-wrap .image-wrap .class-label.city-news {
         background: rgb(61, 57, 119);
+        background: linear-gradient(90deg, #564bbd 0%, #3d3977 100%);
+
     }
 
     /* Article Content */
@@ -543,7 +547,6 @@
     }
 
     /* Article Detail */
-    /* Outer shell: relative flex container, max-height, holds the bottom fade */
     .body-wrap .article-detail {
         position: relative;
         display: flex;
@@ -557,7 +560,7 @@
         overflow: hidden;
     }
 
-    /* Inner scroll area – fills outer height and scrolls */
+    /* Inner Scroll*/
     .body-wrap .article-detail-scroll {
         flex: 1 1 auto;
         min-height: 0;
@@ -1091,7 +1094,7 @@
         justify-content: center;
     }
 
-    .body-wrap .fake-button a {
+    .body-wrap a.fake-button {
         text-decoration: none;
         color: inherit;
     }
@@ -1100,12 +1103,12 @@
         filter: brightness(0.8);
     }
 
-    .body-wrap .fake-button a:active,
-    .body-wrap .fake-button a:visited {
+    /* .body-wrap a.fake-button:active,
+    .body-wrap a.fake-button:visited {
         color: unset;
-    }
+    } */
 
-    /* Article detail view: no offset needed */
+    /* Article detail*/
     #panel-article .side-column {
         margin-top: 0;
     }
@@ -1129,7 +1132,7 @@
         width: 100%;
     }
 
-    /* Hide Stories Images on home more-stories */
+    /* Hide Stories Images*/
     .body-wrap #panel-home .stories .news-article .photo {
         display: none;
     }
@@ -1271,6 +1274,32 @@
             background-position: 180px 120px;
         }
     }
+
+    /* Visited Article Titles */
+    .body-wrap .side-widget span.title.visited {
+        color: #551a8b !important;
+    }
+
+    /* Ticker */
+    .body-wrap .ticker {
+        display: flex;
+        gap: clamp(1rem, 2.5vw, 3rem);
+        width: 100%;
+        background: #101112;
+        border-bottom: 2px solid #222;
+        color: var(--white);
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+
+    .body-wrap .ticker span strong,
+    .body-wrap .ticker strong {
+        color: rgb(212, 53, 53) !important;
+        font-weight: 800;
+
+    }
 </style>
 
 <main>
@@ -1279,7 +1308,8 @@
         <div class="vhs-scan"></div>
         <header>
             <div class="masthead">
-                <div class="masthead-icon">
+                <div class="masthead-icon masthead-home click-sound" role="link" tabindex="0" title="Back to front page"
+                    aria-label="Back to front page">
                     <img src="https://i.ibb.co/4g0vnP2x/lnc-2.png" alt="Le Nouvelle Citoyen Logo"
                         title="Le Nouvelle Citoyen">
                 </div>
@@ -1287,7 +1317,7 @@
                     <div class="masthead-search" role="search">
                         <input type="text" id="searchInput" aria-label="Search the Le Nouvelle Citoyen News"
                             placeholder="Search the News">
-                        <button type="button" id="searchButton">Search</button>
+                        <button class="click-sound" type="button" id="searchButton">Search</button>
                         <div class="search-results-dropdown" id="searchResultsDropdown"></div>
                     </div>
                 </div>
@@ -1314,6 +1344,11 @@
                 </ul>
             </nav>
         </header>
+        <div class="ticker">
+            <span><strong>BREAKING:</strong> READ THIS TODAY!</span>
+            <span><strong>BREAKING:</strong> READ THIS TODAY!</span>
+
+        </div>
         <main>
             <!-- HOME -->
             <section id="panel-home" class="tab-panel active" data-tab="home" role="tabpanel" tabindex="-1"
@@ -1483,7 +1518,7 @@
         },
         {
             id: "richard-pelletier-district-4-infestation",
-            title: "Richard Pelletier addresses District 4's infestation",
+            title: "Richard Pelletier bombs District 4",
             section: "Politics",
             type: "Breaking News",
             published: "April 27, 2009",
@@ -1491,7 +1526,7 @@
             pinned: false,
             recommended: true,
             image: "https://combineoverwiki.net/images/3/39/City17Lockdown2.jpg",
-            summary: "Richard Pelletier speaks to District 4 residents about the ongoing infestation response and calls for continued cooperation with municipal inspection teams.",
+            summary: "Richard Pelletier to resume bombing campaign against innocent Xen fauna of District 4.",
             body: [
                 "Richard Pelletier addressed District 4 residents today, describing the current infestation response as a priority for local administrators.",
                 "The statement called for residents to report affected buildings through the appropriate municipal channels while inspection teams continue their work."
@@ -1548,12 +1583,54 @@
                 "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
                 "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
             ]
+        },
+        {
+            id: "advisor-water-crisis",
+            title: "Advisor Addresses Damning Allegations about Earth's Water Crisis",
+            section: "Politics",
+            type: "Breaking News",
+            published: "April 22, 2007",
+            author: "Chuck Brier",
+            pinned: false,
+            recommended: true,
+            image: "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
+            imageLabel: "Local News",
+            imageLabelStyle: "city-news",
+            summary: "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
+            body: [
+                "In a rare public address, an Advisor dismissed claims that planetary water resources are being systematically diverted.",
+                "The statement reaffirmed that all resource management decisions remain fully aligned with the long-term stability of Earth and its remaining population."
+            ]
         }
     ];
 
-    const ARTICLE_MAP = new Map(ARTICLES.map(a => [a.id, a]));
+
     const tabTriggers = document.querySelectorAll('.navigation [data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel[data-tab]');
+
+    const ARTICLE_MAP = (() => {
+        const map = new Map();
+        const renamed = [];
+        for (const article of ARTICLES) {
+            let id = article.id;
+            if (map.has(id)) {
+                let n = 2;
+                while (map.has(`${article.id}-${n}`)) n += 1;
+                const newId = `${article.id}-${n}`;
+                renamed.push(`${article.id} → ${newId}`);
+                article.id = newId;
+                id = newId;
+            }
+            map.set(id, article);
+        }
+        if (renamed.length) {
+            console.warn(
+                '[Le Nouvelle Citoyen] Duplicate article id(s) auto-suffixed:',
+                renamed.join(', ')
+            );
+        }
+        return map;
+    })();
 
     const categoryTabs = {
         city: 'City 13',
@@ -1799,13 +1876,13 @@
     function leftSidebarHTML() {
         return `
             <div class="side-widget website">
-                <div class="side-widget-title"><h2>Other Websites</h2></div>
+                <div class="side-widget-title"><h2>Websites</h2></div>
                 <article class="widget-content">
                     <p>Enjoyed the site? Check out these other websites:</p>
                     <ul>
-                        <li><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
-                        <li><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
-                        <li><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
+                        <li class="click-sound"><a href="#" onclick="return false;">» www.labourcoop.net</a></li>
+                        <li class="click-sound"><a href="#" onclick="return false;">» www.oldworldblues.net</a></li>
+                        <li class="click-sound"><a href="#" onclick="return false;">» www.city13.gov/districts/7/</a></li>
                     </ul>
                 </article>
             </div>
@@ -1841,10 +1918,8 @@
                 </div>
                 <div class="contact-content widget-content">
                     <span>Weekly news, politics, events, and city announcements</span>
-                    <div class="fake-button" style="display: flex; justify-self: center;">
-                        <a href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
-                           target="_blank" rel="noopener">CLICK HERE</a>
-                    </div>
+                    <a class="fake-button" style="display: flex; justify-self: center;" href="https://willard.network/forums/direct-messages/add?to=Kamilisha+Haijulikani"
+                        target="_blank" rel="noopener">CLICK HERE</a>
                 </div>
             </div>
             <div class="side-advert">
@@ -2005,9 +2080,19 @@
 
     //    Global click handlers
     document.addEventListener('click', event => {
+        const homeLogo = event.target.closest('.masthead-home');
+        if (homeLogo) {
+            playClickSound();
+            activateTab('home');
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            return;
+        }
+
         const articleTrigger = event.target.closest('[data-article]');
         if (articleTrigger) {
             playClickSound();
+            const titleEl = articleTrigger.querySelector('span.title');
+            if (titleEl) titleEl.classList.add('visited');
             openArticle(articleTrigger.dataset.article);
             return;
         }
@@ -2021,6 +2106,9 @@
 
         const fakeButton = event.target.closest('.fake-button');
         if (fakeButton) playClickSound();
+
+        const sfxEl = event.target.closest('.click-sound, [data-click-sound]');
+        if (sfxEl) playClickSound();
 
         const collapsibleToggle = event.target.closest('[data-collapsible-toggle]');
         if (collapsibleToggle) {
