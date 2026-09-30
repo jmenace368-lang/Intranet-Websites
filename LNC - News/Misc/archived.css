@@ -61,3 +61,15 @@
     height: fit-content;
     padding: 6px;
 }
+
+@media (max-width: 650px) {
+    .wn-body-wrap .masthead {
+        grid-template-columns: minmax(0, 1fr) minmax(150px, 220px) minmax(0, 1fr);
+        height: 100px;
+        min-height: 0;
+    }
+
+    .wn-body-wrap .masthead-icon {
+        padding: 12px 4px;
+    }
+}
