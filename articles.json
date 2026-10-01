@@ -1,17 +1,39 @@
 [
-    {
-        "id": "advisor-water-crisis",
-        "title": "Advisor Addresses Damning Allegations about Earth's Water Crisis",
-        "section": "Politics",
-        "type": "Breaking News",
-        "published": "April 22, 2007",
-        "author": "Chuck Brier",
-        "pinned": false,
-        "recommended": false,
-        "image": "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
-        "imageLabel": "Local News",
-        "imageLabelStyle": "city-news",
-        "summary": "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
-        "body": []
-    }
+  {
+    "id": "backend-worker-test",
+    "title": "Backend Worker Test",
+    "section": "Announcements",
+    "type": "System",
+    "published": "October 1, 2026",
+    "author": "Backend",
+    "pinned": false,
+    "recommended": false,
+    "opinion": false,
+    "image": "",
+    "imageLabel": "",
+    "imageLabelStyle": "default",
+    "summary": "This article was created through the Cloudflare Worker.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "The automated publishing pipeline is working.",
+        "align": ""
+      }
+    ]
+  },
+  {
+    "id": "advisor-water-crisis",
+    "title": "Advisor Addresses Damning Allegations about Earth's Water Crisis",
+    "section": "Politics",
+    "type": "Breaking News",
+    "published": "April 22, 2007",
+    "author": "Chuck Brier",
+    "pinned": false,
+    "recommended": false,
+    "image": "https://combineoverwiki.net/images/1/16/HLA_Advisor01.jpg",
+    "imageLabel": "Local News",
+    "imageLabelStyle": "city-news",
+    "summary": "An Advisor is addressing serious rumours about the Combine purported draining of Earth's oceans, dismissing any rumour as unfounded and that Earth's water \"belongs to Earth\".",
+    "body": []
+  }
 ]
