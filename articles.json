@@ -36,28 +36,6 @@
     ]
   },
   {
-    "id": "backend-worker-test",
-    "title": "Backend Worker Test",
-    "section": "Announcements",
-    "type": "System",
-    "published": "October 1, 2026",
-    "author": "Backend",
-    "pinned": false,
-    "recommended": false,
-    "opinion": false,
-    "image": "",
-    "imageLabel": "",
-    "imageLabelStyle": "default",
-    "summary": "This article was created through the Cloudflare Worker.",
-    "body": [
-      {
-        "type": "paragraph",
-        "text": "The automated publishing pipeline is working.",
-        "align": ""
-      }
-    ]
-  },
-  {
     "id": "advisor-water-crisis",
     "title": "Advisor Addresses Damning Allegations about Earth's Water Crisis",
     "section": "Politics",
