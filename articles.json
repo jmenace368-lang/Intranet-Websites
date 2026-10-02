@@ -1,5 +1,27 @@
 [
   {
+    "id": "writer-workflow-test-2",
+    "title": "Writer Workflow Test",
+    "section": "Announcements",
+    "type": "System",
+    "published": "October 2, 2026",
+    "author": "Writer",
+    "pinned": false,
+    "recommended": false,
+    "opinion": false,
+    "image": "",
+    "imageLabel": "",
+    "imageLabelStyle": "default",
+    "summary": "Testing the draft and approval workflow.",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "This article should remain private until an Editor or Admin publishes it.",
+        "align": ""
+      }
+    ]
+  },
+  {
     "id": "backend-worker-test",
     "title": "Backend Worker Test",
     "section": "Announcements",
