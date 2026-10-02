@@ -152,60 +152,6 @@
     ]
   },
   {
-    "id": "yes",
-    "title": "holy shit",
-    "section": "yes",
-    "type": "yes",
-    "published": "October 2, 2026",
-    "author": "Staff",
-    "pinned": true,
-    "recommended": false,
-    "opinion": false,
-    "image": "",
-    "imageLabel": "",
-    "imageLabelStyle": "default",
-    "summary": "yes",
-    "body": [
-      {
-        "type": "paragraph",
-        "text": "yes",
-        "align": ""
-      },
-      {
-        "content": [
-          {
-            "type": "image",
-            "src": "https://cdn.discordapp.com/attachments/1525897365066617052/1555508960478494780/image.png?backend=b2&ex=6ac0c81c&is=6abf769c&hm=fac83996d10b94e5df6217409b781bbc5d02b361fec3af836faa6437952e9af7",
-            "caption": "",
-            "align": "right",
-            "float": "",
-            "width": "722px",
-            "height": "239.97px"
-          },
-          {
-            "type": "text",
-            "text": "\n"
-          }
-        ],
-        "type": "heading",
-        "level": "1",
-        "text": "",
-        "align": ""
-      },
-      {
-        "type": "heading",
-        "level": "2",
-        "text": "yes",
-        "align": ""
-      },
-      {
-        "type": "paragraph",
-        "text": "",
-        "align": ""
-      }
-    ]
-  },
-  {
     "id": "barnacles-announce-jihad-on-city-13",
     "title": "Barnacles announce Jihad on City 13.",
     "section": "Politics",
