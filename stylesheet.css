@@ -601,7 +601,7 @@
 
     .wn-body-wrap .article-detail.opinion-card {
         background: #e8e8e8;
-        border-left: 4px solid var(--red-text-color);
+        /* border-left: 4px solid var(--red-text-color); */
     }
 
     .wn-body-wrap .article-detail.opinion-card .article-detail-fade {
@@ -687,6 +687,10 @@
         margin: 0 0 18px;
     }
 
+    .wn-body-wrap .article-detail .article-body blockquote p {
+        margin: 0;
+    }
+
     .wn-body-wrap .article-detail .article-body {
         overflow: hidden;
     }
@@ -740,7 +744,7 @@
     .wn-body-wrap .article-detail blockquote {
         margin: 22px 0;
         padding: 13px 18px;
-        border-left: 4px solid var(--red-text-color);
+        border-left: 4px solid rgb(15, 15, 15);
         background: #f4f4f4;
         font-style: italic;
     }
