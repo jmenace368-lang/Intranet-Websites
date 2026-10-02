@@ -786,6 +786,7 @@
         gap: 34px;
         height: fit-content;
         padding: 6px;
+        min-width: 0;
     }
 
     .wn-body-wrap #panel-home .side-column {
@@ -821,6 +822,25 @@
         border-bottom: var(--white) solid 2px;
         border-left: var(--white) solid 2px;
         border-right: var(--line-color) solid 1px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .wn-body-wrap .side-widget article,
+    .wn-body-wrap .side-widget .widget-content,
+    .wn-body-wrap .side-widget .side-widget-title,
+    .wn-body-wrap .side-widget li {
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .wn-body-wrap .side-widget .meta {
+        min-width: 0;
+    }
+
+    .wn-body-wrap .side-widget span.author {
+        min-width: 0;
     }
 
     .wn-body-wrap .side-widget:last-child {
