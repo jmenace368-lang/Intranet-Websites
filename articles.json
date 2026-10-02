@@ -1,5 +1,41 @@
 [
   {
+    "id": "barnacles-announce-jihad-on-city-13",
+    "title": "Barnacles announce Jihad on City 13.",
+    "section": "Politics",
+    "type": "Wildlife",
+    "published": "October 1, 2026",
+    "author": "Staff",
+    "pinned": true,
+    "recommended": true,
+    "opinion": true,
+    "image": "https://combineoverwiki.net/images/a/a3/Barnacle_family.jpg",
+    "imageLabel": "",
+    "imageLabelStyle": "breaking",
+    "summary": "Barnacles are threatening our livelihoods; how long will we let this menace ruin our lives?",
+    "body": [
+      {
+        "type": "paragraph",
+        "text": "Evil Barnacles.",
+        "align": ""
+      },
+      {
+        "type": "blockquote",
+        "text": "\"They're evil\" Dr. Wallace Breen",
+        "cite": "",
+        "align": ""
+      },
+      {
+        "type": "aside",
+        "text": "That's for sure",
+        "align": ""
+      },
+      {
+        "type": "hr"
+      }
+    ]
+  },
+  {
     "id": "backend-worker-test",
     "title": "Backend Worker Test",
     "section": "Announcements",
