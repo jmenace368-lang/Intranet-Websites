@@ -256,7 +256,7 @@
         align-items: stretch;
         display: grid;
         gap: 10px;
-        grid-template-columns: 1.7fr 1fr;
+        grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
     }
 
     .wn-body-wrap .main-news.layout-grid .primary-news,
@@ -302,7 +302,7 @@
 
     .wn-body-wrap .main-news.layout-full .secondary-news {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 14px;
         grid-column: 1 / -1;
         grid-auto-rows: 1fr;
@@ -337,7 +337,7 @@
 
     .wn-body-wrap .main-news.layout-cascade .secondary-news {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 14px;
         grid-column: 1 / -1;
     }
@@ -480,6 +480,14 @@
         font-size: 13px;
         line-height: 1.45;
         margin-bottom: 10px;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .wn-body-wrap .news-article,
+    .wn-body-wrap .news-article .date {
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     .wn-body-wrap .stories .news-article .summary {
@@ -747,12 +755,12 @@
 
     /* Aside / callout */
     .wn-body-wrap .article-detail .article-aside {
-        margin: 22px 0;
-        padding: 14px 18px;
+        margin: 14px 0;
+        padding: 10px 14px;
         background: #f0f0f0;
         border: 1px solid #ddd;
-        font-size: 15px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.45;
     }
 
     /* Horizontal rule */
@@ -765,7 +773,7 @@
     /* More Stories */
     .wn-body-wrap .stories {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
         margin-top: 16px;
     }
@@ -1015,7 +1023,7 @@
     .wn-body-wrap .footer-row {
         display: grid;
         gap: 40px;
-        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
     }
 
     .wn-body-wrap .footer-bottom {
