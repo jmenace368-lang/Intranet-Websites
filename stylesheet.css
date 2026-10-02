@@ -461,6 +461,10 @@
         margin: 8px 0 5px;
         font-family: 'Poppins', "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: var(--text-color-main);
+        max-width: 100%;
+        overflow: hidden;
+        overflow-wrap: anywhere;
+        text-overflow: ellipsis;
     }
 
     .wn-body-wrap .main-news .news-article h3 {

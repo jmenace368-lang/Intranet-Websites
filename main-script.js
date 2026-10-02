@@ -516,7 +516,7 @@ function leftSidebarHTML() {
         '</article>' +
         '</div>' +
         '<div class="side-advert small">' +
-        '<img src="" alt="Advertisement">' +
+        '<img src="placeholder.jpg" alt="Advertisement">' +
         '</div>' +
         '<div class="side-widget">' +
         '<div class="side-widget-title"><h2>Editors\' Pick</h2></div>' +
@@ -547,7 +547,7 @@ function rightSidebarHTML() {
         '</div>' +
         '</div>' +
         '<div class="side-advert">' +
-        '<img src="" alt="Advertisement">' +
+        '<img src="placeholder.jpg" alt="Advertisement">' +
         '</div>'
     );
 }
